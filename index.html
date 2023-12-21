@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url(/images/matbakgrund1.jpeg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .search-container {
+            position: fixed;
+            /* Ändrad från 'absolute' till 'fixed' */
+            top: 10%;
+            /* Placerar sökfältet högre upp */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            /* Säkerställer att sökfältet ligger över resultat */
+        }
+
+        .search-container input[type='text'],
+        .search-container button {
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: white;
+            color: black;
+            outline: none;
+        }
+
+        .search-container input[type='text'] {
+            border-radius: 25px 0 0 25px;
+            width: 100%;
+        }
+
+        .search-container button {
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #f2f2f2;
+
+
+        }
+
+        #data-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            /* Centrerar resultat i mitten av sidan */
+            margin-top: 100px;
+            /* Skapar utrymme mellan sökfältet och resultat */
+        }
+
+
+        .matratt {
+            background-color: rgba(255, 255, 255, 0.8);
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: calc(50% - 20px);
+            /* Anpassar bredden för två kolumner */
+            box-sizing: border-box;
+        }
+
+        /* Stil för Instagram-inlägg */
+        .instagram-media {
+            max-width: 100%;
+            /* Se till att Instagram-inlägget passar in i .matratt */
+            margin: 10px 0;
+        }
+
+        .matratt h2 {
+            margin: 0;
+        }
+
+        .matratt p,
+        .matratt a {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Skriv maträtt eller ingredienser...">
+        <button onclick="performSearch()">Sök</button> <!-- Lägg till sökknappen här -->
+    </div>
+
+    <div id="data-container"></div>
+
+
+    <script>
+        let allData = [];
+
+        async function loadData() {
+            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
+            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
+            const range = 'Blad1!A1:F'; // Uppdatera för att inkludera alla kolumner upp till 'F'
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json(); console.log(data)
+                allData = data.values.slice(1); // Ignorerar första raden (rubriker)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        function performSearch() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const filteredData = allData.filter(row => {
+                // Kontrollera om varje kolumn har ett värde innan sökning
+                const matratt = row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
+                const ingredienser = row[1] ? row[1].toLowerCase().includes(searchTerm) : false;
+                const alternativaNamn = row[2] ? row[2].toLowerCase().includes(searchTerm) : false;
+                const plats = row[3] ? row[3].toLowerCase().includes(searchTerm) : false;
+                const typ = row[4] ? row[4].toLowerCase().includes(searchTerm) : false;
+
+                return matratt || ingredienser || alternativaNamn || plats || typ;
+            });
+            displayData(filteredData);
+            console.log(filteredData);
+        }
+
+        function displayData(data) {
+            var htmlContent = '';
+            data.forEach(row => {
+                htmlContent += '<div class="matratt">';
+                htmlContent += '<h2>' + row[0] + '</h2>'; // Maträtt
+                htmlContent += '<p>Ingredienser: ' + row[1] + '</p>'; // Ingredienser
+                htmlContent += row[5]; // Instagram-kod ligger i sjätte kolumnen (F)
+                htmlContent += '</div>';
+            });
+            document.getElementById('data-container').innerHTML = htmlContent;
+
+            // Uppdatera Instagram-inlägg
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            }
+        }
+
+
+        window.onload = loadData;
+
+    </script>
+    <script async src="//www.instagram.com/embed.js"></script> <!-- Lägg till Instagrams embed-script -->
+</body>
+
+</html>
