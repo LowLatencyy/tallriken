@@ -11,20 +11,19 @@
             background-image: url('/tallriken/images/matbakgrund1.jpeg');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat; /* Förhindrar repetition av bakgrundsbild */
+            background-attachment: fixed; /* Håller bakgrundsbilden på plats vid skrollning */
         }
 
         .search-container {
             position: fixed;
-            /* Ändrad från 'absolute' till 'fixed' */
             top: 10%;
-            /* Placerar sökfältet högre upp */
             left: 50%;
             transform: translate(-50%, -50%);
             width: 50%;
             display: flex;
             align-items: center;
             z-index: 1000;
-            /* Säkerställer att sökfältet ligger över resultat */
         }
 
         .search-container input[type='text'],
@@ -56,9 +55,9 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            /* Centrerar resultat i mitten av sidan */
             margin-top: 100px;
-            /* Skapar utrymme mellan sökfältet och resultat */
+            padding-bottom: 50px; /* Extra utrymme längst ner */
+            overflow: auto; /* Aktiverar skrollning inom container */
         }
 
 
@@ -68,8 +67,7 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            width: calc(50% - 20px);
-            /* Anpassar bredden för två kolumner */
+            width: calc(25% - 20px); /* Justerar bredden för fyra kolumner */
             box-sizing: border-box;
         }
 
