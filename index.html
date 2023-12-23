@@ -72,6 +72,7 @@
 
         .matratt {
             background-color: rgba(255, 255, 255, 0.8);
+            flex: 1 1 auto;
             margin: 10px;
             padding: 20px;
             border-radius: 10px;
@@ -84,8 +85,10 @@
         /* Stil för Instagram-inlägg */
         .instagram-media {
             max-width: 100%;
-            /* Se till att Instagram-inlägget passar in i .matratt */
-            margin: 10px 0;
+            width: auto;
+            height: auto;
+            display: block;
+            margin: 10px auto;
         }
 
         .matratt h2 {
@@ -115,9 +118,11 @@
                 /* En kolumn för mycket små skärmar */
             }
         }
+
         /* Lägg till den nya CSS-koden för footer-banner här */
         .footer-banner {
-            background-color: #000; /* Eller någon annan färg som passar din design */
+            background-color: #000;
+            /* Eller någon annan färg som passar din design */
             color: white;
             text-align: center;
             padding: 10px 0;
