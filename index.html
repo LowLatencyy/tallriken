@@ -71,14 +71,15 @@
 
 
         .matratt {
-            background-color: rgba(255, 255, 255, 0.8);
+            flex: 1 1 240px;
+            /* Börjar vid 240px men kan växa och minska */
             margin: 10px;
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            width: calc(25% - 20px);
-            /* Justerar bredden för fyra kolumner */
+            background-color: rgba(255, 255, 255, 0.8);
             box-sizing: border-box;
+            align-self: flex-start;
         }
 
         /* Stil för Instagram-inlägg */
@@ -90,7 +91,6 @@
             display: block;
         }
 
-        }
 
         .matratt h2 {
             margin: 0;
