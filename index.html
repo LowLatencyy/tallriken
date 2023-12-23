@@ -82,12 +82,14 @@
         }
 
         /* Stil för Instagram-inlägg */
-        .instagram-media {
-            max-width: 100%;
-            width: auto;
-            height: auto;
+        .instagram-media iframe {
+            width: 100%;
+            /* Fyller bredden av dess container */
+            min-height: 500px;
+            /* Exempel på minimal höjd, justera detta värde */
             display: block;
-            margin: 10px auto;
+        }
+
         }
 
         .matratt h2 {
