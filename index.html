@@ -2,17 +2,24 @@
 <html>
 
 <head>
+
+    <!-- Lägg till denna länk i din head-tagg -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+
+
     <style>
         body,
         html {
             height: 100%;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-image: url('/tallriken/images/matbakgrund1.jpeg');
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat; /* Förhindrar repetition av bakgrundsbild */
-            background-attachment: fixed; /* Håller bakgrundsbilden på plats vid skrollning */
+            background-repeat: no-repeat;
+            /* Förhindrar repetition av bakgrundsbild */
+            background-attachment: fixed;
+            /* Håller bakgrundsbilden på plats vid skrollning */
         }
 
         .search-container {
@@ -56,8 +63,10 @@
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 100px;
-            padding-bottom: 50px; /* Extra utrymme längst ner */
-            overflow: auto; /* Aktiverar skrollning inom container */
+            padding-bottom: 50px;
+            /* Extra utrymme längst ner */
+            overflow: auto;
+            /* Aktiverar skrollning inom container */
         }
 
 
@@ -67,7 +76,8 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            width: calc(25% - 20px); /* Justerar bredden för fyra kolumner */
+            width: calc(25% - 20px);
+            /* Justerar bredden för fyra kolumner */
             box-sizing: border-box;
         }
 
@@ -85,6 +95,25 @@
         .matratt p,
         .matratt a {
             margin: 5px 0;
+        }
+
+        @media (max-width: 768px) {
+            .matratt {
+                width: calc(50% - 20px);
+                /* Två kolumner istället för fyra */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .search-container {
+                width: 80%;
+                /* Bredare sökfält för små skärmar */
+            }
+
+            .matratt {
+                width: calc(100% - 20px);
+                /* En kolumn för mycket små skärmar */
+            }
         }
     </style>
 </head>
