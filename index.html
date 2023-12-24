@@ -85,13 +85,18 @@
         .matratt iframe {
             width: 100%;
             /* Säkerställer att bredden anpassas till containern */
-            height: 400px;
+            height: 700px;
             /* Standardiserad höjd för alla Instagram-inlägg */
             overflow-y: auto;
             /* Aktiverar vertikal skrollning inuti inlägget */
             display: block;
             border: none;
             /* Tar bort ramen runt iframe, valfritt */
+
+            /* Minska storleken med 35% */
+            transform: scale(0.65);
+            transform-origin: top center;
+            /* Justera skalningens ursprung */
         }
 
         /* Stil för Instagram-inlägg */
