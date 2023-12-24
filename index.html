@@ -13,19 +13,26 @@
             height: 100%;
             margin: 0;
             font-family: 'Montserrat', sans-serif;
+        }
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: url('/tallriken/images/matbakgrund1.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            /* Förhindrar repetition av bakgrundsbild */
             background-attachment: fixed;
-            /* Håller bakgrundsbilden på plats vid skrollning */
+            z-index: -1;
         }
 
-        /* Suddig bakgrund */
-        .blur-background {
+        .blur-background .background-container {
             filter: blur(5px);
         }
+
 
         .search-container {
             position: fixed;
@@ -208,6 +215,9 @@
 </head>
 
 <body>
+    <div class="background-container"></div>
+    <!-- Resten av din HTML... -->
+
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Skriv maträtt eller ingredienser...">
         <button onclick="performSearch()">Sök</button> <!-- Lägg till sökknappen här -->
