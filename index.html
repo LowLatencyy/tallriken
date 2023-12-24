@@ -235,9 +235,9 @@
     <div class="background-container"></div>
 
     <div class="search-container">
-        <div class="tag-container"></div>
         <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
         <button onclick="performSearch()">Sök</button>
+        <div class="tag-container"></div>
     </div>
 
     <div id="data-container"></div>
@@ -249,24 +249,23 @@
         let allData = [];
         let selectedTags = [];
 
-        // Ladda in data (din befintliga loadData-funktion)
+        // Din befintliga loadData-funktion...
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData.filter(row => {
-                const matratt = row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
-                const ingredienser = row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag));
-                return matratt || ingredienser;
+                const matrattMatch = row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
+                const ingredienserMatch = row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
+                return matrattMatch || ingredienserMatch;
             });
             displayData(filteredData);
         }
 
-        // Hantera Enter-tryckningar i sökfältet
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 const tagValue = this.value.trim();
-                if (tagValue) {
+                if (tagValue && !selectedTags.includes(tagValue)) {
                     selectedTags.push(tagValue);
                     updateTagContainer();
                     this.value = '';
@@ -274,7 +273,6 @@
             }
         });
 
-        // Uppdaterar taggcontainern
         function updateTagContainer() {
             const container = document.querySelector('.tag-container');
             container.innerHTML = selectedTags.map(tag => `<div class="tag">${tag}</div>`).join('');
