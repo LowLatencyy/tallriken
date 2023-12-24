@@ -233,14 +233,18 @@
 
 <body>
     <div class="background-container"></div>
+
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
         <button onclick="performSearch()">Sök</button>
     </div>
-    <div class="tag-container"></div> <!-- Tagg-containern under sökfältet -->
+
+    <div class="tag-container"></div> <!-- Placerad under sökfältet -->
 
     <div id="data-container"></div>
+
     <div class="footer-banner">
+        <!-- Footer content -->
         <!-- Innehåll för din banner, t.ex. Om Oss och Tipsa Oss länkar -->
     </div>
 
@@ -266,8 +270,8 @@
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData.filter(row => {
-                const matrattMatch = searchTerm && row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
-                const ingredienserMatch = selectedTags.length === 0 || row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
+                const matrattMatch = searchTerm && row[0].toLowerCase().includes(searchTerm);
+                const ingredienserMatch = selectedTags.length === 0 || selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
                 return matrattMatch || ingredienserMatch;
             });
             displayData(filteredData);
@@ -278,11 +282,16 @@
             if (event.key === 'Enter' && !event.shiftKey) {
                 event.preventDefault();
                 const input = this.value.trim();
-                if (input && !selectedTags.includes(input)) {
-                    // Endast lägg till tag om det är en ingrediens
-                    selectedTags.push(input);
-                    updateTagContainer();
-                    this.value = '';
+                if (input) {
+                    if (selectedTags.includes(input)) {
+                        // Om det redan är en tag, utför sökning
+                        performSearch();
+                    } else {
+                        // Lägg till som tagg
+                        selectedTags.push(input);
+                        updateTagContainer();
+                        this.value = '';
+                    }
                 }
             }
         });
