@@ -266,8 +266,10 @@
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData.filter(row => {
-                const matrattMatch = searchTerm && row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
-                const ingredienserMatch = row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
+                // Kontrollera om maträttens namn matchar söktermen
+                const matrattMatch = searchTerm ? row[0].toLowerCase().includes(searchTerm) : false;
+                // Kontrollera om alla taggar finns i ingredienslistan
+                const ingredienserMatch = selectedTags.length === 0 || selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
                 return matrattMatch || ingredienserMatch;
             });
             displayData(filteredData);
