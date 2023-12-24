@@ -40,37 +40,40 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 50%;
-            display: block;
-            /* Ändrad från flex till block */
+            display: flex;
+            flex-direction: column;
+            /* Ny: Organisera barn som kolumner */
             align-items: center;
             z-index: 2000;
-            transition: top 0.3s;
         }
 
-        .search-container input[type='text'],
+        .search-container input[type='text'] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: white;
+            color: black;
+            outline: none;
+            border-radius: 25px 25px 0 0;
+            /* Rundade hörn endast på toppen */
+            width: 100%;
+        }
+
         .search-container button {
             padding: 10px;
             border: 1px solid #ddd;
             background-color: white;
             color: black;
             outline: none;
-        }
-
-        .search-container input[type='text'] {
-            border-radius: 25px 0 0 25px;
-            width: 100%;
-        }
-
-        .search-container button {
-            border-radius: 0 25px 25px 0;
+            border-radius: 0 0 25px 25px;
+            /* Rundade hörn endast på botten */
             cursor: pointer;
         }
 
         .search-container button:hover {
             background-color: #f2f2f2;
-
-
         }
+
+
 
         #data-container {
             display: flex;
@@ -216,11 +219,20 @@
         .tag-container {
             display: flex;
             flex-wrap: wrap;
+            width: 100%;
+            /* Matcha bredden med sökfältet */
             padding: 5px;
             border: 1px solid #ddd;
-            border-radius: 5px;
-            margin: 10px 0;
-            /* Lägg till margin för att separera från sökfältet */
+            border-radius: 0 0 25px 25px;
+            /* Rundade hörn endast på botten */
+            margin-top: -1px;
+            /* Ta bort mellanrum mellan fält och taggar */
+        }
+
+        #data-container {
+            display: flex;
+            flex-wrap: wrap;
+            /* Resten av din CSS för #data-container */
         }
 
         .tag {
