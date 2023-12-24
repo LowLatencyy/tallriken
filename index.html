@@ -211,18 +211,34 @@
         .footer-banner a:hover {
             text-decoration: underline;
         }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tag {
+            background-color: #ddd;
+            padding: 5px 10px;
+            margin-right: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
     <div class="background-container"></div>
-    <!-- Resten av din HTML... -->
-
+    <div class="tag-container"></div>
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Skriv maträtt eller ingredienser...">
-        <button onclick="performSearch()">Sök</button> <!-- Lägg till sökknappen här -->
+        <input type="text" id="ingredientInput" placeholder="Skriv ingredienser och tryck Enter...">
+        <input type="text" id="dishInput" placeholder="Skriv maträtt och tryck Enter...">
+        <button onclick="performSearch()">Sök</button>
     </div>
-
     <div id="data-container"></div>
 
     <div class="footer-banner">
@@ -231,54 +247,41 @@
 
     <script>
         let allData = [];
+        let selectedTags = [];
 
-        async function loadData() {
-            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
-            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-            const range = 'Blad1!A1:F'; // Uppdatera för att inkludera alla kolumner upp till 'F'
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
-            try {
-                const response = await fetch(url);
-                const data = await response.json(); console.log(data)
-                allData = data.values.slice(1); // Ignorerar första raden (rubriker)
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
+        // Ladda in data (din befintliga loadData-funktion)
 
         function performSearch() {
-            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            const filteredData = allData.filter(row => {
-                // Kontrollera om varje kolumn har ett värde innan sökning
-                const matratt = row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
-                const ingredienser = row[1] ? row[1].toLowerCase().includes(searchTerm) : false;
-                const alternativaNamn = row[2] ? row[2].toLowerCase().includes(searchTerm) : false;
-                const plats = row[3] ? row[3].toLowerCase().includes(searchTerm) : false;
-                const typ = row[4] ? row[4].toLowerCase().includes(searchTerm) : false;
-
-                return matratt || ingredienser || alternativaNamn || plats || typ;
+            let dishSearchTerm = document.getElementById('dishInput').value.toLowerCase();
+            let filteredData = allData.filter(row => {
+                const matratt = row[0] ? row[0].toLowerCase().includes(dishSearchTerm) : false;
+                const ingredienser = row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag));
+                return matratt || ingredienser;
             });
             displayData(filteredData);
-            console.log(filteredData);
+        }
+
+        // Hantera Enter-tryckningar i ingrediensfältet
+        document.getElementById('ingredientInput').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const tagValue = this.value.trim();
+                if (tagValue) {
+                    selectedTags.push(tagValue);
+                    updateTagContainer();
+                    this.value = '';
+                }
+            }
+        });
+
+        // Uppdaterar taggcontainern
+        function updateTagContainer() {
+            const container = document.querySelector('.tag-container');
+            container.innerHTML = selectedTags.map(tag => `<div class="tag">${tag}</div>`).join('');
         }
 
         function displayData(data) {
-            var htmlContent = '';
-            data.forEach((row, index) => {
-                htmlContent += '<div class="matratt">';
-                htmlContent += '<div class="matratt-title"><h2>' + row[0] + '</h2></div>'; // Maträtt med bakgrund
-
-                var ingredientsList = '<div>' + row[1].replace(/, /g, ',&nbsp;') + '</div>';
-                htmlContent += '<div class="matratt-ingredienser">' + ingredientsList + '</div>';
-
-                htmlContent += row[5]; // Instagram-kod
-                htmlContent += '</div>';
-            });
-            document.getElementById('data-container').innerHTML = htmlContent;
-
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
-            }
+            // Din befintliga displayData-kod...
         }
 
         window.onload = loadData;
