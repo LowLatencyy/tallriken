@@ -236,13 +236,11 @@
 
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
+        <div class="tag-container"></div> <!-- Tagg-containern placerad här -->
         <button onclick="performSearch()">Sök</button>
     </div>
 
-    <div class="tag-container"></div> <!-- Placerad under sökfältet -->
-
     <div id="data-container"></div>
-
     <div class="footer-banner">
         <!-- Footer content -->
         <!-- Innehåll för din banner, t.ex. Om Oss och Tipsa Oss länkar -->
@@ -269,29 +267,29 @@
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            let filteredData = allData.filter(row => {
-                const matrattMatch = searchTerm && row[0].toLowerCase().includes(searchTerm);
-                const ingredienserMatch = selectedTags.length === 0 || selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
-                return matrattMatch || ingredienserMatch;
-            });
+            let filteredData;
+
+            if (selectedTags.length > 0) {
+                // Sök baserat på taggar (ingredienser)
+                filteredData = allData.filter(row => selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase())));
+            } else {
+                // Sök baserat på maträtts namn
+                filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
+            }
+
             displayData(filteredData);
-            document.getElementById('searchInput').value = ''; // Rensa sökfältet efter sökning
+            document.getElementById('searchInput').value = ''; // Rensa sökfältet
         }
 
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
-            if (event.key === 'Enter' && !event.shiftKey) {
+            if (event.key === 'Enter') {
                 event.preventDefault();
                 const input = this.value.trim();
-                if (input) {
-                    if (selectedTags.includes(input)) {
-                        // Om det redan är en tag, utför sökning
-                        performSearch();
-                    } else {
-                        // Lägg till som tagg
-                        selectedTags.push(input);
-                        updateTagContainer();
-                        this.value = '';
-                    }
+                if (input && !selectedTags.includes(input)) {
+                    // Lägg till som tagg
+                    selectedTags.push(input);
+                    updateTagContainer();
+                    this.value = '';
                 }
             }
         });
