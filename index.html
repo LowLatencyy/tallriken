@@ -101,6 +101,14 @@
             /* Justera skalningens ursprung */
         }
 
+        .matratt-title {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            /* Rundade hörn */
+        }
+
         .matratt-ingredienser {
             height: 20px;
             overflow: hidden;
@@ -109,12 +117,15 @@
             padding: 10px;
             margin: 5px 0;
             white-space: nowrap;
+            border-radius: 10px;
+            /* Rundade hörn */
         }
 
         .matratt-ingredienser div {
             position: absolute;
             left: 0;
-            animation: ticker 10s linear infinite;
+            animation: ticker 20s linear infinite;
+            /* Saktar ner hastigheten */
         }
 
         @keyframes ticker {
