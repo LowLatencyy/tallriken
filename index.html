@@ -266,15 +266,16 @@
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData.filter(row => {
-                const matrattMatch = row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
+                const matrattMatch = searchTerm && row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
                 const ingredienserMatch = row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
                 return matrattMatch || ingredienserMatch;
             });
             displayData(filteredData);
+            document.getElementById('searchInput').value = ''; // Rensa sökfältet efter sökning
         }
 
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
+            if (event.key === 'Enter' && !event.shiftKey) {
                 event.preventDefault();
                 const tagValue = this.value.trim();
                 if (tagValue && !selectedTags.includes(tagValue)) {
