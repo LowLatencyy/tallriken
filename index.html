@@ -77,15 +77,17 @@
             padding: 20px;
             border-radius: 10px;
             text-align: center;
-            background-color: rgba(255, 255, 255, 0.8);
             box-sizing: border-box;
             align-self: flex-start;
+
         }
+
+
 
         .matratt iframe {
             width: 100%;
             /* Säkerställer att bredden anpassas till containern */
-            height: 700px;
+            height: 750px;
             /* Standardiserad höjd för alla Instagram-inlägg */
             overflow-y: auto;
             /* Aktiverar vertikal skrollning inuti inlägget */
@@ -98,6 +100,22 @@
             transform-origin: top center;
             /* Justera skalningens ursprung */
         }
+
+        .matratt-title,
+        .matratt-ingredienser {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            /* Justera enligt behov */
+            margin: 5px 0;
+        }
+
+        .matratt-ingredienser {
+            font-size: 0.8em;
+            /* Mindre typsnitt */
+            list-style: inside disc;
+            /* Punkter för listan */
+        }
+
 
         /* Stil för Instagram-inlägg */
         .instagram-media iframe {
@@ -210,8 +228,14 @@
             var htmlContent = '';
             data.forEach(row => {
                 htmlContent += '<div class="matratt">';
-                htmlContent += '<h2>' + row[0] + '</h2>'; // Maträtt
-                htmlContent += '<p>Ingredienser: ' + row[1] + '</p>'; // Ingredienser
+                htmlContent += '<div class="matratt-title"><h2>' + row[0] + '</h2></div>'; // Maträtt med bakgrund
+
+                // Ingredienser listade och separerade med punkter
+                var ingredientsList = row[1].split(', ').map(function (ingredient) {
+                    return '<li>' + ingredient + '</li>';
+                }).join('');
+                htmlContent += '<div class="matratt-ingredienser"><ul>' + ingredientsList + '</ul></div>';
+
                 htmlContent += row[5]; // Instagram-kod ligger i sjätte kolumnen (F)
                 htmlContent += '</div>';
             });
@@ -222,6 +246,7 @@
                 window.instgrm.Embeds.process();
             }
         }
+
 
 
         window.onload = loadData;
