@@ -101,19 +101,30 @@
             /* Justera skalningens ursprung */
         }
 
-        .matratt-title,
         .matratt-ingredienser {
+            height: 20px;
+            overflow: hidden;
+            position: relative;
             background-color: rgba(255, 255, 255, 0.8);
             padding: 10px;
-            /* Justera enligt behov */
             margin: 5px 0;
+            white-space: nowrap;
         }
 
-        .matratt-ingredienser {
-            font-size: 0.8em;
-            /* Mindre typsnitt */
-            list-style: inside disc;
-            /* Punkter för listan */
+        .matratt-ingredienser div {
+            position: absolute;
+            left: 0;
+            animation: ticker 10s linear infinite;
+        }
+
+        @keyframes ticker {
+            0% {
+                left: 100%;
+            }
+
+            100% {
+                left: -100%;
+            }
         }
 
 
@@ -226,33 +237,27 @@
 
         function displayData(data) {
             var htmlContent = '';
-            data.forEach(row => {
+            data.forEach((row, index) => {
                 htmlContent += '<div class="matratt">';
                 htmlContent += '<div class="matratt-title"><h2>' + row[0] + '</h2></div>'; // Maträtt med bakgrund
 
-                // Ingredienser listade och separerade med punkter
-                var ingredientsList = row[1].split(', ').map(function (ingredient) {
-                    return '<li>' + ingredient + '</li>';
-                }).join('');
-                htmlContent += '<div class="matratt-ingredienser"><ul>' + ingredientsList + '</ul></div>';
+                var ingredientsList = '<div>' + row[1].replace(/, /g, ',&nbsp;') + '</div>';
+                htmlContent += '<div class="matratt-ingredienser">' + ingredientsList + '</div>';
 
-                htmlContent += row[5]; // Instagram-kod ligger i sjätte kolumnen (F)
+                htmlContent += row[5]; // Instagram-kod
                 htmlContent += '</div>';
             });
             document.getElementById('data-container').innerHTML = htmlContent;
 
-            // Uppdatera Instagram-inlägg
             if (window.instgrm) {
                 window.instgrm.Embeds.process();
             }
         }
 
-
-
         window.onload = loadData;
-
     </script>
-    <script async src="//www.instagram.com/embed.js"></script> <!-- Lägg till Instagrams embed-script -->
+
+    <script async src="//www.instagram.com/embed.js"></script>
 
     <div class="footer-banner" style="text-align: center; padding: 20px;">
         <a href="omoss.html" style="color: white; margin-right: 10px;">Om Oss</a>
