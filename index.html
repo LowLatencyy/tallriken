@@ -233,14 +233,14 @@
 
 <body>
     <div class="background-container"></div>
-    <div class="tag-container"></div>
+
     <div class="search-container">
-        <input type="text" id="ingredientInput" placeholder="Skriv ingredienser och tryck Enter...">
-        <input type="text" id="dishInput" placeholder="Skriv maträtt och tryck Enter...">
+        <div class="tag-container"></div>
+        <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
         <button onclick="performSearch()">Sök</button>
     </div>
-    <div id="data-container"></div>
 
+    <div id="data-container"></div>
     <div class="footer-banner">
         <!-- Innehåll för din banner, t.ex. Om Oss och Tipsa Oss länkar -->
     </div>
@@ -252,17 +252,17 @@
         // Ladda in data (din befintliga loadData-funktion)
 
         function performSearch() {
-            let dishSearchTerm = document.getElementById('dishInput').value.toLowerCase();
+            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData.filter(row => {
-                const matratt = row[0] ? row[0].toLowerCase().includes(dishSearchTerm) : false;
+                const matratt = row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
                 const ingredienser = row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag));
                 return matratt || ingredienser;
             });
             displayData(filteredData);
         }
 
-        // Hantera Enter-tryckningar i ingrediensfältet
-        document.getElementById('ingredientInput').addEventListener('keydown', function (event) {
+        // Hantera Enter-tryckningar i sökfältet
+        document.getElementById('searchInput').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
                 const tagValue = this.value.trim();
@@ -283,28 +283,6 @@
         function displayData(data) {
             // Din befintliga displayData-kod...
         }
-
-        window.onload = loadData;
-
-        // Din befintliga loadData och performSearch funktioner...
-
-        // Lägg till följande kod
-        let lastScrollTop = 0;
-        window.addEventListener("scroll", function () {
-            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            if (currentScroll > lastScrollTop) {
-                // Scrollar nedåt
-                document.querySelector('.search-container').style.top = '-50px';
-                document.body.classList.add('blur-background');
-            } else {
-                // Scrollar uppåt
-                document.querySelector('.search-container').style.top = '10%';
-                if (window.scrollY === 0) {
-                    document.body.classList.remove('blur-background');
-                }
-            }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        }, false);
 
         window.onload = loadData;
 
