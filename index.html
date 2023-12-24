@@ -233,12 +233,11 @@
 
 <body>
     <div class="background-container"></div>
-
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
         <button onclick="performSearch()">Sök</button>
     </div>
-    <div class="tag-container"></div> <!-- Flyttat tagg-containern under sökfältet -->
+    <div class="tag-container"></div> <!-- Tagg-containern under sökfältet -->
 
     <div id="data-container"></div>
     <div class="footer-banner">
@@ -248,6 +247,7 @@
     <script>
         let allData = [];
         let selectedTags = [];
+
         async function loadData() {
             const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
             const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
@@ -266,10 +266,8 @@
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData.filter(row => {
-                // Kontrollera om maträttens namn matchar söktermen
-                const matrattMatch = searchTerm ? row[0].toLowerCase().includes(searchTerm) : false;
-                // Kontrollera om alla taggar finns i ingredienslistan
-                const ingredienserMatch = selectedTags.length === 0 || selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
+                const matrattMatch = searchTerm && row[0] ? row[0].toLowerCase().includes(searchTerm) : false;
+                const ingredienserMatch = selectedTags.length === 0 || row[1] && selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase()));
                 return matrattMatch || ingredienserMatch;
             });
             displayData(filteredData);
@@ -279,9 +277,10 @@
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
             if (event.key === 'Enter' && !event.shiftKey) {
                 event.preventDefault();
-                const tagValue = this.value.trim();
-                if (tagValue && !selectedTags.includes(tagValue)) {
-                    selectedTags.push(tagValue);
+                const input = this.value.trim();
+                if (input && !selectedTags.includes(input)) {
+                    // Endast lägg till tag om det är en ingrediens
+                    selectedTags.push(input);
                     updateTagContainer();
                     this.value = '';
                 }
