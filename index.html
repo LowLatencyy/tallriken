@@ -237,8 +237,8 @@
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
         <button onclick="performSearch()">Sök</button>
-        <div class="tag-container"></div>
     </div>
+    <div class="tag-container"></div> <!-- Flyttat tagg-containern under sökfältet -->
 
     <div id="data-container"></div>
     <div class="footer-banner">
@@ -248,8 +248,20 @@
     <script>
         let allData = [];
         let selectedTags = [];
+        async function loadData() {
+            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
+            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
+            const range = 'Blad1!A1:F'; // Uppdatera för att inkludera alla kolumner upp till 'F'
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+            try {
+                const response = await fetch(url);
+                const data = await response.json(); console.log(data)
+                allData = data.values.slice(1); // Ignorerar första raden (rubriker)
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
 
-        // Din befintliga loadData-funktion...
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
@@ -279,7 +291,22 @@
         }
 
         function displayData(data) {
-            // Din befintliga displayData-kod...
+            var htmlContent = '';
+            data.forEach((row, index) => {
+                htmlContent += '<div class="matratt">';
+                htmlContent += '<div class="matratt-title"><h2>' + row[0] + '</h2></div>'; // Maträtt med bakgrund
+
+                var ingredientsList = '<div>' + row[1].replace(/, /g, ',&nbsp;') + '</div>';
+                htmlContent += '<div class="matratt-ingredienser">' + ingredientsList + '</div>';
+
+                htmlContent += row[5]; // Instagram-kod
+                htmlContent += '</div>';
+            });
+            document.getElementById('data-container').innerHTML = htmlContent;
+
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            }
         }
 
         window.onload = loadData;
