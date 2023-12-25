@@ -357,12 +357,13 @@
                 // Scroll nedåt
                 searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
                 backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig
-            } else {
-                // Scroll uppåt
+            } else if (currentScroll <= 0) {
+                // Scroll uppåt till toppen av sidan
                 searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
                 backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
             }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+
+            lastScrollTop = currentScroll;
         }, false);
 
 
