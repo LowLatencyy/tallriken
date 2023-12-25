@@ -129,34 +129,7 @@
             /* Rundade hörn */
         }
 
-        .matratt-ingredienser {
-            display: none;
-            position: absolute;
-            top: 0;
-            /* Positionerar på toppen av maträtten */
-            left: 100%;
-            /* Positionerar till höger om maträtten */
-            background-color: black;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            max-width: 200px;
-            /* Begränsar bredden */
-            z-index: 10;
-            /* Ser till att den visas över andra element */
-            white-space: normal;
-        }
-
-        .matratt:hover .matratt-ingredienser {
-            display: block;
-            /* Visar ingredienslistan vid hover */
-        }
-
-        .matratt.right .matratt-ingredienser {
-            left: auto;
-            right: 100%;
-            /* Positionerar till vänster om maträtten */
-        }
+        
 
         .matratt-ingredienser div {
             position: absolute;
@@ -164,6 +137,35 @@
             animation: ticker 20s linear infinite;
             /* Saktar ner hastigheten */
         }
+
+        .ingrediens-knapp {
+            background-color: #f2f2f2;
+            border: none;
+            padding: 5px 10px;
+            margin-top: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .ingrediens-lista {
+            display: none;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+
 
         @keyframes ticker {
             0% {
@@ -370,24 +372,32 @@
         function displayData(data) {
             var htmlContent = '';
             data.forEach((row, index) => {
-                // Bestäm om maträtten ska ha klassen 'right'
-                var rightClass = (index % 4 == 3) ? "right" : ""; // Exempel för fyra kolumner
-
-                htmlContent += `<div class="matratt ${rightClass}">`;
+                htmlContent += `<div class="matratt">`;
                 htmlContent += `<div class="matratt-title"><h2>${row[0]}</h2></div>`; // Maträtt med bakgrund
 
-                var ingredientsList = `<div>${row[1].replace(/, /g, ',&nbsp;')}</div>`;
-                htmlContent += `<div class="matratt-ingredienser">${ingredientsList}</div>`;
+                htmlContent += `<button class="ingrediens-knapp" onclick="toggleIngredienser(this)">Visa Ingredienser</button>`;
+                htmlContent += `<div class="ingrediens-lista">${row[1].split(', ').join('<br>')}</div>`;
 
                 htmlContent += row[5]; // Instagram-kod
                 htmlContent += '</div>';
             });
             document.getElementById('data-container').innerHTML = htmlContent;
 
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
+        }
+
+        function toggleIngredienser(button) {
+            var ingrediensLista = button.nextElementSibling;
+            if (ingrediensLista.style.display === 'block') {
+                ingrediensLista.style.display = 'none';
+            } else {
+                ingrediensLista.style.display = 'block';
             }
         }
+
+        if (window.instgrm) {
+            window.instgrm.Embeds.process();
+        }
+
 
         window.onload = loadData;
 
