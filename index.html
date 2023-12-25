@@ -131,20 +131,31 @@
 
         .matratt-ingredienser {
             display: none;
-            /* Gömmer ingredienslistan som standard */
             position: absolute;
-            bottom: 0;
-            left: 0;
+            top: 0;
+            /* Positionerar på toppen av maträtten */
+            left: 100%;
+            /* Positionerar till höger om maträtten */
             background-color: black;
             color: white;
             padding: 10px;
             border-radius: 5px;
+            max-width: 200px;
+            /* Begränsar bredden */
+            z-index: 10;
+            /* Ser till att den visas över andra element */
             white-space: normal;
-            /* Bryter texten normalt */
         }
 
         .matratt:hover .matratt-ingredienser {
-            display: block; /* Visar ingredienslistan vid hover */
+            display: block;
+            /* Visar ingredienslistan vid hover */
+        }
+
+        .matratt.right .matratt-ingredienser {
+            left: auto;
+            right: 100%;
+            /* Positionerar till vänster om maträtten */
         }
 
         .matratt-ingredienser div {
@@ -359,11 +370,14 @@
         function displayData(data) {
             var htmlContent = '';
             data.forEach((row, index) => {
-                htmlContent += '<div class="matratt">';
-                htmlContent += '<div class="matratt-title"><h2>' + row[0] + '</h2></div>'; // Maträtt med bakgrund
+                // Bestäm om maträtten ska ha klassen 'right'
+                var rightClass = (index % 4 == 3) ? "right" : ""; // Exempel för fyra kolumner
 
-                var ingredientsList = '<div>' + row[1].replace(/, /g, ',&nbsp;') + '</div>';
-                htmlContent += '<div class="matratt-ingredienser">' + ingredientsList + '</div>';
+                htmlContent += `<div class="matratt ${rightClass}">`;
+                htmlContent += `<div class="matratt-title"><h2>${row[0]}</h2></div>`; // Maträtt med bakgrund
+
+                var ingredientsList = `<div>${row[1].replace(/, /g, ',&nbsp;')}</div>`;
+                htmlContent += `<div class="matratt-ingredienser">${ingredientsList}</div>`;
 
                 htmlContent += row[5]; // Instagram-kod
                 htmlContent += '</div>';
