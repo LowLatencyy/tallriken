@@ -89,8 +89,10 @@
 
 
         .matratt {
-            flex: 1 1 240px;
-            /* Börjar vid 240px men kan växa och minska */
+            flex: 0 0 calc(33.33% - 20px);
+            /* Flex basis satt till 33.33% minus marginal */
+            max-width: calc(33.33% - 20px);
+            /* Maxbredd lika med flex-basis */
             margin: 10px;
             padding: 20px;
             border-radius: 10px;
@@ -199,15 +201,19 @@
 
         @media (max-width: 768px) {
             .matratt {
-                flex: 1 1 calc(33.33% - 20px);
-                /* Tre kolumner */
+                flex: 0 0 calc(50% - 20px);
+                /* Flex basis satt till 50% minus marginal för mindre skärmar */
+                max-width: calc(50% - 20px);
+                /* Maxbredd lika med flex-basis */
             }
         }
 
         @media (max-width: 480px) {
             .matratt {
-                flex: 1 1 calc(50% - 20px);
-                /* Två kolumner */
+                flex: 0 0 calc(100% - 20px);
+                /* Flex basis satt till 100% minus marginal för mycket små skärmar */
+                max-width: calc(100% - 20px);
+                /* Maxbredd lika med flex-basis */
             }
         }
 
