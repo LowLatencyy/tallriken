@@ -247,6 +247,7 @@
         .hidden-search {
             transform: translateY(-100%);
             transition: transform 0.3s;
+            display: none;
         }
     </style>
 </head>
@@ -256,7 +257,7 @@
 
     <div class="search-container">
         <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
-        <div class="tag-container"></div> <!-- Flyttad tag-container -->
+        <div class="tag-container"> <!-- Taggarna här --> </div>
         <button onclick="performSearch()">Sök</button>
     </div>
 
