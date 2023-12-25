@@ -378,8 +378,8 @@
                 // Knapp för att visa ingredienser
                 htmlContent += `<button class="ingrediens-knapp" onclick="toggleIngredienser(this)">Visa Ingredienser</button>`;
 
-                // Rullista för ingredienser
-                htmlContent += `<div class="ingrediens-lista">${row[1].split(', ').join('<br>')}</div>`;
+                // Rullista för ingredienser med mouseleave-händelse
+                htmlContent += `<div class="ingrediens-lista" onmouseleave="hideIngredienser(this)">${row[1].split(', ').join('<br>')}</div>`;
 
                 htmlContent += row[5]; // Instagram-inlägg
                 htmlContent += '</div>';
@@ -394,13 +394,12 @@
 
         function toggleIngredienser(button) {
             var ingrediensLista = button.nextElementSibling;
-            if (ingrediensLista.style.display === 'block') {
-                ingrediensLista.style.display = 'none';
-            } else {
-                ingrediensLista.style.display = 'block';
-            }
+            ingrediensLista.style.display = ingrediensLista.style.display === 'block' ? 'none' : 'block';
         }
 
+        function hideIngredienser(ingrediensLista) {
+            ingrediensLista.style.display = 'none';
+        }
 
 
 
