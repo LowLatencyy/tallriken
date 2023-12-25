@@ -249,6 +249,10 @@
             transition: transform 0.3s;
             display: none;
         }
+
+        .blur-background {
+            filter: blur(5px);
+        }
     </style>
 </head>
 
@@ -346,15 +350,21 @@
 
         window.addEventListener("scroll", function () {
             var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+            const backgroundContainer = document.querySelector('.background-container');
+            const searchContainer = document.querySelector('.search-container');
+
             if (currentScroll > lastScrollTop) {
-                // Scroll nedåt, dölj sökcontainern
-                document.querySelector('.search-container').classList.add('hidden-search');
+                // Scroll nedåt
+                searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
+                backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig
             } else {
-                // Scroll uppåt, visa sökcontainern
-                document.querySelector('.search-container').classList.remove('hidden-search');
+                // Scroll uppåt
+                searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
+                backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
             }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdaterar lastScrollTop
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         }, false);
+
 
     </script>
 
