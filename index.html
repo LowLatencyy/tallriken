@@ -347,11 +347,11 @@
         window.onload = loadData;
 
         let lastScrollTop = 0;
+        const backgroundContainer = document.querySelector('.background-container');
+        const searchContainer = document.querySelector('.search-container');
 
         window.addEventListener("scroll", function () {
             var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-            const backgroundContainer = document.querySelector('.background-container');
-            const searchContainer = document.querySelector('.search-container');
 
             if (currentScroll > lastScrollTop) {
                 // Scroll nedåt
@@ -362,8 +362,7 @@
                 searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
                 backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
             }
-
-            lastScrollTop = currentScroll;
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         }, false);
 
 
