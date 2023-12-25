@@ -148,6 +148,7 @@
             font-size: 0.9em;
         }
 
+        /* Stilar för rulllistan */
         .ingrediens-lista {
             display: none;
             background-color: white;
@@ -155,19 +156,16 @@
             border-radius: 5px;
             padding: 10px;
             position: absolute;
-            top: 100%;
-            /* Placerar rullistan precis under knappen */
+            top: 40px;
+            /* Placera lite under knappen 'Visa Ingredienser' */
             left: 0;
-            width: 100%;
-            /* Full bredd av maträtt-container */
+            right: 0;
+            z-index: 10;
+            /* Säkerställer att den visas över Instagram-inlägget */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-height: 200px;
             overflow-y: auto;
-            z-index: 10;
-            /* Säkerställer att den visas över Instagram-inlägget */
         }
-
-
 
         @keyframes ticker {
             0% {
