@@ -349,6 +349,7 @@
         let lastScrollTop = 0;
         const backgroundContainer = document.querySelector('.background-container');
         const searchContainer = document.querySelector('.search-container');
+        let atTop = true; // En ny variabel för att hålla reda på om användaren är vid toppen
 
         window.addEventListener("scroll", function () {
             var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -356,11 +357,15 @@
             if (currentScroll > lastScrollTop) {
                 // Scroll nedåt
                 searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
-                backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig
+                if (atTop) {
+                    backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig endast en gång
+                    atTop = false; // Användaren är inte längre vid toppen
+                }
             } else if (currentScroll <= 0) {
                 // Scroll uppåt till toppen av sidan
                 searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
                 backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
+                atTop = true; // Användaren är vid toppen
             }
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         }, false);
