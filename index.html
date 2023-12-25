@@ -199,22 +199,23 @@
 
         @media (max-width: 768px) {
             .matratt {
-                width: calc(50% - 20px);
-                /* Två kolumner istället för fyra */
+                flex: 1 1 calc(33.33% - 20px);
+                /* Tre kolumner */
             }
         }
 
         @media (max-width: 480px) {
-            .search-container {
-                width: 80%;
-                /* Bredare sökfält för små skärmar */
-            }
-
             .matratt {
-                width: calc(100% - 20px);
-                /* En kolumn för mycket små skärmar */
+                flex: 1 1 calc(50% - 20px);
+                /* Två kolumner */
             }
         }
+
+        .matratt {
+            width: calc(100% - 20px);
+            /* En kolumn för mycket små skärmar */
+        }
+
 
         /* Lägg till den nya CSS-koden för footer-banner här */
         .footer-banner {
