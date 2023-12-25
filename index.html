@@ -129,7 +129,7 @@
             /* Rundade hörn */
         }
 
-        
+
 
         .matratt-ingredienser div {
             position: absolute;
@@ -155,14 +155,17 @@
             border-radius: 5px;
             padding: 10px;
             position: absolute;
-            top: 100%;
+            top: 0;
+            /* Flyttar upp rullistan över Instagram-inlägget */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%) translateY(-100%);
+            /* Centrerar och placerar ovanpå */
             width: 90%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-height: 200px;
             overflow-y: auto;
             z-index: 100;
+            /* Säkerställer att den visas över Instagram-inlägget */
         }
 
 
