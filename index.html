@@ -155,16 +155,15 @@
             border-radius: 5px;
             padding: 10px;
             position: absolute;
-            top: 0;
-            /* Flyttar upp rullistan över Instagram-inlägget */
+            top: 100%;
+            /* Startar precis under knappen */
             left: 50%;
-            transform: translateX(-50%) translateY(-100%);
-            /* Centrerar och placerar ovanpå */
+            transform: translateX(-50%);
             width: 90%;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-height: 200px;
             overflow-y: auto;
-            z-index: 100;
+            z-index: 10;
             /* Säkerställer att den visas över Instagram-inlägget */
         }
 
@@ -376,20 +375,23 @@
             var htmlContent = '';
             data.forEach((row, index) => {
                 htmlContent += `<div class="matratt">`;
-                htmlContent += `<div class="matratt-title"><h2>${row[0]}</h2></div>`; // Maträtt med bakgrund
+                htmlContent += `<div class="matratt-title"><h2>${row[0]}</h2></div>`; // Maträttens namn
 
+                // Knapp för att visa ingredienser
                 htmlContent += `<button class="ingrediens-knapp" onclick="toggleIngredienser(this)">Visa Ingredienser</button>`;
+
+                // Rullista för ingredienser
                 htmlContent += `<div class="ingrediens-lista">${row[1].split(', ').join('<br>')}</div>`;
 
-                htmlContent += row[5]; // Instagram-kod
+                htmlContent += row[5]; // Instagram-inlägg
                 htmlContent += '</div>';
             });
             document.getElementById('data-container').innerHTML = htmlContent;
 
+            // Processa Instagram-inlägg
             if (window.instgrm) {
                 window.instgrm.Embeds.process();
             }
-
         }
 
         function toggleIngredienser(button) {
