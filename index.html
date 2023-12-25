@@ -261,6 +261,7 @@
         <button onclick="performSearch()">Sök</button>
     </div>
 
+
     <div id="data-container"></div>
     <div class="footer-banner">
         <!-- Footer content -->
@@ -346,11 +347,13 @@
         window.addEventListener("scroll", function () {
             var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
             if (currentScroll > lastScrollTop) {
+                // Scroll nedåt, dölj sökcontainern
                 document.querySelector('.search-container').classList.add('hidden-search');
             } else {
+                // Scroll uppåt, visa sökcontainern
                 document.querySelector('.search-container').classList.remove('hidden-search');
             }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdaterar lastScrollTop
         }, false);
 
     </script>
