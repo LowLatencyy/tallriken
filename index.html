@@ -36,13 +36,13 @@
 
         .search-container {
             position: fixed;
-            top: 10%;
+            top: 50%;
+            /* Centrerar vertikalt */
             left: 50%;
             transform: translate(-50%, -50%);
             width: 50%;
             display: flex;
             flex-direction: column;
-            /* Ny: Organisera barn som kolumner */
             align-items: center;
             z-index: 2000;
         }
@@ -79,11 +79,12 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 100px;
+            margin-top: 20%;
+            /* Justerat för att skapa mer utrymme mellan sökfältet och resultatlistan */
             padding-bottom: 50px;
-            /* Extra utrymme längst ner */
+            /* Behåller det extra utrymmet längst ner */
             overflow: auto;
-            /* Aktiverar skrollning inom container */
+            /* Behåller skrollfunktionen inom containern */
         }
 
 
