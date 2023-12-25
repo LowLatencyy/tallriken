@@ -386,6 +386,10 @@
             });
             document.getElementById('data-container').innerHTML = htmlContent;
 
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            }
+
         }
 
         function toggleIngredienser(button) {
@@ -397,9 +401,7 @@
             }
         }
 
-        if (window.instgrm) {
-            window.instgrm.Embeds.process();
-        }
+
 
 
         window.onload = loadData;
