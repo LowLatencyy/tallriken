@@ -1,19 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Om oss</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Om Oss - Tallriken</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-            /* Lägg till ytterligare stilar här */
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Indie Flower', cursive;
         }
-        /* Lägg till ytterligare CSS här om nödvändigt */
+
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/tallriken/images/matbakgrund1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            z-index: -1;
+        }
+
+        .logo-link {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 3000;
+        }
+
+        .logo-link img {
+            height: 50px;
+            width: auto;
+        }
+
+        .content {
+            margin-top: 100px;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2000;
+        }
+
+        .about-image {
+            float: right;
+            margin-left: 20px;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .footer-banner {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-banner a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        .footer-banner a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Om Oss</h1>
-    <p>Här kommer information om webbplatsen och skaparna.</p>
-    <!-- Lägg till mer innehåll här -->
+    <a href="index.html" class="logo-link">
+        <img src="images/testlogga.png" alt="Logga">
+    </a>
+
+    <div class="background-container"></div>
+
+    <div class="content">
+        <h1>Om Oss</h1>
+        <p>Välkommen till Tallriken, din guide till underbara matupplevelser. Här delar vi med oss av våra bästa recept, tips och inspiration för att göra varje måltid till en fest.</p>
+        <img src="images/omossbild.jpg" alt="Om Oss Bild" class="about-image">
+    </div>
+
+    <div class="footer-banner">
+        <a href="omoss.html" style="color: white; margin-right: 10px;">Om Oss</a>
+        <a href="tipsaoss.html" style="color: white;">Tipsa Oss</a>
+    </div>
 </body>
+
 </html>
