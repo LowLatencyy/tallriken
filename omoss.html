@@ -6,11 +6,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 
     <style>
-        body,
-        html {
+        body, html {
             height: 100%;
             margin: 0;
             font-family: 'Indie Flower', cursive;
+            color: white; /* Vit text */
+            background-color: black; /* Svart bakgrund */
         }
 
         .background-container {
@@ -25,6 +26,7 @@
             background-repeat: no-repeat;
             background-attachment: fixed;
             z-index: -1;
+            opacity: 0.5; /* Gör bakgrunden något transparent */
         }
 
         .logo-link {
@@ -42,9 +44,11 @@
         .content {
             margin-top: 100px;
             padding: 20px;
-            text-align: center;
-            position: relative;
-            z-index: 2000;
+            text-align: left; /* Texten till vänster */
+            max-width: 800px; /* Maximal bredd på innehållet */
+            margin: 100px auto; /* Centrerar innehållet */
+            background: rgba(0, 0, 0, 0.8); /* Svart bakgrund med transparens */
+            border-radius: 10px; /* Rundade hörn */
         }
 
         .about-image {
@@ -86,13 +90,13 @@
 
     <div class="content">
         <h1>Om Oss</h1>
-        <p>Välkommen till Tallriken, din guide till underbara matupplevelser. Här delar vi med oss av våra bästa recept, tips och inspiration för att göra varje måltid till en fest.</p>
+        <p>Välkommen till Tallriken, din guide till underbara matupplevelser. Här delar vi med oss av våra bästa recept, tips och inspiration för att göra varje måltid till en fest. Vårt mål är att ge dig idéer och inspiration för att skapa minnesvärda måltider, oavsett om det är vardagsmat eller festliga tillfällen.</p>
         <img src="images/omossbild.jpg" alt="Om Oss Bild" class="about-image">
     </div>
 
     <div class="footer-banner">
-        <a href="omoss.html" style="color: white; margin-right: 10px;">Om Oss</a>
-        <a href="tipsaoss.html" style="color: white;">Tipsa Oss</a>
+        <a href="omoss.html">Om Oss</a>
+        <a href="tipsaoss.html">Tipsa Oss</a>
     </div>
 </body>
 
