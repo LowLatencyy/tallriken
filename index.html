@@ -42,7 +42,8 @@
             flex-direction: column;
             align-items: center;
             z-index: 2000;
-            width: 40%; /* Ökar bredden av sökfältet */
+            width: 40%;
+            /* Ökar bredden av sökfältet */
         }
 
         .input-button-container {
@@ -58,7 +59,8 @@
             color: black;
             outline: none;
             border-radius: 25px 0 0 25px;
-            font-size: 1rem; /* Större textstorlek för bättre läsbarhet */
+            font-size: 1rem;
+            /* Större textstorlek för bättre läsbarhet */
         }
 
         .input-button-container button {
@@ -70,7 +72,11 @@
             border-radius: 0 25px 25px 0;
             border-left: none;
             cursor: pointer;
+
+
         }
+
+
 
         .input-button-container button:hover {
             background-color: #f2f2f2;
@@ -284,6 +290,68 @@
             background-color: rgba(0, 0, 0, 0.8);
             /* Svart bakgrund */
         }
+
+        /* Stilen för omkopplaren */
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            /* Bredden på omkopplaren */
+            height: 34px;
+            /* Höjden på omkopplaren */
+        }
+
+        /* "Slider" */
+        .switch .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            /* Bakgrundsfärg för slider när den är av */
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .switch .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            /* Höjden på den vita delen som glider */
+            width: 26px;
+            /* Bredden på den vita delen som glider */
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #2196F3;
+            /* Färg när omkopplaren är på */
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #2196F3;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        /* Rundade kanter på omkopplaren */
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
     </style>
 </head>
 
@@ -299,6 +367,10 @@
         <div class="input-button-container">
             <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
             <button onclick="performSearch()">Sök</button>
+            <label class="switch">
+                <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
+                <span class="slider round"></span>
+            </label>
         </div>
         <div class="tag-container"> <!-- Taggarna här --> </div>
     </div>
@@ -313,11 +385,12 @@
     <script>
         let allData = [];
         let selectedTags = [];
+        let isVegFilterActive = false; // Håller koll på om veg-filter är aktivt
 
         async function loadData() {
             const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
             const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-            const range = 'Blad1!A1:F'; // Uppdatera för att inkludera alla kolumner upp till 'F'
+            const range = 'Blad1!A1:G'; // Uppdatera för att inkludera alla kolumner upp till 'F'
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
             try {
                 const response = await fetch(url);
@@ -331,18 +404,27 @@
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            let filteredData;
+            let filteredData = allData;
 
             if (selectedTags.length > 0) {
-                // Sök baserat på taggar (ingredienser)
-                filteredData = allData.filter(row => selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase())));
+                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase())));
             } else {
-                // Sök baserat på maträtts namn
-                filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
+                filteredData = filteredData.filter(row => row[0].toLowerCase().includes(searchTerm));
+            }
+
+            // Ytterligare filter för vegetariska/veganska maträtter
+            if (isVegFilterActive) {
+                filteredData = filteredData.filter(row => row[6].toLowerCase() === 'ja'); // Anta att kolumn G är den sjunde kolumnen och innehåller 'ja' eller 'nej'
             }
 
             displayData(filteredData);
             document.getElementById('searchInput').value = ''; // Rensa sökfältet
+        }
+
+        function toggleVegFilter() {
+            let vegSwitch = document.getElementById('vegSwitch');
+            isVegFilterActive = vegSwitch.checked; // Uppdaterar status baserat på om checkboxen är ikryssad
+            performSearch(); // Utför en ny sökning med det uppdaterade filtret
         }
 
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
