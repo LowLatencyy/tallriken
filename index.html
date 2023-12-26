@@ -33,8 +33,6 @@
             filter: blur(5px);
         }
 
-
-
         .search-container {
             position: fixed;
             top: 50%;
@@ -58,8 +56,7 @@
             background-color: white;
             color: black;
             outline: none;
-            border-radius: 25px 0 0 0;
-            /* Rundade hörn på vänster sida */
+            border-radius: 25px 0 0 25px;
         }
 
         .input-button-container button {
@@ -69,61 +66,26 @@
             color: black;
             outline: none;
             border-radius: 0 25px 25px 0;
-            /* Rundade hörn på höger sida */
             border-left: none;
-            /* Tar bort vänster border */
             cursor: pointer;
         }
 
-        .search-container input[type='text'] {
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: white;
-            color: black;
-            outline: none;
-            border-radius: 25px 0 0 25px;
-            /* Rundade hörn på vänster sida */
-            flex-grow: 1;
-            /* Tar upp tillgängligt utrymme */
-        }
-
-        .search-container button {
-            padding: 10px 20px;
-            border: 1px solid #ddd;
-            background-color: white;
-            color: black;
-            outline: none;
-            border-radius: 0 25px 25px 0;
-            /* Rundade hörn på höger sida */
-            cursor: pointer;
-            border-left: none;
-            /* Tar bort vänster border */
-        }
-
-        .search-container button:hover {
+        .input-button-container button:hover {
             background-color: #f2f2f2;
         }
-
-
 
         #data-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             margin-top: 25%;
-            /* Justerat för att skapa mer utrymme mellan sökfältet och resultatlistan */
             padding-bottom: 50px;
-            /* Behåller det extra utrymmet längst ner */
             overflow: auto;
-            /* Behåller skrollfunktionen inom containern */
         }
-
 
         .matratt {
             flex: 0 0 calc(33.33% - 20px);
-            /* Flex basis satt till 33.33% minus marginal */
             max-width: calc(33.33% - 20px);
-            /* Maxbredd lika med flex-basis */
             margin: 10px;
             padding: 20px;
             border-radius: 10px;
@@ -131,27 +93,16 @@
             box-sizing: border-box;
             align-self: flex-start;
             position: relative;
-            /* För att positionera ingredienslistan korrekt */
-
         }
-
-
 
         .matratt iframe {
             width: 100%;
-            /* Säkerställer att bredden anpassas till containern */
             height: 750px;
-            /* Standardiserad höjd för alla Instagram-inlägg */
             overflow-y: auto;
-            /* Aktiverar vertikal skrollning inuti inlägget */
             display: block;
             border: none;
-            /* Tar bort ramen runt iframe, valfritt */
-
-            /* Minska storleken med 35% */
             transform: scale(0.65);
             transform-origin: top center;
-            /* Justera skalningens ursprung */
         }
 
         .matratt-title {
@@ -159,16 +110,12 @@
             padding: 10px;
             margin: 5px 0;
             border-radius: 10px;
-            /* Rundade hörn */
         }
-
-
 
         .matratt-ingredienser div {
             position: absolute;
             left: 0;
             animation: ticker 20s linear infinite;
-            /* Saktar ner hastigheten */
         }
 
         .ingrediens-knapp {
@@ -181,7 +128,6 @@
             font-size: 0.9em;
         }
 
-        /* Stilar för rulllistan */
         .ingrediens-lista {
             display: none;
             background-color: white;
@@ -190,11 +136,9 @@
             padding: 10px;
             position: absolute;
             top: 40px;
-            /* Placera lite under knappen 'Visa Ingredienser' */
             left: 0;
             right: 0;
             z-index: 10;
-            /* Säkerställer att den visas över Instagram-inlägget */
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             max-height: 200px;
             overflow-y: auto;
@@ -210,21 +154,13 @@
             }
         }
 
-
-        /* Stil för Instagram-inlägg */
         .instagram-media iframe {
             width: 100%;
-            /* Fyller bredden av dess container */
             min-height: 500px;
-            /* Exempel på minimal höjd, justera detta värde */
             display: block;
         }
 
-
-        .matratt h2 {
-            margin: 0;
-        }
-
+        .matratt h2,
         .matratt p,
         .matratt a {
             margin: 5px 0;
@@ -233,18 +169,14 @@
         @media (max-width: 768px) {
             .matratt {
                 flex: 0 0 calc(50% - 20px);
-                /* Flex basis satt till 50% minus marginal för mindre skärmar */
                 max-width: calc(50% - 20px);
-                /* Maxbredd lika med flex-basis */
             }
         }
 
         @media (max-width: 480px) {
             .matratt {
                 flex: 0 0 calc(100% - 20px);
-                /* Flex basis satt till 100% minus marginal för mycket små skärmar */
                 max-width: calc(100% - 20px);
-                /* Maxbredd lika med flex-basis */
             }
         }
 
