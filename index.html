@@ -34,16 +34,16 @@
         }
 
 
+
         .search-container {
             position: fixed;
             top: 50%;
-            /* Centrerar vertikalt */
             left: 50%;
             transform: translate(-50%, -50%);
             width: 50%;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            /* Centrerar element vertikalt */
             z-index: 2000;
         }
 
@@ -53,20 +53,23 @@
             background-color: white;
             color: black;
             outline: none;
-            border-radius: 25px;
-            /* Rundade hörn på alla sidor */
-            width: 100%;
+            border-radius: 25px 0 0 25px;
+            /* Rundade hörn på vänster sida */
+            flex-grow: 1;
+            /* Tar upp tillgängligt utrymme */
         }
 
         .search-container button {
-            padding: 10px;
+            padding: 10px 20px;
             border: 1px solid #ddd;
             background-color: white;
             color: black;
             outline: none;
-            border-radius: 25px;
-            /* Rundade hörn på alla sidor */
+            border-radius: 0 25px 25px 0;
+            /* Rundade hörn på höger sida */
             cursor: pointer;
+            border-left: none;
+            /* Tar bort vänster border */
         }
 
         .search-container button:hover {
@@ -331,9 +334,11 @@
     <div class="background-container"></div>
 
     <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
+        <div class="input-button-container">
+            <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
+            <button onclick="performSearch()">Sök</button>
+        </div>
         <div class="tag-container"> <!-- Taggarna här --> </div>
-        <button onclick="performSearch()">Sök</button>
     </div>
 
 
