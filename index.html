@@ -445,6 +445,13 @@
             lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         }, false);
 
+        function removeTag(tagToRemove) {
+            selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
+            updateTagContainer(); // Uppdaterar taggkontainern
+            performSearch(); // Utför en ny sökning med uppdaterade taggar
+        }
+
+
 
     </script>
 
