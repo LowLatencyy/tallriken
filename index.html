@@ -511,13 +511,32 @@
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
                 event.preventDefault();
-                const input = this.value.trim();
-                if (input && !selectedTags.includes(input)) {
-                    // Lägg till som tagg
-                    selectedTags.push(input);
-                    updateTagContainer();
-                    this.value = '';
+                const input = this.value.trim().toLowerCase();
+                let foundMatch = false;
+
+                // Kontrollera om input matchar någon maträtts namn eller alternativa namn
+                for (let row of allData) {
+                    const matrattNamn = row[0].toLowerCase();
+                    const alternativaNamn = row[2] ? row[2].split(',').map(name => name.trim().toLowerCase()) : [];
+
+                    if (input === matrattNamn || alternativaNamn.includes(input)) {
+                        foundMatch = true;
+                        break;
+                    }
                 }
+
+                if (foundMatch) {
+                    // Utför automatisk sökning om en matchning hittas
+                    performSearch();
+                } else {
+                    // Lägg till som tagg om ingen matchning hittas
+                    if (input && !selectedTags.includes(input)) {
+                        selectedTags.push(input);
+                        updateTagContainer();
+                    }
+                }
+
+                this.value = '';
             }
         });
 
@@ -526,7 +545,7 @@
             container.innerHTML = selectedTags.map(tag => `
         <div class="tag">
             ${tag}
-            <button class="tag-close" onclick="removeTag('${tag}')">&times;</button>
+            <button class="tag-close" onclick="removeTag('${tag}')">×</button>
         </div>
     `).join('');
         }
@@ -616,7 +635,7 @@
     <script async src="//www.instagram.com/embed.js"></script>
 
     <div class="footer-banner">
-        <p class="copyright">&copy; 2023-Tallriken. All rights reserved.</p>
+        <p class="copyright">&copy; 2023. All rights reserved.</p>
         <div class="footer-links">
             <a href="omoss.html">Om Oss</a>
             <a href="tipsaoss.html">Tipsa Oss</a>
