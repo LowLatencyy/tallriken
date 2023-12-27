@@ -34,6 +34,8 @@
             filter: blur(5px);
         }
 
+
+
         .search-container {
             position: fixed;
             top: 50%;
@@ -579,14 +581,15 @@
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
                 const dataContainer = document.getElementById('data-container');
 
-                // Kolla om data-container är tom (dvs. inga sökresultat visas)
-                if (!dataContainer || dataContainer.innerHTML.trim() === '') {
+                // Kolla om data-container innehåller sökresultat
+                if (dataContainer && dataContainer.innerHTML.trim() !== '') {
+                    // Om det finns sökresultat, ta bort effekterna
+                    searchContainer.classList.remove('hidden-search');
+                    backgroundContainer.classList.remove('blur-background');
+                } else {
+                    // Om data-container är tom (dvs. på startsidan)
                     if (currentScroll > lastScrollTop) {
-                        // Scroll nedåt
-                        searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
-                        backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig
-                    } else if (currentScroll <= 0) {
-                        // Scroll uppåt till toppen av sidan
+                        // Scroll nedåt på startsidan
                         searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
                         backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
                     }
@@ -609,7 +612,7 @@
     <script async src="//www.instagram.com/embed.js"></script>
 
     <div class="footer-banner">
-        <p class="copyright">&copy; 2023. All rights reserved.</p>
+        <p class="copyright">&copy; 2023-Tallriken. All rights reserved.</p>
         <div class="footer-links">
             <a href="omoss.html">Om Oss</a>
             <a href="tipsaoss.html">Tipsa Oss</a>
