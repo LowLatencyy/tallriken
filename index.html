@@ -352,6 +352,18 @@
         .slider.round:before {
             border-radius: 50%;
         }
+
+        .veg-label {
+            background-color: rgba(0, 0, 0, 0.7);
+            /* Svart med lite transparens */
+            color: white;
+            padding: 5px;
+            margin-bottom: 10px;
+            /* Skapar utrymme mellan etiketten och slidern */
+            text-align: center;
+            border-radius: 5px;
+        }
+        
     </style>
 </head>
 
@@ -367,8 +379,8 @@
         <div class="input-button-container">
             <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
             <button onclick="performSearch()">Sök</button>
+            <div class="veg-label">Veg</div>
             <label class="switch">
-                Veg
                 <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
                 <span class="slider round"></span>
             </label>
