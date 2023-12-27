@@ -516,6 +516,7 @@
 
                 for (let row of allData) {
                     const matrattNamn = row[0].toLowerCase().trim();
+                    // Split och trim alternativa namn
                     const alternativaNamn = row[2] ? row[2].split(',').map(name => name.trim().toLowerCase()) : [];
 
                     if (input === matrattNamn || alternativaNamn.includes(input)) {
@@ -536,6 +537,8 @@
                 this.value = '';
             }
         });
+
+
 
 
         function updateTagContainer() {
