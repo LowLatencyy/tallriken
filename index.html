@@ -352,6 +352,17 @@
         .slider.round:before {
             border-radius: 50%;
         }
+
+        .veg-label-container {
+            display: flex;
+            align-items: center;
+            /* Justera andra stilar efter behov */
+        }
+
+        .veg-label-container span {
+            margin-right: 10px;
+            /* Justera avståndet mellan texten och slidern */
+        }
     </style>
 </head>
 
@@ -367,166 +378,168 @@
         <div class="input-button-container">
             <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
             <button onclick="performSearch()">Sök</button>
-            <label class="switch">
-                <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
-                <span class="slider round"></span>
-            </label>
+            <div class="veg-label-container">
+                <span>Veg</span>
+                <label class="switch">
+                    <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
         </div>
-        <div class="tag-container"> <!-- Taggarna här --> </div>
-    </div>
-
-
-    <div id="data-container"></div>
-    <div class="footer-banner">
-        <!-- Footer content -->
-        <!-- Innehåll för din banner, t.ex. Om Oss och Tipsa Oss länkar -->
-    </div>
-
-    <script>
-        let allData = [];
-        let selectedTags = [];
-        let isVegFilterActive = false; // Håller koll på om veg-filter är aktivt
-
-        async function loadData() {
-            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
-            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-            const range = 'Blad1!A1:G'; // Uppdatera för att inkludera alla kolumner upp till 'F'
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
-            try {
-                const response = await fetch(url);
-                const data = await response.json(); console.log(data)
-                allData = data.values.slice(1); // Ignorerar första raden (rubriker)
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        }
-
-
-        function performSearch() {
-            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            let filteredData = allData;
-
-            if (selectedTags.length > 0) {
-                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1] && row[1].toLowerCase().includes(tag.toLowerCase())));
-            } else if (searchTerm) {
-                filteredData = filteredData.filter(row => (row[0] && row[0].toLowerCase().includes(searchTerm)) || (row[1] && row[1].toLowerCase().includes(searchTerm)));
-            }
-
-            if (isVegFilterActive) {
-                filteredData = filteredData.filter(row => row[6] && row[6].toLowerCase().includes('ja'));
-            }
-
-            displayData(filteredData);
-        }
 
 
 
-        function toggleVegFilter() {
-            let vegSwitch = document.getElementById('vegSwitch');
-            isVegFilterActive = vegSwitch.checked; // Uppdaterar status baserat på om checkboxen är ikryssad
-            // Ta bort performSearch() härifrån
-        }
+        <div id="data-container"></div>
+        <div class="footer-banner">
+            <!-- Footer content -->
+            <!-- Innehåll för din banner, t.ex. Om Oss och Tipsa Oss länkar -->
+        </div>
 
+        <script>
+            let allData = [];
+            let selectedTags = [];
+            let isVegFilterActive = false; // Håller koll på om veg-filter är aktivt
 
-        document.getElementById('searchInput').addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-                event.preventDefault();
-                const input = this.value.trim();
-                if (input && !selectedTags.includes(input)) {
-                    // Lägg till som tagg
-                    selectedTags.push(input);
-                    updateTagContainer();
-                    this.value = '';
+            async function loadData() {
+                const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
+                const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
+                const range = 'Blad1!A1:G'; // Uppdatera för att inkludera alla kolumner upp till 'F'
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+                try {
+                    const response = await fetch(url);
+                    const data = await response.json(); console.log(data)
+                    allData = data.values.slice(1); // Ignorerar första raden (rubriker)
+                } catch (error) {
+                    console.error('Error fetching data:', error);
                 }
             }
-        });
 
-        function updateTagContainer() {
-            const container = document.querySelector('.tag-container');
-            container.innerHTML = selectedTags.map(tag => `
+
+            function performSearch() {
+                let searchTerm = document.getElementById('searchInput').value.toLowerCase();
+                let filteredData = allData;
+
+                if (selectedTags.length > 0) {
+                    filteredData = filteredData.filter(row => selectedTags.every(tag => row[1] && row[1].toLowerCase().includes(tag.toLowerCase())));
+                } else if (searchTerm) {
+                    filteredData = filteredData.filter(row => (row[0] && row[0].toLowerCase().includes(searchTerm)) || (row[1] && row[1].toLowerCase().includes(searchTerm)));
+                }
+
+                if (isVegFilterActive) {
+                    filteredData = filteredData.filter(row => row[6] && row[6].toLowerCase().includes('ja'));
+                }
+
+                displayData(filteredData);
+            }
+
+
+
+            function toggleVegFilter() {
+                let vegSwitch = document.getElementById('vegSwitch');
+                isVegFilterActive = vegSwitch.checked; // Uppdaterar status baserat på om checkboxen är ikryssad
+                // Ta bort performSearch() härifrån
+            }
+
+
+            document.getElementById('searchInput').addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    const input = this.value.trim();
+                    if (input && !selectedTags.includes(input)) {
+                        // Lägg till som tagg
+                        selectedTags.push(input);
+                        updateTagContainer();
+                        this.value = '';
+                    }
+                }
+            });
+
+            function updateTagContainer() {
+                const container = document.querySelector('.tag-container');
+                container.innerHTML = selectedTags.map(tag => `
         <div class="tag">
             ${tag}
             <button class="tag-close" onclick="removeTag('${tag}')">&times;</button>
         </div>
     `).join('');
-        }
-
-        function displayData(data) {
-            var htmlContent = '';
-            data.forEach((row, index) => {
-                htmlContent += `<div class="matratt">`;
-                htmlContent += `<div class="matratt-title"><h2>${row[0]}</h2></div>`; // Maträttens namn
-
-                // Knapp för att visa ingredienser
-                htmlContent += `<button class="ingrediens-knapp" onclick="toggleIngredienser(this)">Visa Ingredienser</button>`;
-
-                // Rullista för ingredienser med mouseleave-händelse
-                htmlContent += `<div class="ingrediens-lista" onmouseleave="hideIngredienser(this)">${row[1].split(', ').join('<br>')}</div>`;
-
-                htmlContent += row[5]; // Instagram-inlägg
-                htmlContent += '</div>';
-            });
-            document.getElementById('data-container').innerHTML = htmlContent;
-
-            // Processa Instagram-inlägg
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
             }
-        }
 
-        function toggleIngredienser(button) {
-            var ingrediensLista = button.nextElementSibling;
-            ingrediensLista.style.display = ingrediensLista.style.display === 'block' ? 'none' : 'block';
-        }
+            function displayData(data) {
+                var htmlContent = '';
+                data.forEach((row, index) => {
+                    htmlContent += `<div class="matratt">`;
+                    htmlContent += `<div class="matratt-title"><h2>${row[0]}</h2></div>`; // Maträttens namn
 
-        function hideIngredienser(ingrediensLista) {
-            ingrediensLista.style.display = 'none';
-        }
+                    // Knapp för att visa ingredienser
+                    htmlContent += `<button class="ingrediens-knapp" onclick="toggleIngredienser(this)">Visa Ingredienser</button>`;
 
+                    // Rullista för ingredienser med mouseleave-händelse
+                    htmlContent += `<div class="ingrediens-lista" onmouseleave="hideIngredienser(this)">${row[1].split(', ').join('<br>')}</div>`;
 
+                    htmlContent += row[5]; // Instagram-inlägg
+                    htmlContent += '</div>';
+                });
+                document.getElementById('data-container').innerHTML = htmlContent;
 
-        window.onload = loadData;
-
-        let lastScrollTop = 0;
-        const backgroundContainer = document.querySelector('.background-container');
-        const searchContainer = document.querySelector('.search-container');
-        let atTop = true; // En ny variabel för att hålla reda på om användaren är vid toppen
-
-        window.addEventListener("scroll", function () {
-            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-            if (currentScroll > lastScrollTop) {
-                // Scroll nedåt
-                searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
-                if (atTop) {
-                    backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig endast en gång
-                    atTop = false; // Användaren är inte längre vid toppen
+                // Processa Instagram-inlägg
+                if (window.instgrm) {
+                    window.instgrm.Embeds.process();
                 }
-            } else if (currentScroll <= 0) {
-                // Scroll uppåt till toppen av sidan
-                searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
-                backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
-                atTop = true; // Användaren är vid toppen
             }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        }, false);
 
-        function removeTag(tagToRemove) {
-            selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
-            updateTagContainer(); // Uppdaterar taggkontainern
-            performSearch(); // Utför en ny sökning med uppdaterade taggar
-        }
+            function toggleIngredienser(button) {
+                var ingrediensLista = button.nextElementSibling;
+                ingrediensLista.style.display = ingrediensLista.style.display === 'block' ? 'none' : 'block';
+            }
+
+            function hideIngredienser(ingrediensLista) {
+                ingrediensLista.style.display = 'none';
+            }
 
 
 
-    </script>
+            window.onload = loadData;
 
-    <script async src="//www.instagram.com/embed.js"></script>
+            let lastScrollTop = 0;
+            const backgroundContainer = document.querySelector('.background-container');
+            const searchContainer = document.querySelector('.search-container');
+            let atTop = true; // En ny variabel för att hålla reda på om användaren är vid toppen
 
-    <div class="footer-banner" style="text-align: center; padding: 20px;">
-        <a href="omoss.html" style="color: white; margin-right: 10px;">Om Oss</a>
-        <a href="tipsaoss.html" style="color: white;">Tipsa Oss</a>
-    </div>
+            window.addEventListener("scroll", function () {
+                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                if (currentScroll > lastScrollTop) {
+                    // Scroll nedåt
+                    searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
+                    if (atTop) {
+                        backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig endast en gång
+                        atTop = false; // Användaren är inte längre vid toppen
+                    }
+                } else if (currentScroll <= 0) {
+                    // Scroll uppåt till toppen av sidan
+                    searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
+                    backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
+                    atTop = true; // Användaren är vid toppen
+                }
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            }, false);
+
+            function removeTag(tagToRemove) {
+                selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
+                updateTagContainer(); // Uppdaterar taggkontainern
+                performSearch(); // Utför en ny sökning med uppdaterade taggar
+            }
+
+
+
+        </script>
+
+        <script async src="//www.instagram.com/embed.js"></script>
+
+        <div class="footer-banner" style="text-align: center; padding: 20px;">
+            <a href="omoss.html" style="color: white; margin-right: 10px;">Om Oss</a>
+            <a href="tipsaoss.html" style="color: white;">Tipsa Oss</a>
+        </div>
 </body>
 
 </html>
