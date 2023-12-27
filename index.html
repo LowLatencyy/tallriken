@@ -516,18 +516,22 @@
 
                 for (let row of allData) {
                     const matrattNamn = row[0].toLowerCase().trim();
-                    // Split och trim alternativa namn
                     const alternativaNamn = row[2] ? row[2].split(',').map(name => name.trim().toLowerCase()) : [];
 
+                    console.log(`Maträtt: ${matrattNamn}, Alternativa Namn: ${alternativaNamn}, Input: ${input}`);
+
                     if (input === matrattNamn || alternativaNamn.includes(input)) {
+                        console.log(`Match found for: ${input}`);
                         foundMatch = true;
                         break;
                     }
                 }
 
                 if (foundMatch) {
+                    console.log(`Performing search for: ${input}`);
                     performSearch();
                 } else {
+                    console.log(`No match found, adding tag for: ${input}`);
                     if (input && !selectedTags.includes(input)) {
                         selectedTags.push(input);
                         updateTagContainer();
@@ -537,6 +541,7 @@
                 this.value = '';
             }
         });
+
 
 
 
