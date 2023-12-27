@@ -423,8 +423,8 @@
 
         function toggleVegFilter() {
             let vegSwitch = document.getElementById('vegSwitch');
-            isVegFilterActive = vegSwitch.checked;
-            performSearch();
+            isVegFilterActive = vegSwitch.checked; // Uppdaterar status baserat på om checkboxen är ikryssad
+            // Ta bort performSearch() härifrån
         }
 
 
