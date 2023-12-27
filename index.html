@@ -413,7 +413,7 @@
 <body>
 
     <a href="index.html" class="logo-link">
-        <img src="images/testlogga.png" alt="Logga" />
+        <img src="images/testlogga2.png" alt="Logga" />
     </a>
 
     <div class="background-container"></div>
@@ -514,9 +514,8 @@
                 const input = this.value.trim().toLowerCase();
                 let foundMatch = false;
 
-                // Kontrollera om input matchar någon maträtts namn eller alternativa namn
                 for (let row of allData) {
-                    const matrattNamn = row[0].toLowerCase();
+                    const matrattNamn = row[0].toLowerCase().trim();
                     const alternativaNamn = row[2] ? row[2].split(',').map(name => name.trim().toLowerCase()) : [];
 
                     if (input === matrattNamn || alternativaNamn.includes(input)) {
@@ -526,10 +525,8 @@
                 }
 
                 if (foundMatch) {
-                    // Utför automatisk sökning om en matchning hittas
                     performSearch();
                 } else {
-                    // Lägg till som tagg om ingen matchning hittas
                     if (input && !selectedTags.includes(input)) {
                         selectedTags.push(input);
                         updateTagContainer();
@@ -539,6 +536,7 @@
                 this.value = '';
             }
         });
+
 
         function updateTagContainer() {
             const container = document.querySelector('.tag-container');
