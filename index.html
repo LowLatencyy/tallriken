@@ -573,30 +573,34 @@
         let atTop = true; // En ny variabel för att hålla reda på om användaren är vid toppen
 
         window.addEventListener('DOMContentLoaded', function () {
-            let lastScrollTop = 0;
             const backgroundContainer = document.querySelector('.background-container');
             const searchContainer = document.querySelector('.search-container');
+            let lastScrollTop = 0;
 
             window.addEventListener("scroll", function () {
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
                 const dataContainer = document.getElementById('data-container');
 
-                // Kolla om data-container innehåller sökresultat
+                // Om det finns sökresultat visas
                 if (dataContainer && dataContainer.innerHTML.trim() !== '') {
-                    // Om det finns sökresultat, ta bort effekterna
+                    if (currentScroll > lastScrollTop) {
+                        // Scroll nedåt genom sökresultaten
+                        searchContainer.classList.add('hidden-search');
+                        backgroundContainer.classList.add('blur-background');
+                    } else if (currentScroll <= 0) {
+                        // Scroll uppåt till toppen av sökresultatsidan
+                        searchContainer.classList.remove('hidden-search');
+                        backgroundContainer.classList.remove('blur-background');
+                    }
+                } else {
+                    // På startsidan, ingen suddighet eller döljning när man scrollar
                     searchContainer.classList.remove('hidden-search');
                     backgroundContainer.classList.remove('blur-background');
-                } else {
-                    // Om data-container är tom (dvs. på startsidan)
-                    if (currentScroll > lastScrollTop) {
-                        // Scroll nedåt på startsidan
-                        searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
-                        backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
-                    }
-                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
                 }
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
             }, false);
         });
+
 
 
         function removeTag(tagToRemove) {
