@@ -406,27 +406,28 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData;
 
+            // Filtrera först baserat på sökterm och taggar
             if (selectedTags.length > 0) {
                 filteredData = filteredData.filter(row => selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase())));
-            } else {
-                filteredData = filteredData.filter(row => row[0].toLowerCase().includes(searchTerm));
+            } else if (searchTerm) {
+                filteredData = filteredData.filter(row => row[0].toLowerCase().includes(searchTerm) || row[1].toLowerCase().includes(searchTerm));
             }
 
-            // Ytterligare filter för vegetariska/veganska maträtter
+            // Filtrera sedan baserat på vegetarisk slider
             if (isVegFilterActive) {
-                filteredData = filteredData.filter(row => row[6].toLowerCase().includes('ja')); // Ändra till 'includes'
+                filteredData = filteredData.filter(row => row[6].toLowerCase().includes('ja'));
             }
 
             displayData(filteredData);
-            document.getElementById('searchInput').value = ''; // Rensa sökfältet
         }
+
 
         function toggleVegFilter() {
             let vegSwitch = document.getElementById('vegSwitch');
-            isVegFilterActive = vegSwitch.checked; // Uppdaterar status baserat på om checkboxen är ikryssad
-            console.log("Veg-filter active:", isVegFilterActive); // Lägg till detta för att se statusen
-            performSearch(); // Utför en ny sökning med det uppdaterade filtret
+            isVegFilterActive = vegSwitch.checked;
+            performSearch();
         }
+
 
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
