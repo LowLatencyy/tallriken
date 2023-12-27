@@ -371,6 +371,22 @@
             text-align: center;
             border-radius: 5px;
         }
+
+        .lang-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .lang-label {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px;
+            margin-bottom: 5px;
+            text-align: center;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -395,9 +411,18 @@
                 </label>
             </div>
 
+            <div class="lang-container">
+                <div class="lang-label">Bara recept på svenska</div>
+                <label class="switch">
+                    <input type="checkbox" id="langSwitch" onchange="toggleLangFilter()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
         </div>
         <div class="tag-container"> <!-- Taggarna här --> </div>
     </div>
+
 
 
     <div id="data-container"></div>
@@ -410,6 +435,7 @@
         let allData = [];
         let selectedTags = [];
         let isVegFilterActive = false; // Håller koll på om veg-filter är aktivt
+        let isLangFilterActive = false; // För att hålla koll på språkfilter
 
         async function loadData() {
             const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
@@ -430,27 +456,37 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData;
 
+            // Filtrera baserat på taggar
             if (selectedTags.length > 0) {
                 filteredData = filteredData.filter(row => selectedTags.every(tag => row[1] && row[1].toLowerCase().includes(tag.toLowerCase())));
-            } else if (searchTerm) {
+            }
+            // Filtrera baserat på söktermen
+            else if (searchTerm) {
                 filteredData = filteredData.filter(row => (row[0] && row[0].toLowerCase().includes(searchTerm)) || (row[1] && row[1].toLowerCase().includes(searchTerm)));
             }
 
+            // Filtrera för vegetariska rätter
             if (isVegFilterActive) {
                 filteredData = filteredData.filter(row => row[6] && row[6].toLowerCase().includes('ja'));
+            }
+
+            // Filtrera för recept på svenska
+            if (isLangFilterActive) {
+                filteredData = filteredData.filter(row => row[7] && row[7].toLowerCase().includes('ja'));
             }
 
             displayData(filteredData);
         }
 
-
-
         function toggleVegFilter() {
             let vegSwitch = document.getElementById('vegSwitch');
-            isVegFilterActive = vegSwitch.checked; // Uppdaterar status baserat på om checkboxen är ikryssad
-            // Ta bort performSearch() härifrån
+            isVegFilterActive = vegSwitch.checked;
         }
 
+        function toggleLangFilter() {
+            let langSwitch = document.getElementById('langSwitch');
+            isLangFilterActive = langSwitch.checked;
+        }
 
         document.getElementById('searchInput').addEventListener('keydown', function (event) {
             if (event.key === 'Enter') {
