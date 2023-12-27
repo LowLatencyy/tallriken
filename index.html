@@ -406,20 +406,19 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData;
 
-            // Filtrera först baserat på sökterm och taggar
             if (selectedTags.length > 0) {
-                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1].toLowerCase().includes(tag.toLowerCase())));
+                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1] && row[1].toLowerCase().includes(tag.toLowerCase())));
             } else if (searchTerm) {
-                filteredData = filteredData.filter(row => row[0].toLowerCase().includes(searchTerm) || row[1].toLowerCase().includes(searchTerm));
+                filteredData = filteredData.filter(row => (row[0] && row[0].toLowerCase().includes(searchTerm)) || (row[1] && row[1].toLowerCase().includes(searchTerm)));
             }
 
-            // Filtrera sedan baserat på vegetarisk slider
             if (isVegFilterActive) {
-                filteredData = filteredData.filter(row => row[6].toLowerCase().includes('ja'));
+                filteredData = filteredData.filter(row => row[6] && row[6].toLowerCase().includes('ja'));
             }
 
             displayData(filteredData);
         }
+
 
 
         function toggleVegFilter() {
