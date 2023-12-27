@@ -414,7 +414,7 @@
 
             // Ytterligare filter för vegetariska/veganska maträtter
             if (isVegFilterActive) {
-                filteredData = filteredData.filter(row => row[6].toLowerCase() === 'ja'); // Anta att kolumn G är den sjunde kolumnen och innehåller 'ja' eller 'nej'
+                filteredData = filteredData.filter(row => row[6].toLowerCase().includes('ja')); // Ändra till 'includes'
             }
 
             displayData(filteredData);
@@ -424,6 +424,7 @@
         function toggleVegFilter() {
             let vegSwitch = document.getElementById('vegSwitch');
             isVegFilterActive = vegSwitch.checked; // Uppdaterar status baserat på om checkboxen är ikryssad
+            console.log("Veg-filter active:", isVegFilterActive); // Lägg till detta för att se statusen
             performSearch(); // Utför en ny sökning med det uppdaterade filtret
         }
 
