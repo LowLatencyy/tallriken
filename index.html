@@ -29,6 +29,7 @@
             z-index: -1;
         }
 
+
         .blur-background .background-container {
             filter: blur(5px);
         }
@@ -569,24 +570,31 @@
         const searchContainer = document.querySelector('.search-container');
         let atTop = true; // En ny variabel för att hålla reda på om användaren är vid toppen
 
-        window.addEventListener("scroll", function () {
-            var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        window.addEventListener('DOMContentLoaded', function () {
+            let lastScrollTop = 0;
+            const backgroundContainer = document.querySelector('.background-container');
+            const searchContainer = document.querySelector('.search-container');
 
-            if (currentScroll > lastScrollTop) {
-                // Scroll nedåt
-                searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
-                if (atTop) {
-                    backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig endast en gång
-                    atTop = false; // Användaren är inte längre vid toppen
+            window.addEventListener("scroll", function () {
+                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                const dataContainer = document.getElementById('data-container');
+
+                // Kolla om data-container är tom (dvs. inga sökresultat visas)
+                if (!dataContainer || dataContainer.innerHTML.trim() === '') {
+                    if (currentScroll > lastScrollTop) {
+                        // Scroll nedåt
+                        searchContainer.classList.add('hidden-search'); // Dölj sökcontainern
+                        backgroundContainer.classList.add('blur-background'); // Gör bakgrunden suddig
+                    } else if (currentScroll <= 0) {
+                        // Scroll uppåt till toppen av sidan
+                        searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
+                        backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
+                    }
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
                 }
-            } else if (currentScroll <= 0) {
-                // Scroll uppåt till toppen av sidan
-                searchContainer.classList.remove('hidden-search'); // Visa sökcontainern
-                backgroundContainer.classList.remove('blur-background'); // Ta bort suddighet från bakgrunden
-                atTop = true; // Användaren är vid toppen
-            }
-            lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-        }, false);
+            }, false);
+        });
+
 
         function removeTag(tagToRemove) {
             selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
@@ -601,7 +609,7 @@
     <script async src="//www.instagram.com/embed.js"></script>
 
     <div class="footer-banner">
-        <p class="copyright">&copy; 2023-Tallriken. All rights reserved.</p>
+        <p class="copyright">&copy; 2023. All rights reserved.</p>
         <div class="footer-links">
             <a href="omoss.html">Om Oss</a>
             <a href="tipsaoss.html">Tipsa Oss</a>
