@@ -472,17 +472,25 @@
         }
 
 
+        function normalizeString(str) {
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
         function performSearch() {
-            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            let searchTerm = normalizeString(document.getElementById('searchInput').value);
             let filteredData = allData;
 
             // Filtrera baserat på taggar
             if (selectedTags.length > 0) {
-                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1] && row[1].toLowerCase().includes(tag.toLowerCase())));
+                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1] && normalizeString(row[1]).includes(tag)));
             }
             // Filtrera baserat på söktermen
             else if (searchTerm) {
-                filteredData = filteredData.filter(row => (row[0] && row[0].toLowerCase().includes(searchTerm)) || (row[1] && row[1].toLowerCase().includes(searchTerm)));
+                filteredData = filteredData.filter(row => {
+                    const matrattNamn = normalizeString(row[0]);
+                    const ingredienser = normalizeString(row[1]);
+                    return matrattNamn.includes(searchTerm) || ingredienser.includes(searchTerm);
+                });
             }
 
             // Filtrera för vegetariska rätter
