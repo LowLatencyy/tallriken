@@ -471,9 +471,13 @@
 
                 // Skapa en mappning för synonymer
                 allData.forEach(row => {
-                    const ingredient = row[8].toLowerCase().trim();
-                    const synonyms = row[9] ? row[9].toLowerCase().split(',').map(s => s.trim()) : [];
-                    ingredientSynonyms[ingredient] = synonyms;
+                    // Kontrollera att vi har en definierad ingrediens i kolumn I (index 8)
+                    if (row[8]) {
+                        const ingredient = row[8].toLowerCase().trim();
+                        // Skapa en array för synonymer endast om kolumn J (index 9) har ett värde
+                        const synonyms = row[9] ? row[9].toLowerCase().split(',').map(s => s.trim()) : [];
+                        ingredientSynonyms[ingredient] = synonyms;
+                    }
                 });
                 console.log('Synonymer laddade:', ingredientSynonyms);
             } catch (error) {
