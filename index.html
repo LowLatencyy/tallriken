@@ -461,25 +461,25 @@
         async function loadData() {
             const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
             const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-            const range = 'Blad1!A1:J'; // Ändrad för att inkludera kolumn I och J
+            const range = 'Blad1!A1:J'; // Updated to include columns I and J
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                allData = data.values.slice(1); // Ignorerar första raden (rubriker)
+                allData = data.values.slice(1); // Ignores the first row (headers)
 
-                // Skapa en mappning för synonymer
+                // Create a mapping for synonyms
                 allData.forEach(row => {
-                    // Kontrollera att vi har en definierad ingrediens i kolumn I (index 8)
+                    // Check that we have a defined ingredient in column I (index 8)
                     if (row[8]) {
                         const ingredient = row[8].toLowerCase().trim();
-                        // Skapa en array för synonymer endast om kolumn J (index 9) har ett värde
+                        // Create an array for synonyms only if column J (index 9) has a value
                         const synonyms = row[9] ? row[9].toLowerCase().split(',').map(s => s.trim()) : [];
                         ingredientSynonyms[ingredient] = synonyms;
                     }
                 });
-                console.log('Synonymer laddade:', ingredientSynonyms);
+                console.log('Synonyms loaded:', ingredientSynonyms);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
