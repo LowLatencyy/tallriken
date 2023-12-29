@@ -487,35 +487,29 @@
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
+
+            // Omvandla söktermen till den primära ingrediensen om den är en synonym
+            let primaryIngredient = Object.keys(ingredientSynonyms).find(key => ingredientSynonyms[key].includes(searchTerm)) || searchTerm;
+
             let filteredData = allData.filter(row => {
-                const matrattMatch = row[0].toLowerCase().includes(searchTerm);
-                const alternativaMatrattNamnMatch = row[2].toLowerCase().split(',').includes(searchTerm);
+                // Kolla om maträtten matchar söktermen
+                const matrattMatch = row[0].toLowerCase().includes(primaryIngredient);
 
-                const ingredienser = row[1].toLowerCase().split(',').map(ing => ing.trim());
-                const ingredienserMatch = ingredienser.some(ing => {
-                    return ing === searchTerm || (ingredientSynonyms[ing] && ingredientSynonyms[ing].includes(searchTerm));
-                });
+                // Kolla om någon av ingredienserna i maträtten matchar den primära ingrediensen
+                const ingredienserMatch = row[1].toLowerCase().split(',').map(ing => ing.trim()).includes(primaryIngredient);
 
-                return matrattMatch || alternativaMatrattNamnMatch || ingredienserMatch;
+                return matrattMatch || ingredienserMatch;
             });
 
-            // Filtrera baserat på taggar
+            // Dina ytterligare filter här...
             if (selectedTags.length > 0) {
-                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1] && row[1].toLowerCase().includes(tag.toLowerCase())));
+                filteredData = filteredData.filter(row => selectedTags.every(tag => row[1].toLowerCase().split(',').map(ing => ing.trim()).includes(tag)));
             }
-            // Filtrera baserat på söktermen
-            else if (searchTerm) {
-                filteredData = filteredData.filter(row => (row[0] && row[0].toLowerCase().includes(searchTerm)) || (row[1] && row[1].toLowerCase().includes(searchTerm)));
-            }
-
-            // Filtrera för vegetariska rätter
             if (isVegFilterActive) {
-                filteredData = filteredData.filter(row => row[6] && row[6].toLowerCase().includes('ja'));
+                filteredData = filteredData.filter(row => row[6].toLowerCase() === 'ja');
             }
-
-            // Filtrera för recept på svenska
             if (isLangFilterActive) {
-                filteredData = filteredData.filter(row => row[7] && row[7].toLowerCase().includes('ja'));
+                filteredData = filteredData.filter(row => row[7].toLowerCase() === 'ja');
             }
 
             displayData(filteredData);
