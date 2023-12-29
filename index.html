@@ -471,20 +471,9 @@
 
                 // Skapa en mappning för synonymer
                 allData.forEach(row => {
-                    const ingredients = row[1].toLowerCase().split(', ').map(s => s.trim());
-                    ingredients.forEach(ing => {
-                        if (!ingredientSynonyms[ing]) {
-                            ingredientSynonyms[ing] = [];
-                        }
-                    });
-                    if (row[9]) { // Anta att alternativa ingrediensnamn finns i kolumn J
-                        row[9].toLowerCase().split(',').forEach(synonym => {
-                            synonym = synonym.trim();
-                            ingredients.forEach(ing => {
-                                ingredientSynonyms[ing].push(synonym);
-                            });
-                        });
-                    }
+                    const ingredient = row[8].toLowerCase().trim();
+                    const synonyms = row[9] ? row[9].toLowerCase().split(',').map(s => s.trim()) : [];
+                    ingredientSynonyms[ingredient] = synonyms;
                 });
                 console.log('Synonymer laddade:', ingredientSynonyms);
             } catch (error) {
@@ -495,12 +484,12 @@
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
             let filteredData = allData.filter(row => {
-                const matrattMatch = row[0] && row[0].toLowerCase().includes(searchTerm);
-                const alternativaMatrattNamnMatch = row[2] && row[2].toLowerCase().split(',').includes(searchTerm);
+                const matrattMatch = row[0].toLowerCase().includes(searchTerm);
+                const alternativaMatrattNamnMatch = row[2].toLowerCase().split(',').includes(searchTerm);
 
-                const ingredienserMatch = row[1] && row[1].toLowerCase().split(',').some(ing => {
-                    const ingTrim = ing.trim().toLowerCase();
-                    return ingTrim === searchTerm || (ingredientSynonyms[ingTrim] && ingredientSynonyms[ingTrim].includes(searchTerm));
+                const ingredienser = row[1].toLowerCase().split(',').map(ing => ing.trim());
+                const ingredienserMatch = ingredienser.some(ing => {
+                    return ing === searchTerm || (ingredientSynonyms[ing] && ingredientSynonyms[ing].includes(searchTerm));
                 });
 
                 return matrattMatch || alternativaMatrattNamnMatch || ingredienserMatch;
