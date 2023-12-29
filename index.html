@@ -454,27 +454,57 @@
     <script>
         let allData = [];
         let selectedTags = [];
-        let isVegFilterActive = false; // Håller koll på om veg-filter är aktivt
-        let isLangFilterActive = false; // För att hålla koll på språkfilter
+        let isVegFilterActive = false;
+        let isLangFilterActive = false;
+        let ingredientSynonyms = {};
 
         async function loadData() {
             const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
             const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-            const range = 'Blad1!A1:H'; // Uppdatera för att inkludera alla kolumner upp till 'F'
+            const range = 'Blad1!A1:J'; // Ändrad för att inkludera kolumn I och J
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
             try {
                 const response = await fetch(url);
-                const data = await response.json(); console.log(data)
+                const data = await response.json();
                 allData = data.values.slice(1); // Ignorerar första raden (rubriker)
+
+                // Skapa en mappning för synonymer
+                allData.forEach(row => {
+                    const ingredients = row[1].toLowerCase().split(', ').map(s => s.trim());
+                    ingredients.forEach(ing => {
+                        if (!ingredientSynonyms[ing]) {
+                            ingredientSynonyms[ing] = [];
+                        }
+                    });
+                    if (row[9]) { // Anta att alternativa ingrediensnamn finns i kolumn J
+                        row[9].toLowerCase().split(',').forEach(synonym => {
+                            synonym = synonym.trim();
+                            ingredients.forEach(ing => {
+                                ingredientSynonyms[ing].push(synonym);
+                            });
+                        });
+                    }
+                });
+                console.log('Synonymer laddade:', ingredientSynonyms);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
 
-
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            let filteredData = allData;
+            let filteredData = allData.filter(row => {
+                const matrattMatch = row[0] && row[0].toLowerCase().includes(searchTerm);
+                const alternativaMatrattNamnMatch = row[2] && row[2].toLowerCase().split(',').includes(searchTerm);
+
+                const ingredienserMatch = row[1] && row[1].toLowerCase().split(',').some(ing => {
+                    const ingTrim = ing.trim().toLowerCase();
+                    return ingTrim === searchTerm || (ingredientSynonyms[ingTrim] && ingredientSynonyms[ingTrim].includes(searchTerm));
+                });
+
+                return matrattMatch || alternativaMatrattNamnMatch || ingredienserMatch;
+            });
 
             // Filtrera baserat på taggar
             if (selectedTags.length > 0) {
