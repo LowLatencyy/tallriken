@@ -461,24 +461,23 @@
         async function loadData() {
             const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
             const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-            const range = 'Blad1!A1:J'; // Updated to include columns I and J
+            const range = 'Blad1!A1:J'; // Include columns I and J
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-                allData = data.values.slice(1); // Ignorerar rubrikraden
+                allData = data.values.slice(1); // Ignore the header row
 
-                // Skapa en mappning för synonymer
-                allData.forEach(row => {
-                    if (row[8] && row[9]) {
-                        // Anta att kolumn I innehåller den faktiska ingrediensen och kolumn J dess synonymer
-                        const ingredient = row[8].toLowerCase().trim();
-                        const synonyms = row[9].toLowerCase().split(',').map(s => s.trim());
-                        synonyms.forEach(syn => {
-                            ingredientSynonyms[syn] = ingredient; // Mappa varje synonym till dess faktiska ingrediens
-                        });
-                    }
+                // Create a synonym mapping
+                ingredientSynonyms = {}; // Reset the mapping object
+                data.values.forEach((row, index) => {
+                    if (index === 0) return; // Skip header row
+                    const ingredient = row[8]?.toLowerCase().trim(); // Column I
+                    const synonyms = row[9] ? row[9].toLowerCase().split(',').map(s => s.trim()) : []; // Column J
+                    synonyms.forEach(syn => {
+                        ingredientSynonyms[syn] = ingredient;
+                    });
                 });
                 console.log('Synonyms loaded:', ingredientSynonyms);
             } catch (error) {
@@ -487,16 +486,20 @@
         }
 
         function performSearch() {
-            let searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            searchTerm = ingredientSynonyms[searchTerm] || searchTerm; // Uppdatera söktermen till den faktiska ingrediensen om det är en synonym
+            let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            // Convert synonym to primary ingredient name if it exists
+            searchTerm = Object.keys(ingredientSynonyms).find(key => ingredientSynonyms[key] === searchTerm) || searchTerm;
 
             let filteredData = allData.filter(row => {
-                // Kontrollera matchning för maträttsnamnet och alternativa maträttsnamn
-                const matrattMatch = row[0].toLowerCase().includes(searchTerm);
-                const alternativaMatrattNamnMatch = row[2] && row[2].toLowerCase().split(',').includes(searchTerm);
+                // Check for a match in the dish name and alternative names
+                const matrattMatch = row[0]?.toLowerCase().includes(searchTerm);
+                const alternativaMatrattNamnMatch = row[2]?.toLowerCase().split(',').includes(searchTerm);
 
-                // Kontrollera matchning för ingredienser inklusive synonymer
-                const ingredienserMatch = row[1].toLowerCase().split(',').map(ing => ing.trim()).includes(searchTerm);
+                // Check for a match in the ingredients, considering synonyms
+                const ingredients = row[1]?.toLowerCase().split(',').map(ing => ing.trim());
+                const ingredienserMatch = ingredients.some(ing => {
+                    return ing === searchTerm || Object.keys(ingredientSynonyms).includes(ing) && ingredientSynonyms[ing] === searchTerm;
+                });
 
                 return matrattMatch || alternativaMatrattNamnMatch || ingredienserMatch;
             });
