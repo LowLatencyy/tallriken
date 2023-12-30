@@ -452,49 +452,51 @@
     </div>
 
     <script>
-       let allData = [];
-let selectedTags = [];
-let isVegFilterActive = false;
-let isLangFilterActive = false;
-let ingredientSynonyms = {};
+        let allData = [];
+        let selectedTags = [];
+        let isVegFilterActive = false;
+        let isLangFilterActive = false;
+        let ingredientSynonyms = {};
 
-async function loadData() {
-    const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
-    const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-    const range = 'Blad1!A1:J'; // Updated to include columns I and J
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+        async function loadData() {
+            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
+            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
+            const range = 'Blad1!A1:J'; // Updated to include columns I and J
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        allData = data.values.slice(1); // Ignores the first row (headers)
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                allData = data.values.slice(1); // Ignorerar rubrikraden
 
-        // Create a mapping for synonyms
-        allData.forEach(row => {
-            // Check that we have a defined ingredient in column I (index 8)
-            if (row[8]) {
-                const ingredient = row[8].toLowerCase().trim();
-                // Create an array for synonyms only if column J (index 9) has a value
-                const synonyms = row[9] ? row[9].toLowerCase().split(',').map(s => s.trim()) : [];
-                ingredientSynonyms[ingredient] = synonyms;
+                // Skapa en mappning för synonymer
+                allData.forEach(row => {
+                    if (row[8] && row[9]) {
+                        // Anta att kolumn I innehåller den faktiska ingrediensen och kolumn J dess synonymer
+                        const ingredient = row[8].toLowerCase().trim();
+                        const synonyms = row[9].toLowerCase().split(',').map(s => s.trim());
+                        synonyms.forEach(syn => {
+                            ingredientSynonyms[syn] = ingredient; // Mappa varje synonym till dess faktiska ingrediens
+                        });
+                    }
+                });
+                console.log('Synonyms loaded:', ingredientSynonyms);
+            } catch (error) {
+                console.error('Error fetching data:', error);
             }
-        });
-        console.log('Synonyms loaded:', ingredientSynonyms);
-    } catch (error) {
-        console.error('Error fetching data:', error);
-    }
-}
+        }
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase();
-            let filteredData = allData.filter(row => {
-                const matrattMatch = row[0].toLowerCase().includes(searchTerm);
-                const alternativaMatrattNamnMatch = row[2].toLowerCase().split(',').includes(searchTerm);
+            searchTerm = ingredientSynonyms[searchTerm] || searchTerm; // Uppdatera söktermen till den faktiska ingrediensen om det är en synonym
 
-                const ingredienser = row[1].toLowerCase().split(',').map(ing => ing.trim());
-                const ingredienserMatch = ingredienser.some(ing => {
-                    return ing === searchTerm || (ingredientSynonyms[ing] && ingredientSynonyms[ing].includes(searchTerm));
-                });
+            let filteredData = allData.filter(row => {
+                // Kontrollera matchning för maträttsnamnet och alternativa maträttsnamn
+                const matrattMatch = row[0].toLowerCase().includes(searchTerm);
+                const alternativaMatrattNamnMatch = row[2] && row[2].toLowerCase().split(',').includes(searchTerm);
+
+                // Kontrollera matchning för ingredienser inklusive synonymer
+                const ingredienserMatch = row[1].toLowerCase().split(',').map(ing => ing.trim()).includes(searchTerm);
 
                 return matrattMatch || alternativaMatrattNamnMatch || ingredienserMatch;
             });
@@ -508,14 +510,11 @@ async function loadData() {
                 filteredData = filteredData.filter(row => (row[0] && row[0].toLowerCase().includes(searchTerm)) || (row[1] && row[1].toLowerCase().includes(searchTerm)));
             }
 
-            // Filtrera för vegetariska rätter
             if (isVegFilterActive) {
-                filteredData = filteredData.filter(row => row[6] && row[6].toLowerCase().includes('ja'));
+                filteredData = filteredData.filter(row => row[6] && row[6].toLowerCase() === 'ja');
             }
-
-            // Filtrera för recept på svenska
             if (isLangFilterActive) {
-                filteredData = filteredData.filter(row => row[7] && row[7].toLowerCase().includes('ja'));
+                filteredData = filteredData.filter(row => row[7] && row[7].toLowerCase() === 'ja');
             }
 
             displayData(filteredData);
