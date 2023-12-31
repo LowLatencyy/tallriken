@@ -421,25 +421,26 @@
     <div class="search-container">
         <div class="input-button-container">
             <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
+            <button onclick="addTagFromButton()">Lägg till</button>
             <button onclick="performSearch()">Sök</button>
-
-            <div class="veg-container">
-                <div class="veg-label">Bara Veg</div>
-                <label class="switch">
-                    <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-
-            <div class="lang-container">
-                <div class="lang-label">Bara recept på svenska</div>
-                <label class="switch">
-                    <input type="checkbox" id="langSwitch" onchange="toggleLangFilter()">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-
         </div>
+
+        <div class="veg-container">
+            <div class="veg-label">Bara Veg</div>
+            <label class="switch">
+                <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
+        <div class="lang-container">
+            <div class="lang-label">Bara recept på svenska</div>
+            <label class="switch">
+                <input type="checkbox" id="langSwitch" onchange="toggleLangFilter()">
+                <span class="slider round"></span>
+            </label>
+        </div>
+
         <div class="tag-container"> <!-- Taggarna här --> </div>
     </div>
 
@@ -521,6 +522,18 @@
             }
 
             displayData(filteredData);
+        }
+
+        function addTagFromButton() {
+            const inputField = document.getElementById('searchInput');
+            const input = inputField.value.trim().toLowerCase();
+
+            if (input && !selectedTags.includes(input)) {
+                selectedTags.push(input);
+                updateTagContainer();
+            }
+
+            inputField.value = ''; // Rensa inputfältet
         }
 
         function toggleVegFilter() {
