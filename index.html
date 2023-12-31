@@ -69,29 +69,27 @@
             background-color: white;
             color: black;
             outline: none;
-            border-radius: 25px 0 0 25px;
-            font-size: 1rem;
-            /* Större textstorlek för bättre läsbarhet */
+            border-radius: 25px 0 0 0;
+            /* Endast avrundade hörn till vänster */
         }
 
         .input-button-container button {
             padding: 10px 20px;
-            /* Samma padding för båda knapparna */
             border: 1px solid #ddd;
             background-color: white;
             color: black;
             outline: none;
             cursor: pointer;
-            border-radius: 0 25px 25px 0;
-            /* Runda hörn för båda knapparna */
-            /* Ytterligare gemensam styling för knapparna efter behov */
+            border-radius: 0;
+            /* Inga avrundade hörn */
+            border-left: none;
+            /* Ta bort vänster gräns för att smälta ihop med föregående element */
         }
 
-
-
-
-        .input-button-container button:hover {
-            background-color: #f2f2f2;
+        /* Extra stil för den sista knappen i kontainern (Sök-knappen) */
+        .input-button-container button:last-child {
+            border-radius: 0 25px 25px 0;
+            /* Endast avrundade hörn till höger */
         }
 
         #data-container {
