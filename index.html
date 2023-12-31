@@ -49,6 +49,14 @@
             /* Ökar bredden av sökfältet */
         }
 
+        .slider-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            /* Justera avståndet mellan sliders och sökfält */
+        }
+
         .input-button-container {
             display: flex;
             width: 100%;
@@ -68,16 +76,17 @@
 
         .input-button-container button {
             padding: 10px 20px;
+            /* Samma padding för båda knapparna */
             border: 1px solid #ddd;
             background-color: white;
             color: black;
             outline: none;
-            border-radius: 0 25px 25px 0;
-            border-left: none;
             cursor: pointer;
-
-
+            border-radius: 0 25px 25px 0;
+            /* Runda hörn för båda knapparna */
+            /* Ytterligare gemensam styling för knapparna efter behov */
         }
+
 
 
 
@@ -419,29 +428,33 @@
     <div class="background-container"></div>
 
     <div class="search-container">
+        <!-- Slider-knappar ovanför sökfältet -->
+        <div class="slider-button-container">
+            <div class="veg-container">
+                <div class="veg-label">Bara Veg</div>
+                <label class="switch">
+                    <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <div class="lang-container">
+                <div class="lang-label">Bara recept på svenska</div>
+                <label class="switch">
+                    <input type="checkbox" id="langSwitch" onchange="toggleLangFilter()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Sökfält och knappar -->
         <div class="input-button-container">
             <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
-            <button onclick="addTagFromButton()">Lägg till</button>
+            <button onclick="addTagFromButton()">Lägg till</button> <!-- Ny knapp för att lägga till taggar -->
             <button onclick="performSearch()">Sök</button>
         </div>
 
-        <div class="veg-container">
-            <div class="veg-label">Bara Veg</div>
-            <label class="switch">
-                <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
-                <span class="slider round"></span>
-            </label>
-        </div>
-
-        <div class="lang-container">
-            <div class="lang-label">Bara recept på svenska</div>
-            <label class="switch">
-                <input type="checkbox" id="langSwitch" onchange="toggleLangFilter()">
-                <span class="slider round"></span>
-            </label>
-        </div>
-
-        <div class="tag-container"> <!-- Taggarna här --> </div>
+        <!-- Taggarna här -->
+        <div class="tag-container"></div>
     </div>
 
 
