@@ -69,8 +69,8 @@
             background-color: white;
             color: black;
             outline: none;
-            border-radius: 25px 0 0 0;
-            /* Endast avrundade hörn till vänster */
+            border-radius: 25px 0 0 25px;
+            /* Avrundade hörn till vänster (både upp och ner) */
         }
 
         .input-button-container button {
@@ -86,11 +86,11 @@
             /* Ta bort vänster gräns för att smälta ihop med föregående element */
         }
 
-        /* Extra stil för den sista knappen i kontainern (Sök-knappen) */
         .input-button-container button:last-child {
             border-radius: 0 25px 25px 0;
-            /* Endast avrundade hörn till höger */
+            /* Avrundade hörn till höger (både upp och ner) */
         }
+
 
         #data-container {
             display: flex;
