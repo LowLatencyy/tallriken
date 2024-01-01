@@ -638,32 +638,23 @@
                 const input = this.value.trim().toLowerCase();
                 let foundMatch = false;
 
-                console.log('Söker efter:', input); // Lägg till detta för att se den exakta söksträngen
-
-                for (let row of allData) {
-                    const matrattNamn = row[0].toLowerCase().trim();
-                    const alternativaNamn = row[2] ? row[2].split(',').map(name => name.trim().toLowerCase()) : [];
-
-                    console.log('Maträtt:', matrattNamn, 'Alternativa Namn:', alternativaNamn); // Detta visar värdena som jämförs
-
-                    if (input === matrattNamn || alternativaNamn.includes(input)) {
-                        foundMatch = true;
-                        break;
-                    }
-                }
-
-                if (foundMatch) {
+                // Om sökning på maträtter är aktiverad, utför sökningen direkt.
+                if (searchForDishes) {
                     performSearch();
-                } else {
-                    if (input && !selectedTags.includes(input)) {
-                        selectedTags.push(input);
-                        updateTagContainer();
-                    }
+                    return;
                 }
 
-                this.value = '';
+                // Lägg till tagg om möjligt och utför sökning.
+                if (input && !selectedTags.includes(input)) {
+                    selectedTags.push(input);
+                    updateTagContainer();
+                    performSearch(); // Utför sökningen direkt efter att en tagg har lagts till.
+                }
+
+                this.value = ''; // Rensa inputfältet
             }
         });
+
 
 
 
