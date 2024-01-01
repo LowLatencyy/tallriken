@@ -569,8 +569,6 @@
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            // Convert synonym to primary ingredient name if it exists
-            searchTerm = Object.keys(ingredientSynonyms).find(key => ingredientSynonyms[key] === searchTerm) || searchTerm;
 
             let filteredData = allData.filter(row => {
                 if (searchForDishes) {
@@ -579,7 +577,13 @@
                 } else {
                     // Sök på ingredienser
                     const ingredients = row[1]?.toLowerCase().split(',').map(ing => ing.trim());
-                    return ingredients.some(ing => ing === searchTerm || (ingredientSynonyms[ing] === searchTerm));
+                    if (selectedTags.length > 0) {
+                        // Kontrollera att alla taggar finns i ingredienslistan
+                        return selectedTags.every(tag => ingredients.includes(tag.toLowerCase()));
+                    } else {
+                        // Om inga taggar är valda, använd söktermen
+                        return ingredients.some(ing => ing === searchTerm || (ingredientSynonyms[ing] === searchTerm));
+                    }
                 }
             });
 
@@ -593,6 +597,7 @@
 
             displayData(filteredData);
         }
+
 
 
         function addTagFromButton() {
