@@ -642,7 +642,6 @@
             if (event.key === 'Enter') {
                 event.preventDefault();
                 const input = this.value.trim().toLowerCase();
-                let foundMatch = false;
 
                 // Om sökning på maträtter är aktiverad, utför sökningen direkt.
                 if (searchForDishes) {
@@ -654,9 +653,9 @@
                 if (input && !selectedTags.includes(input)) {
                     selectedTags.push(input);
                     updateTagContainer();
-                    performSearch(); // Utför sökningen direkt efter att en tagg har lagts till.
                 }
 
+                performSearch(); // Utför sökningen direkt efter att en tagg har lagts till eller söktermen angivits.
                 this.value = ''; // Rensa inputfältet
             }
         });
