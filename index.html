@@ -380,14 +380,12 @@
             border-radius: 50%;
         }
 
-        /* Adjust the main slider */
+        /* Anpassning för den stora slidern */
         .switch.large {
-            position: relative;
-            display: inline-block;
-            width: 120px;
-            /* Width of the entire switch */
+            width: 60px;
+            /* Bredden på omkopplaren */
             height: 34px;
-            /* Height of the switch */
+            /* Höjden på omkopplaren */
         }
 
         .switch.large .slider {
@@ -404,22 +402,23 @@
             /* Rounded corners for the switch */
         }
 
+        /* Stil för "knappen" på slidern */
         .switch.large .slider:before {
             position: absolute;
             content: "";
             height: 26px;
-            /* Height of the slider handle */
+            /* Höjden på den rörliga delen */
             width: 26px;
-            /* Width of the slider handle, should be equal to the height for a circle */
+            /* Bredden på den rörliga delen, gör den rund */
             left: 4px;
-            /* Initial position from the left */
+            /* Position från vänster */
             bottom: 4px;
-            /* Center the handle vertically */
+            /* Centrera vertikalt */
             background-color: white;
-            /* Handle color */
+            /* Färg på "knappen" */
             transition: .4s;
             border-radius: 50%;
-            /* Make it circular */
+            /* Gör den helt rund */
         }
 
         input:checked+.switch.large .slider {
@@ -428,25 +427,27 @@
         }
 
         input:checked+.switch.large .slider:before {
-            transform: translateX(90px);
-            /* Move handle to the right; adjust as necessary */
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(calc(100% - 30px));
+            /* Flytta knappen till höger kant */
         }
 
-        /* Style adjustments for the text labels for the switch */
+        /* Stiljusteringar för textetiketterna för slidern */
         .search-mode-label {
+            display: block;
             font-family: 'Indie Flower', cursive;
             color: white;
             background-color: rgba(0, 0, 0, 0.7);
             text-align: center;
-            padding: 5px 10px;
+            padding: 5px;
             border-radius: 5px;
             margin: 0 5px;
-            /* Space around labels */
-            flex: none;
-            /* Do not stretch in flex container */
+            /* Utrymme runt etiketterna */
+            /* Ytterligare stilinställningar efter behov */
         }
 
-        /* Ensure the text is centered vertically */
+        /* Säkerställ att texten är centrerad vertikalt */
         .search-mode-container {
             display: flex;
             align-items: center;
@@ -499,8 +500,6 @@
             text-align: center;
             border-radius: 5px;
         }
-
-
     </style>
 </head>
 
