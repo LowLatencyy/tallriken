@@ -386,16 +386,29 @@
             /* Set to desired width */
         }
 
-        /* Adjust the slider handle to be circular and center it */
         .switch.large .slider:before {
-            width: 34px;
-            /* Match the height to make it circular */
-            height: 34px;
+            content: "";
+            position: absolute;
+            height: 26px;
+            /* Height of the circle */
+            width: 26px;
+            /* Width of the circle, make it equal to height for a perfect circle */
             left: 2px;
-            /* Adjust if needed to center */
-            bottom: 2px;
-            /* Adjust if needed to center */
+            /* Adjust this value so the circle starts at the very left edge */
+            bottom: 4px;
+            /* Center it vertically by adjusting this value */
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
         }
+
+        input:checked+.switch.large .slider:before {
+            -webkit-transform: translateX(calc(100% - 28px));
+            /* Adjust this value so the circle reaches the very right edge */
+            -ms-transform: translateX(calc(100% - 28px));
+            transform: translateX(calc(100% - 28px));
+        }
+
 
         /* Style the text labels for the main slider */
         .search-mode-label {
@@ -429,7 +442,7 @@
         }
 
         input:not(:checked)+.slider.large {
-            background-color: #f44336;
+            background-color: #0075fe;
             /* Röd färg när slidern är till vänster */
         }
 
