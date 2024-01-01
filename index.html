@@ -380,12 +380,15 @@
             border-radius: 50%;
         }
 
-        /* Anpassning för den stora slidern */
         .switch.large {
-            width: 60px;
-            /* Bredden på omkopplaren */
+            position: relative;
+            display: inline-block;
+            width: 150px;
+            /* Bredden på hela omkopplaren */
             height: 34px;
             /* Höjden på omkopplaren */
+            margin: 0 10px;
+            /* Mellanrum runt omkopplaren */
         }
 
         .switch.large .slider {
@@ -407,18 +410,18 @@
             position: absolute;
             content: "";
             height: 26px;
-            /* Höjden på den rörliga delen */
+            /* Höjden på knappen */
             width: 26px;
-            /* Bredden på den rörliga delen, gör den rund */
+            /* Bredden på knappen, gör den lika stor som höjden för en perfekt cirkel */
             left: 4px;
-            /* Position från vänster */
+            /* Startposition från vänster */
             bottom: 4px;
-            /* Centrera vertikalt */
+            /* Centrera knappen vertikalt */
             background-color: white;
-            /* Färg på "knappen" */
+            /* Färg på knappen */
             transition: .4s;
             border-radius: 50%;
-            /* Gör den helt rund */
+            /* Gör den cirkulär */
         }
 
         input:checked+.switch.large .slider {
@@ -427,11 +430,12 @@
         }
 
         input:checked+.switch.large .slider:before {
-            -webkit-transform: translateX(26px);
-            -ms-transform: translateX(26px);
-            transform: translateX(calc(100% - 30px));
-            /* Flytta knappen till höger kant */
+            -webkit-transform: translateX(124px);
+            -ms-transform: translateX(124px);
+            transform: translateX(124px);
+            /* Justera detta värde för att knappen ska nå rätt kant */
         }
+
 
         /* Stiljusteringar för textetiketterna för slidern */
         .search-mode-label {
