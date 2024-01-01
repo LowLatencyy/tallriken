@@ -382,47 +382,66 @@
 
         /* Adjust the main slider */
         .switch.large {
-            width: 100%;
-            /* Set to desired width */
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            /* Width of the entire switch */
+            height: 34px;
+            /* Height of the switch */
+        }
+
+        .switch.large .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            /* Background color when switch is off */
+            transition: .4s;
+            border-radius: 34px;
+            /* Rounded corners for the switch */
         }
 
         .switch.large .slider:before {
-            content: "";
             position: absolute;
+            content: "";
             height: 26px;
-            /* Height of the circle */
+            /* Height of the slider handle */
             width: 26px;
-            /* Width of the circle, make it equal to height for a perfect circle */
-            left: 2px;
-            /* Adjust this value so the circle starts at the very left edge */
+            /* Width of the slider handle, should be equal to the height for a circle */
+            left: 4px;
+            /* Initial position from the left */
             bottom: 4px;
-            /* Center it vertically by adjusting this value */
+            /* Center the handle vertically */
             background-color: white;
-            -webkit-transition: .4s;
+            /* Handle color */
             transition: .4s;
+            border-radius: 50%;
+            /* Make it circular */
+        }
+
+        input:checked+.switch.large .slider {
+            background-color: #4caf50;
+            /* Color when switch is on */
         }
 
         input:checked+.switch.large .slider:before {
-            -webkit-transform: translateX(calc(100% - 22px));
-            /* Adjust this value so the circle reaches the very right edge */
-            -ms-transform: translateX(calc(100% - 22px));
-            transform: translateX(calc(100% - 22px));
+            transform: translateX(90px);
+            /* Move handle to the right; adjust as necessary */
         }
 
-
-        /* Style the text labels for the main slider */
+        /* Style adjustments for the text labels for the switch */
         .search-mode-label {
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 5px 10px;
-            /* Adjust padding as needed */
-            margin: 0 5px;
-            /* Adjust margin as needed */
-            text-align: center;
-            border-radius: 5px;
             font-family: 'Indie Flower', cursive;
-            /* Match the font style */
-            display: inline-block;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            text-align: center;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin: 0 5px;
+            /* Space around labels */
             flex: none;
             /* Do not stretch in flex container */
         }
@@ -489,7 +508,7 @@
         }
 
         .switch.large {
-            width: 120px;
+            width: 150px;
             /* Bredd på den stora slidern */
         }
 
