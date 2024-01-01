@@ -380,7 +380,41 @@
             border-radius: 50%;
         }
 
-        /* Lägg till de nya stilarna precis här */
+        /* Adjust the main slider */
+        .switch.large {
+            width: 100%;
+            /* Set to desired width */
+        }
+
+        /* Adjust the slider handle to be circular and center it */
+        .switch.large .slider:before {
+            width: 34px;
+            /* Match the height to make it circular */
+            height: 34px;
+            left: 2px;
+            /* Adjust if needed to center */
+            bottom: 2px;
+            /* Adjust if needed to center */
+        }
+
+        /* Style the text labels for the main slider */
+        .search-mode-label {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            /* Adjust padding as needed */
+            margin: 0 5px;
+            /* Adjust margin as needed */
+            text-align: center;
+            border-radius: 5px;
+            font-family: 'Indie Flower', cursive;
+            /* Match the font style */
+            display: inline-block;
+            flex: none;
+            /* Do not stretch in flex container */
+        }
+
+        /* Ensure the text is centered vertically */
         .search-mode-container {
             display: flex;
             align-items: center;
@@ -388,25 +422,6 @@
             padding: 10px 0;
         }
 
-        .switch.large {
-            width: 120px;
-            /* Bredd på den stora slidern */
-        }
-
-        .search-mode-label {
-            flex: 1;
-            text-align: center;
-        }
-
-        .switch.large .slider {
-            background-color: #c2c2c2;
-            /* Standard bakgrundsfärg för slider */
-        }
-
-        .switch.large .slider:before {
-            width: 58px;
-            /* Gör knappen bredare så den kan nå kanterna */
-        }
 
         input:checked+.slider.large {
             background-color: #4caf50;
