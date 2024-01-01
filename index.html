@@ -596,6 +596,12 @@
 
 
         function addTagFromButton() {
+            // Kontrollera om sökningen är inställd på maträtter, förhindra att lägga till taggar
+            if (searchForDishes) {
+                console.log("Lägg till knappen är inaktiv när sökning på maträtter är aktiverad");
+                return; // Avslutar funktionen här
+            }
+
             const inputField = document.getElementById('searchInput');
             const input = inputField.value.trim().toLowerCase();
 
