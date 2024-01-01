@@ -399,10 +399,10 @@
             right: 0;
             bottom: 0;
             background-color: #ccc;
-            /* Background color when switch is off */
+            /* Bakgrundsfärg när slidern är av */
             transition: .4s;
             border-radius: 34px;
-            /* Rounded corners for the switch */
+            /* Rundade hörn på slidern */
         }
 
         /* Stil för "knappen" på slidern */
@@ -412,9 +412,9 @@
             height: 26px;
             /* Höjden på knappen */
             width: 26px;
-            /* Bredden på knappen, gör den lika stor som höjden för en perfekt cirkel */
+            /* Bredden på knappen */
             left: 4px;
-            /* Startposition från vänster */
+            /* Position från vänster */
             bottom: 4px;
             /* Centrera knappen vertikalt */
             background-color: white;
@@ -426,14 +426,16 @@
 
         input:checked+.switch.large .slider {
             background-color: #4caf50;
-            /* Color when switch is on */
+            /* Färg när switch är på */
         }
 
         input:checked+.switch.large .slider:before {
-            -webkit-transform: translateX(184px);
-            -ms-transform: translateX(184px);
-            transform: translateX(184px);
-            /* Justera detta värde för att knappen ska nå rätt kant */
+            -webkit-transform: translateX(calc(150px - 26px - 4px));
+            /* Beräkna rätt flytt för knappen */
+            -ms-transform: translateX(calc(150px - 26px - 4px));
+            /* Beräkna rätt flytt för knappen */
+            transform: translateX(calc(150px - 26px - 4px));
+            /* Beräkna rätt flytt för knappen */
         }
 
 
