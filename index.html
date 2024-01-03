@@ -580,31 +580,40 @@
 
 
         async function loadData() {
-            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
-            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
-            const range = 'Blad1!A1:J'; // Include columns I and J
-            const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag'; // Använd din faktiska API-nyckel
+            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM'; // Använd ditt faktiska kalkylboks-ID
+            const dataRange = 'Blad1!A2:J'; // Ändra så att detta matchar din huvuddata
+            const synonymRange = 'Ingredienser/primär!A2:C'; // Nytt blad och kolumn för synonymer och primära ingredienser
+            const dataUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${dataRange}?key=${apiKey}`;
+            const synonymUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${synonymRange}?key=${apiKey}`;
 
             try {
-                const response = await fetch(url);
-                const data = await response.json();
-                allData = data.values.slice(1); // Ignore the header row
+                // Ladda den huvudsakliga datan som innan
+                const dataResponse = await fetch(dataUrl);
+                const data = await dataResponse.json();
+                allData = data.values; // Anta att detta inkluderar alla dina receptdata
+                console.log('Main data loaded:', allData);
 
-                // Create a synonym mapping
-                ingredientSynonyms = {}; // Reset the mapping object
-                data.values.forEach((row, index) => {
-                    if (index === 0) return; // Skip header row
-                    const ingredient = row[8]?.toLowerCase().trim(); // Column I
-                    const synonyms = row[9] ? row[9].toLowerCase().split(',').map(s => s.trim()) : []; // Column J
-                    synonyms.forEach(syn => {
-                        ingredientSynonyms[syn] = ingredient;
-                    });
+                // Ladda synonymdata
+                const synonymResponse = await fetch(synonymUrl);
+                const synonymData = await synonymResponse.json();
+                ingredientSynonyms = {}; // Återställ mappningsobjektet
+                synonymData.values.forEach(row => {
+                    const ingredient = row[0]?.toLowerCase().trim(); // Primär ingrediens
+                    const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Synonymer
+                    if (row[2]?.toLowerCase() === 'ja') {
+                        // Endast lägg till om det är en primär ingrediens
+                        synonyms.forEach(synonym => {
+                            ingredientSynonyms[synonym] = ingredient;
+                        });
+                    }
                 });
                 console.log('Synonyms loaded:', ingredientSynonyms);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
+
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
