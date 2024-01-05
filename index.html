@@ -623,14 +623,15 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm); // Detta loggar ut den term användaren söker på
 
-
+            // Lägg till dessa för att se laddade data
+            console.log('Current primary ingredients:', primaryIngredients);
+            console.log('Current non-primary synonyms:', nonPrimarySynonyms);
 
             // Hitta alla matchande primära ingredienser och icke-primära synonymer
             let searchTerms = [];
             if (primaryIngredients[searchTerm]) {
                 searchTerms = primaryIngredients[searchTerm];
                 console.log('Matched primary ingredient with synonyms:', searchTerms); // Logga de synonymerna som matchas med en primär ingrediens
-
             } else {
                 for (let [key, value] of Object.entries(nonPrimarySynonyms)) {
                     if (value.includes(searchTerm)) {
@@ -640,6 +641,9 @@
                     }
                 }
             }
+
+            // Logga söktermer som kommer att användas för filtrering
+            console.log('Search terms to be used for filtering:', searchTerms);
 
             // Omvandla valda taggar till deras primära ingredienser
             selectedTags = selectedTags.map(tag => {
@@ -689,6 +693,7 @@
 
             displayData(filteredData);
         }
+
 
 
         function addTagFromButton() {
