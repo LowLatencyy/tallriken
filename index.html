@@ -610,8 +610,8 @@
                         nonPrimarySynonyms[ingredient] = synonyms;
                     }
                 });
-                console.log('Primary ingredients loaded:', primaryIngredients);
-                console.log('Non-primary synonyms loaded:', nonPrimarySynonyms);
+                console.log('Primary ingredients loaded:', primaryIngredients); // Detta loggar ut dina primära ingredienser
+                console.log('Non-primary synonyms loaded:', nonPrimarySynonyms); // Detta loggar ut dina icke-primära synonymer
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -621,15 +621,21 @@
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            console.log('Search term:', searchTerm); // Detta loggar ut den term användaren söker på
+
+
 
             // Hitta alla matchande primära ingredienser och icke-primära synonymer
             let searchTerms = [];
             if (primaryIngredients[searchTerm]) {
                 searchTerms = primaryIngredients[searchTerm];
+                console.log('Matched primary ingredient with synonyms:', searchTerms); // Logga de synonymerna som matchas med en primär ingrediens
+
             } else {
                 for (let [key, value] of Object.entries(nonPrimarySynonyms)) {
                     if (value.includes(searchTerm)) {
                         searchTerms.push(key);
+                        console.log('Matched non-primary synonym:', key); // Logga icke-primära synonymen som matchas
                         break;
                     }
                 }
@@ -679,6 +685,7 @@
                 filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
             }
 
+            console.log('Filtered data:', filteredData); // Denna rad loggar den slutliga filtrerade datan
 
             displayData(filteredData);
         }
