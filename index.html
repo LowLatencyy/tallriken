@@ -621,22 +621,22 @@
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            console.log('Search term:', searchTerm); // Detta loggar ut den term användaren söker på
+            console.log('Search term:', searchTerm); // Loggar söktermen användaren har skrivit in
 
-            // Lägg till dessa för att se laddade data
+            // Här loggar vi laddade primära ingredienser och icke-primära synonymer för att säkerställa att de är korrekta
             console.log('Current primary ingredients:', primaryIngredients);
             console.log('Current non-primary synonyms:', nonPrimarySynonyms);
 
-            // Hitta alla matchande primära ingredienser och icke-primära synonymer
             let searchTerms = [];
             if (primaryIngredients[searchTerm]) {
-                searchTerms = primaryIngredients[searchTerm];
-                console.log('Matched primary ingredient with synonyms:', searchTerms); // Logga de synonymerna som matchas med en primär ingrediens
+                // Lägg till både den primära ingrediensen och dess synonymer i searchTerms
+                searchTerms = [searchTerm, ...primaryIngredients[searchTerm]];
+                console.log('Matched primary ingredient with synonyms:', searchTerms);
             } else {
                 for (let [key, value] of Object.entries(nonPrimarySynonyms)) {
                     if (value.includes(searchTerm)) {
                         searchTerms.push(key);
-                        console.log('Matched non-primary synonym:', key); // Logga icke-primära synonymen som matchas
+                        console.log('Matched non-primary synonym:', key);
                         break;
                     }
                 }
