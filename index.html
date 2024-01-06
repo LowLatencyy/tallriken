@@ -619,53 +619,26 @@
 
 
 
-        function performSearch() {
+        async function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
 
             let searchTerms = [];
-            let matchedPrimary = false;
 
-            // Kontrollera först om söktermen är en synonym för en primär ingrediens
-            for (let [primary, synonyms] of Object.entries(primaryIngredients)) {
-                if (primary === searchTerm || synonyms.includes(searchTerm)) {
-                    searchTerms = [primary, ...synonyms];
-                    matchedPrimary = true;
-                    console.log('Matched primary ingredient with synonyms:', searchTerms);
-                    break; // Bryt loopen om vi hittar en matchning
+            // Loopa igenom synonymer för att hitta matchningar med söktermen
+            for (let [input, synonyms] of Object.entries(ingredientSynonyms)) {
+                // Kolla om söktermen är i någon av synonymerna
+                if (synonyms.includes(searchTerm)) {
+                    searchTerms = synonyms;
+                    console.log('Matched with synonyms:', searchTerms);
+                    break;
                 }
             }
 
-            // Om söktermen inte är en synonym för en primär ingrediens, kontrollera icke-primära synonymer
-            if (!matchedPrimary) {
-                for (let [key, synonyms] of Object.entries(nonPrimarySynonyms)) {
-                    if (synonyms.includes(searchTerm)) {
-                        searchTerms = [key]; // Använd bara synonymen för sökningen
-                        console.log('Matched non-primary synonym:', key);
-                        break;
-                    }
-                }
-            }
-
-            // Omvandla valda taggar till deras primära ingredienser
-            selectedTags = selectedTags.map(tag => {
-                if (primaryIngredients[tag]) {
-                    return tag;
-                } else {
-                    for (let [key, synonyms] of Object.entries(nonPrimarySynonyms)) {
-                        if (synonyms.includes(tag)) {
-                            return key;
-                        }
-                    }
-                    return tag; // Om ingen synonym matchades, returnera den ursprungliga taggen
-                }
-            });
-
-            // Filtrera all data baserat på söktermer och valda taggar
             let filteredData = allData.filter(row => {
                 const ingredients = row[1]?.toLowerCase().split(',').map(ing => ing.trim());
-                return searchTerms.some(term => ingredients.includes(term)) &&
-                    selectedTags.every(tag => ingredients.includes(tag));
+                // Kolla om någon av söktermerna finns i ingredienslistan
+                return searchTerms.some(term => ingredients.includes(term));
             });
 
             // Filtrera för Veg och Svenska om aktiverat
@@ -679,6 +652,22 @@
             console.log('Filtered data:', filteredData);
             displayData(filteredData);
         }
+
+        // En funktion för att ladda synonymer från Google Sheets
+        async function loadSynonyms() {
+            // Här antar jag att du har ett separat anrop för att hämta synonymer
+            // Du måste ersätta 'synonymUrl' med den faktiska URL:en för din synonym data
+            const synonymResponse = await fetch(synonymUrl);
+            const synonymData = await synonymResponse.json();
+            ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
+            synonymData.values.forEach(row => {
+                const searchableTerm = row[0]?.toLowerCase().trim();
+                const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim());
+                ingredientSynonyms[searchableTerm] = synonyms;
+            });
+            console.log('Synonyms loaded:', ingredientSynonyms);
+        }
+
 
 
 
