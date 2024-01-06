@@ -621,17 +621,14 @@
 
         function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            console.log('Search term:', searchTerm); // Loggar söktermen användaren har skrivit in
-
-            console.log('Current primary ingredients:', primaryIngredients);
-            console.log('Current non-primary synonyms:', nonPrimarySynonyms);
+            console.log('Search term:', searchTerm);
 
             let searchTerms = [];
             let matchedPrimary = false;
 
             // Kontrollera först om söktermen är en synonym för en primär ingrediens
             for (let [primary, synonyms] of Object.entries(primaryIngredients)) {
-                if (synonyms.includes(searchTerm)) {
+                if (primary === searchTerm || synonyms.includes(searchTerm)) {
                     searchTerms = [primary, ...synonyms];
                     matchedPrimary = true;
                     console.log('Matched primary ingredient with synonyms:', searchTerms);
@@ -643,7 +640,7 @@
             if (!matchedPrimary) {
                 for (let [key, synonyms] of Object.entries(nonPrimarySynonyms)) {
                     if (synonyms.includes(searchTerm)) {
-                        searchTerms.push(key);
+                        searchTerms = [key]; // Använd bara synonymen för sökningen
                         console.log('Matched non-primary synonym:', key);
                         break;
                     }
@@ -660,31 +657,15 @@
                             return key;
                         }
                     }
-                    return tag;
+                    return tag; // Om ingen synonym matchades, returnera den ursprungliga taggen
                 }
             });
 
-            // Här behåller vi din ursprungliga söklogik och lägger till den nya synonymhanteringen
+            // Filtrera all data baserat på söktermer och valda taggar
             let filteredData = allData.filter(row => {
-                // Sök på maträttens namn om huvudslidern är till höger
-                if (searchForDishes) {
-                    return row[0]?.toLowerCase().includes(searchTerm);
-                } else {
-                    // Sök på ingredienser om huvudslidern är till vänster
-                    const ingredients = row[1]?.toLowerCase().split(',').map(ing => ing.trim());
-                    if (selectedTags.length > 0) {
-                        // Kontrollera att alla valda primära ingredienser eller synonymer finns i receptets ingredienslista
-                        return selectedTags.every(tag =>
-                            ingredients.includes(tag.toLowerCase()) ||
-                            searchTerms.includes(tag.toLowerCase())
-                        );
-                    } else {
-                        // Om inga taggar är valda, använd söktermen för att jämföra med ingredienslistan
-                        return ingredients.some(ing =>
-                            ing === searchTerm || searchTerms.includes(ing)
-                        );
-                    }
-                }
+                const ingredients = row[1]?.toLowerCase().split(',').map(ing => ing.trim());
+                return searchTerms.some(term => ingredients.includes(term)) &&
+                    selectedTags.every(tag => ingredients.includes(tag));
             });
 
             // Filtrera för Veg och Svenska om aktiverat
@@ -695,8 +676,7 @@
                 filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
             }
 
-            console.log('Filtered data:', filteredData); // Loggar den filtrerade datan
-
+            console.log('Filtered data:', filteredData);
             displayData(filteredData);
         }
 
