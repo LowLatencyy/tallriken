@@ -643,43 +643,33 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
 
-            let searchTerms = [];
-
-            // Kontrollera om söktermen direkt matchar någon nyckel i ingredientSynonyms
+            // Kontrollera om söktermen finns som en nyckel i ingredientSynonyms
             if (ingredientSynonyms.hasOwnProperty(searchTerm)) {
-                searchTerms = ingredientSynonyms[searchTerm];
-                console.log('Matched direct synonym:', searchTerms);
-            } else {
-                // Om inte, leta efter söktermen i alla synonymvärden
-                for (let [key, synonyms] of Object.entries(ingredientSynonyms)) {
-                    if (synonyms.includes(searchTerm)) {
-                        searchTerms.push(key); // Lägg till den primära ingrediensen som en sökterm
-                        console.log('Matched synonym in list:', key);
-                    }
+                // Använd både den ursprungliga söktermen och dess synonymer för att söka
+                let searchTerms = [searchTerm, ...ingredientSynonyms[searchTerm]];
+                console.log('Searching with:', searchTerms);
+
+                let filteredData = allData.filter(row => {
+                    const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim()); // Observera mellanslaget efter kommatecknet
+                    // Kolla om någon av söktermerna finns i ingredienslistan
+                    return searchTerms.some(term => ingredients.includes(term));
+                });
+
+                // Filtrera för Veg och Svenska om aktiverat
+                if (isVegFilterActive) {
+                    filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
-            }
+                if (isLangFilterActive) {
+                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
+                }
 
-            // Om inga synonymer hittades, använd söktermen som den är
-            if (searchTerms.length === 0) {
-                searchTerms = [searchTerm];
+                console.log('Filtered data:', filteredData);
+                displayData(filteredData);
+            } else {
+                console.log('Söktermen är inte en godkänd ingrediens.');
+                // Rensa tidigare sökresultat eller visa meddelande till användaren
+                displayData([]);
             }
-
-            let filteredData = allData.filter(row => {
-                const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim()); // Observera mellanslaget efter kommatecknet
-                // Kolla om någon av söktermerna finns i ingredienslistan
-                return searchTerms.some(term => ingredients.includes(term));
-            });
-
-            // Filtrera för Veg och Svenska om aktiverat
-            if (isVegFilterActive) {
-                filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
-            }
-            if (isLangFilterActive) {
-                filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
-            }
-
-            console.log('Filtered data:', filteredData);
-            displayData(filteredData);
         }
 
 
