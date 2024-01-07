@@ -641,18 +641,24 @@
 
             let searchTerms = [];
 
-            // Loopa igenom synonymer för att hitta matchningar med söktermen
-            for (let [input, synonyms] of Object.entries(ingredientSynonyms)) {
-                if (synonyms.includes(searchTerm)) {
-                    searchTerms = synonyms;
-                    console.log('Matched with synonyms:', searchTerms);
-                    break;
+            // Kontrollera om söktermen direkt matchar någon nyckel i ingredientSynonyms
+            if (ingredientSynonyms[searchTerm]) {
+                searchTerms = ingredientSynonyms[searchTerm];
+                console.log('Matched direct synonym:', searchTerms);
+            } else {
+                // Om inte, leta efter söktermen i alla synonymvärden
+                for (let [key, synonyms] of Object.entries(ingredientSynonyms)) {
+                    if (synonyms.includes(searchTerm)) {
+                        searchTerms = ingredientSynonyms[key];
+                        console.log('Matched synonym in list:', searchTerms);
+                        break;
+                    }
                 }
             }
 
             // Om inga synonymer hittades, använd söktermen som den är
             if (searchTerms.length === 0) {
-                searchTerms.push(searchTerm);
+                searchTerms = [searchTerm];
             }
 
             let filteredData = allData.filter(row => {
@@ -660,7 +666,6 @@
                 // Kolla om någon av söktermerna finns i ingredienslistan
                 return searchTerms.some(term => ingredients.includes(term));
             });
-
             // Filtrera för Veg och Svenska om aktiverat
             if (isVegFilterActive) {
                 filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
