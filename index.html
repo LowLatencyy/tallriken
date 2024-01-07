@@ -570,6 +570,14 @@
     </div>
 
     <script>
+
+        const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
+        const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
+        const dataRange = 'Blad1!A2:J';
+        const synonymRange = 'Ingredienser!A2:B';
+        const dataUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${dataRange}?key=${apiKey}`;
+        const synonymUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${synonymRange}?key=${apiKey}`;
+
         let allData = [];
         let selectedTags = [];
         let isVegFilterActive = false;
@@ -582,12 +590,6 @@
 
 
         async function loadData() {
-            const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag'; // Använd din faktiska API-nyckel
-            const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM'; // Använd ditt faktiska kalkylboks-ID
-            const dataRange = 'Blad1!A2:J'; // Ändra så att detta matchar din huvuddata
-            const synonymRange = 'Ingredienser!A2:C'; // Nytt blad och kolumn för synonymer och primära ingredienser
-            const dataUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${dataRange}?key=${apiKey}`;
-            const synonymUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${synonymRange}?key=${apiKey}`;
 
             try {
                 // Ladda den huvudsakliga datan som innan
@@ -783,10 +785,11 @@
 
 
         window.onload = async function () {
-            await loadData(); // Först laddar du din huvuddata
-            await loadSynonyms(); // Sedan laddar du dina synonymer
-            // Alla andra funktioner som behöver datan kan nu köras här efter
+            await loadData();
+            await loadSynonyms();
+            // Eventuella ytterligare initialiseringar eller funktioner som ska köras efter att data och synonymer har laddats
         };
+
 
 
         let lastScrollTop = 0;
