@@ -618,20 +618,24 @@
                 console.error('Error fetching data:', error);
             }
         }
-        // En funktion för att ladda synonymer från Google Sheets
         async function loadSynonyms() {
-            // Här antar jag att du har ett separat anrop för att hämta synonymer
-            // Du måste ersätta 'synonymUrl' med den faktiska URL:en för din synonym data
-            const synonymResponse = await fetch(synonymUrl);
-            const synonymData = await synonymResponse.json();
-            ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
-            synonymData.values.forEach(row => {
-                const searchableTerm = row[0]?.toLowerCase().trim();
-                const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim());
-                ingredientSynonyms[searchableTerm] = synonyms;
-            });
-            console.log('Synonyms loaded:', ingredientSynonyms);
+            try {
+                const synonymResponse = await fetch(synonymUrl);
+                const synonymData = await synonymResponse.json();
+                ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
+
+                synonymData.values.forEach(row => {
+                    const ingredient = row[0]?.toLowerCase().trim(); // Ingrediens och felstavningar
+                    const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Synonymer
+                    ingredientSynonyms[ingredient] = synonyms;
+                });
+
+                console.log('Synonyms loaded:', ingredientSynonyms);
+            } catch (error) {
+                console.error('Error loading synonyms:', error);
+            }
         }
+
 
 
 
@@ -642,16 +646,15 @@
             let searchTerms = [];
 
             // Kontrollera om söktermen direkt matchar någon nyckel i ingredientSynonyms
-            if (ingredientSynonyms[searchTerm]) {
+            if (ingredientSynonyms.hasOwnProperty(searchTerm)) {
                 searchTerms = ingredientSynonyms[searchTerm];
                 console.log('Matched direct synonym:', searchTerms);
             } else {
                 // Om inte, leta efter söktermen i alla synonymvärden
                 for (let [key, synonyms] of Object.entries(ingredientSynonyms)) {
                     if (synonyms.includes(searchTerm)) {
-                        searchTerms = ingredientSynonyms[key];
-                        console.log('Matched synonym in list:', searchTerms);
-                        break;
+                        searchTerms.push(key); // Lägg till den primära ingrediensen som en sökterm
+                        console.log('Matched synonym in list:', key);
                     }
                 }
             }
@@ -662,10 +665,11 @@
             }
 
             let filteredData = allData.filter(row => {
-                const ingredients = row[1]?.toLowerCase().split(',').map(ing => ing.trim());
+                const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim()); // Observera mellanslaget efter kommatecknet
                 // Kolla om någon av söktermerna finns i ingredienslistan
                 return searchTerms.some(term => ingredients.includes(term));
             });
+
             // Filtrera för Veg och Svenska om aktiverat
             if (isVegFilterActive) {
                 filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
@@ -677,6 +681,7 @@
             console.log('Filtered data:', filteredData);
             displayData(filteredData);
         }
+
 
 
 
