@@ -643,12 +643,16 @@
 
             // Loopa igenom synonymer för att hitta matchningar med söktermen
             for (let [input, synonyms] of Object.entries(ingredientSynonyms)) {
-                // Kolla om söktermen är i någon av synonymerna
                 if (synonyms.includes(searchTerm)) {
                     searchTerms = synonyms;
                     console.log('Matched with synonyms:', searchTerms);
                     break;
                 }
+            }
+
+            // Om inga synonymer hittades, använd söktermen som den är
+            if (searchTerms.length === 0) {
+                searchTerms.push(searchTerm);
             }
 
             let filteredData = allData.filter(row => {
