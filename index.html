@@ -597,7 +597,7 @@
                 console.log('Main data loaded:', allData);
 
                 // Ladda synonymdata
-                const synonymResponse = await fetch(synonymUrl);
+                const synonymResponse = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${synonymRange}?key=${apiKey}`);
                 const synonymData = await synonymResponse.json();
                 primaryIngredients = {}; // Återställ mappningsobjektet för primära ingredienser
                 nonPrimarySynonyms = {}; // Återställ mappningsobjektet för icke-primära synonymer
@@ -615,6 +615,20 @@
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
+        }
+        // En funktion för att ladda synonymer från Google Sheets
+        async function loadSynonyms() {
+            // Här antar jag att du har ett separat anrop för att hämta synonymer
+            // Du måste ersätta 'synonymUrl' med den faktiska URL:en för din synonym data
+            const synonymResponse = await fetch(synonymUrl);
+            const synonymData = await synonymResponse.json();
+            ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
+            synonymData.values.forEach(row => {
+                const searchableTerm = row[0]?.toLowerCase().trim();
+                const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim());
+                ingredientSynonyms[searchableTerm] = synonyms;
+            });
+            console.log('Synonyms loaded:', ingredientSynonyms);
         }
 
 
@@ -653,20 +667,6 @@
             displayData(filteredData);
         }
 
-        // En funktion för att ladda synonymer från Google Sheets
-        async function loadSynonyms() {
-            // Här antar jag att du har ett separat anrop för att hämta synonymer
-            // Du måste ersätta 'synonymUrl' med den faktiska URL:en för din synonym data
-            const synonymResponse = await fetch(synonymUrl);
-            const synonymData = await synonymResponse.json();
-            ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
-            synonymData.values.forEach(row => {
-                const searchableTerm = row[0]?.toLowerCase().trim();
-                const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim());
-                ingredientSynonyms[searchableTerm] = synonyms;
-            });
-            console.log('Synonyms loaded:', ingredientSynonyms);
-        }
 
 
 
@@ -782,7 +782,12 @@
 
 
 
-        window.onload = loadData;
+        window.onload = async function () {
+            await loadData(); // Först laddar du din huvuddata
+            await loadSynonyms(); // Sedan laddar du dina synonymer
+            // Alla andra funktioner som behöver datan kan nu köras här efter
+        };
+
 
         let lastScrollTop = 0;
         const backgroundContainer = document.querySelector('.background-container');
