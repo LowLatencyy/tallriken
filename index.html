@@ -593,20 +593,20 @@
 
         async function loadData() {
             try {
-                // Ladda den huvudsakliga datan som innan
+                // Load the main data as before
                 const dataResponse = await fetch(dataUrl);
                 const data = await dataResponse.json();
-                allData = data.values; // Anta att detta inkluderar alla dina receptdata
+                allData = data.values; // Assume this includes all your recipe data
                 console.log('Main data loaded:', allData);
 
-                // Ladda synonymdata
+                // Load synonym data
                 const synonymResponse = await fetch(synonymUrl);
                 const synonymData = await synonymResponse.json();
-                primaryIngredients = {}; // Återställ mappningsobjektet för primära ingredienser
-                nonPrimarySynonyms = {}; // Återställ mappningsobjektet för icke-primära synonymer
+                primaryIngredients = {}; // Reset the mapping object for primary ingredients
+                nonPrimarySynonyms = {}; // Reset the mapping object for non-primary synonyms
                 synonymData.values.forEach(row => {
-                    const ingredient = row[0]?.toLowerCase().trim(); // Ingrediens
-                    const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Synonymer
+                    const ingredient = row[0]?.toLowerCase().trim(); // Ingredient
+                    const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Synonyms
                     if (row[2]?.toLowerCase() === 'ja') {
                         primaryIngredients[ingredient] = synonyms;
                     } else {
@@ -616,20 +616,23 @@
                 console.log('Primary ingredients loaded:', primaryIngredients);
                 console.log('Non-primary synonyms loaded:', nonPrimarySynonyms);
 
-                // Ladda data för grupperade ingredienser
+                // Load data for grouped ingredients
                 const groupedIngResponse = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/Ingredienser!A2:C?key=${apiKey}`);
                 const groupedIngData = await groupedIngResponse.json();
                 groupedIngredients = {};
                 groupedIngData.values.forEach(row => {
-                    const searchTerm = row[1]?.toLowerCase().trim();
-                    const ingredients = row[2]?.toLowerCase().split(',').map(ing => ing.trim());
-                    groupedIngredients[searchTerm] = ingredients;
+                    const searchTerm = row[1]?.toLowerCase().trim(); // Search term from column B
+                    const ingredientsGroup = row[2]?.toLowerCase().split(',').map(ing => ing.trim()); // Grouped ingredients from column C
+                    if (ingredientsGroup && ingredientsGroup.length > 0) {
+                        groupedIngredients[searchTerm] = ingredientsGroup;
+                    }
                 });
                 console.log('Grouped ingredients loaded:', groupedIngredients);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         }
+
 
 
         async function loadSynonyms() {
@@ -669,28 +672,26 @@
         }
 
 
-
-
         async function performSearch() {
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
 
             if (searchForDishes) {
-                // Sökning baserad på maträttens namn
+                // Search based on dish name
                 let filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
 
-                // Filtrera för Veg och Svenska om aktiverat
+                // Filter for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
                     filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
                 if (isLangFilterActive) {
-                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
+                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'sv');
                 }
 
                 console.log('Filtered data:', filteredData);
                 displayData(filteredData);
             } else {
-                // För varje vald tagg, hitta matchande ingredienser eller grupperade ingredienser
+                // For each selected tag, find matching individual ingredients or grouped ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
                     if (groupedIngredients[tag]) {
                         return groupedIngredients[tag];
@@ -702,30 +703,22 @@
 
                 let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    // Kolla om ALLA valda taggar finns i ingredienslistan
-                    return searchIngredients.every(ingredient => ingredients.includes(ingredient));
+                    // Check if ANY of the selected tags is in the ingredient list
+                    return searchIngredients.some(ingredient => ingredients.includes(ingredient));
                 });
 
-                // Filtrera för Veg och Svenska om aktiverat
+                // Filter for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
                     filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
                 if (isLangFilterActive) {
-                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
+                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'sv');
                 }
 
                 console.log('Filtered data:', filteredData);
                 displayData(filteredData);
             }
         }
-
-
-
-
-
-
-
-
 
 
         function addTagFromButton() {
