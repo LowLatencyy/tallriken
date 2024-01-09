@@ -625,12 +625,16 @@
                 ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
 
                 synonymData.values.forEach(row => {
-                    const ingredient = row[0]?.toLowerCase().trim(); // Ingrediens och felstavningar
-                    const synonyms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Synonymer
-                    ingredientSynonyms[ingredient] = synonyms;
+                    const ingredients = row[0]?.toLowerCase().trim(); // Huvudingredienserna
+                    const searchTerms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Sökorden
+
+                    // Skapa en omvänd lookup där varje sökterm pekar på huvudingrediensen
+                    searchTerms.forEach(term => {
+                        ingredientSynonyms[term] = ingredients;
+                    });
                 });
 
-                console.log('Synonyms loaded:', ingredientSynonyms);
+                console.log('Synonyms and search terms loaded:', ingredientSynonyms);
             } catch (error) {
                 console.error('Error loading synonyms:', error);
             }
@@ -643,16 +647,15 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
 
-            // Kontrollera om söktermen finns som en nyckel i ingredientSynonyms
-            if (ingredientSynonyms.hasOwnProperty(searchTerm)) {
-                // Använd både den ursprungliga söktermen och dess synonymer för att söka
-                let searchTerms = [searchTerm, ...ingredientSynonyms[searchTerm]];
-                console.log('Searching with:', searchTerms);
+            // Använd söktermen för att hitta huvudingrediensen från den omvända lookupen
+            let ingredient = ingredientSynonyms[searchTerm];
+            console.log('Ingredient to search for:', ingredient);
 
+            // Om en matchande ingrediens hittas, använd den för att filtrera recepten
+            if (ingredient) {
                 let filteredData = allData.filter(row => {
-                    const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim()); // Observera mellanslaget efter kommatecknet
-                    // Kolla om någon av söktermerna finns i ingredienslistan
-                    return searchTerms.some(term => ingredients.includes(term));
+                    const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
+                    return ingredients.includes(ingredient);
                 });
 
                 // Filtrera för Veg och Svenska om aktiverat
@@ -666,7 +669,7 @@
                 console.log('Filtered data:', filteredData);
                 displayData(filteredData);
             } else {
-                console.log('Söktermen är inte en godkänd ingrediens.');
+                console.log('No matching ingredient found for the search term.');
                 // Rensa tidigare sökresultat eller visa meddelande till användaren
                 displayData([]);
             }
