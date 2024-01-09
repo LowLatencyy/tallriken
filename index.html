@@ -622,19 +622,33 @@
             try {
                 const synonymResponse = await fetch(synonymUrl);
                 const synonymData = await synonymResponse.json();
-                ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
 
-                synonymData.values.forEach(row => {
-                    const ingredients = row[0]?.toLowerCase().trim(); // Huvudingredienserna
-                    const searchTerms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Sökorden
+                // Logga ut hela synonymData-objektet för att se vad som faktiskt laddas
+                console.log('Synonym data:', synonymData);
 
-                    // Skapa en omvänd lookup där varje sökterm pekar på huvudingrediensen
-                    searchTerms.forEach(term => {
-                        ingredientSynonyms[term] = ingredients;
+                // Kontrollera om synonymData.values är definierat och är en array
+                if (Array.isArray(synonymData.values)) {
+                    ingredientSynonyms = {}; // Återställ mappningsobjektet för synonymer
+
+                    synonymData.values.forEach(row => {
+                        // Kontrollera att varje rad har två element
+                        if (row.length >= 2) {
+                            const ingredients = row[0]?.toLowerCase().trim(); // Huvudingredienserna
+                            const searchTerms = row[1]?.toLowerCase().split(',').map(s => s.trim()); // Sökorden
+
+                            // Skapa en omvänd lookup där varje sökterm pekar på huvudingrediensen
+                            searchTerms.forEach(term => {
+                                ingredientSynonyms[term] = ingredients;
+                            });
+                        } else {
+                            console.error('Invalid row format:', row);
+                        }
                     });
-                });
 
-                console.log('Synonyms and search terms loaded:', ingredientSynonyms);
+                    console.log('Synonyms and search terms loaded:', ingredientSynonyms);
+                } else {
+                    console.error('synonymData.values is not an array:', synonymData.values);
+                }
             } catch (error) {
                 console.error('Error loading synonyms:', error);
             }
