@@ -658,35 +658,33 @@
 
 
         async function performSearch() {
-            let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
-            console.log('Search term:', searchTerm);
+            // Vi använder inte längre searchTerm direkt eftersom vi kommer att använda selectedTags arrayen
+            // let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
+            // console.log('Search term:', searchTerm);
 
-            // Använd söktermen för att hitta huvudingrediensen från den omvända lookupen
-            let ingredient = ingredientSynonyms[searchTerm];
-            console.log('Ingredient to search for:', ingredient);
+            // Hitta huvudingredienserna för de valda taggarna
+            let searchTerms = selectedTags.map(tag => {
+                return ingredientSynonyms[tag] ? ingredientSynonyms[tag] : tag;
+            });
+            console.log('Ingredients to search for:', searchTerms);
 
-            // Om en matchande ingrediens hittas, använd den för att filtrera recepten
-            if (ingredient) {
-                let filteredData = allData.filter(row => {
-                    const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    return ingredients.includes(ingredient);
-                });
+            // Filtrera data baserat på valda taggar
+            let filteredData = allData.filter(row => {
+                const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
+                // Kolla om ALLA valda taggar finns i ingredienslistan
+                return searchTerms.every(term => ingredients.includes(term));
+            });
 
-                // Filtrera för Veg och Svenska om aktiverat
-                if (isVegFilterActive) {
-                    filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
-                }
-                if (isLangFilterActive) {
-                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
-                }
-
-                console.log('Filtered data:', filteredData);
-                displayData(filteredData);
-            } else {
-                console.log('No matching ingredient found for the search term.');
-                // Rensa tidigare sökresultat eller visa meddelande till användaren
-                displayData([]);
+            // Filtrera för Veg och Svenska om aktiverat
+            if (isVegFilterActive) {
+                filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
             }
+            if (isLangFilterActive) {
+                filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
+            }
+
+            console.log('Filtered data:', filteredData);
+            displayData(filteredData);
         }
 
 
