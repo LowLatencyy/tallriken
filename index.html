@@ -676,23 +676,9 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
 
-            // Initialize an array to hold the applicable grouped ingredients
-            let groupedSearchIngredients = [];
-            // If the searchTerm is a grouped ingredient, use it directly
-            if (groupedIngredients.hasOwnProperty(searchTerm)) {
-                groupedSearchIngredients = groupedIngredients[searchTerm];
-            } else {
-                // If the searchTerm is not the key in groupedIngredients, we check if it's part of the grouped ingredients
-                Object.entries(groupedIngredients).forEach(([key, group]) => {
-                    if (group.includes(searchTerm)) {
-                        groupedSearchIngredients = group;
-                    }
-                });
-            }
-
             if (searchForDishes) {
-                // Search based on dish name with strict matching
-                let filteredData = allData.filter(row => row[0].toLowerCase() === searchTerm);
+                // Search based on dish name
+                let filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
 
                 // Filter for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
@@ -705,45 +691,37 @@
                 console.log('Filtered data:', filteredData);
                 displayData(filteredData);
             } else {
-                // Compile all selected tags and the grouped ingredients for the search term into search ingredients
+                // For each selected tag, find matching individual ingredients or grouped ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
-                    if (groupedIngredients.hasOwnProperty(tag)) {
+                    if (groupedIngredients[tag]) {
                         return groupedIngredients[tag];
                     } else {
-                        let foundGroup = [];
-                        Object.entries(groupedIngredients).forEach(([key, group]) => {
-                            if (group.includes(tag)) {
-                                foundGroup = group;
-                            }
-                        });
-                        return foundGroup.length ? foundGroup : (ingredientSynonyms[tag] || [tag]);
+                        return ingredientSynonyms[tag] || tag;
                     }
                 });
-
                 console.log('Ingredients to search for:', searchIngredients);
 
-                // Filter recipes that contain all the searchIngredients
-                let recipesWithAllIngredients = allData.filter(row => {
+                let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    return searchIngredients.every(ingredient => ingredients.includes(ingredient));
+
+                    // Ensure that ALL selected tags are present in the ingredient list
+                    return selectedTags.every(tag =>
+                        ingredients.some(ingredient => ingredient.includes(tag.toLowerCase()))
+                    );
                 });
 
-                // Apply filters for Vegetarian and Swedish recipes if activated
+                // Filter for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
-                    recipesWithAllIngredients = recipesWithAllIngredients.filter(row => row[6]?.toLowerCase() === 'ja');
+                    filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
                 if (isLangFilterActive) {
-                    recipesWithAllIngredients = recipesWithAllIngredients.filter(row => row[7]?.toLowerCase() === 'ja');
+                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
                 }
 
-                console.log('Filtered data:', recipesWithAllIngredients);
-                displayData(recipesWithAllIngredients);
+                console.log('Filtered data:', filteredData);
+                displayData(filteredData);
             }
         }
-
-
-
-
 
 
 
