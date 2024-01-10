@@ -677,10 +677,10 @@
             console.log('Search term:', searchTerm);
 
             if (searchForDishes) {
-                // Search based on dish name
+                // Sökning baserat på maträttsnamn
                 let filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
 
-                // Filter for Vegetarian and Swedish recipes if activated
+                // Filtrera för vegetariska och svenska recept om aktiverat
                 if (isVegFilterActive) {
                     filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
@@ -691,26 +691,16 @@
                 console.log('Filtered data:', filteredData);
                 displayData(filteredData);
             } else {
-                // For each selected tag, find matching individual ingredients or grouped ingredients
-                let searchIngredients = selectedTags.flatMap(tag => {
-                    if (groupedIngredients[tag]) {
-                        return groupedIngredients[tag];
-                    } else {
-                        return ingredientSynonyms[tag] || tag;
-                    }
-                });
-                console.log('Ingredients to search for:', searchIngredients);
+                // Sökning baserat på ingredienser
+                let ingredientOrSynonym = ingredientSynonyms[searchTerm] || searchTerm;
+                let searchIngredients = groupedIngredients[ingredientOrSynonym] || [ingredientOrSynonym];
 
                 let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-
-                    // Ensure that ALL selected tags are present in the ingredient list
-                    return selectedTags.every(tag =>
-                        ingredients.some(ingredient => ingredient.includes(tag.toLowerCase()))
-                    );
+                    return searchIngredients.some(ingredient => ingredients.includes(ingredient));
                 });
 
-                // Filter for Vegetarian and Swedish recipes if activated
+                // Filtrera för vegetariska och svenska recept om aktiverat
                 if (isVegFilterActive) {
                     filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
@@ -722,6 +712,9 @@
                 displayData(filteredData);
             }
         }
+
+       
+
 
 
 
