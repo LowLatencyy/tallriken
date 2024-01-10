@@ -676,6 +676,20 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
 
+            let groupedSearchIngredients = [];
+            if (groupedIngredients[searchTerm]) {
+                // If the searchTerm is in the groupedIngredients, use those for the search
+                groupedSearchIngredients = groupedIngredients[searchTerm];
+            } else {
+                // If not, we check if the searchTerm is a synonym for a primary ingredient
+                for (let primaryIng in groupedIngredients) {
+                    if (groupedIngredients[primaryIng].includes(searchTerm)) {
+                        groupedSearchIngredients = groupedIngredients[primaryIng];
+                        break;
+                    }
+                }
+            }
+
             if (searchForDishes) {
                 // Search based on dish name with strict matching
                 let filteredData = allData.filter(row => row[0].toLowerCase() === searchTerm);
@@ -693,7 +707,7 @@
             } else {
                 // Compile all selected tags into search ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
-                    return groupedIngredients[tag] || ingredientSynonyms[tag] || [tag];
+                    return groupedSearchIngredients.concat(ingredientSynonyms[tag] || [tag]);
                 });
 
                 console.log('Ingredients to search for:', searchIngredients);
@@ -701,7 +715,7 @@
                 let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
                     // Check if ALL of the searchIngredients are in the ingredient list
-                    return searchIngredients.every(ingredient => ingredients.includes(ingredient.toLowerCase()));
+                    return searchIngredients.every(ingredient => ingredients.includes(ingredient));
                 });
 
                 // Filter for Vegetarian and Swedish recipes if activated
@@ -716,6 +730,7 @@
                 displayData(filteredData);
             }
         }
+
 
 
 
