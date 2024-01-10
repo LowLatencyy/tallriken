@@ -706,9 +706,8 @@
 
                 let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    return searchIngredients.some(searchIngredient =>
-                        searchIngredient.some(ingredient => ingredients.includes(ingredient))
-                    );
+                    // Ensure that ALL selected tags are present in the ingredient list
+                    return searchIngredients.every(ingredient => ingredients.includes(ingredient));
                 });
 
                 // Filter for Vegetarian and Swedish recipes if activated
