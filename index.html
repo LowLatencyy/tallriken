@@ -691,20 +691,17 @@
                 console.log('Filtered data:', filteredData);
                 displayData(filteredData);
             } else {
-                // For each selected tag, find matching individual ingredients or grouped ingredients
+                // Compile all selected tags into search ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
-                    if (groupedIngredients[tag]) {
-                        return groupedIngredients[tag];
-                    } else {
-                        return ingredientSynonyms[tag] || tag;
-                    }
-                }).map(ing => ing.toLowerCase());
+                    return groupedIngredients[tag] || ingredientSynonyms[tag] || [tag];
+                });
+
                 console.log('Ingredients to search for:', searchIngredients);
 
                 let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    // Check if ANY of the searchIngredients strictly match any in the ingredient list
-                    return searchIngredients.some(ingredient => ingredients.includes(ingredient));
+                    // Check if ALL of the searchIngredients are in the ingredient list
+                    return searchIngredients.every(ingredient => ingredients.includes(ingredient.toLowerCase()));
                 });
 
                 // Filter for Vegetarian and Swedish recipes if activated
@@ -719,6 +716,7 @@
                 displayData(filteredData);
             }
         }
+
 
 
 
