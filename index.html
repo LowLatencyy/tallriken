@@ -676,11 +676,14 @@
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
 
-            // Här hanterar vi det nya fallet där kolumn A är tom
-            let groupedSearchIngredients = searchTerm in groupedIngredients ? groupedIngredients[searchTerm] : [];
+            // Initialize an array to hold the applicable grouped ingredients
+            let groupedSearchIngredients = [];
 
-            // Om searchTerm inte är en direkt nyckel i groupedIngredients, leta genom värdena istället
-            if (groupedSearchIngredients.length === 0) {
+            // Check if the search term is a key in the groupedIngredients object
+            if (groupedIngredients.hasOwnProperty(searchTerm)) {
+                groupedSearchIngredients = groupedIngredients[searchTerm];
+            } else {
+                // If the search term is not a key, check if it is part of any grouped ingredients
                 for (let key in groupedIngredients) {
                     if (groupedIngredients[key].includes(searchTerm)) {
                         groupedSearchIngredients = groupedIngredients[key];
@@ -690,30 +693,43 @@
             }
 
             if (searchForDishes) {
-                // Sökning baserat på rättnamn
-                // ...
-                // (Resten av din kod för denna del förblir oförändrad)
+                // Search based on dish name with strict matching
+                let filteredData = allData.filter(row => row[0].toLowerCase() === searchTerm);
+
+                // Filter for Vegetarian and Swedish recipes if activated
+                if (isVegFilterActive) {
+                    filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
+                }
+                if (isLangFilterActive) {
+                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
+                }
+
+                console.log('Filtered data:', filteredData);
+                displayData(filteredData);
             } else {
-                // Sammansättning av alla valda taggar till sökingredienser
+                // Compile all selected tags and the grouped ingredients for the search term into search ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
-                    if (tag in groupedIngredients) {
+                    // If the tag is a primary ingredient, use its grouped ingredients
+                    if (groupedIngredients.hasOwnProperty(tag)) {
                         return groupedIngredients[tag];
                     } else {
+                        // If the tag is not a primary ingredient, find which primary ingredient it belongs to
                         for (let key in groupedIngredients) {
                             if (groupedIngredients[key].includes(tag)) {
                                 return groupedIngredients[key];
                             }
                         }
+                        // If the tag is neither a primary ingredient nor included in grouped ingredients, use it as is
                         return ingredientSynonyms[tag] || [tag];
                     }
                 });
 
                 console.log('Ingredients to search for:', searchIngredients);
 
-                // Filtrering av recept som innehåller alla valda ingredienser
+                // Filter recipes that contain all the searchIngredients
                 let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    // Kontrollera om ALLA sökingredienser finns i ingredienslistan
+                    // Check if ALL of the searchIngredients are in the ingredient list
                     return searchIngredients.every(ingredient => ingredients.includes(ingredient));
                 });
 
