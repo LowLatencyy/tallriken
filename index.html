@@ -677,8 +677,8 @@
             console.log('Search term:', searchTerm);
 
             if (searchForDishes) {
-                // Search based on dish name
-                let filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
+                // Search based on dish name with strict matching
+                let filteredData = allData.filter(row => row[0].toLowerCase() === searchTerm);
 
                 // Filter for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
@@ -698,12 +698,12 @@
                     } else {
                         return ingredientSynonyms[tag] || tag;
                     }
-                });
+                }).map(ing => ing.toLowerCase());
                 console.log('Ingredients to search for:', searchIngredients);
 
                 let filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    // Check if ANY of the selected tags is in the ingredient list
+                    // Check if ANY of the searchIngredients strictly match any in the ingredient list
                     return searchIngredients.some(ingredient => ingredients.includes(ingredient));
                 });
 
@@ -719,6 +719,7 @@
                 displayData(filteredData);
             }
         }
+
 
 
         function addTagFromButton() {
