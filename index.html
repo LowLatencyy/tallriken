@@ -678,18 +678,16 @@
 
             // Initialize an array to hold the applicable grouped ingredients
             let groupedSearchIngredients = [];
-
-            // Check if the search term is a key in the groupedIngredients object
+            // If the searchTerm is a grouped ingredient, use it directly
             if (groupedIngredients.hasOwnProperty(searchTerm)) {
                 groupedSearchIngredients = groupedIngredients[searchTerm];
             } else {
-                // If the search term is not a key, check if it is part of any grouped ingredients
-                for (let key in groupedIngredients) {
-                    if (groupedIngredients[key].includes(searchTerm)) {
-                        groupedSearchIngredients = groupedIngredients[key];
-                        break;
+                // If the searchTerm is not the key in groupedIngredients, we check if it's part of the grouped ingredients
+                Object.entries(groupedIngredients).forEach(([key, group]) => {
+                    if (group.includes(searchTerm)) {
+                        groupedSearchIngredients = group;
                     }
-                }
+                });
             }
 
             if (searchForDishes) {
@@ -709,42 +707,40 @@
             } else {
                 // Compile all selected tags and the grouped ingredients for the search term into search ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
-                    // If the tag is a primary ingredient, use its grouped ingredients
                     if (groupedIngredients.hasOwnProperty(tag)) {
                         return groupedIngredients[tag];
                     } else {
-                        // If the tag is not a primary ingredient, find which primary ingredient it belongs to
-                        for (let key in groupedIngredients) {
-                            if (groupedIngredients[key].includes(tag)) {
-                                return groupedIngredients[key];
+                        let foundGroup = [];
+                        Object.entries(groupedIngredients).forEach(([key, group]) => {
+                            if (group.includes(tag)) {
+                                foundGroup = group;
                             }
-                        }
-                        // If the tag is neither a primary ingredient nor included in grouped ingredients, use it as is
-                        return ingredientSynonyms[tag] || [tag];
+                        });
+                        return foundGroup.length ? foundGroup : (ingredientSynonyms[tag] || [tag]);
                     }
                 });
 
                 console.log('Ingredients to search for:', searchIngredients);
 
                 // Filter recipes that contain all the searchIngredients
-                let filteredData = allData.filter(row => {
+                let recipesWithAllIngredients = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    // Check if ALL of the searchIngredients are in the ingredient list
                     return searchIngredients.every(ingredient => ingredients.includes(ingredient));
                 });
 
-                // Filter for Vegetarian and Swedish recipes if activated
+                // Apply filters for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
-                    filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
+                    recipesWithAllIngredients = recipesWithAllIngredients.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
                 if (isLangFilterActive) {
-                    filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
+                    recipesWithAllIngredients = recipesWithAllIngredients.filter(row => row[7]?.toLowerCase() === 'ja');
                 }
 
-                console.log('Filtered data:', filteredData);
-                displayData(filteredData);
+                console.log('Filtered data:', recipesWithAllIngredients);
+                displayData(recipesWithAllIngredients);
             }
         }
+
 
 
 
