@@ -550,6 +550,11 @@
             /* Detta kan behöva justeras beroende på exakt placering */
             padding: 10px 0;
         }
+
+        #pagination-controls.hidden {
+            display: none;
+            /* Dölj pagineringskontrollerna */
+        }
     </style>
 </head>
 
@@ -965,6 +970,24 @@
     </script>
 
     <script async src="//www.instagram.com/embed.js"></script>
+
+    <!-- Ny JavaScript-kod för att hantera pagineringens synlighet -->
+    <script>
+        // Lägg till en händelsehanterare för scroll-händelsen
+        window.addEventListener('scroll', function () {
+            var paginationControls = document.getElementById('pagination-controls');
+            var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+            var windowHeight = window.innerHeight;
+            var bodyHeight = document.body.offsetHeight;
+
+            // Om användaren har scrollat till botten av sidan, visa pagineringskontrollerna
+            if (windowHeight + scrollPosition >= bodyHeight) {
+                paginationControls.style.display = 'block';
+            } else {
+                paginationControls.style.display = 'none';
+            }
+        });
+    </script>
 
     <div class="footer-banner">
         <p class="copyright">&copy; 2023. All rights reserved.</p>
