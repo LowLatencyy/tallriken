@@ -13,6 +13,8 @@
             height: 100%;
             margin: 0;
             font-family: 'Indie Flower', cursive;
+            padding-bottom: 100px;
+            /* Eller höjden på din footer */
         }
 
         * {
@@ -536,16 +538,17 @@
 
         /* Uppdateringar för #pagination-controls */
         #pagination-controls {
-            position: relative;
-            /* Tar bort fixed position om det finns */
+            position: fixed;
+            /* Istället för absolute */
+            bottom: 100px;
+            /* Höjden på din footer */
+            left: 0;
+            right: 0;
             z-index: 2;
             text-align: center;
-            margin-top: 20px;
-            /* Justera avståndet ovanför pagineringskontrollerna */
             margin-bottom: 20px;
-            /* Justera avståndet under pagineringskontrollerna */
+            /* Detta kan behöva justeras beroende på exakt placering */
             padding: 10px 0;
-            /* Lägg till övriga stilar här */
         }
     </style>
 </head>
@@ -562,12 +565,12 @@
     <div class="search-container">
         <!-- Ny slider här -->
         <div class="search-mode-container">
-            <div class="search-mode-label">Sök på ingredienser</div>
+            <div class="search-mode-label">←Sök på ingredienser</div>
             <label class="switch large">
                 <input type="checkbox" id="searchModeSwitch" onchange="toggleSearchMode()">
                 <span class="slider round large"></span>
             </label>
-            <div class="search-mode-label">Sök på maträtt</div>
+            <div class="search-mode-label">Sök på maträtt→</div>
         </div>
         <!-- Slider-knappar ovanför sökfältet -->
         <div class="slider-button-container">
