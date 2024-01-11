@@ -564,6 +564,8 @@
 
 
     <div id="data-container"></div>
+    <div id="pagination-controls"></div>
+
     <div class="footer-banner">
         <!-- Footer content -->
         <!-- Innehåll för din banner, t.ex. Om Oss och Tipsa Oss länkar -->
@@ -587,7 +589,10 @@
         let primaryIngredients = {};
         let nonPrimarySynonyms = {};
         let groupedIngredients = {};
-
+        // Lägg till dessa nya variabler för sidindelning
+        let currentPage = 1;
+        const resultsPerPage = 21;
+        let totalPages = 0;
 
 
 
@@ -720,8 +725,11 @@
                     filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
                 }
 
-                console.log('Filtered data:', filteredData);
-                displayData(filteredData);
+                // Beräkna totala antalet sidor
+                totalPages = Math.ceil(filteredData.length / resultsPerPage);
+
+                // Visa första sidan av sökresultaten
+                displayData(filteredData, currentPage);
             }
         }
 
@@ -805,9 +813,13 @@
     `).join('');
         }
 
-        function displayData(data) {
+        function displayData(data, page) {
+            var startIndex = (page - 1) * resultsPerPage;
+            var endIndex = startIndex + resultsPerPage;
+            var pageData = data.slice(startIndex, endIndex);
+
             var htmlContent = '';
-            data.forEach((row, index) => {
+            pageData.forEach((row, index) => {
                 htmlContent += `<div class="matratt">`;
                 htmlContent += `<div class="matratt-title"><h2>${row[0]}</h2></div>`; // Maträttens namn
 
@@ -820,13 +832,32 @@
                 htmlContent += row[5]; // Instagram-inlägg
                 htmlContent += '</div>';
             });
+
             document.getElementById('data-container').innerHTML = htmlContent;
 
             // Processa Instagram-inlägg
             if (window.instgrm) {
                 window.instgrm.Embeds.process();
             }
+
+            // Visa pagineringskontroller
+            displayPaginationControls();
         }
+
+        function displayPaginationControls() {
+            var paginationHtml = '';
+            for (let i = 1; i <= totalPages; i++) {
+                paginationHtml += `<button onclick="goToPage(${i})">${i}</button>`;
+            }
+
+            document.getElementById('pagination-controls').innerHTML = paginationHtml;
+        }
+
+        function goToPage(pageNumber) {
+            currentPage = pageNumber;
+            displayData(allData, currentPage); // Antag att 'allData' är din datakälla
+        }
+
 
         function toggleIngredienser(button) {
             var ingrediensLista = button.nextElementSibling;
