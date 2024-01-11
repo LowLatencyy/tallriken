@@ -100,7 +100,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 10%;
+            margin-top: 5%;
             padding-bottom: 20px;
             overflow: auto;
         }
@@ -214,7 +214,9 @@
             color: white;
             text-align: center;
             padding: 10px 20px;
-            position: fixed;
+            position: relative;
+            z-index: 1;
+            /* Lägre än pagineringskontrollerna så att den inte överlappar */
             bottom: 0;
             width: 100%;
             display: flex;
@@ -534,13 +536,16 @@
         }
 
         #pagination-controls {
+            position: relative;
+            z-index: 2;
+            /* Säkerställer att pagineringskontrollerna är över footern */
             text-align: center;
             margin-top: 20px;
-            /* Lägg till margin-top för att skapa utrymme ovanför siffrorna */
+            /* Justera detta för att skapa utrymme ovanför pagineringskontrollerna */
             margin-bottom: 50px;
-            /* Justera detta värde för att undvika överlappning med footern */
+            /* Justera detta för att skapa utrymme under pagineringskontrollerna */
             padding: 10px 0;
-            /* Minskat från 30px för att minska utrymmet */
+            /* ... resten av din styling för pagineringskontrollerna ... */
         }
     </style>
 </head>
