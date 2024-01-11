@@ -696,12 +696,14 @@
                     if (groupedIngredients[tag]) {
                         return groupedIngredients[tag];
                     } else if (ingredientSynonyms[tag]) {
-                        let primaryIngredient = ingredientSynonyms[tag];
-                        return groupedIngredients[primaryIngredient] || [primaryIngredient];
+                        // Omvandlar strängen med flera ingredienser till en array
+                        let ingredientsArray = ingredientSynonyms[tag].split(', ').map(ing => ing.trim());
+                        return ingredientsArray;
                     } else {
                         return [tag];
                     }
                 });
+
                 console.log('Ingredients to search for:', searchIngredients);
 
                 let filteredData = allData.filter(row => {
