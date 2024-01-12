@@ -110,9 +110,11 @@
 
 
         #data-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            /* Tre kolumner på desktop */
+            grid-gap: 20px;
+            /* Avstånd mellan kolumner */
             margin-top: 5%;
             padding-bottom: 20px;
             overflow: auto;
@@ -552,14 +554,10 @@
             /* Dölj pagineringskontrollerna */
         }
 
-        @media (max-width: 480px) {
-            .matratt {
-                flex: 0 0 100%;
-                /* Varje maträtt tar upp hela bredden */
-                max-width: 100%;
-                margin: 10px 0;
-                padding: 10px;
-                /* Justera padding för att förbättra utseendet */
+        @media (max-width: 768px) {
+            #data-container {
+                grid-template-columns: 1fr;
+                /* En kolumn på mobiler */
             }
 
             .search-container {
