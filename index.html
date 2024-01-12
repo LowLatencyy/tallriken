@@ -212,12 +212,25 @@
             }
 
             .search-container {
-                width: 80%;
+                position: fixed;
+                top: 10%;
+                /* Justera positionen så att den inte täcker hela skärmen */
+                left: 50%;
+                transform: translate(-50%, -10%);
+                width: 90%;
                 /* Öka bredden för sökfältet på små skärmar */
             }
 
-            /* Du kan lägga till fler justeringar här */
+            .input-button-container input[type='text'],
+            .input-button-container button {
+                flex-grow: 1;
+                padding: 15px;
+                /* Öka padding för att göra det lättare att interagera med */
+                font-size: larger;
+                /* Öka teckenstorlek för bättre läsbarhet */
+            }
         }
+
 
 
 
