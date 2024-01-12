@@ -102,6 +102,12 @@
             /* Anpassa detta värde så att det passar layouten av din sökcontainer */
         }
 
+        #data-container.search-active {
+            margin-top: 0;
+            /* Anpassa detta värde som behövs */
+        }
+
+
 
         #data-container {
             display: flex;
@@ -942,7 +948,10 @@
 
             window.addEventListener("scroll", function () {
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                const dataContainer = document.getElementById('data-container');
+                var dataContainer = document.getElementById('data-container');
+                var paginationControls = document.getElementById('pagination-controls');
+                var windowHeight = window.innerHeight;
+                var bodyHeight = document.body.offsetHeight;
 
                 // Om det finns sökresultat visas
                 if (dataContainer && dataContainer.innerHTML.trim() !== '') {
@@ -951,11 +960,13 @@
                         searchContainer.classList.add('hidden-search');
                         backgroundContainer.classList.add('blur-background');
                         dataContainer.classList.remove('initial');
+                        dataContainer.classList.add('search-active');
                     } else if (currentScroll <= 0) {
                         // Scroll uppåt till toppen av sökresultatsidan
                         searchContainer.classList.remove('hidden-search');
                         backgroundContainer.classList.remove('blur-background');
                         dataContainer.classList.add('initial');
+                        dataContainer.classList.remove('search-active');
                     }
                 } else {
                     // På startsidan, ingen suddighet eller döljning när man scrollar
@@ -963,6 +974,13 @@
                     backgroundContainer.classList.remove('blur-background');
                 }
                 lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+
+                // Hantera pagineringens synlighet
+                if (windowHeight + currentScroll >= bodyHeight) {
+                    paginationControls.style.display = 'block';
+                } else {
+                    paginationControls.style.display = 'none';
+                }
             }, false);
         });
 
