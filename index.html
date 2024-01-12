@@ -1000,14 +1000,24 @@
 
     <!-- Ny JavaScript-kod för att hantera pagineringens synlighet -->
     <script>
-        // Lägg till en händelsehanterare för scroll-händelsen
         window.addEventListener('scroll', function () {
+            var searchContainer = document.querySelector('.search-container');
+            var dataContainer = document.getElementById('data-container');
             var paginationControls = document.getElementById('pagination-controls');
             var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
             var windowHeight = window.innerHeight;
             var bodyHeight = document.body.offsetHeight;
 
-            // Om användaren har scrollat till botten av sidan, visa pagineringskontrollerna
+            // Anpassa toppmarginalen för #data-container beroende på scroll-position
+            if (scrollPosition === 0) {
+                // Användaren är högst upp på sidan, så vi sätter en toppmarginal
+                dataContainer.style.marginTop = (searchContainer.offsetHeight + 20) + 'px'; // Lägg till 20px extra utrymme
+            } else {
+                // Användaren har scrollat ner, ta bort toppmarginalen
+                dataContainer.style.marginTop = '0px';
+            }
+
+            // Visa eller dölj pagineringskontrollerna beroende på om användaren har scrollat till botten av sidan
             if (windowHeight + scrollPosition >= bodyHeight) {
                 paginationControls.style.display = 'block';
             } else {
@@ -1015,6 +1025,7 @@
             }
         });
     </script>
+
 
     <div class="footer-banner">
         <p class="copyright">&copy; 2023. All rights reserved.</p>
