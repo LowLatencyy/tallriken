@@ -97,6 +97,11 @@
             /* Avrundade hörn till höger (både upp och ner) */
         }
 
+        #data-container.initial {
+            margin-top: 150px;
+            /* Anpassa detta värde så att det passar layouten av din sökcontainer */
+        }
+
 
         #data-container {
             display: flex;
@@ -607,6 +612,7 @@
     </div>
 
 
+    <div id="data-container" class="initial"></div>
 
     <div id="data-container"></div>
     <div id="pagination-controls"></div>
@@ -862,6 +868,8 @@
             var startIndex = (page - 1) * resultsPerPage;
             var endIndex = startIndex + resultsPerPage;
             var pageData = data.slice(startIndex, endIndex);
+            var dataContainer = document.getElementById('data-container');
+            dataContainer.classList.add('initial');
 
             var htmlContent = '';
             pageData.forEach((row, index) => {
@@ -943,10 +951,12 @@
                         // Scroll nedåt genom sökresultaten
                         searchContainer.classList.add('hidden-search');
                         backgroundContainer.classList.add('blur-background');
+                        dataContainer.classList.remove('initial');
                     } else if (currentScroll <= 0) {
                         // Scroll uppåt till toppen av sökresultatsidan
                         searchContainer.classList.remove('hidden-search');
                         backgroundContainer.classList.remove('blur-background');
+                        dataContainer.classList.add('initial');
                     }
                 } else {
                     // På startsidan, ingen suddighet eller döljning när man scrollar
