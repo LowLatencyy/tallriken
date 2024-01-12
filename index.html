@@ -554,24 +554,20 @@
 
         @media (max-width: 480px) {
             .matratt {
-                flex: 0 0 100%;
-                /* Varje maträtt tar upp hela bredden */
+                flex-basis: 100%;
                 max-width: 100%;
                 margin: 10px 0;
-                padding: 10px;
-                /* Justera padding för att förbättra utseendet */
             }
 
             .search-container {
                 width: 90%;
-                /* Öka bredden på sökfältet för mobilen */
                 top: 10%;
+                transform: translate(-50%, -10%);
             }
 
             .input-button-container input[type='text'],
             .input-button-container button {
-                padding: 15px;
-                /* Öka storleken på knappar och input för bättre användbarhet */
+                padding: 12px;
                 font-size: larger;
             }
 
