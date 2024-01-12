@@ -201,24 +201,24 @@
             margin: 5px 0;
         }
 
-        @media (max-width: 768px) {
-            .matratt {
-                flex: 0 0 calc(50% - 20px);
-                max-width: calc(50% - 20px);
-            }
-        }
-
         @media (max-width: 480px) {
             .matratt {
-                flex: 0 0 calc(100% - 20px);
-                max-width: calc(100% - 20px);
+                flex: 0 0 100%;
+                /* Tar upp hela bredden */
+                max-width: 100%;
+                /* Maxbredd sätts till 100% */
+                margin: 10px 0;
+                /* Justera marginalerna */
             }
+
+            .search-container {
+                width: 80%;
+                /* Öka bredden för sökfältet på små skärmar */
+            }
+
+            /* Du kan lägga till fler justeringar här */
         }
 
-        .matratt {
-            width: calc(100% - 20px);
-            /* En kolumn för mycket små skärmar */
-        }
 
 
         /* Lägg till den nya CSS-koden för footer-banner här */
