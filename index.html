@@ -201,38 +201,7 @@
             margin: 5px 0;
         }
 
-        @media (max-width: 480px) {
-            .matratt {
-                flex-basis: 100%;
-                /* Ändra flex-basis till 100% */
-                max-width: 100%;
-                /* Säkerställ att maxbredden är 100% */
-                margin: 10px 0;
-                /* Justera marginaler för att passa mobilskärmen */
-            }
-
-            .search-container {
-                width: 90%;
-                /* Öka bredden på sökfältet */
-                top: 10%;
-                /* Justera positionen så att den inte täcker hela skärmen */
-            }
-
-            .input-button-container input[type='text'],
-            .input-button-container button {
-                padding: 15px;
-                /* Öka padding för större tryckyta */
-                font-size: larger;
-                /* Öka teckenstorlek för bättre läsbarhet */
-            }
-
-            body,
-            html {
-                overflow-x: hidden;
-                /* Förhindra horisontell scrollning */
-            }
-        }
-
+       
 
 
 
@@ -582,6 +551,39 @@
             display: none;
             /* Dölj pagineringskontrollerna */
         }
+
+        @media (max-width: 480px) {
+            .matratt {
+                flex-basis: 100%;
+                /* Ändra flex-basis till 100% */
+                max-width: 100%;
+                /* Säkerställ att maxbredden är 100% */
+                margin: 10px 0;
+                /* Justera marginaler för att passa mobilskärmen */
+            }
+
+            .search-container {
+                width: 90%;
+                /* Öka bredden på sökfältet */
+                top: 10%;
+                /* Justera positionen så att den inte täcker hela skärmen */
+            }
+
+            .input-button-container input[type='text'],
+            .input-button-container button {
+                padding: 15px;
+                /* Öka padding för större tryckyta */
+                font-size: larger;
+                /* Öka teckenstorlek för bättre läsbarhet */
+            }
+
+            body,
+            html {
+                overflow-x: hidden;
+                /* Förhindra horisontell scrollning */
+            }
+        }
+
     </style>
 </head>
 
