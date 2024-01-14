@@ -957,42 +957,57 @@
             window.addEventListener("scroll", function () {
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
                 var dataContainer = document.getElementById('data-container');
-                var searchContainer = document.querySelector('.search-container');
                 var paginationControls = document.getElementById('pagination-controls');
                 var windowHeight = window.innerHeight;
                 var bodyHeight = document.body.offsetHeight;
                 var searchContainerHeight = searchContainer.offsetHeight;
 
-                // Om det finns sökresultat visas
-                if (dataContainer && dataContainer.innerHTML.trim() !== '') {
+                // Hantera visning av sökfält och knappar på mobila enheter
+                if (window.innerWidth <= 480) { // Använd 480px som brytpunkt för mobil enhet
                     if (currentScroll > lastScrollTop) {
-                        // Scroll nedåt genom sökresultaten
-                        searchContainer.classList.add('hidden-search');
-                        backgroundContainer.classList.add('blur-background');
-                        dataContainer.classList.remove('initial');
-                        dataContainer.classList.add('search-active');
-                        // Justera padding-top när användaren scrollar ner
-                        dataContainer.style.paddingTop = '0px';
+                        // Scroll nedåt, dölj sökfältet och knapparna
+                        searchContainer.style.opacity = '0';
+                        searchContainer.style.visibility = 'hidden';
                     } else {
-                        // Scroll uppåt till toppen av sökresultatsidan
-                        searchContainer.classList.remove('hidden-search');
-                        backgroundContainer.classList.remove('blur-background');
-                        dataContainer.classList.add('initial');
-                        dataContainer.classList.remove('search-active');
-                        // Justera padding-top när användaren scrollar uppåt
-                        dataContainer.style.paddingTop = searchContainerHeight + 'px';
+                        // Scroll uppåt, visa sökfältet och knapparna
+                        searchContainer.style.opacity = '1';
+                        searchContainer.style.visibility = 'visible';
                     }
                 } else {
-                    // På startsidan, ingen suddighet eller döljning när man scrollar
-                    searchContainer.classList.remove('hidden-search');
-                    backgroundContainer.classList.remove('blur-background');
-                    // Säkerställ att padding-top är korrekt även på startsidan
-                    if (currentScroll <= searchContainerHeight) {
-                        dataContainer.style.paddingTop = searchContainerHeight + 'px';
+                    // För icke-mobila enheter, hantera sökfält och knappar som vanligt
+                    if (dataContainer && dataContainer.innerHTML.trim() !== '') {
+                        if (currentScroll > lastScrollTop) {
+                            // Scroll nedåt genom sökresultaten
+                            searchContainer.classList.add('hidden-search');
+                            backgroundContainer.classList.add('blur-background');
+                            dataContainer.classList
+                                .remove('initial');
+                            dataContainer.classList.add('search-active');
+                            // Justera padding-top när användaren scrollar ner
+                            dataContainer.style.paddingTop = '0px';
+                        } else {
+                            // Scroll uppåt till toppen av sökresultatsidan
+                            searchContainer.classList.remove('hidden-search');
+                            backgroundContainer.classList.remove('blur-background');
+                            dataContainer.classList.add('initial');
+                            dataContainer.classList.remove('search-active');
+                            // Justera padding-top när användaren scrollar uppåt
+                            dataContainer.style.paddingTop = searchContainerHeight + 'px';
+                        }
                     } else {
-                        dataContainer.style.paddingTop = '0px';
+                        // På startsidan, ingen suddighet eller döljning när man scrollar
+                        searchContainer.classList.remove('hidden-search');
+                        backgroundContainer.classList.remove('blur-background');
+                        // Säkerställ att padding-top är korrekt även på startsidan
+                        if (currentScroll <= searchContainerHeight) {
+                            dataContainer.style.paddingTop = searchContainerHeight + 'px';
+                        } else {
+                            dataContainer.style.paddingTop = '0px';
+                        }
                     }
                 }
+
+
                 lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 
                 // Hantera pagineringens synlighet
@@ -1002,7 +1017,6 @@
                     paginationControls.style.display = 'none';
                 }
             }, false);
-
         });
 
 
