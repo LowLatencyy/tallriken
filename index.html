@@ -599,6 +599,18 @@
             color: #999;
             /* Färgen på din placeholder-text, ändra efter önskemål */
         }
+
+        .add-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .add-button img {
+            width: 25px;
+            /* or any size that fits your design */
+            height: auto;
+        }
     </style>
 </head>
 
@@ -642,7 +654,9 @@
         <!-- Sökfält och knappar -->
         <div class="input-button-container">
             <input type="text" id="searchInput" placeholder="Skriv ingrediens & tryck Enter...">
-            <button onclick="addTagFromButton()">Lägg till</button> <!-- Ny knapp för att lägga till taggar -->
+            <button onclick="addTagFromButton()" class="add-button">
+                <img src="knifeforksign.jpg" alt="Add" />
+            </button> <!-- Ny knapp för att lägga till taggar -->
             <!-- <button onclick="performSearch()">Sök</button> -->
         </div>
 
