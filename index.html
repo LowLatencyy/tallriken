@@ -589,6 +589,28 @@
             /* Ytterligare anpassningar om så önskas */
 
         }
+
+        #autocomplete-results {
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            z-index: 10;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-top: none;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        #autocomplete-results div {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        #autocomplete-results div:hover {
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 
@@ -631,9 +653,9 @@
 
         <!-- Sökfält och knappar -->
         <div class="input-button-container">
-            <input type="text" id="searchInput" placeholder="Skriv ingredienser eller maträtt och tryck Enter...">
+            <input type="text" id="searchInput" placeholder="Skriv ingredienser och tryck Enter...">
             <button onclick="addTagFromButton()">Lägg till</button> <!-- Ny knapp för att lägga till taggar -->
-           <!-- <button onclick="performSearch()">Sök</button> -->
+            <!-- <button onclick="performSearch()">Sök</button> -->
         </div>
 
         <!-- Taggarna här -->
@@ -673,6 +695,11 @@
         const resultsPerPage = 21;
         let totalPages = 0;
 
+        async function getIngredientsForAutocomplete() {
+            const response = await fetch(synonymUrl);
+            const data = await response.json();
+            return data.values.flat(); // Gör om array av arrays till en flat array av ingredienser
+        }
 
 
         async function loadData() {
@@ -954,87 +981,112 @@
         window.onload = async function () {
             await loadData();
             await loadSynonyms();
-            // Eventuella ytterligare initialiseringar eller funktioner som ska köras efter att data och synonymer har laddats
-        };
 
-        window.addEventListener('DOMContentLoaded', function () {
-            const backgroundContainer = document.querySelector('.background-container');
-            const searchContainer = document.querySelector('.search-container');
-            let lastScrollTop = 0;
+            // Hämta ingredienser för autocomplete
+            const ingredients = await getIngredientsForAutocomplete();
 
-            window.addEventListener("scroll", function () {
-                console.log("Scroll event detected!"); // Denna rad ska logga i konsolen vid scrollning
-                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                var dataContainer = document.getElementById('data-container');
-                var paginationControls = document.getElementById('pagination-controls');
-                var windowHeight = window.innerHeight;
-                var bodyHeight = document.body.offsetHeight;
-                var searchContainerHeight = searchContainer.offsetHeight;
+            // Sätt upp autocomplete-logiken här
+            const searchInput = document.getElementById('searchInput');
+            let suggestionsPanel = document.createElement('div');
+            suggestionsPanel.id = 'autocomplete-results';
+            document.body.appendChild(suggestionsPanel); // Lägg till förslagspanelen i body
 
-                // Hantera visning av sökfält och knappar på mobila enheter
-                if (window.innerWidth <= 480) { // Använd 480px som brytpunkt för mobil enhet
-                    if (currentScroll > lastScrollTop) {
-                        // Scroll nedåt, dölj sökfältet och knapparna
-                        searchContainer.style.opacity = '0';
-                        searchContainer.style.visibility = 'hidden';
-                    } else {
-                        // Scroll uppåt, visa sökfältet och knapparna
-                        searchContainer.style.opacity = '1';
-                        searchContainer.style.visibility = 'visible';
-                    }
-                } else {
-                    // För icke-mobila enheter, hantera sökfält och knappar som vanligt
-                    if (dataContainer && dataContainer.innerHTML.trim() !== '') {
+            searchInput.addEventListener('input', function () {
+                const input = searchInput.value.toLowerCase();
+                suggestionsPanel.innerHTML = ''; // Rensa tidigare förslag
+                const suggestions = ingredients.filter(ingredient => ingredient.toLowerCase().includes(input));
+                suggestions.forEach(suggested => {
+                    const div = document.createElement('div');
+                    div.innerHTML = suggested;
+                    div.addEventListener('click', function () {
+                        searchInput.value = suggested; // Sätt värdet av sökfältet till det klickade förslaget
+                        suggestionsPanel.innerHTML = ''; // Rensa förslagen efter klick
+                    });
+                    suggestionsPanel.appendChild(div);
+                });
+                if (input === '') {
+                    suggestionsPanel.innerHTML = ''; // Rensa förslag om inget finns i input
+                }
+            });
+
+            window.addEventListener('DOMContentLoaded', function () {
+                const backgroundContainer = document.querySelector('.background-container');
+                const searchContainer = document.querySelector('.search-container');
+                let lastScrollTop = 0;
+
+                window.addEventListener("scroll", function () {
+                    console.log("Scroll event detected!"); // Denna rad ska logga i konsolen vid scrollning
+                    var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                    var dataContainer = document.getElementById('data-container');
+                    var paginationControls = document.getElementById('pagination-controls');
+                    var windowHeight = window.innerHeight;
+                    var bodyHeight = document.body.offsetHeight;
+                    var searchContainerHeight = searchContainer.offsetHeight;
+
+                    // Hantera visning av sökfält och knappar på mobila enheter
+                    if (window.innerWidth <= 480) { // Använd 480px som brytpunkt för mobil enhet
                         if (currentScroll > lastScrollTop) {
-                            // Scroll nedåt genom sökresultaten
-                            searchContainer.classList.add('hidden-search');
-                            backgroundContainer.classList.add('blur-background');
-                            dataContainer.classList
-                                .remove('initial');
-                            dataContainer.classList.add('search-active');
-                            // Justera padding-top när användaren scrollar ner
-                            dataContainer.style.paddingTop = '0px';
+                            // Scroll nedåt, dölj sökfältet och knapparna
+                            searchContainer.style.opacity = '0';
+                            searchContainer.style.visibility = 'hidden';
                         } else {
-                            // Scroll uppåt till toppen av sökresultatsidan
+                            // Scroll uppåt, visa sökfältet och knapparna
+                            searchContainer.style.opacity = '1';
+                            searchContainer.style.visibility = 'visible';
+                        }
+                    } else {
+                        // För icke-mobila enheter, hantera sökfält och knappar som vanligt
+                        if (dataContainer && dataContainer.innerHTML.trim() !== '') {
+                            if (currentScroll > lastScrollTop) {
+                                // Scroll nedåt genom sökresultaten
+                                searchContainer.classList.add('hidden-search');
+                                backgroundContainer.classList.add('blur-background');
+                                dataContainer.classList
+                                    .remove('initial');
+                                dataContainer.classList.add('search-active');
+                                // Justera padding-top när användaren scrollar ner
+                                dataContainer.style.paddingTop = '0px';
+                            } else {
+                                // Scroll uppåt till toppen av sökresultatsidan
+                                searchContainer.classList.remove('hidden-search');
+                                backgroundContainer.classList.remove('blur-background');
+                                dataContainer.classList.add('initial');
+                                dataContainer.classList.remove('search-active');
+                                // Justera padding-top när användaren scrollar uppåt
+                                dataContainer.style.paddingTop = searchContainerHeight + 'px';
+                            }
+                        } else {
+                            // På startsidan, ingen suddighet eller döljning när man scrollar
                             searchContainer.classList.remove('hidden-search');
                             backgroundContainer.classList.remove('blur-background');
-                            dataContainer.classList.add('initial');
-                            dataContainer.classList.remove('search-active');
-                            // Justera padding-top när användaren scrollar uppåt
-                            dataContainer.style.paddingTop = searchContainerHeight + 'px';
-                        }
-                    } else {
-                        // På startsidan, ingen suddighet eller döljning när man scrollar
-                        searchContainer.classList.remove('hidden-search');
-                        backgroundContainer.classList.remove('blur-background');
-                        // Säkerställ att padding-top är korrekt även på startsidan
-                        if (currentScroll <= searchContainerHeight) {
-                            dataContainer.style.paddingTop = searchContainerHeight + 'px';
-                        } else {
-                            dataContainer.style.paddingTop = '0px';
+                            // Säkerställ att padding-top är korrekt även på startsidan
+                            if (currentScroll <= searchContainerHeight) {
+                                dataContainer.style.paddingTop = searchContainerHeight + 'px';
+                            } else {
+                                dataContainer.style.paddingTop = '0px';
+                            }
                         }
                     }
-                }
 
 
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
 
-                // Hantera pagineringens synlighet
-                if (windowHeight + currentScroll >= bodyHeight) {
-                    paginationControls.style.display = 'block';
-                } else {
-                    paginationControls.style.display = 'none';
-                }
-            }, false);
-        });
+                    // Hantera pagineringens synlighet
+                    if (windowHeight + currentScroll >= bodyHeight) {
+                        paginationControls.style.display = 'block';
+                    } else {
+                        paginationControls.style.display = 'none';
+                    }
+                }, false);
+            });
 
 
 
-        function removeTag(tagToRemove) {
-            selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
-            updateTagContainer(); // Uppdaterar taggkontainern
-            performSearch(); // Utför en ny sökning med uppdaterade taggar
-        }
+            function removeTag(tagToRemove) {
+                selectedTags = selectedTags.filter(tag => tag !== tagToRemove);
+                updateTagContainer(); // Uppdaterar taggkontainern
+                performSearch(); // Utför en ny sökning med uppdaterade taggar
+            }
 
 
 
