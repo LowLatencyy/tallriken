@@ -589,28 +589,6 @@
             /* Ytterligare anpassningar om så önskas */
 
         }
-
-        #autocomplete-results {
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            right: 0;
-            z-index: 10;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            border-top: none;
-            max-height: 150px;
-            overflow-y: auto;
-        }
-
-        #autocomplete-results div {
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        #autocomplete-results div:hover {
-            background-color: #f2f2f2;
-        }
     </style>
 </head>
 
@@ -653,9 +631,9 @@
 
         <!-- Sökfält och knappar -->
         <div class="input-button-container">
-            <input type="text" id="searchInput" placeholder="Skriv ingredienser och tryck Enter...">
+            <input type="text" id="searchInput" placeholder="Skriv ingrediens & tryck Enter...">
             <button onclick="addTagFromButton()">Lägg till</button> <!-- Ny knapp för att lägga till taggar -->
-            <!-- <button onclick="performSearch()">Sök</button> -->
+           <!-- <button onclick="performSearch()">Sök</button> -->
         </div>
 
         <!-- Taggarna här -->
@@ -695,11 +673,6 @@
         const resultsPerPage = 21;
         let totalPages = 0;
 
-        async function getIngredientsForAutocomplete() {
-            const response = await fetch(synonymUrl);
-            const data = await response.json();
-            return data.values.flat(); // Gör om array av arrays till en flat array av ingredienser
-        }
 
 
         async function loadData() {
@@ -981,34 +954,8 @@
         window.onload = async function () {
             await loadData();
             await loadSynonyms();
-
-            // Hämta ingredienser för autocomplete
-            const ingredients = await getIngredientsForAutocomplete();
-
-            // Sätt upp autocomplete-logiken här
-            const searchInput = document.getElementById('searchInput');
-            let suggestionsPanel = document.createElement('div');
-            suggestionsPanel.id = 'autocomplete-results';
-            document.body.appendChild(suggestionsPanel); // Lägg till förslagspanelen i body
-        }
-
-        searchInput.addEventListener('input', function () {
-            const input = searchInput.value.toLowerCase();
-            suggestionsPanel.innerHTML = ''; // Rensa tidigare förslag
-            const suggestions = ingredients.filter(ingredient => ingredient.toLowerCase().includes(input));
-            suggestions.forEach(suggested => {
-                const div = document.createElement('div');
-                div.innerHTML = suggested;
-                div.addEventListener('click', function () {
-                    searchInput.value = suggested; // Sätt värdet av sökfältet till det klickade förslaget
-                    suggestionsPanel.innerHTML = ''; // Rensa förslagen efter klick
-                });
-                suggestionsPanel.appendChild(div);
-            });
-            if (input === '') {
-                suggestionsPanel.innerHTML = ''; // Rensa förslag om inget finns i input
-            }
-        });
+            // Eventuella ytterligare initialiseringar eller funktioner som ska köras efter att data och synonymer har laddats
+        };
 
         window.addEventListener('DOMContentLoaded', function () {
             const backgroundContainer = document.querySelector('.background-container');
