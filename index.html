@@ -589,6 +589,16 @@
             /* Ytterligare anpassningar om så önskas */
 
         }
+
+        /* Stil för placeholder-texten */
+        #searchInput::placeholder {
+            font-family: 'Indie Flower', cursive;
+            /* Eller det typsnitt du använder på resten av din sida */
+            font-size: 14px;
+            /* Eller den storlek du vill ha */
+            color: #999;
+            /* Färgen på din placeholder-text, ändra efter önskemål */
+        }
     </style>
 </head>
 
@@ -633,7 +643,7 @@
         <div class="input-button-container">
             <input type="text" id="searchInput" placeholder="Skriv ingrediens & tryck Enter...">
             <button onclick="addTagFromButton()">Lägg till</button> <!-- Ny knapp för att lägga till taggar -->
-           <!-- <button onclick="performSearch()">Sök</button> -->
+            <!-- <button onclick="performSearch()">Sök</button> -->
         </div>
 
         <!-- Taggarna här -->
