@@ -211,15 +211,13 @@
         .footer-banner {
             background-color: #000;
             color: white;
-            text-align: center;
             padding: 10px 20px;
             position: fixed;
             bottom: 0;
-            top: 10;
             width: 100%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            /* Ta bort justify-content: space-between om du inte vill att innehållet ska fördelas på varje sida */
         }
 
         .footer-banner a {
@@ -234,17 +232,16 @@
 
         .footer-links {
             display: flex;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            margin-left: auto;
+            /* Lägger till detta för att skjuta elementet till högerkanten */
+
         }
 
         /* Stil för copyright-texten */
         .footer-banner p {
             margin: 0;
             color: white;
-            flex-grow: 1;
-            text-align: left;
+            /* Om du tar bort justify-content från .footer-banner, kan du också behöva ta bort flex-grow */
         }
 
         .tag-container {
@@ -653,7 +650,7 @@
 
         <!-- Sökfält och knappar -->
         <div class="input-button-container">
-            <input type="text" id="searchInput" placeholder="Skriv ingrediens & tryck Enter...">
+            <input type="text" id="searchInput" placeholder="Skriv ingrediens o tryck Enter...">
             <button onclick="addTagFromButton()" class="add-button">
                 <img src="images/knifeforksign.jpg
                 " alt="Add" />
