@@ -11,7 +11,8 @@
     <style>
         .nav {
             color: rgb(0, 0, 0);
-            z-index: 9999;  /* Sätt ett högt värde här */
+            z-index: 9999;
+            /* Sätt ett högt värde här */
         }
 
         .nav__trigger-finger {
@@ -121,7 +122,8 @@
             background: rgb(255, 230, 0);
             font-size: 4rem;
             padding: 40px;
-            transform: translateX(100%); /*translate(100vw) rotate (45deg); */
+            transform: translateX(100%);
+            /*translate(100vw) rotate (45deg); */
             transition: 0.3s cubic-bezier(0.75, 0, 0.25, 1);
         }
 
@@ -274,7 +276,8 @@
             margin-top: 5%;
             padding-bottom: 20px;
             overflow: auto;
-            z-index: 1500; /* högre än sökfältets z-index */
+            z-index: 1500;
+            /* högre än sökfältets z-index */
         }
 
         .matratt {
@@ -779,7 +782,7 @@
             <li class="nav__item">
                 <a href="#hoi" class="nav__link">
                     <span class="nav__text">
-                        Work
+                        Startsida
                     </span>
                 </a>
             </li>
@@ -1309,6 +1312,20 @@
             <a href="tipsaoss.html">Tipsa</a>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const triggerInput = document.querySelector('.nav__trigger-input');
+            const searchContainer = document.querySelector('.search-container');
+
+            triggerInput.addEventListener('change', () => {
+                if (triggerInput.checked) {
+                    searchContainer.style.zIndex = '-1';
+                } else {
+                    searchContainer.style.zIndex = '1000';
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
