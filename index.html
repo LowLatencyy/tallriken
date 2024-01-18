@@ -1323,6 +1323,7 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const triggerInput = document.querySelector('.nav__trigger-input');
             const searchContainer = document.querySelector('.search-container');
+            const dataContainer = document.getElementById('data-container');
             let lastScrollTop = 0;
 
             triggerInput.addEventListener('change', () => {
@@ -1334,12 +1335,15 @@
             });
 
             window.addEventListener("scroll", () => {
-                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                if (window.innerWidth <= 480) { // Kontrollera om det är en mobil enhet
+                let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+                // Endast för mobila enheter och när dataContainer inte är tom (sökresultat visas)
+                if (window.innerWidth <= 480 && dataContainer.innerHTML.trim() !== '') {
                     if (currentScroll > lastScrollTop) {
                         // Användare scrollar neråt
                         searchContainer.style.opacity = '0';
                         searchContainer.style.visibility = 'hidden';
+                        searchContainer.style.transition = 'opacity 0.3s, visibility 0.3s ease';
                     } else {
                         // Användare scrollar uppåt
                         searchContainer.style.opacity = '1';
