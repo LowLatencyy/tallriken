@@ -440,15 +440,11 @@
 
         .hidden-search {
             opacity: 0;
-            display: none;
-            transform: translateY(-100%);
-            transition: transform 0.3s, opacity 0.3s, visibility 0.3s;
-            /* Add transition for smooth changes */
-            /*
-            transform: translateY(-100%);
-            transition: transform 0.3s;
-            display: none; */
+            visibility: hidden;
+            transform: translate(-50%, -50%) scale(0);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
         }
+
 
         .blur-background {
             filter: blur(5px);
@@ -1323,9 +1319,9 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const triggerInput = document.querySelector('.nav__trigger-input');
             const searchContainer = document.querySelector('.search-container');
-            const dataContainer = document.getElementById('data-container');
             let lastScrollTop = 0;
 
+            // Behåll din nuvarande logik för att hantera menyns beteende
             triggerInput.addEventListener('change', () => {
                 if (triggerInput.checked) {
                     searchContainer.style.zIndex = '-1';
@@ -1334,25 +1330,23 @@
                 }
             });
 
+            // Lägg till ny logik för att dölja sökfältet vid skrollning på mobila enheter
             window.addEventListener("scroll", () => {
                 let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-                // Endast för mobila enheter och när dataContainer inte är tom (sökresultat visas)
-                if (window.innerWidth <= 480 && dataContainer.innerHTML.trim() !== '') {
+                if (window.innerWidth <= 480) {
                     if (currentScroll > lastScrollTop) {
-                        // Användare scrollar neråt
-                        searchContainer.style.opacity = '0';
-                        searchContainer.style.visibility = 'hidden';
-                        searchContainer.style.transition = 'opacity 0.3s, visibility 0.3s ease';
+                        // Användare scrollar neråt, dölj sökfältet
+                        searchContainer.classList.add('hidden-search');
                     } else {
-                        // Användare scrollar uppåt
-                        searchContainer.style.opacity = '1';
-                        searchContainer.style.visibility = 'visible';
+                        // Användare scrollar uppåt, visa sökfältet
+                        searchContainer.classList.remove('hidden-search');
                     }
-                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdatera sista skrollposition
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
                 }
             }, false);
         });
+
     </script>
 </body>
 
