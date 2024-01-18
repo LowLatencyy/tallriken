@@ -728,8 +728,10 @@
                 width: 90%;
                 top: 10%;
                 transform: translate(-50%, -10%);
-                transition: opacity 0.3s, visibility 0.3s;
-                /* Add smooth transition for opacity and visibility changes */
+                transition: opacity 0.3s, visibility 0.3s ease;
+                /* Gör döljningen mjukare */
+                /* transition: opacity 0.3s, visibility 0.3s;
+                 Add smooth transition for opacity and visibility changes */
                 pointer-events: none;
             }
 
@@ -1321,6 +1323,7 @@
         document.addEventListener('DOMContentLoaded', (event) => {
             const triggerInput = document.querySelector('.nav__trigger-input');
             const searchContainer = document.querySelector('.search-container');
+            let lastScrollTop = 0;
 
             triggerInput.addEventListener('change', () => {
                 if (triggerInput.checked) {
@@ -1329,6 +1332,22 @@
                     searchContainer.style.zIndex = '1000';
                 }
             });
+
+            window.addEventListener("scroll", () => {
+                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (window.innerWidth <= 480) { // Kontrollera om det är en mobil enhet
+                    if (currentScroll > lastScrollTop) {
+                        // Användare scrollar neråt
+                        searchContainer.style.opacity = '0';
+                        searchContainer.style.visibility = 'hidden';
+                    } else {
+                        // Användare scrollar uppåt
+                        searchContainer.style.opacity = '1';
+                        searchContainer.style.visibility = 'visible';
+                    }
+                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdatera sista skrollposition
+                }
+            }, false);
         });
     </script>
 </body>
