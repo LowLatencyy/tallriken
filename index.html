@@ -294,7 +294,7 @@
 
         .matratt iframe {
             width: 100%;
-            height: 750px;
+            height: 600px;
             overflow-y: auto;
             display: block;
             border: none;
@@ -439,11 +439,16 @@
         }
 
         .hidden-search {
-            opacity: 0;
             visibility: hidden;
-            transform: translate(-50%, -50%) scale(0);
-            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            z-index: -1;
+            /* Ensure this is lower than other content you want to show above the search bar */
+            transform: translate(-50%, -50%);
+            /* Removed the scale(0) */
+            transition: opacity 0.3s ease, visibility 0.3s ease, z-index 0s 0.3s;
+            /* Delay the z-index transition to prevent click through */
         }
+
 
 
         .blur-background {
@@ -1321,7 +1326,6 @@
             const searchContainer = document.querySelector('.search-container');
             let lastScrollTop = 0;
 
-            // Behåll din nuvarande logik för att hantera menyns beteende
             triggerInput.addEventListener('change', () => {
                 if (triggerInput.checked) {
                     searchContainer.style.zIndex = '-1';
@@ -1330,22 +1334,26 @@
                 }
             });
 
-            // Lägg till ny logik för att dölja sökfältet vid skrollning på mobila enheter
             window.addEventListener("scroll", () => {
                 let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
+                // Handle hiding and showing the search container on mobile when scrolling
                 if (window.innerWidth <= 480) {
                     if (currentScroll > lastScrollTop) {
-                        // Användare scrollar neråt, dölj sökfältet
+                        // User is scrolling down, hide the search container
                         searchContainer.classList.add('hidden-search');
                     } else {
-                        // Användare scrollar uppåt, visa sökfältet
+                        // User is scrolling up, show the search container
                         searchContainer.classList.remove('hidden-search');
                     }
                     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                } else {
+                    // For non-mobile devices, always show the search container
+                    searchContainer.classList.remove('hidden-search');
                 }
             }, false);
         });
+
 
     </script>
 </body>
