@@ -730,6 +730,11 @@
                 transform: translate(-50%, -10%);
                 transition: opacity 0.3s, visibility 0.3s;
                 /* Add smooth transition for opacity and visibility changes */
+                pointer-events: none;
+            }
+
+            .search-container * {
+                pointer-events: auto;
             }
 
             .input-button-container input[type='text'],
