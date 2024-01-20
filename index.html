@@ -1234,14 +1234,17 @@
 
             window.addEventListener('scroll', function () {
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                console.log("Scroll position: ", currentScroll); // Lägger till detta
 
                 if (window.innerWidth <= 480) { // Endast för mobila enheter
                     if (currentScroll > lastScrollTop && currentScroll > 100) {
                         // Användaren scrollar neråt och är inte nära toppen
                         searchContainer.classList.add('hidden-search');
+                        console.log("Hiding search container");
                     } else if (currentScroll < lastScrollTop && currentScroll <= 100) {
                         // Användaren scrollar uppåt och är nära toppen
                         searchContainer.classList.remove('hidden-search');
+                        console.log("Showing search container");
                     }
                 }
 
