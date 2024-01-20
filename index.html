@@ -213,6 +213,7 @@
             z-index: 1000;
             width: 40%;
             /* Ökar bredden av sökfältet */
+            transition: opacity 0.5s ease; /* Lägg till denna rad */
         }
 
         .slider-button-container {
@@ -1227,15 +1228,15 @@
 
                 if (currentScroll > lastScrollTop) {
                     // Användaren scrollar neråt
-                    searchContainer.classList.add('hidden-search');
-                } else if (currentScroll <= 100) {
-                    // Användaren scrollar uppåt och är nära toppen av sidan
-                    searchContainer.classList.remove('hidden-search');
+                    searchContainer.style.opacity = '0';
+                } else {
+                    // Användaren scrollar uppåt
+                    searchContainer.style.opacity = '1';
                 }
-
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdatera senaste scrollpositionen
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
             }, false);
         });
+
 
 
 
