@@ -441,12 +441,8 @@
         .hidden-search {
             visibility: hidden;
             opacity: 0;
-            z-index: -1;
-            /* Ensure this is lower than other content you want to show above the search bar */
             transform: translate(-50%, -50%);
-            /* Removed the scale(0) */
-            transition: opacity 0.3s ease, visibility 0.3s ease, z-index 0s 0.3s;
-            /* Delay the z-index transition to prevent click through */
+            transition: visibility 0s 0.3s, opacity 0.3s ease;
         }
 
 
@@ -729,11 +725,6 @@
                 width: 90%;
                 top: 10%;
                 transform: translate(-50%, -10%);
-                transition: opacity 0.3s, visibility 0.3s ease;
-                /* Gör döljningen mjukare */
-                /* transition: opacity 0.3s, visibility 0.3s;
-                 Add smooth transition for opacity and visibility changes */
-                pointer-events: none;
             }
 
             .search-container * {
