@@ -1337,19 +1337,27 @@
             window.addEventListener("scroll", () => {
                 let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-                // Handle hiding and showing the search container on mobile when scrolling
-                if (window.innerWidth <= 480) {
-                    if (currentScroll > lastScrollTop) {
-                        // User is scrolling down, hide the search container
-                        searchContainer.classList.add('hidden-search');
-                    } else {
-                        // User is scrolling up, show the search container
-                        searchContainer.classList.remove('hidden-search');
+                if (dataContainer.innerHTML.trim() !== '') {
+                    if (window.innerWidth <= 480) {
+                        const dataContainerRect = dataContainer.getBoundingClientRect();
+                        const isDataContainerInView = (
+                            dataContainerRect.top >= 0 &&
+                            dataContainerRect.left >= 0 &&
+                            dataContainerRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                            dataContainerRect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                        );
+
+                        if (currentScroll > lastScrollTop && isDataContainerInView) {
+                            searchContainer.style.opacity = '0';
+                            searchContainer.style.visibility = 'hidden';
+                            console.log('Hiding search container because user scrolled down');
+                        } else if (currentScroll < lastScrollTop && isDataContainerInView) {
+                            searchContainer.style.opacity = '1';
+                            searchContainer.style.visibility = 'visible';
+                            console.log('Showing search container because user scrolled up');
+                        }
+                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
                     }
-                    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-                } else {
-                    // For non-mobile devices, always show the search container
-                    searchContainer.classList.remove('hidden-search');
                 }
             }, false);
         });
