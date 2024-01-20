@@ -1233,21 +1233,19 @@
 
             window.addEventListener('scroll', function () {
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                console.log("Scroll position: ", currentScroll); // Lägger till detta
 
                 if (currentScroll > lastScrollTop) {
                     // Användaren scrollar neråt
                     searchContainer.classList.add('hidden-search');
-                    console.log("Hiding search container");
-                } else {
-                    // Användaren scrollar uppåt
+                } else if (currentScroll <= 100) {
+                    // Användaren scrollar uppåt och är nära toppen av sidan
                     searchContainer.classList.remove('hidden-search');
-                    console.log("Showing search container");
                 }
 
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdatera senaste scrollpositionen
             }, false);
         });
+
 
 
 
