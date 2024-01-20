@@ -1286,32 +1286,6 @@
                 }
             });
 
-            window.addEventListener("scroll", () => {
-                let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (dataContainer.innerHTML.trim() !== '') {
-                    if (window.innerWidth <= 480) {
-                        const dataContainerRect = dataContainer.getBoundingClientRect();
-                        const isDataContainerInView = (
-                            dataContainerRect.top >= 0 &&
-                            dataContainerRect.left >= 0 &&
-                            dataContainerRect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-                            dataContainerRect.right <= (window.innerWidth || document.documentElement.clientWidth)
-                        );
-
-                        if (currentScroll > lastScrollTop && isDataContainerInView) {
-                            searchContainer.style.opacity = '0';
-                            searchContainer.style.visibility = 'hidden';
-                            console.log('Hiding search container because user scrolled down');
-                        } else if (currentScroll < lastScrollTop && isDataContainerInView) {
-                            searchContainer.style.opacity = '1';
-                            searchContainer.style.visibility = 'visible';
-                            console.log('Showing search container because user scrolled up');
-                        }
-                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-                    }
-                }
-            }, false);
         });
 
 
