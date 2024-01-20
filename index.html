@@ -1228,27 +1228,21 @@
         };
 
         window.addEventListener('DOMContentLoaded', function () {
-            const backgroundContainer = document.querySelector('.background-container');
             const searchContainer = document.querySelector('.search-container');
             let lastScrollTop = 0;
 
             window.addEventListener('scroll', function () {
                 var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-                console.log("Scroll position: ", currentScroll); // Lägger till detta
 
-                if (window.innerWidth <= 480) { // Endast för mobila enheter
-                    if (currentScroll > lastScrollTop && currentScroll > 100) {
-                        // Användaren scrollar neråt och är inte nära toppen
-                        searchContainer.classList.add('hidden-search');
-                        console.log("Hiding search container");
-                    } else if (currentScroll < lastScrollTop && currentScroll <= 100) {
-                        // Användaren scrollar uppåt och är nära toppen
-                        searchContainer.classList.remove('hidden-search');
-                        console.log("Showing search container");
-                    }
+                if (currentScroll > lastScrollTop) {
+                    // Användaren scrollar neråt
+                    searchContainer.classList.add('hidden-search');
+                } else {
+                    // Användaren scrollar uppåt
+                    searchContainer.classList.remove('hidden-search');
                 }
 
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdaterar senaste scrollpositionen
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
             }, false);
         });
 
