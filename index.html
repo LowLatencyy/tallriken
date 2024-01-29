@@ -187,7 +187,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('/tallriken/images/matbakgrund3.png');
+            background-image: url('/tallriken/images/matbakgrund4.png');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -213,7 +213,8 @@
             z-index: 1000;
             width: 40%;
             /* Ökar bredden av sökfältet */
-            transition: opacity 0.5s ease; /* Lägg till denna rad */
+            transition: opacity 0.5s ease;
+            /* Lägg till denna rad */
         }
 
         .slider-button-container {
@@ -1019,12 +1020,14 @@
 
 
         async function performSearch() {
+            currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
+            let filteredData = allData; // Använd allData som utgångspunkt
 
             if (searchForDishes) {
                 // Search based on dish name
-                let filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
+                filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
 
                 // Filter for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
@@ -1035,14 +1038,12 @@
                 }
 
                 console.log('Filtered data:', filteredData);
-                displayData(filteredData);
             } else {
                 // For each selected tag, find matching individual ingredients or grouped ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
                     if (groupedIngredients[tag]) {
                         return groupedIngredients[tag];
                     } else if (ingredientSynonyms[tag]) {
-                        // Omvandlar strängen med flera ingredienser till en array
                         let ingredientsArray = ingredientSynonyms[tag].split(', ').map(ing => ing.trim());
                         return ingredientsArray;
                     } else {
@@ -1052,27 +1053,26 @@
 
                 console.log('Ingredients to search for:', searchIngredients);
 
-                let filteredData = allData.filter(row => {
+                filteredData = allData.filter(row => {
                     const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
-                    // Ensure that ALL selected tags are present in the ingredient list
                     return searchIngredients.every(ingredient => ingredients.includes(ingredient));
                 });
 
-                // Filter for Vegetarian and Swedish recipes if activated
                 if (isVegFilterActive) {
                     filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
                 }
                 if (isLangFilterActive) {
                     filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
                 }
-
-                // Beräkna totala antalet sidor
-                totalPages = Math.ceil(filteredData.length / resultsPerPage);
-
-                // Visa första sidan av sökresultaten
-                displayData(filteredData, currentPage);
             }
+
+            // Beräkna totala antalet sidor
+            totalPages = Math.ceil(filteredData.length / resultsPerPage);
+
+            // Visa första sidan av sökresultaten
+            displayData(filteredData, currentPage);
         }
+
 
         // Fortsätt med resten av din JavaScript-kod här...
 
@@ -1190,7 +1190,7 @@
         function displayPaginationControls() {
             var paginationHtml = '';
             for (let i = 1; i <= totalPages; i++) {
-                paginationHtml += `<button onclick="goToPage(${i})">${i}</button>`;
+                paginationHtml += `<button class="${i === currentPage ? 'current-page' : ''}" onclick="goToPage(${i})">${i}</button>`;
             }
 
             document.getElementById('pagination-controls').innerHTML = paginationHtml;
