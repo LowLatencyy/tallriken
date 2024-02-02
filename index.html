@@ -461,20 +461,21 @@
 
         function goToPage(pageNumber) {
             currentPage = pageNumber;
-            displayData(currentFilteredData, currentPage); // Använd currentFilteredData här
+            displayData(currentFilteredData, currentPage); // Use the currentFilteredData here
 
-            // Använd en timeout för att vänta tills den nya datan renderats
+            // Use a longer timeout to ensure the new data has rendered
             setTimeout(() => {
-                // Kontrollerar om det är mobilvy genom att använda 'window.innerWidth'
+                // Only scroll to top if on mobile view
                 if (window.innerWidth <= 480) {
-                    // Använder 'window.scrollTo' för att flytta användaren till toppen av resultaten
+                    // Scroll to the top of the search results container
                     window.scrollTo({
-                        top: 0, // 0 pixel från toppen av sidan
-                        behavior: 'smooth' // Ger en mjuk scrollning
+                        top: document.querySelector('#data-container').getBoundingClientRect().top + window.scrollY,
+                        behavior: 'smooth'
                     });
                 }
-            }, 100); // Timeout på 100 ms för att ge tid för datan att renderas
+            }, 500); // Increase timeout to 500ms or more if necessary
         }
+
 
 
 
