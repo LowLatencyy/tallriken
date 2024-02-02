@@ -1291,7 +1291,7 @@
 
         window.addEventListener('DOMContentLoaded', function () {
             const searchContainer = document.querySelector('.search-container');
-            const tagContainer = document.querySelector('.tag-container'); // Om du vill hantera taggar på samma sätt
+            const tagContainer = document.querySelector('.tag-container');
             let lastScrollTop = 0;
 
             window.addEventListener('scroll', function () {
@@ -1299,20 +1299,23 @@
 
                 if (currentScroll > lastScrollTop) {
                     // Användaren scrollar neråt
+                    console.log('Scrolling down');
                     searchContainer.style.opacity = '0';
-                    searchContainer.style.pointerEvents = 'none'; // Gör så att elementet inte kan interageras med
-                    tagContainer.style.opacity = '0'; // Antaget att du också vill hantera taggarna
-                    tagContainer.style.pointerEvents = 'none'; // Gör så att elementet inte kan interageras med
+                    searchContainer.style.visibility = 'hidden';
+                    tagContainer.style.opacity = '0';
+                    tagContainer.style.visibility = 'hidden';
                 } else {
                     // Användaren scrollar uppåt
+                    console.log('Scrolling up');
                     searchContainer.style.opacity = '1';
-                    searchContainer.style.pointerEvents = 'auto'; // Återställer så att elementet kan interageras med
-                    tagContainer.style.opacity = '1'; // Antaget att du också vill hantera taggarna
-                    tagContainer.style.pointerEvents = 'auto'; // Återställer så att elementet kan interageras med
+                    searchContainer.style.visibility = 'visible';
+                    tagContainer.style.opacity = '1';
+                    tagContainer.style.visibility = 'visible';
                 }
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdaterar den senaste scroll positionen
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
             }, false);
         });
+
 
 
 
