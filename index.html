@@ -461,20 +461,17 @@
 
         function goToPage(pageNumber) {
             currentPage = pageNumber;
-            displayData(currentFilteredData, currentPage); // Use the currentFilteredData here
+            displayData(currentFilteredData, currentPage);
 
-            // Use a longer timeout to ensure the new data has rendered
             setTimeout(() => {
-                // Only scroll to top if on mobile view
-                if (window.innerWidth <= 480) {
-                    // Scroll to the top of the search results container
-                    window.scrollTo({
-                        top: document.querySelector('#data-container').getBoundingClientRect().top + window.scrollY,
-                        behavior: 'smooth'
-                    });
+                // Ensure that the data container is present in the DOM
+                const dataContainer = document.getElementById('data-container');
+                if (dataContainer) {
+                    dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 500); // Increase timeout to 500ms or more if necessary
+            }, 500); // Adjust timeout as needed
         }
+
 
 
 
