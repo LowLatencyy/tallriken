@@ -1202,8 +1202,25 @@
 
         function displayPaginationControls() {
             var paginationHtml = '';
-            for (let i = 1; i <= totalPages; i++) {
+            const pageWindow = 2; // Antal sidor att visa på varje sida om den aktuella sidan
+            let startPage = Math.max(currentPage - pageWindow, 1);
+            let endPage = Math.min(currentPage + pageWindow, totalPages);
+
+            // Lägg till länk till första sidan och ellips om det behövs
+            if (startPage > 1) {
+                paginationHtml += `<button onclick="goToPage(1)">1</button>`;
+                if (startPage > 2) paginationHtml += `<span>...</span>`; // Ellips för att visa gap
+            }
+
+            // Visa sidnummer nära den aktuella sidan
+            for (let i = startPage; i <= endPage; i++) {
                 paginationHtml += `<button class="${i === currentPage ? 'current-page' : ''}" onclick="goToPage(${i})">${i}</button>`;
+            }
+
+            // Lägg till ellips och länk till sista sidan om det behövs
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) paginationHtml += `<span>...</span>`; // Ellips för att visa gap
+                paginationHtml += `<button onclick="goToPage(${totalPages})">${totalPages}</button>`;
             }
 
             document.getElementById('pagination-controls').innerHTML = paginationHtml;
