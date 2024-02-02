@@ -592,7 +592,7 @@
         }
 
         input:checked+.switch.large .slider {
-            background-color:rgb(225, 213, 178);
+            background-color: rgb(225, 213, 178);
             /* Färg när switch är på */
         }
 
@@ -698,7 +698,7 @@
         }
 
         #pagination-controls button:hover {
-            background-color: #ffff00;
+            background-color: rgb(255, 247, 179);
             /* Ljusgul bakgrund när muspekaren svävar över */
         }
 
@@ -723,37 +723,48 @@
         }
 
         @media (max-width: 480px) {
-            .matratt {
-                flex-basis: 100%;
-                max-width: 100%;
-                margin: 10px 0;
+            .logo-link img {
+                height: 80px;
+                /* Justera storleken på logotypen om det behövs */
             }
 
             .search-container {
+                top: 20%;
+                /* Öka detta värde för att flytta ner sökfältet så att loggan syns */
                 width: 90%;
-                top: 10%;
-                transform: translate(-50%, -10%);
+                /* Anpassa bredden om så önskas */
+                transform: translate(-50%, -50%);
             }
 
-            .search-container * {
-                pointer-events: auto;
+            #data-container.initial {
+                margin-top: 20px;
+                /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
             }
 
             .input-button-container input[type='text'],
             .input-button-container button {
-                padding: 12px;
-                font-size: larger;
+                padding: 10px;
+                /* Justera padding för att passa bättre på mindre skärmar */
+                font-size: 16px;
+                /* Justera textstorleken om det behövs */
+            }
+
+            .input-button-container button {
+                padding-right: 10px;
+                /* Minska padding till höger */
+                padding-left: 10px;
+                /* Minska padding till vänster */
             }
 
             body,
             html {
                 overflow-x: hidden;
-                /* Förhindra horisontell scrollning */
+                /* Fortsätt förhindra horisontell scrollning */
             }
 
-            /* Ytterligare anpassningar om så önskas */
-
+            /* Lägg till andra stilar här som du vill ska gälla för mobila enheter */
         }
+
 
         .current-page {
             background-color: rgb(255, 247, 179) !important;
