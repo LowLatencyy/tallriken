@@ -592,7 +592,7 @@
         }
 
         input:checked+.switch.large .slider {
-            background-color: #4caf50;
+            background-color: rgb(85, 196, 85);
             /* Färg när switch är på */
         }
 
@@ -934,6 +934,7 @@
         const synonymUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${synonymRange}?key=${apiKey}`;
 
         let allData = [];
+        let currentFilteredData = []; // Ny global variabel för att hålla den aktuellt filtrerade datan
         let selectedTags = [];
         let isVegFilterActive = false;
         let isLangFilterActive = false;
@@ -946,6 +947,7 @@
         let currentPage = 1;
         const resultsPerPage = 15;
         let totalPages = 0;
+
 
 
 
@@ -1076,12 +1078,12 @@
                     filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
                 }
             }
+            // Efter filtrering, spara den filtrerade listan i currentFilteredData
+            currentFilteredData = filteredData;
 
-            // Beräkna totala antalet sidor
-            totalPages = Math.ceil(filteredData.length / resultsPerPage);
-
-            // Visa första sidan av sökresultaten
-            displayData(filteredData, currentPage);
+            // Använd currentFilteredData för att visa den första sidan av sökresultaten
+            totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
+            displayData(currentFilteredData, currentPage);
         }
 
 
@@ -1209,7 +1211,7 @@
 
         function goToPage(pageNumber) {
             currentPage = pageNumber;
-            displayData(allData, currentPage); // Antag att 'allData' är din datakälla
+            displayData(currentFilteredData, currentPage); // Använd currentFilteredData här
         }
 
 
