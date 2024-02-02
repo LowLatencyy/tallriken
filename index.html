@@ -463,15 +463,19 @@
             currentPage = pageNumber;
             displayData(currentFilteredData, currentPage); // Använd currentFilteredData här
 
-            // Kontrollera om det är mobilvy
-            if (window.innerWidth <= 480) {
-                // Scrolla till toppen av resultaten eller till en specifik del av sidan
-                window.scrollTo({
-                    top: document.getElementById('data-container').offsetTop, // Ändra 'data-container' till ID för din resultatcontainer
-                    behavior: 'smooth' // Ger en mjuk scrollning
-                });
-            }
+            // Använd en timeout för att vänta tills den nya datan renderats
+            setTimeout(() => {
+                // Kontrollerar om det är mobilvy genom att använda 'window.innerWidth'
+                if (window.innerWidth <= 480) {
+                    // Använder 'window.scrollTo' för att flytta användaren till toppen av resultaten
+                    window.scrollTo({
+                        top: 0, // 0 pixel från toppen av sidan
+                        behavior: 'smooth' // Ger en mjuk scrollning
+                    });
+                }
+            }, 100); // Timeout på 100 ms för att ge tid för datan att renderas
         }
+
 
 
         function toggleIngredienser(button) {
