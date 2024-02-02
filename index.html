@@ -731,19 +731,12 @@
             }
 
             .search-container {
-                position: absolute;
-                /* Sökfältet kommer att scrollas med sidan */
-                top: 240px;
-                /* Justera detta värde efter din design */
-                left: 50%;
-                /* Centrera i sidan */
-                transform: translateX(-50%);
-                /* Centrera sökfältet horisontellt */
                 width: 90%;
-                /* Anpassa bredden om så önskas */
-                margin-top: 0;
-                /* Justera toppmarginalen om det behövs */
-                /* Andra stilar efter behov */
+                /* Anpassa bredden för mindre skärmar */
+                margin: 20px auto;
+                /* Centrerar kontainern med marginal upp- och nertill */
+                padding-top: 10px;
+                /* Justera utrymmet ovanför sökfältet efter behov */
             }
 
 
@@ -950,7 +943,7 @@
 
         <!-- Sökfält och knappar -->
         <div class="input-button-container">
-            <input type="text" id="searchInput" placeholder="Skriv ingrediens o tryck Enter...">
+            <input type="text" id="searchInput" placeholder="En/flera ingredienser o tryck Enter...">
             <button onclick="addTagFromButton()" class="add-button">
                 <img src="images/knifeforksign.jpg
                 " alt="Add" />
