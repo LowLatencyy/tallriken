@@ -756,14 +756,25 @@
                 /* Minska padding till vänster */
             }
 
+            .matratt {
+                flex-basis: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+
+            .search-container * {
+                pointer-events: auto;
+            }
+
             body,
             html {
                 overflow-x: hidden;
                 /* Fortsätt förhindra horisontell scrollning */
             }
 
-            /* Lägg till andra stilar här som du vill ska gälla för mobila enheter */
+            /* Behåll andra befintliga stilar som du inte vill ändra */
         }
+
 
 
         .current-page {
