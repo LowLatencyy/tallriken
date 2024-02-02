@@ -729,15 +729,16 @@
             }
 
             .search-container {
-                position: absolute; /* Om du vill att den ska kunna scrollas bort */
+                /* Ta bort 'position: fixed' och 'transform' egenskaper */
                 top: 240px;
-                /* Öka detta värde för att flytta ner sökfältet så att loggan syns */
-                left: 50%; /* Centrera i sidan */
-                width: 90%;
-                /* Anpassa bredden om så önskas */
-                transform: translateX(-50%);
-                margin-top: 0px;
-                /* Justera toppmarginalen för att flytta ner hela sökcontainern */
+                left: unset;
+                transform: unset;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 1000;
+                width: 40%;
+                /* Resten av din befintliga stil */
             }
 
 
