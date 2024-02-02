@@ -209,19 +209,21 @@
 
 
         .search-container {
-            /* position: fixed; */
-            top: unset;
-            left: unset;
-            transform: unset;
+            position: fixed;
+            /* Sökfältet stannar på samma plats på skärmen */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             align-items: center;
             z-index: 1000;
             width: 40%;
-            /* Ökar bredden av sökfältet */
-            /* transition: opacity 0.5s ease; */
-            /* Lägg till denna rad */
+            /* Justera bredden efter din design */
+            transition: opacity 0.5s ease;
+            /* Andra stilar efter behov */
         }
+
 
         .slider-button-container {
             display: flex;
@@ -729,16 +731,19 @@
             }
 
             .search-container {
-                /* Ta bort 'position: fixed' och 'transform' egenskaper */
+                position: absolute;
+                /* Sökfältet kommer att scrollas med sidan */
                 top: 240px;
+                /* Justera detta värde efter din design */
                 left: 50%;
-                transform: unset;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                z-index: 1000;
-                width: 40%;
-                /* Resten av din befintliga stil */
+                /* Centrera i sidan */
+                transform: translateX(-50%);
+                /* Centrera sökfältet horisontellt */
+                width: 90%;
+                /* Anpassa bredden om så önskas */
+                margin-top: 0;
+                /* Justera toppmarginalen om det behövs */
+                /* Andra stilar efter behov */
             }
 
 
