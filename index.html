@@ -462,6 +462,15 @@
         function goToPage(pageNumber) {
             currentPage = pageNumber;
             displayData(currentFilteredData, currentPage); // Använd currentFilteredData här
+
+            // Kontrollera om det är mobilvy
+            if (window.innerWidth <= 480) {
+                // Scrolla till toppen av resultaten eller till en specifik del av sidan
+                window.scrollTo({
+                    top: document.getElementById('data-container').offsetTop, // Ändra 'data-container' till ID för din resultatcontainer
+                    behavior: 'smooth' // Ger en mjuk scrollning
+                });
+            }
         }
 
 
