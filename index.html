@@ -729,18 +729,16 @@
             }
 
             .search-container {
-                position: absolute;
-                /* Gör att sökfältet kan scrollas bort */
-                top: 10vh;
-                /* Procent av viewport-höjden, anpassa detta värde */
+                /* Ta bort 'position: fixed' och 'transform' egenskaper */
+                top: 240px;
                 left: 50%;
-                /* Centrera i sidan */
-                transform: translateX(-50%);
-                /* Centrera sökfältet horisontellt */
-                width: 90%;
-                /* Anpassa bredden om så önskas */
-                margin-top: 0;
-                /* Justera toppmarginalen om det behövs */
+                transform: unset;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 1000;
+                width: 40%;
+                /* Resten av din befintliga stil */
             }
 
 
