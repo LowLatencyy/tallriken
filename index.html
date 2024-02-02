@@ -783,7 +783,7 @@
 
             /* Behåll andra befintliga stilar som du inte vill ändra */
 
-            
+
         }
 
 
@@ -1291,6 +1291,7 @@
 
         window.addEventListener('DOMContentLoaded', function () {
             const searchContainer = document.querySelector('.search-container');
+            const tagContainer = document.querySelector('.tag-container'); // Om du vill hantera taggar på samma sätt
             let lastScrollTop = 0;
 
             window.addEventListener('scroll', function () {
@@ -1299,13 +1300,20 @@
                 if (currentScroll > lastScrollTop) {
                     // Användaren scrollar neråt
                     searchContainer.style.opacity = '0';
+                    searchContainer.style.pointerEvents = 'none'; // Gör så att elementet inte kan interageras med
+                    tagContainer.style.opacity = '0'; // Antaget att du också vill hantera taggarna
+                    tagContainer.style.pointerEvents = 'none'; // Gör så att elementet inte kan interageras med
                 } else {
                     // Användaren scrollar uppåt
                     searchContainer.style.opacity = '1';
+                    searchContainer.style.pointerEvents = 'auto'; // Återställer så att elementet kan interageras med
+                    tagContainer.style.opacity = '1'; // Antaget att du också vill hantera taggarna
+                    tagContainer.style.pointerEvents = 'auto'; // Återställer så att elementet kan interageras med
                 }
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Uppdaterar den senaste scroll positionen
             }, false);
         });
+
 
 
 
