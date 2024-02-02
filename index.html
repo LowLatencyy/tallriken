@@ -200,10 +200,13 @@
             filter: blur(5px);
         }
 
-        .logo-container {
-            text-align: center;
-            margin-top: 20px;
+        .logo-image {
+            width: 150px;
+            /* eller en procentandel, beroende på dina behov */
+            height: auto;
+            /* Bibehåller bildens proportioner */
         }
+
 
         .search-container {
             position: fixed;
@@ -865,7 +868,8 @@
 
     <!-- Logotyp Container -->
     <div class="logo-container" style="text-align: center; margin-top: 20px;">
-        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logotyp" style="max-width: 100%; height: auto;">
+        <img src="path/to/your/logo.png" alt="Logotyp" class="logo-image">
+
     </div>
 
     <div class="search-container">
