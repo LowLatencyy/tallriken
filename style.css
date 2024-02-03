@@ -274,6 +274,24 @@ html {
     /* Bibehåller bildens proportioner */
 }
 
+.gif-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 9999;
+    overflow: hidden;
+    pointer-events: none;
+    /* För att inte störa användarens interaktion med sidan */
+}
+
+#gif-image {
+    max-width: 100%;
+    height: auto;
+}
 
 
 

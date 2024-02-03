@@ -160,7 +160,10 @@
         <div class="tag-container"></div>
     </div>
 
-    <div id="gif-container" class="gif-container"></div>
+    <div id="gif-container" class="gif-container">
+        <img id="gif-image" src="/images/ramenkokar.gif" alt="GIF-bild">
+    </div>
+
 
 
 
@@ -280,9 +283,22 @@
             }
         }
 
+        window.onload = async function () {
+            await loadData();
+            await loadSynonyms();
+            // Eventuella ytterligare initialiseringar eller funktioner som ska köras efter att data och synonymer har laddats
 
+            // Anropa showGif() här för att visa GIF-bilden på startsidan när sidan först laddas
+            showGif();
+        };
+
+        function showGif() {
+            const gifContainer = document.getElementById('gif-container');
+            gifContainer.style.display = 'block';
+        }
 
         async function performSearch() {
+            hideGif();
             // Visa loadern och överlägget
             document.getElementById('loader').style.display = 'flex';
             document.getElementById('overlay').style.display = 'block'; // Visa överlägget
@@ -597,18 +613,9 @@
         });
 
 
-        function addGifToContainer() {
-            const gifContainer = document.getElementById('gif-container');
-            const gifImage = document.createElement('img');
-            gifImage.src = '/images/ramenkokar.gif'; // Ersätt med den faktiska URL:en till din GIF-bild
-            gifImage.alt = ''; // Lägg till en alternativ text för bilden (om så önskas)
-            gifContainer.appendChild(gifImage);
-        }
 
-        // Anropa funktionen för att lägga till GIF-bilden när sidan laddas
-        window.onload = function () {
-            addGifToContainer();
-        };
+
+
 
 
     </script>
