@@ -74,14 +74,14 @@
                 <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
                 <ul class="nav__list-child">
                     <li class="nav__item">
-                        <a href="#hoi2" class="nav__link">
+                        <a href="#hoi" class="nav__link">
                             <span class="nav__text">
                                 Knivar & Kastruller
                             </span>
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#hoi2" class="nav__link">
+                        <a href="#hoi" class="nav__link">
                             <span class="nav__text">
                                 Inredning
                             </span>
@@ -426,7 +426,7 @@
     `).join('');
         }
 
-        async function displayData(data, page) {
+        function displayData(data, page) {
             var startIndex = (page - 1) * resultsPerPage;
             var endIndex = startIndex + resultsPerPage;
             var pageData = data.slice(startIndex, endIndex);
@@ -452,15 +452,15 @@
 
             // Processa Instagram-inlägg
             if (window.instgrm) {
-                await new Promise(resolve => window.instgrm.Embeds.process(resolve));
+                window.instgrm.Embeds.process();
             }
 
             // Visa pagineringskontroller
             displayPaginationControls();
 
-            // Dölj loadern och överlägget efter att allt innehåll har laddats och visats
-            document.getElementById('loader').style.display = 'none';
-            document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
+            // Once search is done, hide the loader
+            // Consider using a timeout if the search is too fast to show animation
+            setTimeout(hideLoader);
         }
 
         function displayPaginationControls() {
@@ -489,15 +489,23 @@
             document.getElementById('pagination-controls').innerHTML = paginationHtml;
         }
 
-        async function goToPage(pageNumber) {
-            // Visa loadern när en ny sida begärs
+        function goToPage(pageNumber) {
+            // Visa loadern och överlägget när en ny sida begärs
             document.getElementById('loader').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block'; // Visa överlägget om du använder det
 
+            // Uppdatera currentPage till det nya sidnumret
             currentPage = pageNumber;
-            await displayData(currentFilteredData, currentPage); // Anta att detta är en asynkron operation
 
-            // Dölj loadern efter att den nya sidan har laddats
-            document.getElementById('loader').style.display = 'none';
+            // Uppdatera datavisningen baserat på det nya sidnumret
+            displayData(currentFilteredData, currentPage);
+
+            // Du kan välja att dölja loadern och överlägget direkt efter datan har uppdaterats,
+            // eller använda en fast tidsfördröjning som tidigare
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
+            }, 3000); // Alternativt, dölj efter en fast tid istället för direkt
 
             // Scrolla till toppen av datakontainern eller sidan efter sidbyte
             setTimeout(() => {
@@ -505,7 +513,7 @@
                 if (dataContainer) {
                     dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 100); // Liten fördröjning för att säkerställa att innehållet har laddats
+            }, 500); // Justera timeouten efter behov
         }
 
 
