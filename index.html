@@ -288,7 +288,7 @@
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-            }, 2500); // 3000 ms = 3 sekunder
+            }, 2000); // 3000 ms = 3 sekunder
             currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
@@ -490,17 +490,32 @@
         }
 
         function goToPage(pageNumber) {
+            // Visa loadern och överlägget när en ny sida begärs
+            document.getElementById('loader').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block'; // Visa överlägget om du använder det
+
+            // Uppdatera currentPage till det nya sidnumret
             currentPage = pageNumber;
+
+            // Uppdatera datavisningen baserat på det nya sidnumret
             displayData(currentFilteredData, currentPage);
 
+            // Du kan välja att dölja loadern och överlägget direkt efter datan har uppdaterats,
+            // eller använda en fast tidsfördröjning som tidigare
             setTimeout(() => {
-                // Ensure that the data container is present in the DOM
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
+            }, 3000); // Alternativt, dölj efter en fast tid istället för direkt
+
+            // Scrolla till toppen av datakontainern eller sidan efter sidbyte
+            setTimeout(() => {
                 const dataContainer = document.getElementById('data-container');
                 if (dataContainer) {
                     dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 500); // Adjust timeout as needed
+            }, 500); // Justera timeouten efter behov
         }
+
 
 
 
