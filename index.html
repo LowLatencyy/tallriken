@@ -330,9 +330,13 @@
             totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
             displayData(currentFilteredData, currentPage);
 
-            // Dölj loadern efter att resultaten har visats
-            document.getElementById('loader').style.display = 'none';
-
+            // Antag att all nödvändig data har hanterats vid denna punkt
+            // Efter att ha simulerat en "laddningstid" på 3 sekunder, dölj loadern
+            setTimeout(function () {
+                document.getElementById('loader').style.display = 'none';
+                // Uppdatera UI med sökresultaten här om inte redan gjort
+                // Exempel: displayData(currentFilteredData, currentPage);
+            }, 3000); // 3000 ms = 3 sekunder
 
         }
 
