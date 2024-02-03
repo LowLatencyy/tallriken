@@ -53,6 +53,10 @@
     }
 }
 
+/* CSS för att initialt dölja loadern */
+#loader {
+    display: none;
+}
 
 
 .nav {

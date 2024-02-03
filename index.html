@@ -272,19 +272,12 @@
                 console.error('Error loading synonyms:', error);
             }
         }
-        // Function to show the loader
-        function showLoader() {
-            document.getElementById('loader').hidden = false;
-        }
 
-        // Function to hide the loader
-        function hideLoader() {
-            document.getElementById('loader').hidden = true;
-        }
 
 
         async function performSearch() {
-            showLoader(); // Call this function when the search starts
+            // Visa loadern när sökningen startar
+            document.getElementById('loader').style.display = 'flex';
             currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
@@ -336,6 +329,9 @@
             // Använd currentFilteredData för att visa den första sidan av sökresultaten
             totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
             displayData(currentFilteredData, currentPage);
+
+            // Dölj loadern efter att resultaten har visats
+            document.getElementById('loader').style.display = 'none';
 
 
         }
@@ -455,7 +451,7 @@
 
             // Once search is done, hide the loader
             // Consider using a timeout if the search is too fast to show animation
-            setTimeout(hideLoader); // Hides after 3 seconds
+            setTimeout(hideLoader);
         }
 
         function displayPaginationControls() {
