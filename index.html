@@ -160,6 +160,9 @@
         <div class="tag-container"></div>
     </div>
 
+    <div id="gif-container" class="gif-container"></div>
+
+
 
     <div id="data-container" class="initial"></div>
 
@@ -592,6 +595,20 @@
             });
 
         });
+
+
+        function addGifToContainer() {
+            const gifContainer = document.getElementById('gif-container');
+            const gifImage = document.createElement('img');
+            gifImage.src = '/images/ramenkokar.gif'; // Ersätt med den faktiska URL:en till din GIF-bild
+            gifImage.alt = ''; // Lägg till en alternativ text för bilden (om så önskas)
+            gifContainer.appendChild(gifImage);
+        }
+
+        // Anropa funktionen för att lägga till GIF-bilden när sidan laddas
+        window.onload = function () {
+            addGifToContainer();
+        };
 
 
     </script>
