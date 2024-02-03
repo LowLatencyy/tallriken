@@ -274,12 +274,7 @@ html {
     /* Bibehåller bildens proportioner */
 }
 
-.foodimage {
-    width: 200px;
-    /* eller en procentandel, beroende på dina behov */
-    height: auto;
-    /* Bibehåller bildens proportioner */
-}
+
 
 
 .search-container {
