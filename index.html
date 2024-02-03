@@ -452,15 +452,15 @@
 
             // Processa Instagram-inlägg
             if (window.instgrm) {
-                window.instgrm.Embeds.process();
+                await new Promise(resolve => window.instgrm.Embeds.process(resolve));
             }
 
             // Visa pagineringskontroller
             displayPaginationControls();
 
-            // Once search is done, hide the loader
-            // Consider using a timeout if the search is too fast to show animation
-            setTimeout(hideLoader);
+            // Dölj loadern och överlägget efter att allt innehåll har laddats och visats
+            document.getElementById('loader').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
         }
 
         function displayPaginationControls() {
