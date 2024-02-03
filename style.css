@@ -1,3 +1,27 @@
+/* Loader CSS */
+.blocks {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    /* Changed to fixed to overlay content */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    z-index: 9999;
+    /* High z-index to make sure it's on top */
+    background: transparent;
+    /* Optional: semi-transparent background */
+}
+
+.block {
+    /* ... rest of the block styles ... */
+}
+
+/* ... rest of the provided CSS ... */
+
+
 .nav {
     color: rgb(0, 0, 0);
     z-index: 9999;

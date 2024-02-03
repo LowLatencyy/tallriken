@@ -13,6 +13,13 @@
 </head>
 
 <body>
+
+    <!-- Loader HTML -->
+    <div class="blocks" id="loader" hidden>
+        <div class="block orange"></div>
+        <div class="block blue"></div>
+    </div>
+
     <nav class="nav">
         <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
         <label class="nav__trigger-finger" for="trigger">
@@ -263,9 +270,19 @@
                 console.error('Error loading synonyms:', error);
             }
         }
+        // Function to show the loader
+        function showLoader() {
+            document.getElementById('loader').hidden = false;
+        }
+
+        // Function to hide the loader
+        function hideLoader() {
+            document.getElementById('loader').hidden = true;
+        }
 
 
         async function performSearch() {
+            showLoader(); // Call this function when the search starts
             currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
@@ -317,6 +334,10 @@
             // Använd currentFilteredData för att visa den första sidan av sökresultaten
             totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
             displayData(currentFilteredData, currentPage);
+
+            // Once search is done, hide the loader
+            // Consider using a timeout if the search is too fast to show animation
+            setTimeout(hideLoader, 3000); // Hides after 3 seconds
         }
 
 
