@@ -20,6 +20,10 @@
         <div class="block blue"></div>
     </div>
 
+    <!-- Överlägg för att mörkna och sudda ut bakgrunden när loadern visas -->
+    <div id="overlay" hidden></div>
+
+
 
 
     <nav class="nav">
@@ -276,10 +280,14 @@
 
 
         async function performSearch() {
-            // Visa loadern och sätt en timer för att automatiskt dölja den efter 3 sekunder
+            // Visa loadern och överlägget
             document.getElementById('loader').style.display = 'flex';
+            document.getElementById('overlay').style.display = 'block'; // Visa överlägget
+
+            // Sätt en timer för att dölja både loadern och överlägget efter 3 sekunder
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
             }, 3000); // 3000 ms = 3 sekunder
             currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
