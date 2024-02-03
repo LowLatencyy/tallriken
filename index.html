@@ -337,9 +337,7 @@
             totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
             displayData(currentFilteredData, currentPage);
 
-            // Once search is done, hide the loader
-            // Consider using a timeout if the search is too fast to show animation
-            setTimeout(hideLoader, 3000); // Hides after 3 seconds
+
         }
 
 
@@ -454,6 +452,10 @@
 
             // Visa pagineringskontroller
             displayPaginationControls();
+
+            // Once search is done, hide the loader
+            // Consider using a timeout if the search is too fast to show animation
+            setTimeout(hideLoader); // Hides after 3 seconds
         }
 
         function displayPaginationControls() {
