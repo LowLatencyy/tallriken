@@ -65,7 +65,7 @@
                 </ul>
             </li>
             <li class="nav__item">
-                <a href="#hoi" class="nav__link">
+                <a href="#hoi2" class="nav__link">
                     <span class="nav__text">
                         Blogg
                     </span>
@@ -74,14 +74,14 @@
                 <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
                 <ul class="nav__list-child">
                     <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
+                        <a href="#hoi2" class="nav__link">
                             <span class="nav__text">
                                 Knivar & Kastruller
                             </span>
                         </a>
                     </li>
                     <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
+                        <a href="#hoi2" class="nav__link">
                             <span class="nav__text">
                                 Inredning
                             </span>
@@ -426,7 +426,7 @@
     `).join('');
         }
 
-        function displayData(data, page) {
+        async function displayData(data, page) {
             var startIndex = (page - 1) * resultsPerPage;
             var endIndex = startIndex + resultsPerPage;
             var pageData = data.slice(startIndex, endIndex);
@@ -489,23 +489,15 @@
             document.getElementById('pagination-controls').innerHTML = paginationHtml;
         }
 
-        function goToPage(pageNumber) {
-            // Visa loadern och överlägget när en ny sida begärs
+        async function goToPage(pageNumber) {
+            // Visa loadern när en ny sida begärs
             document.getElementById('loader').style.display = 'flex';
-            document.getElementById('overlay').style.display = 'block'; // Visa överlägget om du använder det
 
-            // Uppdatera currentPage till det nya sidnumret
             currentPage = pageNumber;
+            await displayData(currentFilteredData, currentPage); // Anta att detta är en asynkron operation
 
-            // Uppdatera datavisningen baserat på det nya sidnumret
-            displayData(currentFilteredData, currentPage);
-
-            // Du kan välja att dölja loadern och överlägget direkt efter datan har uppdaterats,
-            // eller använda en fast tidsfördröjning som tidigare
-            setTimeout(() => {
-                document.getElementById('loader').style.display = 'none';
-                document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-            }, 3000); // Alternativt, dölj efter en fast tid istället för direkt
+            // Dölj loadern efter att den nya sidan har laddats
+            document.getElementById('loader').style.display = 'none';
 
             // Scrolla till toppen av datakontainern eller sidan efter sidbyte
             setTimeout(() => {
@@ -513,7 +505,7 @@
                 if (dataContainer) {
                     dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 500); // Justera timeouten efter behov
+            }, 100); // Liten fördröjning för att säkerställa att innehållet har laddats
         }
 
 
