@@ -276,8 +276,11 @@
 
 
         async function performSearch() {
-            // Visa loadern när sökningen startar
+            // Visa loadern och sätt en timer för att automatiskt dölja den efter 3 sekunder
             document.getElementById('loader').style.display = 'flex';
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+            }, 3000); // 3000 ms = 3 sekunder
             currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
@@ -330,13 +333,7 @@
             totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
             displayData(currentFilteredData, currentPage);
 
-            // Antag att all nödvändig data har hanterats vid denna punkt
-            // Efter att ha simulerat en "laddningstid" på 3 sekunder, dölj loadern
-            setTimeout(function () {
-                document.getElementById('loader').style.display = 'none';
-                // Uppdatera UI med sökresultaten här om inte redan gjort
-                // Exempel: displayData(currentFilteredData, currentPage);
-            }, 3000); // 3000 ms = 3 sekunder
+
 
         }
 
