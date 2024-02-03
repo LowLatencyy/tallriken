@@ -160,12 +160,6 @@
         <div class="tag-container"></div>
     </div>
 
-    <div id="gif-container" class="gif-container">
-        <img id="gif-image" src="/images/citron.jpg" alt="GIF-bild">
-    </div>
-
-
-
 
     <div id="data-container" class="initial"></div>
 
@@ -283,22 +277,9 @@
             }
         }
 
-        window.onload = async function () {
-            await loadData();
-            await loadSynonyms();
-            // Eventuella ytterligare initialiseringar eller funktioner som ska köras efter att data och synonymer har laddats
 
-            // Anropa showGif() här för att visa GIF-bilden på startsidan när sidan först laddas
-            showGif();
-        };
-
-        function showGif() {
-            const gifContainer = document.getElementById('gif-container');
-            gifContainer.style.display = 'block';
-        }
 
         async function performSearch() {
-            hideGif();
             // Visa loadern och överlägget
             document.getElementById('loader').style.display = 'flex';
             document.getElementById('overlay').style.display = 'block'; // Visa överlägget
@@ -611,11 +592,6 @@
             });
 
         });
-
-
-
-
-
 
 
     </script>
