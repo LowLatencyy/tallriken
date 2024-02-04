@@ -494,6 +494,12 @@
             document.getElementById('loader').style.display = 'flex';
             document.getElementById('overlay').style.display = 'block';
 
+            // Sätt en timer för att dölja både loadern och överlägget efter 3 sekunder
+            setTimeout(() => {
+                document.getElementById('loader').style.display = 'none';
+                document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
+            }, 2000); // 3000 ms = 3 sekunder
+
             // Uppdatera currentPage till det nya sidnumret
             currentPage = pageNumber;
 
