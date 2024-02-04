@@ -494,21 +494,27 @@
             document.getElementById('loader').style.display = 'flex';
             document.getElementById('overlay').style.display = 'block';
 
-            // Använd setTimeout för att vänta 2 sekunder innan du uppdaterar datan och döljer loadern och överlägget
-            setTimeout(() => {
-                currentPage = pageNumber;
-                displayData(currentFilteredData, currentPage);
+            // Uppdatera currentPage till det nya sidnumret
+            currentPage = pageNumber;
 
-                document.getElementById('loader').style.display = 'none';
-                document.getElementById('overlay').style.display = 'none';
+            // Utför den asynkrona uppdateringen och dölj loadern och överlägget efteråt
+            displayData(currentFilteredData, currentPage)
+                .then(() => {
+                    document.getElementById('loader').style.display = 'none';
+                    document.getElementById('overlay').style.display = 'none';
 
-                // Scrolla till toppen av datakontainern eller sidan efter sidbyte
-                const dataContainer = document.getElementById('data-container');
-                if (dataContainer) {
-                    dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            }, 2000); // Vänta 2000 ms (2 sekunder) innan du kör koden inuti setTimeout
+                    // Scrolla till toppen av datakontainern eller sidan efter sidbyte
+                    const dataContainer = document.getElementById('data-container');
+                    if (dataContainer) {
+                        dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                })
+                .catch(error => {
+                    console.error('Ett fel uppstod vid uppdatering av sidan: ', error);
+                    // Hantera eventuella fel här
+                });
         }
+
 
 
 
