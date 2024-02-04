@@ -490,31 +490,26 @@
         }
 
         function goToPage(pageNumber) {
-            // Visa loadern och överlägget när en ny sida begärs
+            // Visa loadern och överlägget
             document.getElementById('loader').style.display = 'flex';
-            document.getElementById('overlay').style.display = 'block'; // Visa överlägget om du använder det
+            document.getElementById('overlay').style.display = 'block';
 
-            // Uppdatera currentPage till det nya sidnumret
-            currentPage = pageNumber;
-
-            // Uppdatera datavisningen baserat på det nya sidnumret
-            displayData(currentFilteredData, currentPage);
-
-            // Du kan välja att dölja loadern och överlägget direkt efter datan har uppdaterats,
-            // eller använda en fast tidsfördröjning som tidigare
+            // Använd setTimeout för att vänta 2 sekunder innan du uppdaterar datan och döljer loadern och överlägget
             setTimeout(() => {
+                currentPage = pageNumber;
+                displayData(currentFilteredData, currentPage);
+
                 document.getElementById('loader').style.display = 'none';
-                document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-            }, 3000); // Alternativt, dölj efter en fast tid istället för direkt
+                document.getElementById('overlay').style.display = 'none';
 
-            // Scrolla till toppen av datakontainern eller sidan efter sidbyte
-            setTimeout(() => {
+                // Scrolla till toppen av datakontainern eller sidan efter sidbyte
                 const dataContainer = document.getElementById('data-container');
                 if (dataContainer) {
                     dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
-            }, 500); // Justera timeouten efter behov
+            }, 2000); // Vänta 2000 ms (2 sekunder) innan du kör koden inuti setTimeout
         }
+
 
 
 
