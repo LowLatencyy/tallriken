@@ -793,8 +793,7 @@ input:not(:checked)+.slider.large {
     }
 
     .search-container {
-        width: 90%;
-        /* Anpassa bredden för mindre skärmar */
+        width: 100%; /* Använd hela bredden för att maximera utrymmet */
         margin: 20px auto;
         /* Centrerar kontainern med marginal upp- och nertill */
         padding-top: 10px;
@@ -829,9 +828,12 @@ input:not(:checked)+.slider.large {
     }
 
     .matratt {
-        flex-basis: 100%;
-        max-width: 100%;
-        margin: 10px 0;
+        flex-basis: calc(50% - 20px);
+        /* Justerar bredden så två element får plats, minus marginal */
+        max-width: calc(50% - 20px);
+        /* Samma här */
+        margin: 10px;
+        /* Behåller en liten marginal runt varje element */
     }
 
     .search-container * {
