@@ -788,7 +788,7 @@ input:not(:checked)+.slider.large {
 
 @media (max-width: 480px) {
 
-    .instagram-media {
+    .instagram-media iframe {
         width: 150px;
         min-height: 500px;
         display: block;
