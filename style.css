@@ -827,14 +827,7 @@ input:not(:checked)+.slider.large {
         /* Minska padding till vänster */
     }
 
-    .matratt {
-        flex-basis: calc(50% - 20px);
-        /* Justerar bredden så två element får plats, minus marginal */
-        max-width: calc(50% - 20px);
-        /* Samma här */
-        margin: 10px;
-        /* Behåller en liten marginal runt varje element */
-    }
+    
 
     .search-container * {
         pointer-events: auto;
