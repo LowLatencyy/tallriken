@@ -370,7 +370,7 @@ html {
     overflow-y: auto;
     display: block;
     border: none;
-   
+
     transform-origin: top center;
 }
 
@@ -789,7 +789,7 @@ input:not(:checked)+.slider.large {
 @media (max-width: 480px) {
 
     .instagram-media iframe {
-        width: 150px;
+        width: 150px !important;
         min-height: 500px;
         display: block;
         height: auto;
