@@ -365,7 +365,7 @@ html {
 }
 
 .matratt iframe {
-    width: 100%;
+    width: 150px;
     height: 600px;
     overflow-y: auto;
     display: block;
