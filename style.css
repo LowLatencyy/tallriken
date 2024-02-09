@@ -370,7 +370,7 @@ html {
     overflow-y: auto;
     display: block;
     border: none;
-    transform: scale(0.95);
+   
     transform-origin: top center;
 }
 
