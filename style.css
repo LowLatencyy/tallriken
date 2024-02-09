@@ -787,13 +787,23 @@ input:not(:checked)+.slider.large {
 }
 
 @media (max-width: 480px) {
+
+    .instagram-media {
+        width: 150px;
+        min-height: 500px;
+        display: block;
+        height: auto;
+        /* Gör att höjden blir flexibel och anpassar sig */
+    }
+
     .logo-link img {
         height: 80px;
         /* Justera storleken på logotypen om det behövs */
     }
 
     .search-container {
-        width: 100%; /* Använd hela bredden för att maximera utrymmet */
+        width: 100%;
+        /* Använd hela bredden för att maximera utrymmet */
         margin: 20px auto;
         /* Centrerar kontainern med marginal upp- och nertill */
         padding-top: 10px;
