@@ -424,7 +424,7 @@ html {
 }
 
 .instagram-media iframe {
-    width: 270px;
+    width: 150px;
     min-height: 500px;
     display: block;
 }
@@ -827,7 +827,14 @@ input:not(:checked)+.slider.large {
         /* Minska padding till vänster */
     }
 
-    
+    .matratt {
+        flex-basis: calc(50% - 20px);
+        /* Justerar bredden så två element får plats, minus marginal */
+        max-width: calc(50% - 20px);
+        /* Samma här */
+        margin: 5px;
+        /* Behåller en liten marginal runt varje element */
+    }
 
     .search-container * {
         pointer-events: auto;
