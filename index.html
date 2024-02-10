@@ -288,7 +288,7 @@
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-            }, 1500); // 3000 ms = 3 sekunder
+            }, 2000); // 3000 ms = 3 sekunder
             currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
@@ -498,7 +498,7 @@
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-            }, 1500); // 3000 ms = 3 sekunder
+            }, 2000); // 3000 ms = 3 sekunder
 
             // Uppdatera currentPage till det nya sidnumret
             currentPage = pageNumber;
@@ -615,6 +615,39 @@
 
         });
 
+        function adjustIframeStyles(iframe) {
+            const parentWidth = iframe.parentElement.offsetWidth;
+            const aspectRatio = 4 / 3;
+            const height = parentWidth / aspectRatio;
+
+            iframe.style.width = parentWidth + 'px';
+            iframe.style.height = height + 'px';
+            iframe.style.minHeight = '400px';
+            iframe.style.minWidth = '150px'; // Justera min-width här
+        }
+
+        function observeIframes() {
+            const observer = new MutationObserver(mutations => {
+                mutations.forEach(mutation => {
+                    mutation.addedNodes.forEach(node => {
+                        if (node.tagName === 'IFRAME' && node.classList.contains('instagram-media')) {
+                            adjustIframeStyles(node);
+                        }
+                    });
+                });
+            });
+
+            observer.observe(document.body, {
+                childList: true,
+                subtree: true
+            });
+        }
+
+        window.onload = async function () {
+            await loadData();
+            await loadSynonyms();
+            observeIframes(); // Starta observer för att justera iframes dynamiskt
+        };
 
     </script>
 </body>

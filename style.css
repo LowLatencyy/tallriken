@@ -365,12 +365,12 @@ html {
 }
 
 .matratt iframe {
-    width: 150px;
+    width: 100%;
     height: 600px;
     overflow-y: auto;
     display: block;
     border: none;
-
+    transform: scale(0.95);
     transform-origin: top center;
 }
 
@@ -424,7 +424,7 @@ html {
 }
 
 .instagram-media iframe {
-    width: 150px;
+    width: 100%;
     min-height: 500px;
     display: block;
 }
@@ -787,15 +787,6 @@ input:not(:checked)+.slider.large {
 }
 
 @media (max-width: 480px) {
-
-    .instagram-media iframe {
-        width: 150px !important;
-        min-height: 500px;
-        display: block;
-        height: auto;
-        /* Gör att höjden blir flexibel och anpassar sig */
-    }
-
     .logo-link img {
         height: 80px;
         /* Justera storleken på logotypen om det behövs */
@@ -814,19 +805,23 @@ input:not(:checked)+.slider.large {
     #data-container.initial {
         margin-top: 40px;
         /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
+        padding: 0 10px;
+        /* Justera sidomarginaler */
     }
 
     #data-container {
         margin-top: 40px;
         /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
+        padding: 0 10px;
+        /* Justera sidomarginaler */
     }
 
 
     .input-button-container input[type='text'],
     .input-button-container button {
-        padding: 10px;
+        padding: 5px;
         /* Justera padding för att passa bättre på mindre skärmar */
-        font-size: 16px;
+        font-size: 10px;
         /* Justera textstorleken om det behövs */
     }
 
