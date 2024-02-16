@@ -355,8 +355,8 @@ html {
 .matratt {
     flex: 0 0 calc(20% - 20px);
     max-width: calc(20% - 20px);
-    margin: 10px;
-    padding: 20px;
+    margin: 5px;
+    padding: 10px;
     border-radius: 10px;
     text-align: center;
     box-sizing: border-box;
@@ -831,7 +831,7 @@ input:not(:checked)+.slider.large {
     #data-container.initial {
         margin-top: 40px;
         /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
-        padding: 0 10px;
+        padding: 0 5px;
         /* Justera sidomarginaler */
     }
 
@@ -863,7 +863,7 @@ input:not(:checked)+.slider.large {
         /* Justerar bredden så två element får plats, minus marginal */
         max-width: calc(50% - 20px);
         /* Samma här */
-        padding: 5px;
+        padding: 2px;
         /* Mindre padding inuti varje resultat */
         margin: 5px;
         /* Behåller en liten marginal runt varje element */
