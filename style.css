@@ -789,8 +789,8 @@ input:not(:checked)+.slider.large {
 /* Media query för desktop */
 @media (min-width: 481px) {
     .matratt {
-        flex: 0 0 calc(33.33% - 20px);
-        max-width: calc(33.33% - 20px);
+        flex: 0 0 calc(20% - 20px);
+        max-width: calc(20% - 20px);
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
     }
 
