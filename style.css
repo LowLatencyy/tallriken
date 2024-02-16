@@ -786,6 +786,21 @@ input:not(:checked)+.slider.large {
     /* Dölj pagineringskontrollerna */
 }
 
+/* Media query för desktop */
+@media (min-width: 481px) {
+    .matratt {
+        flex: 0 0 calc(33.33% - 20px);
+        max-width: calc(33.33% - 20px);
+        /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
+    }
+
+    .matratt iframe {
+        /* Justera iframe-storleken för desktop om det behövs */
+        height: auto;
+        /* Detta kan justeras beroende på innehållet */
+    }
+}
+
 @media (max-width: 480px) {
     .logo-link img {
         height: 80px;
@@ -793,7 +808,8 @@ input:not(:checked)+.slider.large {
     }
 
     .matratt-title {
-        font-size: 12px; /* Justera detta värde efter dina behov */
+        font-size: 12px;
+        /* Justera detta värde efter dina behov */
     }
 
     .search-container {
