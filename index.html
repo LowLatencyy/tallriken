@@ -627,8 +627,8 @@
                 iframe.style.height = height + 'px';
             } else {
                 // Här kan du sätta vad som ska gälla för desktop
-                iframe.style.width = ''; // Ta bort breddjusteringen
-                iframe.style.height = ''; // Ta bort höjdjusteringen
+                iframe.style.width = '100%'; // Återställ bredden
+                iframe.style.height = 'auto'; // Återställ höjden
             }
 
             iframe.style.minHeight = '400px';
