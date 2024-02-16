@@ -796,7 +796,7 @@ input:not(:checked)+.slider.large {
     }
 
     .matratt-title {
-        font-size: 10px;
+        font-size: 11px;
         /* Justera detta värde efter dina behov */
     }
 
