@@ -863,7 +863,8 @@ input:not(:checked)+.slider.large {
         /* Justerar bredden så två element får plats, minus marginal */
         max-width: calc(50% - 20px);
         /* Samma här */
-        padding: 10px; /* Mindre padding inuti varje resultat */
+        padding: 5px;
+        /* Mindre padding inuti varje resultat */
         margin: 5px;
         /* Behåller en liten marginal runt varje element */
     }
