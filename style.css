@@ -838,7 +838,7 @@ input:not(:checked)+.slider.large {
     #data-container {
         margin-top: 40px;
         /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
-        padding: 0 10px;
+        padding: 0 5px;
         /* Justera sidomarginaler */
     }
 
