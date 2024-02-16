@@ -792,6 +792,10 @@ input:not(:checked)+.slider.large {
         /* Justera storleken på logotypen om det behövs */
     }
 
+    .matratt-title {
+        font-size: 12px; /* Justera detta värde efter dina behov */
+    }
+
     .search-container {
         width: 100%;
         /* Använd hela bredden för att maximera utrymmet */
