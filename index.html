@@ -288,7 +288,7 @@
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-            }, 2000); // 3000 ms = 3 sekunder
+            }, 1200); // 3000 ms = 3 sekunder
             currentPage = 1; // Återställer till första sidan vid varje ny sökning
             let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
             console.log('Search term:', searchTerm);
@@ -498,7 +498,7 @@
             setTimeout(() => {
                 document.getElementById('loader').style.display = 'none';
                 document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-            }, 2000); // 3000 ms = 3 sekunder
+            }, 1200); // 3000 ms = 3 sekunder
 
             // Uppdatera currentPage till det nya sidnumret
             currentPage = pageNumber;

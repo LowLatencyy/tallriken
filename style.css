@@ -424,7 +424,7 @@ html {
 }
 
 .instagram-media iframe {
-    width: 100%;
+    width: 50%;
     min-height: 500px;
     display: block;
 }
