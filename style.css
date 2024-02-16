@@ -345,6 +345,7 @@ html {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start; /* Justerar items till toppen av container */
     margin-top: 2%;
     padding-bottom: 20px;
     overflow: auto;
@@ -353,8 +354,8 @@ html {
 }
 
 .matratt {
-    flex: 0 0 calc(20% - 20px);
-    max-width: calc(20% - 20px);
+    flex: 0 0 calc(20% - 10px);
+    max-width: calc(20% - 10px);
     margin: 5px;
     padding: 10px;
     border-radius: 10px;
@@ -791,8 +792,8 @@ input:not(:checked)+.slider.large {
 /* Media query för desktop */
 @media (min-width: 481px) {
     .matratt {
-        flex: 0 0 calc(20% - 20px);
-        max-width: calc(20% - 20px);
+        flex: 0 0 calc(20% - 10px);
+        max-width: calc(20% - 10px);
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
     }
 
