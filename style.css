@@ -795,6 +795,11 @@ input:not(:checked)+.slider.large {
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
     }
 
+    .matratt-title {
+        font-size: 10px;
+        /* Justera detta värde efter dina behov */
+    }
+
     .matratt iframe {
         /* Justera iframe-storleken för desktop om det behövs */
         height: auto;
