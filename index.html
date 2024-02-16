@@ -616,12 +616,21 @@
         });
 
         function adjustIframeStyles(iframe) {
-            const parentWidth = iframe.parentElement.offsetWidth;
-            const aspectRatio = 4 / 3;
-            const height = parentWidth / aspectRatio;
+            const mobileBreakpoint = 768; // Definiera din brytpunkt för mobil
+            if (window.innerWidth <= mobileBreakpoint) {
+                // Dina nuvarande justeringar
+                const parentWidth = iframe.parentElement.offsetWidth;
+                const aspectRatio = 4 / 3;
+                const height = parentWidth / aspectRatio;
 
-            iframe.style.width = parentWidth + 'px';
-            iframe.style.height = height + 'px';
+                iframe.style.width = parentWidth + 'px';
+                iframe.style.height = height + 'px';
+            } else {
+                // Här kan du sätta vad som ska gälla för desktop
+                iframe.style.width = ''; // Ta bort breddjusteringen
+                iframe.style.height = ''; // Ta bort höjdjusteringen
+            }
+
             iframe.style.minHeight = '400px';
             iframe.style.minWidth = '150px'; // Justera min-width här
         }
