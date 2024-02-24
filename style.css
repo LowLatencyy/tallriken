@@ -956,7 +956,7 @@ input:not(:checked)+.slider.large {
 }
 
 .main-logo {
-    max-width: 20%;
+    max-width: 40%;
     height: auto;
     margin: 0 auto;
 }
