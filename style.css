@@ -952,7 +952,7 @@ input:not(:checked)+.slider.large {
 
 .logo-main-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 15px;
 }
 
 .main-logo {
@@ -966,7 +966,7 @@ input:not(:checked)+.slider.large {
     flex-direction: column;
     height: 80vh;
     /* Justera detta värde efter behov */
-    padding-top: 1400px; /* Lägg till önskat tomt utrymme */
+    padding-top: 140px; /* Lägg till önskat tomt utrymme */
 }
 
 .image-link {
