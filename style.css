@@ -822,7 +822,7 @@ input:not(:checked)+.slider.large {
     }
 
     .matratt-title {
-        font-size: 11px;
+        font-size: 10px;
         /* Justera detta värde efter dina behov */
         max-width: 50%; /* eller vilken bredd du föredrar */
     }
