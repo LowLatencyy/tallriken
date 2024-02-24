@@ -966,7 +966,8 @@ input:not(:checked)+.slider.large {
     flex-direction: column;
     height: 80vh;
     /* Justera detta värde efter behov */
-    padding-top: 100px; /* Lägg till önskat tomt utrymme */
+    padding-top: 100px;
+    /* Lägg till önskat tomt utrymme */
 }
 
 .image-link {
@@ -983,14 +984,34 @@ input:not(:checked)+.slider.large {
     /* Se till att bilden täcker elementet */
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
     .image-links-container {
-        height: auto;
+        flex-direction: row;
+        /* Gör så att barnen (bildlänkarna) ligger i sidled */
+        justify-content: center;
+        /* Centrerar barnen i containern */
+        padding-top: 0;
+        /* Tar bort extra utrymme överst som kanske inte längre behövs */
     }
 
     .image-link {
-        height: 50vh;
-        /* Varje bild tar upp halva skärmens höjd */
+        width: 50%;
+        /* Ger varje bildlänk halva bredden av containern för att passa två i bredd */
+        display: flex;
+        /* Tillämpar Flexbox på länken för ytterligare anpassning */
+        justify-content: center;
+        /* Centrerar bilden inuti länken */
+        padding: 0 10px;
+        /* Lägger till lite utrymme mellan bilderna */
+    }
+
+    .image-link img {
+        width: 100%;
+        /* Gör att bilden fyller länkens bredd */
+        max-width: 100%;
+        /* Säkerställer att bilden inte blir större än sin behållare */
+        height: auto;
+        /* Behåller bildens proportioner */
     }
 }
 
