@@ -393,7 +393,7 @@ html {
     margin: 5px 0;
     border-radius: 10px;
     font-size: 8;
-    
+
 }
 
 .matratt-ingredienser div {
@@ -443,7 +443,7 @@ html {
 
     min-height: 420px !important;
     display: block;
-    
+
 }
 
 .matratt h2,
@@ -825,7 +825,8 @@ input:not(:checked)+.slider.large {
     .matratt-title {
         font-size: 10px;
         /* Justera detta värde efter dina behov */
-        max-width: 50%; /* eller vilken bredd du föredrar */
+        max-width: 50%;
+        /* eller vilken bredd du föredrar */
     }
 
     .matratt iframe {
@@ -948,3 +949,48 @@ input:not(:checked)+.slider.large {
     /* or any size that fits your design */
     height: auto;
 }
+
+.logo-main-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.main-logo {
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.image-links-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    /* Justera detta värde efter behov */
+}
+
+.image-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-link img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    /* Se till att bilden täcker elementet */
+}
+
+@media (max-width: 768px) {
+    .image-links-container {
+        height: auto;
+    }
+
+    .image-link {
+        height: 50vh;
+        /* Varje bild tar upp halva skärmens höjd */
+    }
+}
+
+/* Lägg till ytterligare media queries och stilar efter behov */
