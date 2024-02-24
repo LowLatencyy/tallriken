@@ -966,7 +966,7 @@ input:not(:checked)+.slider.large {
     flex-direction: column;
     height: 80vh;
     /* Justera detta värde efter behov */
-    padding-top: 100px; /* Lägg till önskat tomt utrymme */
+    padding-top: 200px; /* Lägg till önskat tomt utrymme */
 }
 
 .image-link {
