@@ -441,8 +441,9 @@ html {
 .instagram-media iframe {
     width: 50%;
 
-    min-height: 500px;
+    min-height: 420px !important;
     display: block;
+    
 }
 
 .matratt h2,
@@ -808,7 +809,7 @@ input:not(:checked)+.slider.large {
     .instagram-media iframe {
         width: 100%;
 
-        min-height: 800px;
+        min-height: 420px !important;
         display: block;
     }
 
