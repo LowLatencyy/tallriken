@@ -383,7 +383,7 @@ html {
     padding: 0px;
     height: auto;
     /* Gör så att höjden anpassas automatiskt */
-    min-height: 400px;
+    min-height: 500px;
     /* Minimum höjd för att säkerställa konsistens */
 }
 
