@@ -786,7 +786,7 @@ input:not(:checked)+.slider.large {
 #pagination-controls {
     position: fixed;
     /* Istället för absolute */
-    bottom: 50px;
+    bottom: 25px;
     /* Höjden på din footer */
     left: 0;
     right: 0;
