@@ -1013,3 +1013,24 @@ input:not(:checked)+.slider.large {
 }
 
 /* Lägg till ytterligare media queries och stilar efter behov */
+
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.gallery-row img {
+    margin: 5px;
+    width: auto;
+    height: 150px;
+    /* Justera efter behov för att passa din design */
+}
