@@ -357,8 +357,8 @@ html {
 }
 
 .matratt {
-    flex: 0 0 calc(20% - 10px);
-    max-width: calc(20% - 10px);
+    flex: 0 0 calc(20% - 20px);
+    max-width: calc(20% - 20px);
     margin: auto;
     padding: 10px;
     border-radius: 10px;
@@ -813,8 +813,8 @@ input:not(:checked)+.slider.large {
     }
 
     .matratt {
-        flex: 0 0 calc(20% - 10px);
-        max-width: calc(20% - 10px);
+        flex: 0 0 calc(20% - 20px);
+        max-width: calc(20% - 20px);
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
         margin: 10px;
         /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
