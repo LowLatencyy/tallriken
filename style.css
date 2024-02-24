@@ -813,8 +813,8 @@ input:not(:checked)+.slider.large {
     }
 
     .matratt {
-        flex: 0 0 calc(25% - 20px);
-        max-width: calc(25% - 20px);
+        flex: 0 0 calc(20% - 20px);
+        max-width: calc(20% - 20px);
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
         margin: 10px;
         /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
@@ -824,7 +824,7 @@ input:not(:checked)+.slider.large {
     .matratt-title {
         font-size: 11px;
         /* Justera detta värde efter dina behov */
-        max-width: 60%; /* eller vilken bredd du föredrar */
+        max-width: 50%; /* eller vilken bredd du föredrar */
     }
 
     .matratt iframe {
