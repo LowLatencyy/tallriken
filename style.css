@@ -439,6 +439,7 @@ html {
 
 .instagram-media iframe {
     width: 50%;
+
     min-height: 500px;
     display: block;
 }
@@ -803,6 +804,13 @@ input:not(:checked)+.slider.large {
 /* Media query för desktop */
 @media (min-width: 481px) {
 
+    .instagram-media iframe {
+        width: 100%;
+
+        min-height: 500px;
+        display: block;
+    }
+
     .matratt {
         flex: 0 0 calc(25% - 20px);
         max-width: calc(25% - 20px);
@@ -827,12 +835,6 @@ input:not(:checked)+.slider.large {
 }
 
 @media (max-width: 480px) {
-    .matratt iframe {
-        min-width: 150px;
-        /* Sätt en minimum bredd för iframes på små skärmar */
-        height: auto;
-        /* Tillåt att höjden justeras automatiskt */
-    }
 
     .logo-link img {
         height: 80px;
