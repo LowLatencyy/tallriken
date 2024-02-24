@@ -987,29 +987,26 @@ input:not(:checked)+.slider.large {
 @media (min-width: 769px) {
     .image-links-container {
         flex-direction: row;
-        /* Gör så att barnen (bildlänkarna) ligger i sidled */
         justify-content: center;
-        /* Centrerar barnen i containern */
+        align-items: center;
+        /* Centrerar barn vertikalt */
         padding-top: 0;
-        /* Tar bort extra utrymme överst som kanske inte längre behövs */
     }
 
     .image-link {
-        width: 50%;
-        /* Ger varje bildlänk halva bredden av containern för att passa två i bredd */
+        width: 40%;
+        /* Minskar bredden för att göra bilderna mindre */
         display: flex;
-        /* Tillämpar Flexbox på länken för ytterligare anpassning */
         justify-content: center;
-        /* Centrerar bilden inuti länken */
+        align-items: center;
+        /* Centrerar innehållet vertikalt */
         padding: 0 10px;
-        /* Lägger till lite utrymme mellan bilderna */
+        /* Behåller lite utrymme mellan bilderna */
     }
 
     .image-link img {
-        width: 100%;
-        /* Gör att bilden fyller länkens bredd */
         max-width: 100%;
-        /* Säkerställer att bilden inte blir större än sin behållare */
+        /* Säkerställer att bilden inte överskrider länkens bredd */
         height: auto;
         /* Behåller bildens proportioner */
     }
