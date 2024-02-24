@@ -355,8 +355,8 @@ html {
 }
 
 .matratt {
-    flex: 0 0 calc(20% - 10px);
-    max-width: calc(20% - 10px);
+    flex: 0 0 calc(25% - 10px);
+    max-width: calc(25% - 10px);
     margin: auto;
     padding: 10px;
     border-radius: 10px;
@@ -794,8 +794,8 @@ input:not(:checked)+.slider.large {
 /* Media query för desktop */
 @media (min-width: 481px) {
     .matratt {
-        flex: 0 0 calc(20% - 10px);
-        max-width: calc(20% - 10px);
+        flex: 0 0 calc(25% - 10px);
+        max-width: calc(25% - 10px);
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
     }
 
