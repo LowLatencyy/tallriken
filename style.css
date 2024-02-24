@@ -393,6 +393,7 @@ html {
     margin: 5px 0;
     border-radius: 10px;
     font-size: 8;
+    
 }
 
 .matratt-ingredienser div {
@@ -823,6 +824,7 @@ input:not(:checked)+.slider.large {
     .matratt-title {
         font-size: 11px;
         /* Justera detta värde efter dina behov */
+        max-width: 60%; /* eller vilken bredd du föredrar */
     }
 
     .matratt iframe {
