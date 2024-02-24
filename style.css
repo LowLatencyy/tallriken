@@ -956,7 +956,7 @@ input:not(:checked)+.slider.large {
 }
 
 .main-logo {
-    max-width: 80%;
+    max-width: 20%;
     height: auto;
     margin: 0 auto;
 }
@@ -976,7 +976,7 @@ input:not(:checked)+.slider.large {
 }
 
 .image-link img {
-    width: 100%;
+    width: 70%;
     height: auto;
     object-fit: cover;
     /* Se till att bilden täcker elementet */
