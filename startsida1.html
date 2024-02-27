@@ -14,13 +14,89 @@
     <div id="overlay" hidden></div>
 
     <nav class="nav">
-        <!-- Ditt navigationsinnehåll här -->
+        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
+        <label class="nav__trigger-finger" for="trigger">
+            <span></span>
+        </label>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Startsida
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Om
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Om oss
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Tipsa Oss
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi2" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Knivar & Kastruller
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Inredning
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+            </li> -->
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Kontakt
+                    </span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
     <a href="startsida.html" class="logo-link">
         <img src="images/visplogo/Logo Files/For Web/svg/White logo - no background.svg" alt="Logga" />
     </a>
-    
+
     <!-- <div class="logo-main-container">
         <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Stor logotyp" class="main-logo">
     </div> -->
