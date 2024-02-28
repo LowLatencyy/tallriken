@@ -4,6 +4,17 @@ document.addEventListener('DOMContentLoaded', async function () {
     let allData = [];
     const selectedFilters = { country: [], protein: [], mealType: [] };
 
+    function filterData() {
+        const filteredResults = allData.filter(row => {
+            // Kontrollera om varje filter är tomt eller om cellen innehåller något av de valda filtren
+            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
+            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
+            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
+            return countryMatch && proteinMatch && mealTypeMatch;
+        });
+        displayResults(filteredResults);
+    }
+
     // Funktion för att ladda data från Google Sheets
     async function loadData() {
         const dataRange = 'Blad1!A2:J';
@@ -42,13 +53,15 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     function performSearch() {
-        const filteredResults = allData.filter(row =>
-            selectedFilters.country.every(f => row[3].includes(f)) &&
-            selectedFilters.protein.every(f => row[4].includes(f)) &&
-            selectedFilters.mealType.every(f => row[9].includes(f))
-        );
+        const filteredResults = allData.filter(row => {
+            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
+            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
+            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
+            return countryMatch && proteinMatch && mealTypeMatch;
+        });
         displayResults(filteredResults);
     }
+
 
     function displayResults(results) {
         const container = document.getElementById('results-container');
@@ -69,8 +82,11 @@ document.addEventListener('DOMContentLoaded', async function () {
     // Lägg till event listeners för "Visa fler"-knapparna
     document.querySelectorAll('.show-more-btn').forEach(button => {
         button.addEventListener('click', function () {
-            const containerId = this.getAttribute('data-target');
-            showMore(containerId);
+            const target = this.dataset.target;
+            const container = document.getElementById(target);
+            const hiddenButtons = container.querySelectorAll('.hidden');
+            hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
+            this.style.display = 'none';
         });
     });
 });
