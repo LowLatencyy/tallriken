@@ -1,6 +1,5 @@
 /* Grundläggande stilar för knappar */
 .filter-btn {
-    display: inline-block;
     margin: 5px;
     padding: 10px 15px;
     background-color: #f0f0f0;
@@ -8,24 +7,27 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 1em;
+    /* Storleken kan justeras efter behov */
 }
 
+/* Stil för valda knappar */
 .filter-btn.selected {
     background-color: #007bff;
     color: white;
 }
 
-
+/* Hover-effekt för knappar */
 .filter-btn:hover {
     background-color: #e0e0e0;
 }
 
-/* Behållare för varje kategori (länder, proteintyper, måltidstyper) */
+/* Stilar för behållaren av knappar */
 .filter-container {
     margin-bottom: 20px;
 }
 
-/* Visa fler-knappen */
+/* Visa fler-knappens stil */
 .show-more-btn {
     display: block;
     width: 100%;
@@ -39,20 +41,29 @@
     margin-top: 10px;
 }
 
+/* Hover-effekt för "Visa fler"-knappen */
 .show-more-btn:hover {
     background-color: #0056b3;
 }
 
-/* Initialt dölj extra knappar */
-.filter-container .filter-btn.hidden {
+/* Döljer element med klassen hidden */
+.hidden {
     display: none;
 }
 
+/* Flexbox-layout för filterknappar i mobilvy */
 @media (max-width: 600px) {
+    .filter-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* Lägger till lite utrymme mellan knapparna */
+    }
 
-    /* I mobilvy, visa endast två knappar i bredd */
     .filter-btn {
-        display: block;
-        width: calc(50% - 10px);
+        flex-basis: calc(50% - 10px);
+        /* Beräknar bredden för att ta hänsyn till marginalen */
+        margin-bottom: 10px;
+        /* Lägg till margin-bottom för att skapa utrymme mellan raderna */
     }
 }

@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', async function () {
             const filter = this.dataset.filter;
             const category = this.dataset.category;
 
-            // Lägg till eller ta bort filter från den valda kategorin
             const index = selectedFilters[category].indexOf(filter);
             if (index > -1) {
                 selectedFilters[category].splice(index, 1);
@@ -40,34 +39,33 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     function performSearch() {
-        // Filtrera baserat på valda filter
         const filteredResults = allData.filter(row =>
-            (!selectedFilters.country.length || selectedFilters.country.includes(row[3])) &&
-            (!selectedFilters.protein.length || selectedFilters.protein.includes(row[4])) &&
-            (!selectedFilters.mealType.length || selectedFilters.mealType.includes(row[9]))
+            selectedFilters.country.every(f => row[3].includes(f)) &&
+            selectedFilters.protein.every(f => row[4].includes(f)) &&
+            selectedFilters.mealType.every(f => row[9].includes(f))
         );
         displayResults(filteredResults);
     }
 
     function displayResults(results) {
         const container = document.getElementById('results-container');
-        container.innerHTML = ''; // Rensa tidigare resultat
-
-        results.forEach(row => {
-            const element = document.createElement('div');
-            element.textContent = row.join(', ');
-            container.appendChild(element);
-        });
+        container.innerHTML = results.length > 0
+            ? results.map(row => `<div>${row.join(', ')}</div>`).join('')
+            : '<div>Inga resultat hittades.</div>';
     }
 });
 
 function showMore(containerId) {
     const container = document.getElementById(containerId);
     const hiddenButtons = container.querySelectorAll('.hidden');
-    hiddenButtons.forEach(btn => {
-        btn.classList.remove('hidden');
-    });
-    // Dölj "Visa fler"-knappen efter att alla knappar visas
+    hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
     const showMoreBtn = container.querySelector('.show-more-btn');
     showMoreBtn.style.display = 'none';
 }
+
+document.querySelectorAll('.show-more-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const containerId = this.dataset.target;
+        showMore(containerId);
+    });
+});
