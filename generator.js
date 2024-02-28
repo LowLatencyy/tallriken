@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     let allData = [];
     const selectedFilters = { country: [], protein: [], mealType: [] };
 
+    // Funktion för att ladda data från Google Sheets
     async function loadData() {
         const dataRange = 'Blad1!A2:J';
         try {
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     await loadData();
 
+    // Funktion för att hantera klick på filterknappar
     document.querySelectorAll('.filter-btn').forEach(btn => {
         btn.addEventListener('click', function () {
             const filter = this.dataset.filter;
@@ -34,6 +36,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     });
 
+    // Funktion för att utföra sökningen
     document.getElementById('searchBtn').addEventListener('click', function () {
         performSearch();
     });
@@ -53,19 +56,21 @@ document.addEventListener('DOMContentLoaded', async function () {
             ? results.map(row => `<div>${row.join(', ')}</div>`).join('')
             : '<div>Inga resultat hittades.</div>';
     }
-});
 
-function showMore(containerId) {
-    const container = document.getElementById(containerId);
-    const hiddenButtons = container.querySelectorAll('.hidden');
-    hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
-    const showMoreBtn = container.querySelector('.show-more-btn');
-    showMoreBtn.style.display = 'none';
-}
+    // Funktion för att visa fler knappar
+    function showMore(containerId) {
+        const container = document.getElementById(containerId);
+        const hiddenButtons = container.querySelectorAll('.hidden');
+        hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
+        const showMoreBtn = container.querySelector(`[data-target="${containerId}"]`);
+        if (showMoreBtn) showMoreBtn.style.display = 'none';
+    }
 
-document.querySelectorAll('.show-more-btn').forEach(button => {
-    button.addEventListener('click', function () {
-        const containerId = this.dataset.target;
-        showMore(containerId);
+    // Lägg till event listeners för "Visa fler"-knapparna
+    document.querySelectorAll('.show-more-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const containerId = this.getAttribute('data-target');
+            showMore(containerId);
+        });
     });
 });
