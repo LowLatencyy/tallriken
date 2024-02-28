@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sökgeneratorn</title>
+    <title>Din Startsida Titel</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,73 +14,104 @@
     <div id="overlay" hidden></div>
 
     <nav class="nav">
-        <!-- Ditt navigationsinnehåll här -->
+        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
+        <label class="nav__trigger-finger" for="trigger">
+            <span></span>
+        </label>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Startsida
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Om
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Om oss
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Tipsa Oss
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi2" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Knivar & Kastruller
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Inredning
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+            </li> -->
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Kontakt
+                    </span>
+                </a>
+            </li>
+        </ul>
     </nav>
 
-    <a href="startsida1.html" class="logo-link">
+    <a href="startsida.html" class="logo-link">
         <img src="images/visplogo/Logo Files/For Web/svg/White logo - no background.svg" alt="Logga" />
     </a>
-    
+
+    <div id="results-container"></div>
+
     <div class="background-container"></div>
 
-    <div class="gallery-container">
-        <!-- Första raden med bilder -->
-        <div class="gallery-row">
-            <img src="images/knappargenerator/knappar/27.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/lunchmiddag2.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/lunchmiddag3.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/lunchmiddag4.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/lunchmiddag5.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/29.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/30.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/31.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/32.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/33.png" alt="Bildbeskrivning">
-           
-            <!-- Fortsätt med resten av bilderna för första raden -->
-        </div>
-
-        <!-- Andra raden med bilder -->
-        <div class="gallery-row">
-            <img src="images/knappargenerator/knappar/1.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/2.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/3.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/4.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/5.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/6.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/7.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/8.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/9.png" alt="Bildbeskrivning">
-            
-            <!-- Fortsätt med resten av bilderna för andra raden -->
-        </div>
-
-        <!-- Tredje raden med bilder -->
-        <div class="gallery-row">
-            <img src="images/knappargenerator/knappar/10.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/11.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/12.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/13.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/14.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/15.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/16.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/17.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/18.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/19.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/nordamerika.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/21.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/22.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/23.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/24.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/25.png" alt="Bildbeskrivning">
-            <img src="images/knappargenerator/knappar/26.png" alt="Bildbeskrivning">
-            <!-- Fortsätt med resten av bilderna för tredje raden -->
-        </div>
-
-    
+    <!-- Sökfilter Knappar -->
+    <div class="search-filters">
+        <button class="filter-btn" data-filter="italien">Italien</button>
+        <button class="filter-btn" data-filter="spanien">Spanien</button>
+        <button class="filter-btn" data-filter="fisk">Fisk</button>
+        <button class="filter-btn" data-filter="nötkött">Nötkött</button>
+        <!-- Lägg till fler knappar efter behov -->
+    </div>
 
     <div class="footer-banner">
-        <!-- Footer content -->
+        <!-- Footer content här -->
     </div>
 
     <script src="scripts.js"></script>
