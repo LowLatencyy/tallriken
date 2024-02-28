@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
     let allData = [];
     const selectedFilters = { country: [], protein: [], mealType: [] };
+    let currentPage = 1;
+    const resultsPerPage = 14; // eller vilket antal per sida du vill ha
+    let totalPages = 0;
 
     function filterData() {
         const filteredResults = allData.filter(row => {
@@ -64,11 +67,43 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
     function displayResults(results) {
+        totalPages = Math.ceil(results.length / resultsPerPage);
+        const startIndex = (currentPage - 1) * resultsPerPage;
+        const endIndex = startIndex + resultsPerPage;
+        const resultsToDisplay = results.slice(startIndex, endIndex);
+
         const container = document.getElementById('results-container');
-        container.innerHTML = results.length > 0
-            ? results.map(row => `<div>${row.join(', ')}</div>`).join('')
+        container.innerHTML = resultsToDisplay.length > 0
+            ? resultsToDisplay.map(row => `<div>${row.join(', ')}</div>`).join('')
             : '<div>Inga resultat hittades.</div>';
+
+        displayPaginationControls();
     }
+
+    function displayPaginationControls() {
+        const paginationContainer = document.getElementById('pagination-controls');
+        paginationContainer.innerHTML = ''; // Rensa befintliga pagineringsknappar
+
+        for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement('button');
+            button.textContent = i;
+            button.addEventListener('click', function () {
+                goToPage(i);
+            });
+
+            if (currentPage === i) {
+                button.classList.add('current-page'); // Lägg till klass för att markera nuvarande sida
+            }
+
+            paginationContainer.appendChild(button);
+        }
+    }
+    // Funktion för att gå till en sida
+    function goToPage(pageNumber) {
+        currentPage = pageNumber;
+        performSearch(); // Antaget att performSearch nu anropar displayResults
+    }
+
 
     // Funktion för att visa fler knappar
     function showMore(containerId) {
