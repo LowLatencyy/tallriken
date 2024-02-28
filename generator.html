@@ -102,13 +102,30 @@
     <div class="background-container"></div>
 
     <!-- Sökfilter Knappar -->
-    <div class="search-filters">
-        <button class="filter-btn" data-filter="italien">Italien</button>
-        <button class="filter-btn" data-filter="spanien">Spanien</button>
-        <button class="filter-btn" data-filter="fisk">Fisk</button>
-        <button class="filter-btn" data-filter="nötkött">Nötkött</button>
-        <!-- Lägg till fler knappar efter behov -->
+    <div class="filter-container" id="countries">
+        <!-- Länder knappar här -->
+        <button class="filter-btn">Sverige</button>
+        <button class="filter-btn">Italien</button>
+        <!-- Flera knappar här, initialt dolda med en klass "hidden" -->
+        <button class="show-more-btn" onclick="showMore('countries')">Visa fler</button>
     </div>
+
+    <div class="filter-container" id="proteins">
+        <!-- Proteintyper knappar här -->
+        <button class="filter-btn">Nötkött</button>
+        <button class="filter-btn">Fisk</button>
+        <!-- Flera knappar här, initialt dolda med en klass "hidden" -->
+        <button class="show-more-btn" onclick="showMore('proteins')">Visa fler</button>
+    </div>
+
+    <div class="filter-container" id="meal-types">
+        <!-- Måltidstyper knappar här -->
+        <button class="filter-btn">Soppa</button>
+        <button class="filter-btn">Pasta</button>
+        <!-- Flera knappar här, initialt dolda med en klass "hidden" -->
+        <button class="show-more-btn" onclick="showMore('meal-types')">Visa fler</button>
+    </div>
+
 
     <div class="footer-banner">
         <!-- Footer content här -->
