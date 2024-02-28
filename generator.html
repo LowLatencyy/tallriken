@@ -103,29 +103,28 @@
     <div class="background-container"></div>
 
     <!-- Sökfilter Knappar -->
+    <!-- Filter Knappar -->
     <div class="filter-container" id="countries">
-        <!-- Länder knappar här -->
-        <button class="filter-btn">Sverige</button>
-        <button class="filter-btn">Italien</button>
-        <!-- Flera knappar här, initialt dolda med en klass "hidden" -->
-        <button class="show-more-btn" onclick="showMore('countries')">Visa fler</button>
+        <button class="filter-btn" data-category="country" data-filter="Sverige">Sverige</button>
+        <button class="filter-btn" data-category="country" data-filter="Italien">Italien</button>
+        <!-- Fler knappar -->
     </div>
 
     <div class="filter-container" id="proteins">
-        <!-- Proteintyper knappar här -->
-        <button class="filter-btn">Nötkött</button>
-        <button class="filter-btn">Fisk</button>
-        <!-- Flera knappar här, initialt dolda med en klass "hidden" -->
-        <button class="show-more-btn" onclick="showMore('proteins')">Visa fler</button>
+        <button class="filter-btn" data-category="protein" data-filter="Nötkött">Nötkött</button>
+        <button class="filter-btn" data-category="protein" data-filter="Fisk">Fisk</button>
+        <!-- Fler knappar -->
     </div>
 
     <div class="filter-container" id="meal-types">
-        <!-- Måltidstyper knappar här -->
-        <button class="filter-btn">Soppa</button>
-        <button class="filter-btn">Pasta</button>
-        <!-- Flera knappar här, initialt dolda med en klass "hidden" -->
-        <button class="show-more-btn" onclick="showMore('meal-types')">Visa fler</button>
+        <button class="filter-btn" data-category="mealType" data-filter="Soppa">Soppa</button>
+        <button class="filter-btn" data-category="mealType" data-filter="Pasta">Pasta</button>
+        <!-- Fler knappar -->
     </div>
+
+    <!-- Sök Knapp -->
+    <button id="searchBtn">Sök</button>
+
 
 
     <div class="footer-banner">

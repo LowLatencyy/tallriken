@@ -10,6 +10,12 @@
     transition: background-color 0.3s;
 }
 
+.filter-btn.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+
 .filter-btn:hover {
     background-color: #e0e0e0;
 }
@@ -43,6 +49,7 @@
 }
 
 @media (max-width: 600px) {
+
     /* I mobilvy, visa endast två knappar i bredd */
     .filter-btn {
         display: block;
