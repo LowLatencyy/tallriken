@@ -22,8 +22,48 @@
     background-color: #e0e0e0;
 }
 
-/* Stilar för behållaren av knappar */
+/* Grundläggande stilar för bildknappar */
+.image-button {
+    margin: 5px;
+    padding: 0;
+    /* Ta bort padding eftersom bilden kommer täcka hela knappområdet */
+    border: none;
+    /* Bildknappar behöver vanligtvis ingen kant */
+    background-color: transparent;
+    /* Bakgrundsfärg behöver vara transparent */
+    cursor: pointer;
+    transition: transform 0.3s;
+    /* Lägger till en transform-effekt för hover */
+}
+
+/* Effekt när man hovrar över bildknappen */
+.image-button:hover {
+    transform: scale(1.05);
+    /* Förstorar bildknappen lite när man hovrar över den */
+}
+
+/* Bildinställningar inom bildknappen */
+.image-button img {
+    width: 100%;
+    /* Sätter bilden till att täcka hela bredden av knappen */
+    height: auto;
+    /* Höjden på bilden blir automatiskt proportionell mot bredden */
+    border-radius: 5px;
+    /* Om du vill ha rundade hörn på bilderna */
+}
+
+/* Döljer element med klassen hidden */
+.hidden {
+    display: none;
+}
+
+/* Stilar för behållaren av bildknappar */
 .filter-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    /* Skapar en grid layout med fyra kolumner */
+    gap: 10px;
+    /* Sätter gap mellan knapparna */
     margin-bottom: 20px;
 }
 
@@ -51,19 +91,15 @@
     display: none;
 }
 
-/* Flexbox-layout för filterknappar i mobilvy */
+/* Anpassning för mobilvy */
 @media (max-width: 600px) {
     .filter-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        /* Lägger till lite utrymme mellan knapparna */
+        grid-template-columns: repeat(2, 1fr);
+        /* På små skärmar, använd två kolumner istället */
     }
 
-    .filter-btn {
-        flex-basis: calc(50% - 10px);
-        /* Beräknar bredden för att ta hänsyn till marginalen */
-        margin-bottom: 10px;
-        /* Lägg till margin-bottom för att skapa utrymme mellan raderna */
+    .show-more-btn {
+        grid-column: span 2;
+        /* Visa fler-knappen ska täcka två kolumner på små skärmar */
     }
 }
