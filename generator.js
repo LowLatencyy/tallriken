@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     // Funktion för att hantera klick på filterknappar
     document.querySelectorAll('.image-button').forEach(button => {
-        btn.addEventListener('click', function () {
+        button.addEventListener('click', function () {
             const filter = this.dataset.filter;
             const category = this.dataset.category;
 
