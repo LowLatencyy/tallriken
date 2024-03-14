@@ -50,11 +50,11 @@
 /* Anpassning för mobilvy */
 @media (max-width: 600px) {
     .filter-container {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 
     .show-more-btn {
-        grid-column: span 4;
+        grid-column: span 5;
     }
 }
 
