@@ -24,16 +24,17 @@
 .filter-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 5px;
+    gap: 2px;
     margin-bottom: 20px;
 }
 
 /* Visa fler-knappens stil */
 .show-more-btn {
+    grid-column: 1 / -1; /* Gör att "Visa fler"-knappen tar upp hela radens bredd */
     display: block;
     width: 100%;
     padding: 10px 0;
-    background-color: #007bff;
+    background-color: rgb(255, 247, 179);
     color: white;
     text-align: center;
     cursor: pointer;
