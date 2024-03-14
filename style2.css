@@ -23,7 +23,7 @@
 /* Stilar för behållaren av bildknappar */
 .filter-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 10px;
     margin-bottom: 20px;
 }
