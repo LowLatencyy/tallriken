@@ -34,6 +34,11 @@ body {
     margin-bottom: 20px;
 }
 
+.hidden {
+    display: none;
+}
+
+
 /* Visa fler-knappens stil */
 .show-more-btn {
     grid-column: 1 / -1;
