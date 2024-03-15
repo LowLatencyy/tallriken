@@ -107,3 +107,60 @@ body {
     margin-bottom: 20px;
     /* Ger utrymme under avdelaren */
 }
+
+#searchBtn {
+    font-family: 'Exo 2', sans-serif;
+    /* Använder Exo 2 typsnitt */
+    font-size: 1.5em;
+    /* Större text */
+    width: 80%;
+    /* Bredd på knappen */
+    max-width: 400px;
+    /* Maxbredd för att undvika för bred knapp */
+    padding: 15px 30px;
+    /* Storlek på padding för att göra knappen högre */
+    margin: 0 auto 30px;
+    /* Centrerar knappen och ger utrymme längst ner */
+    display: block;
+    /* Gör så att margin: auto fungerar för horisontell centrering */
+    background-color: #0056b3;
+    /* En snygg blå färg */
+    color: white;
+    /* Vit text */
+    border: none;
+    /* Ingen ram */
+    border-radius: 50px;
+    /* Rundade hörn */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Skugga för att lyfta knappen från bakgrunden */
+    cursor: pointer;
+    /* Hand-ikon när du hovrar över knappen */
+    transition: all 0.3s ease;
+    /* Animation vid interaktion */
+}
+
+#searchBtn:hover {
+    background-color: #003d82;
+    /* Mörkare blå när du hovrar över */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    /* Större skugga när du hovrar över */
+}
+
+#searchBtn:active {
+    background-color: #003366;
+    /* Ännu mörkare blå vid klick */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    /* Mindre skugga vid klick */
+}
+
+/* Container för att hålla sökknappen längst ner */
+.footer-banner {
+    text-align: center;
+    /* Centrerar innehållet */
+    position: absolute;
+    /* Absolut positionering för att kunna placera den längst ner */
+    bottom: 0;
+    /* Längst ner på sidan */
+    width: 100%;
+    /* Full bredd */
+}
