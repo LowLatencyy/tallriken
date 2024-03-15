@@ -1,3 +1,9 @@
+body {
+    padding-top: 70px;
+    /* Justera detta värde efter logotypens höjd plus önskat utrymme */
+}
+
+
 /* Grundläggande stilar för bildknappar */
 .image-button {
     margin: 5px;
@@ -30,7 +36,8 @@
 
 /* Visa fler-knappens stil */
 .show-more-btn {
-    grid-column: 1 / -1; /* Gör att "Visa fler"-knappen tar upp hela radens bredd */
+    grid-column: 1 / -1;
+    /* Gör att "Visa fler"-knappen tar upp hela radens bredd */
     display: block;
     width: 100%;
     padding: 10px 0;
