@@ -81,6 +81,7 @@ body {
     transform: scale(1.05);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 
 .category-title {
     font-size: 24px;
