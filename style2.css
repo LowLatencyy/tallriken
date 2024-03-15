@@ -80,3 +80,27 @@ body {
 .image-button:hover img {
     transform: scale(1.05);
 }
+
+
+.category-title {
+    font-size: 24px;
+    color: #333;
+    /* Ändra färgen efter önskemål */
+    margin-top: 30px;
+    /* Ger utrymme ovanför rubriken */
+    margin-bottom: 10px;
+    /* Ger utrymme under rubriken */
+    text-align: center;
+}
+
+.category-divider {
+    border: 0;
+    height: 1px;
+    /* Ändra tjockleken efter önskemål */
+    background-image: linear-gradient(to right, #aaa, #333, #aaa);
+    /* En gradient effekt */
+    margin-top: 20px;
+    /* Ger utrymme ovanför avdelaren */
+    margin-bottom: 20px;
+    /* Ger utrymme under avdelaren */
+}
