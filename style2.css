@@ -23,16 +23,20 @@ body {
 
 /* Bildinställningar inom bildknappen */
 .image-button img {
-    width: 100%;
-    height: auto;
+    width: 120px;
+    /* Ange en specifik bredd för bilderna */
+    height: 120px;
+    /* Ange en höjd som matchar bredden för att behålla bildförhållandet */
     border-radius: 5px;
+    object-fit: cover;
+    /* Denna egenskap gör att bilden täcker hela elementet utan att förvrängas */
 }
 
 /* Stilar för behållaren av bildknappar */
 .filter-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 2px;
+    gap: 1px;
     margin-bottom: 20px;
 }
 
@@ -80,7 +84,7 @@ body {
 
 /* Effekt när man hovrar över bildknappar */
 .image-button:hover img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 
