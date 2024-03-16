@@ -8,15 +8,12 @@ body {
 
 /* Grundläggande stilar för bildknappar */
 .image-button {
-    margin: 5px; /* du kan minska denna för mindre utrymme mellan knapparna */
+    margin: 5px;
     padding: 0;
     border: none;
     background-color: transparent;
     cursor: pointer;
     transition: transform 0.3s;
-    display: flex; /* lägg till flex för att centrera bilden inuti */
-    justify-content: center;
-    align-items: center;
 }
 
 /* Effekt när man hovrar över bildknappen */
@@ -26,17 +23,16 @@ body {
 
 /* Bildinställningar inom bildknappen */
 .image-button img {
-    width: auto; /* ändra till auto för att bevara bildens proportioner */
-    max-width: none; /* ta bort begränsningen om det finns någon */
-    height: 120px; /* öka höjden för att göra bilden större */
-    max-height: none; /* ta bort max-höjdbegränsningen om det finns någon */
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
 }
 
 /* Stilar för behållaren av bildknappar */
 .filter-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* bibehåll 4 kolumner */
-    gap: 5px; /* justera detta för att öka eller minska avståndet mellan knapparna */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5px;
     margin-bottom: 20px;
 }
 
