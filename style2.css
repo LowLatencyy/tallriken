@@ -31,7 +31,7 @@ body {
 /* Stilar för behållaren av bildknappar */
 .filter-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 2px;
     margin-bottom: 20px;
 }
@@ -65,7 +65,7 @@ body {
 /* Anpassning för mobilvy */
 @media (max-width: 600px) {
     .filter-container {
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
     }
 
     .show-more-btn {
