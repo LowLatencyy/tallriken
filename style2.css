@@ -157,10 +157,9 @@ body {
 .footer-banner {
     text-align: center;
     /* Centrerar innehållet */
-    position: absolute;
-    /* Absolut positionering för att kunna placera den längst ner */
-    bottom: 0;
-    /* Längst ner på sidan */
-    width: 100%;
-    /* Full bredd */
+    margin-top: 30px;
+    /* Ger utrymme ovanför knappen */
+    margin-bottom: 30px;
+    /* Ger utrymme under knappen */
+    /* Ta bort position: absolute och bottom: 0; */
 }
