@@ -67,10 +67,6 @@ body {
     .filter-container {
         grid-template-columns: repeat(4, 1fr);
     }
-
-    .show-more-btn {
-        grid-column: span 5;
-    }
 }
 
 /* Stil för valda bildknappar */
@@ -165,11 +161,15 @@ body {
 }
 
 .category-header {
-    text-align: center; /* Centrerar bilden om det behövs */
-    margin: 8px 0; /* Lägger till lite utrymme ovanför och under bilden */
+    text-align: center;
+    /* Centrerar bilden om det behövs */
+    margin: 8px 0;
+    /* Lägger till lite utrymme ovanför och under bilden */
 }
 
 .category-image {
-    max-width: 100%; /* Gör så att bilden inte blir större än sin behållare */
-    height: auto; /* Bevarar bildens proportioner */
+    max-width: 100%;
+    /* Gör så att bilden inte blir större än sin behållare */
+    height: auto;
+    /* Bevarar bildens proportioner */
 }
