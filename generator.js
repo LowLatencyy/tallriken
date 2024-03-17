@@ -67,9 +67,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const filteredResults = allData.filter(row => {
             // Anpassa indexen för att matcha din datastruktur
-            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[2].toLowerCase().includes(f.toLowerCase()));
-            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
-            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[8].toLowerCase().includes(f.toLowerCase()));
+            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
+            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
+            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
 
             return countryMatch && proteinMatch && mealTypeMatch;
         });
@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             instagramContainer.innerHTML = '<div>Inga matchande recept hittades.</div>';
         }
     }
+
 
 
 
