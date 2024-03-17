@@ -116,21 +116,20 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     document.querySelectorAll('.show-more-btn').forEach(button => {
         button.addEventListener('click', function () {
-            const target = this.dataset.target;
-            const container = document.getElementById(target);
-            const hiddenButtons = container.querySelectorAll('.hidden');
-            const isExpanded = this.getAttribute('data-expanded') === 'true';
+            const target = this.dataset.target; // Hämtar målcontainer-ID
+            const hiddenButtons = document.getElementById(target).querySelectorAll('.hidden'); // Hämtar alla dolda knappar inom målcontainern
+            const isExpanded = this.getAttribute('data-expanded') === 'true'; // Kontrollerar om det är expanderat
 
             if (isExpanded) {
-                // Dölj element
+                // Om expanderad, dölj element
                 hiddenButtons.forEach(btn => btn.classList.add('hidden'));
-                this.textContent = 'Visa fler'; // Uppdaterar knappens text till "Visa fler"
-                this.setAttribute('data-expanded', 'false');
+                this.textContent = 'Visa fler'; // Uppdaterar text till "Visa fler"
+                this.setAttribute('data-expanded', 'false'); // Uppdaterar expanderad status
             } else {
-                // Visa element
+                // Om ej expanderad, visa element
                 hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
-                this.textContent = 'Dölj'; // Uppdaterar knappens text till "Dölj"
-                this.setAttribute('data-expanded', 'true');
+                this.textContent = 'Dölj'; // Uppdaterar text till "Dölj"
+                this.setAttribute('data-expanded', 'true'); // Uppdaterar expanderad status
             }
         });
     });
