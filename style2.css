@@ -163,3 +163,13 @@ body {
     /* Ger utrymme under knappen */
     /* Ta bort position: absolute och bottom: 0; */
 }
+
+.category-header {
+    text-align: center; /* Centrerar bilden om det behövs */
+    margin: 20px 0; /* Lägger till lite utrymme ovanför och under bilden */
+}
+
+.category-image {
+    max-width: 100%; /* Gör så att bilden inte blir större än sin behållare */
+    height: auto; /* Bevarar bildens proportioner */
+}
