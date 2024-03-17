@@ -70,9 +70,10 @@ body {
 }
 
 /* Stil för valda bildknappar */
-.image-button.selected img {
-    box-shadow: 0px 0px 10px #007bff;
+.image-button.selected {
+    outline: 2px solid #083564; /* Eller någon annan stil du föredrar */
 }
+
 
 /* Effekt när man hovrar över bildknappar */
 .image-button:hover img {

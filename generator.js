@@ -38,17 +38,22 @@ document.addEventListener('DOMContentLoaded', async function () {
         button.addEventListener('click', function () {
             const filter = this.dataset.filter;
             const category = this.dataset.category;
+ // Ändra från 'meal-type' till 'mealType' till exempel
 
-            const index = selectedFilters[category].indexOf(filter);
-            if (index > -1) {
-                selectedFilters[category].splice(index, 1);
-                this.classList.remove('selected');
+            // Toggle filter i den valda kategorin
+            if (selectedFilters[category].includes(filter)) {
+                selectedFilters[category] = selectedFilters[category].filter(f => f !== filter);
+                this.classList.remove('selected'); // Ta bort markeringsklassen
             } else {
                 selectedFilters[category].push(filter);
-                this.classList.add('selected');
+                this.classList.add('selected'); // Lägg till markeringsklassen
             }
+
+            // Om du vill att resultaten ska uppdateras direkt när en knapp klickas, anropa filterData här
+            // filterData(); (Du kan kommentera bort detta om du inte vill ha live uppdatering)
         });
     });
+
 
     // Funktion för att utföra sökningen
     document.getElementById('searchBtn').addEventListener('click', function () {
