@@ -166,7 +166,7 @@ body {
 
 .category-header {
     text-align: center; /* Centrerar bilden om det behövs */
-    margin: 20px 0; /* Lägger till lite utrymme ovanför och under bilden */
+    margin: 8px 0; /* Lägger till lite utrymme ovanför och under bilden */
 }
 
 .category-image {
