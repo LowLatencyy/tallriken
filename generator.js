@@ -114,14 +114,26 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (showMoreBtn) showMoreBtn.style.display = 'none';
     }
 
-    // Lägg till event listeners för "Visa fler"-knapparna
     document.querySelectorAll('.show-more-btn').forEach(button => {
         button.addEventListener('click', function () {
             const target = this.dataset.target;
             const container = document.getElementById(target);
             const hiddenButtons = container.querySelectorAll('.hidden');
-            hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
-            this.style.display = 'none';
+            const isExpanded = this.getAttribute('data-expanded') === 'true';
+
+            if (isExpanded) {
+                // Dölj element
+                hiddenButtons.forEach(btn => btn.classList.add('hidden'));
+                this.textContent = 'Visa fler'; // Uppdaterar knappens text till "Visa fler"
+                this.setAttribute('data-expanded', 'false');
+            } else {
+                // Visa element
+                hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
+                this.textContent = 'Dölj'; // Uppdaterar knappens text till "Dölj"
+                this.setAttribute('data-expanded', 'true');
+            }
         });
     });
+
+
 });
