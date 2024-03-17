@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         button.addEventListener('click', function () {
             const filter = this.dataset.filter;
             const category = this.dataset.category;
- // Ändra från 'meal-type' till 'mealType' till exempel
+            // Ändra från 'meal-type' till 'mealType' till exempel
 
             // Toggle filter i den valda kategorin
             if (selectedFilters[category].includes(filter)) {
@@ -61,14 +61,34 @@ document.addEventListener('DOMContentLoaded', async function () {
     });
 
     function performSearch() {
+        // Hämta behållaren där resultat ska visas
+        const instagramContainer = document.getElementById('instagram-results-container');
+        instagramContainer.innerHTML = ''; // Rensa tidigare resultat
+
         const filteredResults = allData.filter(row => {
-            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
-            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
-            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
+            // Anpassa indexen för att matcha din datastruktur
+            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[2].toLowerCase().includes(f.toLowerCase()));
+            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
+            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[8].toLowerCase().includes(f.toLowerCase()));
+
             return countryMatch && proteinMatch && mealTypeMatch;
         });
-        displayResults(filteredResults);
+
+        // Visa Instagram-inlägg för varje matchning
+        filteredResults.forEach(row => {
+            // Antag att Instagram-koden är i en specifik kolumn, justera indexet om det behövs
+            const instagramCode = row[5]; // Om Instagram-koden är i kolumn F
+            // Skapa ett element för att visa inlägget och lägg till det i behållaren
+            const instagramPost = document.createElement('div');
+            instagramPost.innerHTML = instagramCode; // Använd innerHTML för att rendera inbäddad kod
+            instagramContainer.appendChild(instagramPost);
+        });
+
+        if (filteredResults.length === 0) {
+            instagramContainer.innerHTML = '<div>Inga matchande recept hittades.</div>';
+        }
     }
+
 
 
     function displayResults(results) {
