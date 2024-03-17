@@ -114,23 +114,30 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (showMoreBtn) showMoreBtn.style.display = 'none';
     }
 
+    // Funktion för att växla "Visa fler" och "Dölj" för knapparna
+    function toggleShowMore(showMoreBtn, isExpanded) {
+        const containerId = showMoreBtn.dataset.target;
+        const container = document.getElementById(containerId);
+        const hiddenButtons = container.querySelectorAll('.hidden');
+
+        if (isExpanded) {
+            // Dölj elementen och uppdatera knappen
+            hiddenButtons.forEach(btn => btn.classList.add('hidden'));
+            showMoreBtn.textContent = 'Visa fler';
+            showMoreBtn.setAttribute('data-expanded', 'false');
+        } else {
+            // Visa elementen och uppdatera knappen
+            hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
+            showMoreBtn.textContent = 'Dölj';
+            showMoreBtn.setAttribute('data-expanded', 'true');
+        }
+    }
+
+    // Lägg till event listeners för "Visa fler"/"Dölj"-knapparna
     document.querySelectorAll('.show-more-btn').forEach(button => {
         button.addEventListener('click', function () {
-            const target = this.dataset.target; // Hämtar målcontainer-ID
-            const hiddenButtons = document.getElementById(target).querySelectorAll('.hidden'); // Hämtar alla dolda knappar inom målcontainern
-            const isExpanded = this.getAttribute('data-expanded') === 'true'; // Kontrollerar om det är expanderat
-
-            if (isExpanded) {
-                // Om expanderad, dölj element
-                hiddenButtons.forEach(btn => btn.classList.add('hidden'));
-                this.textContent = 'Visa fler'; // Uppdaterar text till "Visa fler"
-                this.setAttribute('data-expanded', 'false'); // Uppdaterar expanderad status
-            } else {
-                // Om ej expanderad, visa element
-                hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
-                this.textContent = 'Dölj'; // Uppdaterar text till "Dölj"
-                this.setAttribute('data-expanded', 'true'); // Uppdaterar expanderad status
-            }
+            const isExpanded = this.getAttribute('data-expanded') === 'true';
+            toggleShowMore(this, isExpanded);
         });
     });
 
