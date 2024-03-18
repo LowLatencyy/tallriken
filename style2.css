@@ -14,6 +14,10 @@ body {
     background-color: transparent;
     cursor: pointer;
     transition: transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
+    /* för Safari och Chrome på iOS */
+    tap-highlight-color: transparent;
+    /* standard CSS egenskap, men stöds inte av alla webbläsare än */
 }
 
 .image-button::after {
@@ -43,7 +47,8 @@ body {
 
 .image-button:focus,
 .image-button:active {
-    outline: none; /* Tar bort webbläsarens fokusindikering */
+    outline: none;
+    /* Tar bort webbläsarens fokusindikering */
 }
 
 /* Stil för en knapp när den är i aktivt eller valt tillstånd */
