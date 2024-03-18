@@ -6,10 +6,8 @@ body {
 }
 
 
-/* Grundläggande stilar för bildknappar */
 .image-button {
     position: relative;
-    /* Nödvändigt för att pseudo-element ska positioneras korrekt */
     margin: 5px;
     padding: 0;
     border: none;
@@ -20,28 +18,32 @@ body {
 
 .image-button::after {
     content: '';
-    display: block;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    /* Gör skuggan helt rund */
     position: absolute;
+    border-radius: 50%;
     top: 0;
     left: 0;
     z-index: -1;
-    /* Placera skuggan bakom knappen */
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
-    /* Göm skuggan initialt */
+    /* Startar osynlig */
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 8px 8px rgba(255, 165, 0, 0);
+    /* Osynlig tills aktiverad */
 }
 
 .image-button:active::after,
 .image-button:focus::after,
 .image-button.selected::after {
     opacity: 1;
-    /* Visa skuggan när knappen är aktiv/fokuserad/vald */
+    /* Blir synlig vid aktivering */
     box-shadow: 0 0 8px 8px rgb(255, 255, 255);
-    /* Glow-effekt */
+    /* Den runda glow-effekten */
+}
+
+.image-button:focus,
+.image-button:active {
+    outline: none; /* Tar bort webbläsarens fokusindikering */
 }
 
 /* Stil för en knapp när den är i aktivt eller valt tillstånd */
@@ -50,11 +52,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-/* Borttagning av webbläsarens standardklick-effekt */
-.image-button:focus,
-.image-button:active {
-    outline: none;
-}
 
 /* Effekt när man hovrar över bildknappen */
 .image-button:hover {
