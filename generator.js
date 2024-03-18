@@ -140,32 +140,32 @@ document.addEventListener('DOMContentLoaded', async function () {
         if (showMoreBtn) showMoreBtn.style.display = 'none';
     }
 
-    // Funktion för att växla "Visa fler" och "Dölj" för knapparna
-    function toggleShowMore(showMoreBtn, isExpanded) {
+    function toggleShowMore(showMoreBtn) {
         const containerId = showMoreBtn.dataset.target;
         const container = document.getElementById(containerId);
         const hiddenButtons = container.querySelectorAll('.hidden');
+        const isExpanded = showMoreBtn.dataset.expanded === 'true';
 
         if (isExpanded) {
-            // Dölj elementen och uppdatera knappen
-            hiddenButtons.forEach(btn => btn.classList.add('hidden'));
+            // Om den är expanderad, dölj knapparna och uppdatera texten
+            hiddenButtons.forEach(btn => btn.style.display = 'none');
             showMoreBtn.textContent = 'Visa fler';
-            showMoreBtn.setAttribute('data-expanded', 'false');
+            showMoreBtn.dataset.expanded = 'false';
         } else {
-            // Visa elementen och uppdatera knappen
-            hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
+            // Om den inte är expanderad, visa knapparna och uppdatera texten
+            hiddenButtons.forEach(btn => btn.style.display = 'inline-block');
             showMoreBtn.textContent = 'Dölj';
-            showMoreBtn.setAttribute('data-expanded', 'true');
+            showMoreBtn.dataset.expanded = 'true';
         }
     }
 
     // Lägg till event listeners för "Visa fler"/"Dölj"-knapparna
     document.querySelectorAll('.show-more-btn').forEach(button => {
         button.addEventListener('click', function () {
-            const isExpanded = this.getAttribute('data-expanded') === 'true';
-            toggleShowMore(this, isExpanded);
+            toggleShowMore(this);
         });
     });
+
 
 
 });
