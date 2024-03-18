@@ -40,7 +40,7 @@ body {
 .image-button.selected::after {
     opacity: 1;
     /* Visa skuggan när knappen är aktiv/fokuserad/vald */
-    box-shadow: 0 0 8px 8px rgba(255, 165, 0, 0.8);
+    box-shadow: 0 0 8px 8px rgb(255, 255, 255);
     /* Glow-effekt */
 }
 
