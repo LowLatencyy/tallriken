@@ -127,7 +127,19 @@ body {
     .filter-container {
         grid-template-columns: repeat(4, 1fr);
     }
+
+
+    .matratt {
+        flex-basis: calc(50% - 10px);
+        /* Gör så att två resultat får plats på en rad, med utrymme för marginal */
+        max-width: calc(50% - 10px);
+        /* Sätter en maxbredd för att behålla utseendet även när skärmen är mindre */
+        margin: 5px;
+        /* Lägger till lite marginal runt varje resultat */
+    }
 }
+
+
 
 
 
@@ -230,6 +242,8 @@ body {
 }
 
 .matratt {
-    flex: 0 0 calc(50% - 20px); /* Justerar bredden så att två resultat får plats på en rad minus marginal */
-    margin: 10px; /* Marginal runt varje maträtt */
+    flex: 0 0 calc(50% - 20px);
+    /* Justerar bredden så att två resultat får plats på en rad minus marginal */
+    margin: 10px;
+    /* Marginal runt varje maträtt */
 }
