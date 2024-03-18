@@ -221,3 +221,15 @@ body {
     background-color: #003366;
     box-shadow: 0 2px 5px rgba(244, 211, 94);
 }
+
+#data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.matratt {
+    flex: 0 0 calc(50% - 20px); /* Justerar bredden så att två resultat får plats på en rad minus marginal */
+    margin: 10px; /* Marginal runt varje maträtt */
+}
