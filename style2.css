@@ -177,13 +177,7 @@ body {
 
 
 
-button.big-button {
-    /* Kopiera alla stilar från den nya knappen här */
-    /* Exempel */
-    padding: 1em 2em;
-    border: 2px solid var(--colorShadeA);
-    /* ... resten av stilar ... */
-}
+
 
 
 
@@ -210,4 +204,12 @@ button.big-button {
     /* Gör så att bilden inte blir större än sin behållare */
     height: auto;
     /* Bevarar bildens proportioner */
+}
+
+button.big-button {
+    /* Kopiera alla stilar från den nya knappen här */
+    /* Exempel */
+    padding: 1em 2em;
+    border: 2px solid var(--colorShadeA);
+    /* ... resten av stilar ... */
 }
