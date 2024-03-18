@@ -97,14 +97,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         const startIndex = (currentPage - 1) * resultsPerPage;
         const endIndex = startIndex + resultsPerPage;
         const resultsToDisplay = results.slice(startIndex, endIndex);
-
+    
         const container = document.getElementById('results-container');
         container.innerHTML = resultsToDisplay.length > 0
-            ? resultsToDisplay.map(row => `<div>${row.join(', ')}</div>`).join('')
+            ? resultsToDisplay.map(row => {
+                // Anta att Instagram-koden är i en specifik kolumn, exempelvis index 5
+                const instagramEmbedCode = row[5]; // Eller hur du nu extraherar koden från din datastruktur
+                // Skapa ett 'div' element för varje resultat som innehåller den inbäddade Instagram-koden
+                return `<div class="matratt">${instagramEmbedCode}</div>`;
+              }).join('')
             : '<div>Inga resultat hittades.</div>';
-
+    
         displayPaginationControls();
     }
+    
+
 
     function displayPaginationControls() {
         const paginationContainer = document.getElementById('pagination-controls');
