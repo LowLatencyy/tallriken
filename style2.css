@@ -29,7 +29,7 @@ body {
 
 /* Stil för en knapp när den är i aktivt eller valt tillstånd */
 .image-button.selected {
-    box-shadow: 0 0 10px 2px rgba(0, 86, 179, 0.5);
+    box-shadow: 0 0 10px 2px rgb(255, 247, 179);
     /* Lägger till en lyseffekt */
     transform: scale(1.05);
     /* Liten förstoring */
@@ -39,7 +39,7 @@ body {
 
 /* Om du vill att knappen ska "glöda" när den är i fokus, kan du lägga till följande: */
 .image-button:focus {
-    box-shadow: 0 0 10px 2px rgba(0, 86, 179, 0.5);
+    box-shadow: 0 0 10px 2px rgb(255, 247, 179);
     /* Lägger till en lyseffekt */
 }
 
