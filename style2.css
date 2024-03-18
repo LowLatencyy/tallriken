@@ -119,7 +119,7 @@ body {
 
 /* Hover-effekt för "Visa fler"-knappen */
 .show-more-btn:hover {
-    background-color: #0056b3;
+    background-color: rgb(13, 59, 102);
 }
 
 /* Anpassning för mobilvy */
