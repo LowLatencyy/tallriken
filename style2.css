@@ -234,16 +234,24 @@ body {
     box-shadow: 0 2px 5px rgba(244, 211, 94);
 }
 
-#data-container {
+/* Stilar för sökresultatens behållare */
+#results-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    padding: 10px;
 }
 
+/* Stilar för varje enskilt sökresultat */
 .matratt {
-    flex: 0 0 calc(50% - 20px);
-    /* Justerar bredden så att två resultat får plats på en rad minus marginal */
-    margin: 10px;
-    /* Marginal runt varje maträtt */
+    width: calc(50% - 20px); /* Anpassa detta värde efter dina marginaler */
+    margin: 10px; /* Justera detta för önskat utrymme mellan resultat */
+    /* Ytterligare styling för sökresultatet */
+}
+
+@media (max-width: 600px) {
+    .matratt {
+        width: calc(50% - 10px); /* Anpassar för mindre skärmar */
+        margin: 5px;
+    }
 }
