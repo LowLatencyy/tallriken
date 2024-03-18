@@ -8,12 +8,40 @@ body {
 
 /* Grundläggande stilar för bildknappar */
 .image-button {
+    position: relative;
+    /* Nödvändigt för att pseudo-element ska positioneras korrekt */
     margin: 5px;
     padding: 0;
     border: none;
     background-color: transparent;
     cursor: pointer;
     transition: transform 0.3s;
+}
+
+.image-button::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    /* Gör skuggan helt rund */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    /* Placera skuggan bakom knappen */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    /* Göm skuggan initialt */
+}
+
+.image-button:active::after,
+.image-button:focus::after,
+.image-button.selected::after {
+    opacity: 1;
+    /* Visa skuggan när knappen är aktiv/fokuserad/vald */
+    box-shadow: 0 0 8px 8px rgba(255, 165, 0, 0.8);
+    /* Glow-effekt */
 }
 
 /* Borttagning av webbläsarens standardklick-effekt */
@@ -54,6 +82,15 @@ body {
     height: auto;
     border-radius: 5px;
 }
+
+.image-button:focus,
+.image-button:active {
+    outline: none;
+    /* Bekräftar att den blåa fokusringen är borta */
+    box-shadow: 0 0 8px rgba(255, 165, 0, 0.8);
+    /* Exempel på en orange "glow"-effekt */
+}
+
 
 
 
@@ -98,11 +135,15 @@ body {
     }
 }
 
-/* Stil för valda bildknappar */
 .image-button.selected {
-    outline: 2px solid #083564;
-    /* Eller någon annan stil du föredrar */
+    box-shadow: 0 0 10px 2px rgba(0, 86, 179, 0.5);
+    /* Anpassa färg och storlek efter önskemål */
+    transform: scale(1.05);
+    /* Behåller förstorings-effekten */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* Behåller den mjuka övergångseffekten */
 }
+
 
 
 /* Effekt när man hovrar över bildknappar */
