@@ -16,6 +16,33 @@ body {
     transition: transform 0.3s;
 }
 
+/* Borttagning av webbläsarens standardklick-effekt */
+.image-button:focus {
+    outline: none;
+    /* Tar bort den blåa fokusringen */
+}
+
+/* När användaren klickar på knappen, ta bort den webbläsarspecifika effekten */
+.image-button:active {
+    background-color: transparent;
+}
+
+/* Stil för en knapp när den är i aktivt eller valt tillstånd */
+.image-button.selected {
+    box-shadow: 0 0 10px 2px rgba(0, 86, 179, 0.5);
+    /* Lägger till en lyseffekt */
+    transform: scale(1.05);
+    /* Liten förstoring */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    /* Mjuk övergångseffekt */
+}
+
+/* Om du vill att knappen ska "glöda" när den är i fokus, kan du lägga till följande: */
+.image-button:focus {
+    box-shadow: 0 0 10px 2px rgba(0, 86, 179, 0.5);
+    /* Lägger till en lyseffekt */
+}
+
 /* Effekt när man hovrar över bildknappen */
 .image-button:hover {
     transform: scale(1.05);
@@ -27,6 +54,8 @@ body {
     height: auto;
     border-radius: 5px;
 }
+
+
 
 /* Stilar för behållaren av bildknappar */
 .filter-container {
@@ -71,7 +100,8 @@ body {
 
 /* Stil för valda bildknappar */
 .image-button.selected {
-    outline: 2px solid #083564; /* Eller någon annan stil du föredrar */
+    outline: 2px solid #083564;
+    /* Eller någon annan stil du föredrar */
 }
 
 
