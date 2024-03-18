@@ -88,7 +88,7 @@
     width: 15px;
     height: 10px;
     margin: 40px;
-    color: rgb(255, 247, 179);
+    color: rgb(13, 59, 102);
 }
 
 .nav__trigger-finger::before {
@@ -182,7 +182,7 @@
     bottom: 0;
     right: 0;
     z-index: 3100;
-    background: rgb(255, 247, 179);
+    background: rgb(244, 211, 94);
     font-size: 4rem;
     padding: 40px;
     transform: translateX(100%);
