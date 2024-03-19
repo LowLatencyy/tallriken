@@ -128,7 +128,7 @@ body {
 /* Anpassning för mobilvy */
 @media (max-width: 600px) {
     .show-more-btn {
-        padding: 10px 20px;
+        padding: 5px 15px;
         /* Minskar padding för mobilvy */
         width: auto;
         /* Baserar bredden på innehållet och padding */
