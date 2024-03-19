@@ -33,26 +33,23 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     await loadData();
 
-    // Funktion för att hantera klick på filterknappar
     document.querySelectorAll('.image-button').forEach(button => {
         button.addEventListener('click', function () {
             const filter = this.dataset.filter;
             const category = this.dataset.category;
-            // Ändra från 'meal-type' till 'mealType' till exempel
 
-            // Toggle filter i den valda kategorin
             if (selectedFilters[category].includes(filter)) {
                 selectedFilters[category] = selectedFilters[category].filter(f => f !== filter);
-                this.classList.remove('selected'); // Ta bort markeringsklassen
+                this.classList.remove('selected');
             } else {
                 selectedFilters[category].push(filter);
-                this.classList.add('selected'); // Lägg till markeringsklassen
+                this.classList.add('selected');
             }
 
-            // Om du vill att resultaten ska uppdateras direkt när en knapp klickas, anropa filterData här
-            // filterData(); (Du kan kommentera bort detta om du inte vill ha live uppdatering)
+            console.log(selectedFilters); // Lägg till denna för att se filterstatus
         });
     });
+
 
 
     // Funktion för att utföra sökningen

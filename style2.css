@@ -244,14 +244,20 @@ body {
 
 /* Stilar för varje enskilt sökresultat */
 .matratt {
-    width: calc(50% - 20px); /* Anpassa detta värde efter dina marginaler */
-    margin: 10px; /* Justera detta för önskat utrymme mellan resultat */
+    width: calc(50% - 20px);
+    /* Anpassa detta värde efter dina marginaler */
+    margin: 10px;
+    /* Justera detta för önskat utrymme mellan resultat */
     /* Ytterligare styling för sökresultatet */
 }
 
 @media (max-width: 600px) {
     .matratt {
-        width: calc(50% - 10px); /* Anpassar för mindre skärmar */
+        flex-basis: calc(50% - 10px);
+        /* Justera storlek för att passa två per rad */
+        max-width: calc(50% - 10px);
+        /* Samma här */
         margin: 5px;
+        /* Mindre marginal för mindre skärmar */
     }
 }
