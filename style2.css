@@ -132,7 +132,7 @@ body {
         /* Minskar padding för mobilvy */
         width: auto;
         /* Baserar bredden på innehållet och padding */
-        margin: 10px auto;
+        margin: 5px auto;
         /* Fortsätter att centrera knappen */
     }
 
