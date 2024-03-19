@@ -62,32 +62,45 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     function performSearch() {
         // Hämta behållaren där resultat ska visas
-        const instagramContainer = document.getElementById('instagram-results-container');
-        instagramContainer.innerHTML = ''; // Rensa tidigare resultat
+        const container = document.getElementById('results-container');
+        container.innerHTML = ''; // Rensa tidigare resultat
 
+        // Anta att du har filtrerat dina resultat och har en lista av filtrerade resultat
         const filteredResults = allData.filter(row => {
-            // Anpassa indexen för att matcha din datastruktur
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
             const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
-
             return countryMatch && proteinMatch && mealTypeMatch;
         });
 
-        // Visa Instagram-inlägg för varje matchning
+        // Loopa igenom alla filtrerade resultat och skapa HTML för varje Instagram-post
         filteredResults.forEach(row => {
-            // Antag att Instagram-koden är i en specifik kolumn, justera indexet om det behövs
-            const instagramCode = row[5]; // Om Instagram-koden är i kolumn F
-            // Skapa ett element för att visa inlägget och lägg till det i behållaren
+            const instagramCode = row[5]; // Antag att den inbäddade Instagram-koden finns i kolumn F
+            // Skapa ett nytt div-element som innehåller den inbäddade koden
             const instagramPost = document.createElement('div');
-            instagramPost.innerHTML = instagramCode; // Använd innerHTML för att rendera inbäddad kod
-            instagramContainer.appendChild(instagramPost);
+            instagramPost.innerHTML = instagramCode;
+            container.appendChild(instagramPost);
         });
 
+        // Kör Instagrams embed script för att omvandla kodblock till inlägg
+        if (window.instgrm) {
+            window.instgrm.Embeds.process();
+        } else {
+            // Ladda Instagrams embed.js script om det inte redan är laddat
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = "//www.instagram.com/embed.js";
+            document.body.appendChild(script);
+            script.onload = function () {
+                window.instgrm.Embeds.process();
+            };
+        }
+
         if (filteredResults.length === 0) {
-            instagramContainer.innerHTML = '<div>Inga matchande recept hittades.</div>';
+            container.innerHTML = '<div>Inga matchande recept hittades.</div>';
         }
     }
+
 
 
 
@@ -97,7 +110,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const startIndex = (currentPage - 1) * resultsPerPage;
         const endIndex = startIndex + resultsPerPage;
         const resultsToDisplay = results.slice(startIndex, endIndex);
-    
+
         const container = document.getElementById('results-container');
         container.innerHTML = resultsToDisplay.length > 0
             ? resultsToDisplay.map(row => {
@@ -105,12 +118,13 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const instagramEmbedCode = row[5]; // Eller hur du nu extraherar koden från din datastruktur
                 // Skapa ett 'div' element för varje resultat som innehåller den inbäddade Instagram-koden
                 return `<div class="matratt">${instagramEmbedCode}</div>`;
-              }).join('')
+            }).join('')
             : '<div>Inga resultat hittades.</div>';
-    
+
         displayPaginationControls();
     }
-    
+
+
 
 
     function displayPaginationControls() {
