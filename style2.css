@@ -106,7 +106,7 @@ body {
     display: block;
     width: auto;
     /* Baserar bredden på innehållet och padding */
-    padding: 10px 40px;
+    padding: 5px 15px;
     /* Justerad horisontell padding */
     background-color: rgb(13, 59, 102);
     color: white;
