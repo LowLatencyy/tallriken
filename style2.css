@@ -106,7 +106,7 @@ body {
     grid-column: 1 / -1;
     /* Gör att "Visa fler"-knappen tar upp hela radens bredd */
     display: block;
-    width: 100%;
+    width: 20%;
     padding: 10px 0;
     background-color: rgb(13, 59, 102);
     color: white;
