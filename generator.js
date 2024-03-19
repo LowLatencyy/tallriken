@@ -9,14 +9,22 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     function filterData() {
         const filteredResults = allData.filter(row => {
-            // Kontrollera om varje filter är tomt eller om cellen innehåller något av de valda filtren
-            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
-            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
-            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
-            return countryMatch && proteinMatch && mealTypeMatch;
+            // Split och trimma varje kategori för att hantera flera värden
+            const mealTypes = row[9].toLowerCase().split(',').map(s => s.trim());
+            const proteins = row[4].toLowerCase().split(',').map(s => s.trim());
+            const countries = row[3].toLowerCase().split(',').map(s => s.trim());
+
+            // Kontrollera om det finns någon matchning för varje filterkategori
+            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(filter => mealTypes.includes(filter.toLowerCase()));
+            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(filter => proteins.includes(filter.toLowerCase()));
+            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(filter => countries.includes(filter.toLowerCase()));
+
+            return mealTypeMatch && proteinMatch && countryMatch;
         });
+
         displayResults(filteredResults);
     }
+
 
     // Funktion för att ladda data från Google Sheets
     async function loadData() {
