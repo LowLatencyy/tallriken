@@ -103,10 +103,9 @@ body {
 
 /* Visa fler-knappens stil */
 .show-more-btn {
-    grid-column: 1 / -1;
-    /* Gör att "Visa fler"-knappen tar upp hela radens bredd */
     display: block;
     width: 20%;
+    /* Justerad bredd */
     padding: 10px 0;
     background-color: rgb(13, 59, 102);
     color: white;
@@ -114,7 +113,8 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    margin-top: 10px;
+    margin: 10px auto;
+    /* Centrerar knappen */
 }
 
 /* Hover-effekt för "Visa fler"-knappen */
@@ -124,6 +124,13 @@ body {
 
 /* Anpassning för mobilvy */
 @media (max-width: 600px) {
+    .show-more-btn {
+        width: 50%;
+        /* Justerad bredd för bättre synlighet och lämplighet på mindre skärmar */
+        margin: 10px auto;
+        /* Fortsätter att centrera knappen */
+    }
+
     .filter-container {
         grid-template-columns: repeat(4, 1fr);
     }
