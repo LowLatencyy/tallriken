@@ -108,7 +108,7 @@ body {
     /* Baserar bredden på innehållet och padding */
     padding: 5px 15px;
     /* Justerad horisontell padding */
-    background-color: rgb(13, 59, 102);
+    background-color: rgb(203, 223, 189);
     color: white;
     text-align: center;
     cursor: pointer;
@@ -122,7 +122,7 @@ body {
 
 /* Hover-effekt för "Visa fler"-knappen */
 .show-more-btn:hover {
-    background-color: rgb(73, 38, 0);
+    background-color: rgb(89, 96, 84);
 }
 
 /* Anpassning för mobilvy */
