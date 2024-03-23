@@ -212,7 +212,7 @@ body {
 }
 
 .category-image {
-    max-width: 50%;
+    max-width: 70%;
     /* Gör så att bilden inte blir större än sin behållare */
     height: auto;
     /* Bevarar bildens proportioner */
