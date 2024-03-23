@@ -242,17 +242,17 @@ body {
     margin: 0 auto 30px;
     display: block;
     background-color: rgb(203, 223, 189);
-    color: rgb(250, 240, 202);
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 50px;
-    box-shadow: 0 5px 15px rgba(13, 59, 102);
+    box-shadow: 0 5px 15px rgb(8, 39, 69);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 #searchBtn:hover {
-    background-color: #003d82;
-    box-shadow: 0 8px 25px rgba(13, 59, 102);
+    background-color: rgb(241, 156, 121);
+    box-shadow: 0 8px 25px rgb(255, 255, 255);
 }
 
 #searchBtn:active {
