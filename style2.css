@@ -123,6 +123,21 @@ body {
 /* Hover-effekt för "Visa fler"-knappen */
 .show-more-btn:hover {
     background-color: rgb(89, 96, 84);
+    display: block;
+    width: auto;
+    /* Baserar bredden på innehållet och padding */
+    padding: 5px 15px;
+    /* Justerad horisontell padding */
+    background-color: rgb(89, 96, 84);
+    color: white;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 10px auto;
+    /* Centrerar knappen */
+    transition: background-color 0.3s;
+    /* Lägger till en mjuk övergång för hover-effekt */
 }
 
 /* Anpassning för mobilvy */
