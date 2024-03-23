@@ -261,3 +261,13 @@ body {
     /* Justera detta för önskat utrymme mellan resultat */
     /* Ytterligare styling för sökresultatet */
 }
+
+.divider-container {
+    text-align: center;
+    margin: 5px 0; /* Justera som du vill för att få rätt utrymme ovanför och under divider */
+}
+
+.divider-image {
+    max-width: 100%; /* Anpassar bredden efter behållarens bredd */
+    height: auto; /* Bevarar bildens proportioner */
+}
