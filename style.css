@@ -85,10 +85,10 @@
     z-index: 3100;
     display: flex;
     align-items: center;
-    width: 15px;
-    height: 10px;
+    width: 20px;
+    height: 15px;
     margin: 40px;
-    color: rgb(13, 59, 102);
+    color: rgb(0, 0, 0);
 }
 
 .nav__trigger-finger::before {
