@@ -57,6 +57,7 @@ body {
     /* standard CSS egenskap, men stöds inte av alla webbläsare än */
 }
 
+/*
 .image-button::after {
     content: '';
     position: absolute;
@@ -66,21 +67,24 @@ body {
     z-index: -1;
     transition: opacity 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
-    /* Startar osynlig */
+    /* Startar osynlig 
     width: 100%;
     height: 100%;
     box-shadow: 0 0 8px 8px rgb(255, 255, 255);
-    /* Osynlig tills aktiverad */
+    /* Osynlig tills aktiverad 
 }
+*/
+/*
 
 .image-button:active::after,
 .image-button:focus::after,
 .image-button.selected::after {
     opacity: 1;
-    /* Blir synlig vid aktivering */
+    /* Blir synlig vid aktivering 
     box-shadow: 0 0 8px 8px rgb(255, 255, 255);
-    /* Den runda glow-effekten */
+    /* Den runda glow-effekten 
 }
+*/
 
 .image-button:focus,
 .image-button:active {
@@ -88,11 +92,20 @@ body {
     /* Tar bort webbläsarens fokusindikering */
 }
 
-/* Stil för en knapp när den är i aktivt eller valt tillstånd */
+/* Stil för en knapp när den är i aktivt eller valt tillstånd 
 .image-button.selected {
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }
+*/
+
+.image-button.selected {
+    background-image: url('images/circle2.svg'); /* Uppdatera med den rätta sökvägen till din SVG */
+    background-repeat: no-repeat;
+    background-position: center; /* Centrerar bilden i knappen */
+    background-size: contain; /* Ser till att bilden passar inuti knappens storlek */
+}
+
 
 
 /* Effekt när man hovrar över bildknappen */
@@ -100,13 +113,13 @@ body {
     transform: scale(1.05);
 }
 
-/* Om du vill att knappen ska "glöda" när den är i fokus, kan du lägga till följande: */
+/* 
+
 .image-button:focus {
     box-shadow: 0 0 10px 2px rgb(255, 247, 179);
-    /* Lägger till en lyseffekt */
-}
-
-
+    /* Lägger till en lyseffekt 
+} 
+*/
 
 /* Bildinställningar inom bildknappen */
 .image-button img {
