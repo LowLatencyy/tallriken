@@ -264,7 +264,7 @@ body {
 
 .divider-container {
     text-align: center;
-    margin: 5px 0; /* Justera som du vill för att få rätt utrymme ovanför och under divider */
+    margin: 1px 0; /* Justera som du vill för att få rätt utrymme ovanför och under divider */
 }
 
 .divider-image {
