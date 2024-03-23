@@ -252,8 +252,8 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(106, 4, 15); 
-    /*background-color: rgb(250, 240, 202); */
+    /* background-color: rgb(106, 4, 15); */ 
+    background-color: rgb(250, 240, 202);
     z-index: -1;
 }
 
