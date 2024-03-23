@@ -126,11 +126,11 @@ svg .tea path {
 }
 
 
-/* CSS för att initialt dölja loadern */
+/* CSS för att initialt dölja loadern 
 #loader {
     display: none;
 }
-
+*/
 /* CSS för att mörkna och sudda ut bakgrunden */
 #overlay {
     position: fixed;
