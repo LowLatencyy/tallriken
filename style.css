@@ -183,7 +183,7 @@
     right: 0;
     z-index: 3100;
     background: rgb(203, 223, 189);
-    font-size: 4rem;
+    font-size: 3rem;
     padding: 40px;
     transform: translateX(100%);
     /*translate(100vw) rotate (45deg); */
@@ -225,7 +225,7 @@
 
 .nav__list-child {
     display: none;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 10px;
     z-index: 3100;
     padding-left: 2rem;
