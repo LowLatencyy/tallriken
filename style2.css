@@ -5,6 +5,43 @@ body {
     /* Justera detta värde efter logotypens höjd plus önskat utrymme */
 }
 
+.welcome-text {
+    text-align: center;
+    max-width: 800px;
+    /* Anpassa efter din layout */
+    margin: 0 auto;
+    /* Centrerar texten */
+    padding: 20px;
+    font-family: 'Exo', sans-serif;
+    /* Ersätt med rätt typsnittsnamn om det är annorlunda */
+}
+
+.welcome-text h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    /* Anpassa storlek efter behov */
+    font-weight: bold;
+}
+
+.welcome-text h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.welcome-text p {
+    margin-top: 10px;
+    font-size: 1em;
+    line-height: 1.6;
+    /* För att göra texten lättare att läsa */
+}
+
+.welcome-text strong {
+    font-weight: bold;
+}
+
+
 
 .image-button {
     position: relative;
@@ -279,10 +316,13 @@ body {
 
 .divider-container {
     text-align: center;
-    margin: 2px 0; /* Justera som du vill för att få rätt utrymme ovanför och under divider */
+    margin: 2px 0;
+    /* Justera som du vill för att få rätt utrymme ovanför och under divider */
 }
 
 .divider-image {
-    max-width: 100%; /* Anpassar bredden efter behållarens bredd */
-    height: auto; /* Bevarar bildens proportioner */
+    max-width: 100%;
+    /* Anpassar bredden efter behållarens bredd */
+    height: auto;
+    /* Bevarar bildens proportioner */
 }
