@@ -263,11 +263,23 @@ body {
 }
 
 .divider-container {
-    text-align: center;
-    margin: 1px 0; /* Justera som du vill för att få rätt utrymme ovanför och under divider */
+    width: 100%;
+    /* eller den bredd du vill ha på din divider */
+    height: 20px;
+    /* höjden som definierar det synliga området */
+    overflow: hidden;
+    /* detta kommer att dölja delar av SVG:n som är utanför */
+    position: relative;
+    /* detta gör så att du kan positionera SVG:n */
 }
 
 .divider-image {
-    max-width: 100%; /* Anpassar bredden efter behållarens bredd */
-    height: auto; /* Bevarar bildens proportioner */
+    position: absolute;
+    top: -10px;
+    /* flytta bilden uppåt med 10px */
+    left: 0;
+    width: 100%;
+    /* du kan justera denna om du vill att SVG ska vara bredare eller smalare */
+    height: auto;
+    /* behåller bildens proportioner */
 }
