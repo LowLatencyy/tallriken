@@ -146,7 +146,7 @@ body {
     padding: 5px 15px;
     /* Justerad horisontell padding */
     background-color: rgb(203, 223, 189);
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     cursor: pointer;
     border: none;
