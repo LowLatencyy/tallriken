@@ -12,16 +12,16 @@
     <style>
         body,
         html {
-            height: 100%;
             margin: 0;
+            padding: 0;
             font-family: 'Exo 2', cursive;
-            color: black;
-            /* Vit text */
             background-color: rgb(250, 240, 202);
-            /* Svart bakgrund */
+            /* Bakgrundsfärg */
+            color: black;
+            /* Textfärg */
         }
 
-        
+
 
         .logo-link {
             position: fixed;
@@ -37,41 +37,31 @@
 
         .content {
             padding: 20px;
-            text-align: left;
-            /* Texten till vänster */
-            max-width: 800px;
-            /* Maximal bredd på innehållet */
-            margin: 200px auto;
-            /* Centrerar innehållet */
+            margin-top: 120px;
+            /* Öka detta värde för att flytta ner texten */
             background: rgba(0, 0, 0, 0.8);
             /* Svart bakgrund med transparens */
             border-radius: 10px;
-            /* Rundade hörn */
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .about-image {
-            float: right;
-            margin-left: 20px;
-            max-width: 300px;
-            height: auto;
-            border-radius: 10px;
-        }
+
 
         .footer-banner {
             background-color: #000;
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: fixed;
+            position: relative;
+            /* Kan ändras till fixed om du vill att den ska vara fast längst ner */
             bottom: 0;
             width: 100%;
-        }
-
-        .footer-banner a {
-            color: white;
             text-decoration: none;
             margin: 0 10px;
         }
+
 
         .footer-banner a:hover {
             text-decoration: underline;
@@ -81,20 +71,21 @@
 
 <body>
     <a href="index.html" class="logo-link">
-        <img src="images/visplogo/Logo Files/For Web/svg/White logo - no background.svg" alt="Logga">
+        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga">
     </a>
 
     <div class="background-container"></div>
 
-    <div style="text-align: left; padding: 20px;">
-        <h1 style="margin-bottom: 0.5em;">Välkommen till InstaRecept, en plats där mat och kreativitet möts.</h1>
-        <p style="margin-top: 0; margin-bottom: 1em;">Vår hemsida är tillägnad åt att framhäva och fira de otroligt talangfulla matentusiaster och kreatörer som delar med sig av sina recept på Instagram. Vi tror på att dela med oss av kulinarisk inspiration och gör det enkelt för dig att utforska och upptäcka nya recept.</p>
-        <p style="margin-top: 0; margin-bottom: 1em;">Genom vår sökfunktion kan du hitta rätter baserade på dina favoritingredienser eller specifika måltidstyper. Varje recept på vår sida är en direkt inbäddning från skaparens Instagram-konto, och för att hitta fullständiga recept och detaljerade instruktioner är det bara att klicka vidare in till deras instagram. <strong>Vi uppmuntrar dig att följa dessa kreatörer på Instagram för att få ännu mer inspiration!</strong> </p>
-        <p style="margin-top: 0; margin-bottom: 1em;">Vi är djupt engagerade i att respektera upphovsrätten och uppskattar varje kreatörs bidrag till matvärlden. Om du är en skapare vars arbete visas på vår webbplats och har frågor eller önskemål, tveka inte att kontakta oss.</p>
-        <p style="margin-top: 0;">Vår webbplats är byggd på en grund av respekt och beundran för de människor vars kreativitet vi delar. Vi ser fram emot att vara din guide i denna spännande värld av kulinarisk kreativitet och upptäckt. Följ med oss på denna resa och låt oss inspirera dig med varje klick! 🍽️ <strong> Allt innehåll tillhör originalskaparna. Genom att klicka på varje inlägg dirigeras du direkt till skaparens Instagram-profil, där du kan utforska fullständiga recept och mer inspiration.</p>
+    <div class="content">
+        <div style="text-align: left; padding: 20px;">
+            <h1 style="margin-bottom: 0.5em;">Välkommen till InstaRecept, en plats där mat och kreativitet möts.</h1>
+            <p style="margin-top: 0; margin-bottom: 1em;">Vår hemsida är tillägnad åt att framhäva och fira de otroligt talangfulla matentusiaster och kreatörer som delar med sig av sina recept på Instagram. Vi tror på att dela med oss av kulinarisk inspiration och gör det enkelt för dig att utforska och upptäcka nya recept.</p>
+            <p style="margin-top: 0; margin-bottom: 1em;">Genom vår sökfunktion kan du hitta rätter baserade på dina favoritingredienser eller specifika måltidstyper. Varje recept på vår sida är en direkt inbäddning från skaparens Instagram-konto, och för att hitta fullständiga recept och detaljerade instruktioner är det bara att klicka vidare in till deras instagram. <strong>Vi uppmuntrar dig att följa dessa kreatörer på Instagram för att få ännu mer inspiration!</strong> </p>
+            <p style="margin-top: 0; margin-bottom: 1em;">Vi är djupt engagerade i att respektera upphovsrätten och uppskattar varje kreatörs bidrag till matvärlden. Om du är en skapare vars arbete visas på vår webbplats och har frågor eller önskemål, tveka inte att kontakta oss.</p>
+            <p style="margin-top: 0;">Vår webbplats är byggd på en grund av respekt och beundran för de människor vars kreativitet vi delar. Vi ser fram emot att vara din guide i denna spännande värld av kulinarisk kreativitet och upptäckt. Följ med oss på denna resa och låt oss inspirera dig med varje klick! 🍽️ <strong> Allt innehåll tillhör originalskaparna. Genom att klicka på varje inlägg dirigeras du direkt till skaparens Instagram-profil, där du kan utforska fullständiga recept och mer inspiration.</p>
 
+        </div>
     </div>
-
 
 
     <!-- <img src="images/plate1.jpg" alt="Om Oss Bild" class="about-image">
