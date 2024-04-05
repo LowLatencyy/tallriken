@@ -100,7 +100,7 @@ body {
 */
 
 .image-button.selected {
-    background-image: url('images/circle3red.svg'); /* Uppdatera med den rätta sökvägen till din SVG */
+    background-image: url('images/circle2.svg'); /* Uppdatera med den rätta sökvägen till din SVG */
     background-repeat: no-repeat;
     background-position: center; /* Centrerar bilden i knappen */
     background-size: contain; /* Ser till att bilden passar inuti knappens storlek */
