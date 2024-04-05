@@ -78,7 +78,11 @@ document.addEventListener('DOMContentLoaded', async function () {
         const filteredResults = allData.filter(row => {
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
-            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
+            // Ändring här: Använd 'mealtype' från 'selectedFilters' och jämför korrekt
+            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => {
+                const mealtypes = row[9].toLowerCase().split(',').map(s => s.trim());
+                return mealtypes.includes(f.toLowerCase());
+            });
             return countryMatch && proteinMatch && mealtypeMatch;
         });
 
