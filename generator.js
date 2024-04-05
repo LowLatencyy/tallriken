@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
     const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
     let allData = [];
-    const selectedFilters = { country: [], protein: [], mealType: [] };
+    const selectedFilters = { country: [], protein: [], mealtype: [] };
     let currentPage = 1;
     const resultsPerPage = 14; // eller vilket antal per sida du vill ha
     let totalPages = 0;
@@ -10,16 +10,16 @@ document.addEventListener('DOMContentLoaded', async function () {
     function filterData() {
         const filteredResults = allData.filter(row => {
             // Split och trimma varje kategori för att hantera flera värden
-            const mealTypes = row[9].toLowerCase().split(',').map(s => s.trim());
+            const mealtypes = row[9].toLowerCase().split(',').map(s => s.trim());
             const proteins = row[4].toLowerCase().split(',').map(s => s.trim());
             const countries = row[3].toLowerCase().split(',').map(s => s.trim());
 
             // Kontrollera om det finns någon matchning för varje filterkategori
-            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(filter => mealTypes.includes(filter.toLowerCase()));
+            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(filter => mealtypes.includes(filter.toLowerCase()));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(filter => proteins.includes(filter.toLowerCase()));
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(filter => countries.includes(filter.toLowerCase()));
 
-            return mealTypeMatch && proteinMatch && countryMatch;
+            return mealtypeMatch && proteinMatch && countryMatch;
         });
 
         displayResults(filteredResults);
@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', async function () {
         const filteredResults = allData.filter(row => {
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
-            const mealTypeMatch = !selectedFilters.mealType.length || selectedFilters.mealType.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
-            return countryMatch && proteinMatch && mealTypeMatch;
+            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => row[9].toLowerCase().includes(f.toLowerCase()));
+            return countryMatch && proteinMatch && mealtypeMatch;
         });
 
         // Loopa igenom alla filtrerade resultat och skapa HTML för varje Instagram-post
