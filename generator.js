@@ -70,36 +70,29 @@ document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById('results-container');
         container.innerHTML = ''; // Rensa tidigare resultat
 
-        // Log the selected filters and a sample of your data
         console.log('Selected filters:', selectedFilters);
-        console.log('Sample data rows:', allData.slice(0, 5));  // This will show the first five rows of your data
+        console.log('Sample data rows:', allData.slice(0, 5));
 
-        // Anta att du har filtrerat dina resultat och har en lista av filtrerade resultat
         const filteredResults = allData.filter(row => {
-            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
-            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().includes(f.toLowerCase()));
-            // Ändring här: Använd 'mealtype' från 'selectedFilters' och jämför korrekt
+            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].includes(f));
+            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].includes(f));
             const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => {
-                const mealtypes = row[9].toLowerCase().split(',').map(s => s.trim());
-                return mealtypes.includes(f.toLowerCase());
+                const mealtypes = row[9].split(',').map(s => s.trim());
+                return mealtypes.includes(f);
             });
             return countryMatch && proteinMatch && mealtypeMatch;
         });
 
-        // Loopa igenom alla filtrerade resultat och skapa HTML för varje Instagram-post
         filteredResults.forEach(row => {
-            const instagramCode = row[5]; // Antag att den inbäddade Instagram-koden finns i kolumn F
-            // Skapa ett nytt div-element som innehåller den inbäddade koden
+            const instagramCode = row[5];
             const instagramPost = document.createElement('div');
             instagramPost.innerHTML = instagramCode;
             container.appendChild(instagramPost);
         });
 
-        // Kör Instagrams embed script för att omvandla kodblock till inlägg
         if (window.instgrm) {
             window.instgrm.Embeds.process();
         } else {
-            // Ladda Instagrams embed.js script om det inte redan är laddat
             const script = document.createElement('script');
             script.async = true;
             script.src = "//www.instagram.com/embed.js";
@@ -113,6 +106,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             container.innerHTML = '<div>Inga matchande recept hittades.</div>';
         }
     }
+
 
 
 
