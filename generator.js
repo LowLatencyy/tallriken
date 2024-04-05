@@ -70,6 +70,10 @@ document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById('results-container');
         container.innerHTML = ''; // Rensa tidigare resultat
 
+        // Log the selected filters and a sample of your data
+        console.log('Selected filters:', selectedFilters);
+        console.log('Sample data rows:', allData.slice(0, 5));  // This will show the first five rows of your data
+
         // Anta att du har filtrerat dina resultat och har en lista av filtrerade resultat
         const filteredResults = allData.filter(row => {
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().includes(f.toLowerCase()));
