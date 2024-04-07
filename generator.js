@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     function filterData() {
         const filteredResults = allData.filter(row => {
             // Split och trimma varje kategori för att hantera flera värden
-            const mealtypes = row[9].toLowerCase().split(',').map(s => s.trim());
+            const mealtypes = row[8].toLowerCase().split(',').map(s => s.trim());
             const proteins = row[4].toLowerCase().split(',').map(s => s.trim());
             const countries = row[3].toLowerCase().split(',').map(s => s.trim());
 
@@ -76,123 +76,122 @@ document.addEventListener('DOMContentLoaded', async function () {
         const filteredResults = allData.filter(row => {
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].includes(f));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].includes(f));
-            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => {
-                const mealtypes = row[9].split(',').map(s => s.trim());
-                return mealtypes.includes(f);
-            });
-            return countryMatch && proteinMatch && mealtypeMatch;
+            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => row[8].split(',').map(s => s.trim()).includes(f));
+
         });
-
-        filteredResults.forEach(row => {
-            const instagramCode = row[5];
-            const instagramPost = document.createElement('div');
-            instagramPost.innerHTML = instagramCode;
-            container.appendChild(instagramPost);
-        });
-
-        if (window.instgrm) {
-            window.instgrm.Embeds.process();
-        } else {
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = "//www.instagram.com/embed.js";
-            document.body.appendChild(script);
-            script.onload = function () {
-                window.instgrm.Embeds.process();
-            };
-        }
-
-        if (filteredResults.length === 0) {
-            container.innerHTML = '<div>Inga matchande recept hittades.</div>';
-        }
-    }
-
-
-
-
-
-
-    function displayResults(results) {
-        totalPages = Math.ceil(results.length / resultsPerPage);
-        const startIndex = (currentPage - 1) * resultsPerPage;
-        const endIndex = startIndex + resultsPerPage;
-        const resultsToDisplay = results.slice(startIndex, endIndex);
-
-        const container = document.getElementById('results-container');
-        container.innerHTML = resultsToDisplay.length > 0
-            ? resultsToDisplay.map(row => {
-                // Anta att Instagram-koden är i en specifik kolumn, exempelvis index 5
-                const instagramEmbedCode = row[5]; // Eller hur du nu extraherar koden från din datastruktur
-                // Skapa ett 'div' element för varje resultat som innehåller den inbäddade Instagram-koden
-                return `<div class="matratt">${instagramEmbedCode}</div>`;
-            }).join('')
-            : '<div>Inga resultat hittades.</div>';
-
-        displayPaginationControls();
-    }
-
-
-
-
-    function displayPaginationControls() {
-        const paginationContainer = document.getElementById('pagination-controls');
-        paginationContainer.innerHTML = ''; // Rensa befintliga pagineringsknappar
-
-        for (let i = 1; i <= totalPages; i++) {
-            const button = document.createElement('button');
-            button.textContent = i;
-            button.addEventListener('click', function () {
-                goToPage(i);
-            });
-
-            if (currentPage === i) {
-                button.classList.add('current-page'); // Lägg till klass för att markera nuvarande sida
-            }
-
-            paginationContainer.appendChild(button);
-        }
-    }
-    // Funktion för att gå till en sida
-    function goToPage(pageNumber) {
-        currentPage = pageNumber;
-        performSearch(); // Antaget att performSearch nu anropar displayResults
-    }
-
-
-    // Funktion för att visa fler knappar
-    function showMore(containerId) {
-        const container = document.getElementById(containerId);
-        const hiddenButtons = container.querySelectorAll('.hidden');
-        hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
-        const showMoreBtn = container.querySelector(`[data-target="${containerId}"]`);
-        if (showMoreBtn) showMoreBtn.style.display = 'none';
-    }
-
-    function toggleShowMore(showMoreBtn) {
-        const containerId = showMoreBtn.dataset.target;
-        const container = document.getElementById(containerId);
-        const hiddenButtons = container.querySelectorAll('.hidden');
-        const isExpanded = showMoreBtn.dataset.expanded === 'true';
-
-        if (isExpanded) {
-            // Om den är expanderad, dölj knapparna och uppdatera texten
-            hiddenButtons.forEach(btn => btn.style.display = 'none');
-            showMoreBtn.textContent = 'Visa fler';
-            showMoreBtn.dataset.expanded = 'false';
-        } else {
-            // Om den inte är expanderad, visa knapparna och uppdatera texten
-            hiddenButtons.forEach(btn => btn.style.display = 'inline-block');
-            showMoreBtn.textContent = 'Dölj';
-            showMoreBtn.dataset.expanded = 'true';
-        }
-    }
-
-    // Lägg till event listeners för "Visa fler"/"Dölj"-knapparna
-    document.querySelectorAll('.show-more-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            toggleShowMore(this);
-        });
+        return countryMatch && proteinMatch && mealtypeMatch;
     });
+
+filteredResults.forEach(row => {
+    const instagramCode = row[5];
+    const instagramPost = document.createElement('div');
+    instagramPost.innerHTML = instagramCode;
+    container.appendChild(instagramPost);
+});
+
+if (window.instgrm) {
+    window.instgrm.Embeds.process();
+} else {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = "//www.instagram.com/embed.js";
+    document.body.appendChild(script);
+    script.onload = function () {
+        window.instgrm.Embeds.process();
+    };
+}
+
+if (filteredResults.length === 0) {
+    container.innerHTML = '<div>Inga matchande recept hittades.</div>';
+}
+    }
+
+
+
+
+
+
+function displayResults(results) {
+    totalPages = Math.ceil(results.length / resultsPerPage);
+    const startIndex = (currentPage - 1) * resultsPerPage;
+    const endIndex = startIndex + resultsPerPage;
+    const resultsToDisplay = results.slice(startIndex, endIndex);
+
+    const container = document.getElementById('results-container');
+    container.innerHTML = resultsToDisplay.length > 0
+        ? resultsToDisplay.map(row => {
+            // Anta att Instagram-koden är i en specifik kolumn, exempelvis index 5
+            const instagramEmbedCode = row[5]; // Eller hur du nu extraherar koden från din datastruktur
+            // Skapa ett 'div' element för varje resultat som innehåller den inbäddade Instagram-koden
+            return `<div class="matratt">${instagramEmbedCode}</div>`;
+        }).join('')
+        : '<div>Inga resultat hittades.</div>';
+
+    displayPaginationControls();
+}
+
+
+
+
+function displayPaginationControls() {
+    const paginationContainer = document.getElementById('pagination-controls');
+    paginationContainer.innerHTML = ''; // Rensa befintliga pagineringsknappar
+
+    for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement('button');
+        button.textContent = i;
+        button.addEventListener('click', function () {
+            goToPage(i);
+        });
+
+        if (currentPage === i) {
+            button.classList.add('current-page'); // Lägg till klass för att markera nuvarande sida
+        }
+
+        paginationContainer.appendChild(button);
+    }
+}
+// Funktion för att gå till en sida
+function goToPage(pageNumber) {
+    currentPage = pageNumber;
+    performSearch(); // Antaget att performSearch nu anropar displayResults
+}
+
+
+// Funktion för att visa fler knappar
+function showMore(containerId) {
+    const container = document.getElementById(containerId);
+    const hiddenButtons = container.querySelectorAll('.hidden');
+    hiddenButtons.forEach(btn => btn.classList.remove('hidden'));
+    const showMoreBtn = container.querySelector(`[data-target="${containerId}"]`);
+    if (showMoreBtn) showMoreBtn.style.display = 'none';
+}
+
+function toggleShowMore(showMoreBtn) {
+    const containerId = showMoreBtn.dataset.target;
+    const container = document.getElementById(containerId);
+    const hiddenButtons = container.querySelectorAll('.hidden');
+    const isExpanded = showMoreBtn.dataset.expanded === 'true';
+
+    if (isExpanded) {
+        // Om den är expanderad, dölj knapparna och uppdatera texten
+        hiddenButtons.forEach(btn => btn.style.display = 'none');
+        showMoreBtn.textContent = 'Visa fler';
+        showMoreBtn.dataset.expanded = 'false';
+    } else {
+        // Om den inte är expanderad, visa knapparna och uppdatera texten
+        hiddenButtons.forEach(btn => btn.style.display = 'inline-block');
+        showMoreBtn.textContent = 'Dölj';
+        showMoreBtn.dataset.expanded = 'true';
+    }
+}
+
+// Lägg till event listeners för "Visa fler"/"Dölj"-knapparna
+document.querySelectorAll('.show-more-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        toggleShowMore(this);
+    });
+});
 
 
 
