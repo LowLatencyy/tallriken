@@ -1,8 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 
 body {
+   
+}
+
+body,
+html {
+    width: 100%;
+    margin: 0;
     padding-top: 95px;
     /* Justera detta värde efter logotypens höjd plus önskat utrymme */
+    overflow-x: hidden;
+    font-family: 'Exo 2', cursive;
+    padding-bottom: 100px;
+    /* Eller höjden på din footer */
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(106, 4, 15); */
+    background-color: rgb(250, 240, 202);
+    z-index: -1;
+}
+
+
+.blur-background .background-container {
+    filter: blur(5px);
 }
 
 .welcome-text {
@@ -100,10 +131,13 @@ body {
 */
 
 .image-button.selected {
-    background-image: url('images/circle2.svg'); /* Uppdatera med den rätta sökvägen till din SVG */
+    background-image: url('images/circle2.svg');
+    /* Uppdatera med den rätta sökvägen till din SVG */
     background-repeat: no-repeat;
-    background-position: center; /* Centrerar bilden i knappen */
-    background-size: contain; /* Ser till att bilden passar inuti knappens storlek */
+    background-position: center;
+    /* Centrerar bilden i knappen */
+    background-size: contain;
+    /* Ser till att bilden passar inuti knappens storlek */
 }
 
 
