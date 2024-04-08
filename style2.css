@@ -379,6 +379,20 @@ body {
     padding: 0;
 }
 
+@media (min-width: 481px) {
+    .matratt {
+        flex: 0 0 calc(50% - 20px); /* Justeras för att visa två resultat per rad */
+        max-width: calc(50% - 20px);
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        text-align: center;
+        box-sizing: border-box;
+        position: relative;
+        /* Resten av din stil... */
+    }
+}
+
 @media (max-width: 480px) {
     .matratt {
         flex-basis: 100%;
