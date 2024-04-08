@@ -125,15 +125,19 @@ document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById('results-container');
         container.innerHTML = resultsToDisplay.length > 0
             ? resultsToDisplay.map(row => {
-                // Anta att Instagram-koden är i en specifik kolumn, exempelvis index 5
-                const instagramEmbedCode = row[5]; // Eller hur du nu extraherar koden från din datastruktur
-                // Skapa ett 'div' element för varje resultat som innehåller den inbäddade Instagram-koden
-                return `<div class="matratt">${instagramEmbedCode}</div>`;
+                // Anta att receptnamnet är i kolumnindex 0 och Instagram-koden är i kolumnindex 5
+                const recipeTitle = row[0]; // Receptnamnet
+                const instagramEmbedCode = row[5]; // Instagram-koden
+                return `<div class="matratt">
+                          <div class="matratt-title"><h2>${recipeTitle}</h2></div>
+                          <div>${instagramEmbedCode}</div>
+                        </div>`;
             }).join('')
             : '<div>Inga resultat hittades.</div>';
 
         displayPaginationControls();
     }
+
 
 
 
