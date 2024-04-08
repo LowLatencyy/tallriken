@@ -342,3 +342,48 @@ body {
     height: auto;
     /* Bevarar bildens proportioner */
 }
+
+/* ...dina befintliga stilar... */
+
+#results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start; /* Lägger till detta för att få rätt vertikal utjämning */
+    padding-bottom: 20px;
+    overflow: auto;
+    z-index: 1500;
+}
+
+.matratt {
+    flex: 0 0 calc(50% - 20px); /* Justeras för att visa två resultat per rad */
+    max-width: calc(50% - 20px);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.matratt iframe {
+    background: white;
+    width: 100%;
+    height: auto;
+    /* Eller en fast höjd om det behövs, t.ex. min-height: 500px; */
+    border-radius: 3px;
+    border: 1px solid rgb(219, 219, 219);
+    box-shadow: none;
+    display: block;
+    margin-bottom: 12px;
+    padding: 0;
+}
+
+@media (max-width: 480px) {
+    .matratt {
+        flex-basis: 100%;
+        max-width: 100%;
+        margin: 5px 0;
+        /* Ingen sidomarginal på små skärmar */
+    }
+}
