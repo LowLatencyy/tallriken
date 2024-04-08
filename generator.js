@@ -79,9 +79,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                 return false;
             }
 
-            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].toLowerCase().split(',').map(s => s.trim()).includes(f.toLowerCase()));
-            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].toLowerCase().split(',').map(s => s.trim()).includes(f.toLowerCase()));
-            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => row[8].toLowerCase().split(',').map(s => s.trim()).includes(f.toLowerCase()));
+            const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].split(',').map(s => s.trim()).includes(f));
+            const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].split(',').map(s => s.trim()).includes(f));
+            const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => row[8].split(',').map(s => s.trim()).includes(f));
 
             return countryMatch && proteinMatch && mealtypeMatch;
         });
