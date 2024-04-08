@@ -123,25 +123,17 @@ document.addEventListener('DOMContentLoaded', async function () {
         const resultsToDisplay = results.slice(startIndex, endIndex);
 
         const container = document.getElementById('results-container');
-        container.innerHTML = ''; // Rensa befintliga resultat innan nya läggs till
-        container.className = 'data-container'; // Använd klassen från andra sidan
+        container.innerHTML = resultsToDisplay.length > 0
+            ? resultsToDisplay.map(row => {
+                // Anta att Instagram-koden är i en specifik kolumn, exempelvis index 5
+                const instagramEmbedCode = row[5]; // Eller hur du nu extraherar koden från din datastruktur
+                // Skapa ett 'div' element för varje resultat som innehåller den inbäddade Instagram-koden
+                return `<div class="matratt">${instagramEmbedCode}</div>`;
+            }).join('')
+            : '<div>Inga resultat hittades.</div>';
 
-        resultsToDisplay.forEach(row => {
-            const instagramEmbedCode = row[5]; // Anta att detta är kolumnen för Instagram-inlägget
-            const matratt = document.createElement('div');
-            matratt.className = 'matratt'; // Använd samma klass som andra sidan
-            matratt.innerHTML = `
-                <div class="matratt-title"><h2>${row[0]}</h2></div> 
-                ${instagramEmbedCode} // Anta att detta är Instagram-koden
-            `;
-            container.appendChild(matratt);
-        });
-
-        // Uppdatera pagineringen baserat på resultaten
         displayPaginationControls();
     }
-
-
 
 
 
