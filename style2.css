@@ -43,6 +43,78 @@ body {
     font-weight: bold;
 }
 
+/* Loader CSS */
+.blocks {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    /* Om du vill att loadern ska vara över allt annat innehåll */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    z-index: 9999;
+    /* High z-index to make sure it's on top */
+    background: transparent;
+    /* Loader background */
+}
+
+.block {
+    --sz: 8vmin;
+    --tX: 0;
+    --animation: 700ms cubic-bezier(0.3, 0.5, 0.4, 0.9) infinite alternate-reverse;
+    --hm: 4.5vmin;
+    height: var(--sz);
+    width: var(--sz);
+    border-radius: 50%;
+    transform: translateX(var(--tX));
+    mix-blend-mode: lighten;
+}
+
+.orange {
+    --bg: linear-gradient(-50deg, #fbab7e 0%, #f7ce68 100%);
+    margin-right: var(--hm);
+    background-image: var(--bg);
+    animation: attract-orange var(--animation);
+}
+
+.blue {
+    --bg: linear-gradient(50deg, #00bfd5 0%, #c5f5ff 100%);
+    margin-left: var(--hm);
+    background-image: var(--bg);
+    animation: attract-blue var(--animation);
+}
+
+@keyframes attract-orange {
+    to {
+        transform: translateX(calc(var(--sz) + calc(var(--hm) / 4)));
+    }
+}
+
+@keyframes attract-blue {
+    to {
+        transform: translateX(calc(var(--sz) * -1 - calc(var(--hm) / 4)));
+    }
+}
+
+/* CSS för att initialt dölja loadern */
+#loader {
+    display: none;
+}
+
+/* CSS för att mörkna och sudda ut bakgrunden */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 9998;
+    display: none;
+}
 
 
 .image-button {
@@ -102,10 +174,13 @@ body {
 */
 
 .image-button.selected {
-    background-image: url('images/circle2.svg'); /* Uppdatera med den rätta sökvägen till din SVG */
+    background-image: url('images/circle2.svg');
+    /* Uppdatera med den rätta sökvägen till din SVG */
     background-repeat: no-repeat;
-    background-position: center; /* Centrerar bilden i knappen */
-    background-size: contain; /* Ser till att bilden passar inuti knappens storlek */
+    background-position: center;
+    /* Centrerar bilden i knappen */
+    background-size: contain;
+    /* Ser till att bilden passar inuti knappens storlek */
 }
 
 
@@ -312,7 +387,7 @@ body {
     box-shadow: 0 2px 5px rgba(241, 156, 121);
 }
 
-/* Stilar för sökresultatens behållare */
+/* Stilar för sökresultatens behållare 
 #results-container {
     display: flex;
     flex-wrap: wrap;
@@ -320,13 +395,155 @@ body {
     padding: 10px;
 }
 
-/* Stilar för varje enskilt sökresultat */
+/* Stilar för varje enskilt sökresultat 
 .matratt {
     width: calc(50% - 20px);
-    /* Anpassa detta värde efter dina marginaler */
+    /* Anpassa detta värde efter dina marginaler 
     margin: 10px;
     /* Justera detta för önskat utrymme mellan resultat */
-    /* Ytterligare styling för sökresultatet */
+/* Ytterligare styling för sökresultatet 
+} */
+
+#data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* Justerar items till toppen av container */
+    margin-top: 2%;
+    padding-bottom: 20px;
+    overflow: auto;
+    z-index: 1500;
+    /* högre än sökfältets z-index */
+}
+
+.matratt {
+    flex: 0 0 calc(20% - 20px);
+    max-width: calc(20% - 20px);
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    align-self: flex-start;
+    position: relative;
+    width: 100%;
+}
+
+.matratt iframe {
+    background: white;
+    max-width: 100%;
+    /* Denna regel säkerställer att iframe tar upp till 100% av sin förälders bredd */
+    width: 100%;
+    /* Denna regel gör så att iframe faktiskt tar upp 100% av tillgänglig bredd */
+    border-radius: 3px;
+    border: 1px solid rgb(219, 219, 219);
+    box-shadow: none;
+    display: block;
+    margin: 0px 0px 12px;
+    padding: 0px;
+    height: auto;
+    /* Gör så att höjden anpassas automatiskt */
+    min-height: 500px;
+    /* Minimum höjd för att säkerställa konsistens */
+}
+
+.matratt-title {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 10px;
+    font-size: 8;
+
+}
+
+
+@media (max-width: 480px) {
+
+    .logo-link img {
+        height: 80px;
+        /* Justera storleken på logotypen om det behövs */
+    }
+
+    .matratt-title {
+        font-size: 10px;
+        /* Justera detta värde efter dina behov */
+    }
+
+
+
+    #data-container.initial {
+        margin-top: 40px;
+        /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
+        padding: 0 5px;
+        /* Justera sidomarginaler */
+    }
+
+    #data-container {
+        margin-top: 40px;
+        /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
+        padding: 0 5px;
+        /* Justera sidomarginaler */
+    }
+
+
+    .input-button-container input[type='text'],
+    .input-button-container button {
+        padding: 5px;
+        /* Justera padding för att passa bättre på mindre skärmar */
+        font-size: 10px;
+        /* Justera textstorleken om det behövs */
+    }
+
+    .input-button-container button {
+        padding-right: 10px;
+        /* Minska padding till höger */
+        padding-left: 10px;
+        /* Minska padding till vänster */
+    }
+
+    .matratt {
+        flex-basis: calc(50% - 20px);
+        /* Justerar bredden så två element får plats, minus marginal */
+        max-width: calc(50% - 20px);
+        /* Samma här */
+        padding: 2px;
+        /* Mindre padding inuti varje resultat */
+        margin: 5px;
+        /* Behåller en liten marginal runt varje element */
+    }
+
+
+
+    body,
+    html {
+        overflow-x: hidden;
+        /* Fortsätt förhindra horisontell scrollning */
+    }
+
+    /* Behåll andra befintliga stilar som du inte vill ändra */
+
+
+}
+
+/* Responsivitet */
+@media (max-width: 480px) {
+    .matratt {
+        flex-basis: calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (min-width: 481px) {
+    .instagram-media iframe {
+        width: 100%;
+        min-height: 420px !important;
+    }
+
+    .matratt {
+        flex: 0 0 calc(25% - 20px);
+        max-width: calc(25% - 20px);
+    }
 }
 
 .divider-container {
