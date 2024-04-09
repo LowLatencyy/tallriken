@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 
 body {
-    padding-top: 95px;
+    padding-top: 95px;!important
     /* Justera detta värde efter logotypens höjd plus önskat utrymme */
 }
 
@@ -208,14 +208,7 @@ body {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .matratt {
-        flex-basis: calc(50% - 10px);
-        /* Justerar bredden för att passa två resultat per rad */
-        max-width: calc(50% - 10px);
-        /* Sätter en maxbredd för att behålla layouten */
-        margin: 5px;
-        /* Justerar marginalen för att passa mindre skärmar */
-    }
+    
 }
 
 
@@ -313,22 +306,7 @@ body {
     box-shadow: 0 2px 5px rgba(241, 156, 121);
 }
 
-/* Stilar för sökresultatens behållare */
-#results-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px;
-}
 
-/* Stilar för varje enskilt sökresultat */
-.matratt {
-    width: calc(50% - 20px);
-    /* Anpassa detta värde efter dina marginaler */
-    margin: 10px;
-    /* Justera detta för önskat utrymme mellan resultat */
-    /* Ytterligare styling för sökresultatet */
-}
 
 .divider-container {
     text-align: center;
@@ -345,62 +323,8 @@ body {
 
 /* ...dina befintliga stilar... */
 
-#results-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start; /* Lägger till detta för att få rätt vertikal utjämning */
-    padding-bottom: 20px;
-    overflow: auto;
-    z-index: 1500;
-}
 
-.matratt {
-    flex: 0 0 calc(50% - 20px); /* Justeras för att visa två resultat per rad */
-    max-width: calc(50% - 20px);
-    margin: 10px;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    position: relative;
-}
 
-.matratt iframe {
-    background: white;
-    width: 100%;
-    height: auto;
-    /* Eller en fast höjd om det behövs, t.ex. min-height: 500px; */
-    border-radius: 3px;
-    border: 1px solid rgb(219, 219, 219);
-    box-shadow: none;
-    display: block;
-    margin-bottom: 12px;
-    padding: 0;
-}
-
-@media (min-width: 481px) {
-    .matratt {
-        flex: 0 0 calc(50% - 20px); /* Justeras för att visa två resultat per rad */
-        max-width: calc(50% - 20px);
-        margin: 10px;
-        padding: 10px;
-        border-radius: 10px;
-        text-align: center;
-        box-sizing: border-box;
-        position: relative;
-        /* Resten av din stil... */
-    }
-}
-
-@media (max-width: 480px) {
-    .matratt {
-        flex-basis: 100%;
-        max-width: 100%;
-        margin: 5px 0;
-        /* Ingen sidomarginal på små skärmar */
-    }
-}
 
 
 
