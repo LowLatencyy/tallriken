@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 
 body {
-    padding-top: 95px;!important
+    padding-top: 95px;
     /* Justera detta värde efter logotypens höjd plus önskat utrymme */
 }
 
@@ -208,7 +208,7 @@ body {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    
+
 }
 
 
@@ -565,6 +565,8 @@ body {
 
 body,
 html {
+    padding-top: 95px;
+    /* Justera detta värde efter logotypens höjd plus önskat utrymme */
     width: 100%;
     margin: 0;
     padding: 0;
@@ -584,7 +586,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-color: rgb(106, 4, 15); */ 
+    /* background-color: rgb(106, 4, 15); */
     background-color: rgb(250, 240, 202);
     z-index: -1;
 }
@@ -1243,6 +1245,8 @@ input:not(:checked)+.slider.large {
     html {
         overflow-x: hidden;
         /* Fortsätt förhindra horisontell scrollning */
+        padding-top: 95px;
+        /* Justera detta värde efter logotypens höjd plus önskat utrymme */
     }
 
     /* Behåll andra befintliga stilar som du inte vill ändra */
