@@ -736,19 +736,19 @@ html {
     /* Avrundade hörn till höger (både upp och ner) */
 }
 
-#data-container.initial {
+#results-container.initial {
     margin-top: 20px;
     /* Anpassa detta värde så att det passar layouten av din sökcontainer */
 }
 
-#data-container.search-active {
+#results-container.search-active {
     margin-top: 0;
     /* Anpassa detta värde som behövs */
 }
 
 
 
-#data-container {
+#results-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -1270,14 +1270,14 @@ input:not(:checked)+.slider.large {
     }
 
 
-    #data-container.initial {
+    #results-container.initial {
         margin-top: 40px;
         /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
         padding: 0 5px;
         /* Justera sidomarginaler */
     }
 
-    #data-container {
+    #results-container {
         margin-top: 40px;
         /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
         padding: 0 5px;
