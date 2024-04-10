@@ -1,8 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 
-body {
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+
+body, html {
     padding-top: 95px;
     /* Justera detta värde efter logotypens höjd plus önskat utrymme */
+    overflow-x: hidden;
+        /* Fortsätt förhindra horisontell scrollning */
 }
 
 .welcome-text {
@@ -1152,7 +1161,7 @@ input:not(:checked)+.slider.large {
         flex: 0 0 calc(20% - 20px);
         max-width: calc(20% - 20px);
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
-        margin: 10px;
+        margin: 5px;
         /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
 
     }
@@ -1186,27 +1195,14 @@ input:not(:checked)+.slider.large {
         /* Justera detta värde efter dina behov */
     }
 
-    .search-container {
-        width: 100%;
-        /* Använd hela bredden för att maximera utrymmet */
-        margin: 20px auto;
-        /* Centrerar kontainern med marginal upp- och nertill */
-        padding-top: 10px;
-        /* Justera utrymmet ovanför sökfältet efter behov */
-    }
+   
 
-
-    #results-container.initial {
-        margin-top: 40px;
-        /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
-        padding: 0 5px;
-        /* Justera sidomarginaler */
-    }
+    
 
     #results-container {
         margin-top: 40px;
         /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
-        padding: 0 5px;
+        padding: 0 0px;
         /* Justera sidomarginaler */
     }
 
@@ -1237,22 +1233,10 @@ input:not(:checked)+.slider.large {
         /* Behåller en liten marginal runt varje element */
     }
 
-    .search-container * {
-        pointer-events: auto;
-    }
+    
 
-    body,
-    html {
-        overflow-x: hidden;
-        /* Fortsätt förhindra horisontell scrollning */
-        padding-top: 95px;
-        /* Justera detta värde efter logotypens höjd plus önskat utrymme */
-    }
+   
 
-    /* Behåll andra befintliga stilar som du inte vill ändra */
-
-
-}
 
 
 
@@ -1287,87 +1271,7 @@ input:not(:checked)+.slider.large {
     height: auto;
 }
 
-.logo-main-container {
-    text-align: center;
-    margin-top: 12px;
-}
 
-.main-logo {
-    max-width: 40%;
-    height: auto;
-    margin: 0 auto;
-}
 
-.image-links-container {
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-    /* Justera detta värde efter behov */
-    padding-top: 100px;
-    /* Lägg till önskat tomt utrymme */
-}
 
-.image-link {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
-.image-link img {
-    width: 60%;
-    height: auto;
-    object-fit: cover;
-    /* Se till att bilden täcker elementet */
-}
-
-@media (min-width: 769px) {
-    .image-links-container {
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        /* Centrerar barn vertikalt */
-        padding-top: 0;
-    }
-
-    .image-link {
-        width: 40%;
-        /* Minskar bredden för att göra bilderna mindre */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* Centrerar innehållet vertikalt */
-        padding: 0 10px;
-        /* Behåller lite utrymme mellan bilderna */
-    }
-
-    .image-link img {
-        max-width: 100%;
-        /* Säkerställer att bilden inte överskrider länkens bredd */
-        height: auto;
-        /* Behåller bildens proportioner */
-    }
-}
-
-/* Lägg till ytterligare media queries och stilar efter behov */
-
-.gallery-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.gallery-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.gallery-row img {
-    margin: 5px;
-    width: auto;
-    height: 150px;
-    /* Justera efter behov för att passa din design */
-}
