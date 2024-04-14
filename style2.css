@@ -7,11 +7,12 @@
 }
 
 
-body, html {
+body,
+html {
     padding-top: 95px;
     /* Justera detta värde efter logotypens höjd plus önskat utrymme */
     overflow-x: hidden;
-        /* Fortsätt förhindra horisontell scrollning */
+    /* Fortsätt förhindra horisontell scrollning */
 }
 
 .welcome-text {
@@ -993,7 +994,6 @@ html {
 }
 
 @media (max-width: 480px) {
-
     .logo-link img {
         height: 80px;
         /* Justera storleken på logotypen om det behövs */
@@ -1004,17 +1004,18 @@ html {
         /* Justera detta värde efter dina behov */
     }
 
-   
-
-    
-
     #results-container {
         margin-top: 40px;
         /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
-        padding: 0 0px;
+        padding: 0 10px;
         /* Justera sidomarginaler */
+        display: flex;
+        /* Använder flexbox för att ordna inläggen */
+        flex-wrap: wrap;
+        /* Tillåter innehåll att flyta till nästa rad */
+        justify-content: space-around;
+        /* Jämna utrymmen runt varje element */
     }
-
 
     .input-button-container input[type='text'],
     .input-button-container button {
@@ -1032,19 +1033,26 @@ html {
     }
 
     .matratt {
-        flex-basis: calc(50% - 20px);
+        flex: 0 0 48%;
         /* Justerar bredden så två element får plats, minus marginal */
-        max-width: calc(50% - 20px);
+        max-width: 48%;
         /* Samma här */
-        padding: 2px;
-        /* Mindre padding inuti varje resultat */
-        margin: 5px;
-        /* Behåller en liten marginal runt varje element */
+        margin: 1%;
+        /* Lägger till en procentbaserad marginal för responsivitet */
+        height: auto;
+        /* Höjden anpassas automatiskt */
     }
 
-    
+    .instagram-media iframe {
+        width: 100%;
+        /* Säkerställer att iframe tar upp hela bredden av sin container */
+        min-height: 250px;
+        /* Minimum höjd för att säkerställa konsistens */
+    }
+}
 
-   
+
+
 
 
 
