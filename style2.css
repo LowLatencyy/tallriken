@@ -1,88 +1,44 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
 
-/* Global styles */
 *,
 *:before,
 *:after {
     box-sizing: border-box;
 }
 
-body,
-html {
-    margin: 0;
-    padding: 0;
+body, html {
+    padding-top: 95px;
     overflow-x: hidden;
-    font-family: 'Exo 2', cursive;
 }
 
-.background-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(250, 240, 202);
-    z-index: -1;
+.welcome-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Exo', sans-serif;
 }
 
-.blur-background .background-container {
-    filter: blur(5px);
-}
-
-/* Header styles */
-.logo-link {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 3000;
-}
-
-.logo-link img {
-    height: 50px;
-    width: auto;
-}
-
-/* Footer styles */
-.footer-banner {
-    background-color: #000;
-    color: white;
-    padding: 10px 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    z-index: 3000;
-}
-
-.footer-banner a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-banner a:hover {
-    text-decoration: underline;
-}
-
-.footer-links {
-    display: flex;
-    margin-left: auto;
-}
-
-.footer-banner p {
+.welcome-text h1 {
     margin: 0;
+    font-size: 2em;
+    font-weight: bold;
 }
 
-/* Resten av stilen kommer i nästa steg */
+.welcome-text h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
 
-/* Category filter styles */
-.filter-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-    gap: 10px;
-    padding: 10px;
-    justify-content: center;
+.welcome-text p {
+    margin-top: 10px;
+    font-size: 1em;
+    line-height: 1.6;
+}
+
+.welcome-text strong {
+    font-weight: bold;
 }
 
 .image-button {
@@ -93,12 +49,8 @@ html {
     background-color: transparent;
     cursor: pointer;
     transition: transform 0.3s;
-}
-
-.image-button img {
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
 }
 
 .image-button.selected {
@@ -108,570 +60,147 @@ html {
     background-size: contain;
 }
 
-/* Search and pagination styles */
-#searchBtn {
-    font-family: 'Exo 2', sans-serif;
-    font-size: 1.5em;
-    width: 80%;
-    max-width: 400px;
-    padding: 15px 30px;
-    margin: 0 auto 30px;
+.image-button:hover {
+    transform: scale(1.05);
+}
+
+.image-button img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.image-button:focus,
+.image-button:active {
+    outline: none;
+}
+
+.filter-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.show-more-btn {
     display: block;
+    width: auto;
+    padding: 5px 15px;
     background-color: rgb(203, 223, 189);
     color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 50px;
-    box-shadow: 0 5px 15px rgb(8, 39, 69);
+    text-align: center;
     cursor: pointer;
-    transition: all 0.3s ease;
+    border: none;
+    border-radius: 5px;
+    margin: 10px auto;
+    transition: background-color 0.3s;
 }
 
-#searchBtn:hover {
-    background-color: rgb(241, 156, 121);
-    box-shadow: 0 8px 25px rgb(255, 255, 255);
+.show-more-btn:hover {
+    background-color: rgb(89, 96, 84);
+    color: white;
 }
 
-/* Media queries for responsiveness */
 @media (max-width: 600px) {
     .filter-container {
         grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .image-button img {
-        border-radius: 10px;
-        /* less rounded corners for smaller screens */
-    }
+.category-title {
+    font-size: 24px;
+    color: #333;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
 
+.category-divider {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, #aaa, #333, #aaa);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+
+/* Container för att hålla sökknappen längst ner */
+.footer-banner {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.category-header {
+    text-align: center;
+    margin: 2px 0;
+}
+
+.category-image {
+    max-width: 70%;
+    height: auto;
+}
+
+/* Stilar för bildknappar och sökresultat */
+#results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+    padding-bottom: 20px;
+    overflow: auto;
+    z-index: 1500;
+}
+
+.matratt {
+    flex: 0 0 calc(20% - 20px);
+    max-width: calc(20% - 20px);
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    align-self: flex-start;
+    width: 100%;
+}
+
+.matratt img {
+    max-width: 100%;
+    border-radius: 3px;
+    border: 1px solid rgb(219, 219, 219);
+    box-shadow: none;
+    display: block;
+    margin: 0px 0px 12px;
+    padding: 0px;
+    height: auto;
+    min-height: 200px;
+}
+
+.matratt-title {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
     #results-container {
         margin-top: 20px;
+        padding: 0 5px;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .matratt {
-        width: 48%;
-        /* Allows 2 posts per row with a little space in between */
-        margin: 1%;
-        /* Small margins for spacing */
-    }
-}
-
-/* Rest of the styles continue */
-
-/* Footer styles to be fixed at the bottom */
-.footer-banner {
-    background-color: #000;
-    color: white;
-    padding: 10px 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.footer-banner a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-banner a:hover {
-    text-decoration: underline;
-}
-
-/* Loader styles */
-.blocks {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    z-index: 9999;
-    background: transparent;
-}
-
-.block {
-    height: var(--sz, 8vmin);
-    width: var(--sz, 8vmin);
-    border-radius: 50%;
-    transform: translateX(var(--tX, 0));
-    mix-blend-mode: lighten;
-}
-
-.orange {
-    background-image: var(--bg, linear-gradient(-50deg, #fbab7e 0%, #f7ce68 100%));
-    animation: attract-orange var(--animation, 700ms cubic-bezier(0.3, 0.5, 0.4, 0.9) infinite alternate-reverse);
-}
-
-.blue {
-    background-image: var(--bg, linear-gradient(50deg, #00bfd5 0%, #c5f5ff 100%));
-    animation: attract-blue var(--animation, 700ms cubic-bezier(0.3, 0.5, 0.4, 0.9) infinite alternate-reverse);
-}
-
-@keyframes attract-orange {
-    to {
-        transform: translateX(calc(var(--sz, 8vmin) + var(--hm, 4.5vmin)));
-    }
-}
-
-@keyframes attract-blue {
-    to {
-        transform: translateX(calc(var(--sz, 8vmin) * -1 - var(--hm, 4.5vmin)));
-    }
-}
-
-/* Overlay to darken the background */
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(5px);
-    z-index: 9998;
-    display: none;
-}
-
-/* Rest of your old styles to be included */
-/* ... */
-
-/* Additional media queries for desktop */
-@media (min-width: 481px) {
-    .matratt {
-        width: calc(20% - 20px);
-        margin: 10px;
-    }
-
-    .matratt iframe {
-        height: 500px;
-    }
-
-    .instagram-media iframe {
-        min-height: 420px !important;
-    }
-}
-
-@media (min-width: 769px) {
-    /* Adjustments for larger screens if necessary */
-}
-
-/* Remember to add any additional customizations from the old styles */
-/* ... */
-
-/* Style adjustments for the navigation menu */
-.nav__list {
-    position: fixed;
-    overflow-y: scroll;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 3100;
-    background: rgb(203, 223, 189);
-    font-size: 3rem;
-    padding: 40px;
-    transform: translateX(100%);
-    transition: 0.3s cubic-bezier(0.75, 0, 0.25, 1);
-}
-
-.nav__item {
-    list-style: none;
-}
-
-.nav__item+.nav__item {
-    margin-top: 20px;
-}
-
-/* Hamburger menu icon styles */
-.nav__trigger-finger {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 3100;
-    display: flex;
-    align-items: center;
-    width: 20px;
-    height: 15px;
-    margin: 40px;
-    color: rgb(0, 0, 0);
-}
-
-.nav__trigger-finger::before {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: -5px;
-    bottom: -5px;
-    right: -5px;
-    background: rgb(0, 0, 0);
-    opacity: 0;
-    z-index: 3101;
-    transition: opacity 0.3s cubic-bezier(0.75, 0, 0.25, 1);
-}
-
-.nav__trigger-finger span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
-    background: currentColor;
-}
-
-/* Rest of your old styles for navigation menu */
-/* ... */
-
-/* Style adjustments for body and html */
-body,
-html {
-    padding-top: 95px;
-    /* Adjust according to the header height */
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    /* Prevent horizontal scrolling */
-    font-family: 'Exo 2', sans-serif;
-    padding-bottom: 100px;
-    /* Footer height adjustment */
-}
-
-.background-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(250, 240, 202);
-    /* Adjust the background color as needed */
-    z-index: -1;
-}
-
-.blur-background .background-container {
-    filter: blur(5px);
-    /* For blurred background effect */
-}
-
-/* Styles for logo and search container */
-.logo-image {
-    width: 200px;
-    /* Adjust based on design needs */
-    height: auto;
-    /* To maintain aspect ratio */
-}
-
-.search-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1000;
-    width: 40%;
-    /* Adjust width as needed */
-    margin: 20px auto;
-    /* Center the container */
-    padding-top: 20px;
-    /* Spacing above search area */
-}
-
-/* ... Additional styles for search and other elements ... */
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-    .search-container {
-        width: 100%;
-        /* Use full width for small screens */
-        margin: 20px auto;
-        /* Maintain margin on auto */
-        padding-top: 10px;
-        /* Adjust spacing on top */
-    }
-
-    .input-button-container input[type='text'],
-    .input-button-container button {
-        padding: 5px;
-        /* Adjust padding for small screens */
-        font-size: 10px;
-        /* Adjust font size as needed */
+        justify-content: space-around;
     }
 
     .matratt {
         flex-basis: calc(50% - 20px);
-        /* Adjust width for 2 items per row */
         max-width: calc(50% - 20px);
-        /* Same as above */
-        margin: 1%;
-        /* Percentage margin for responsiveness */
-        height: auto;
-        /* Auto-adjust height */
-    }
-
-    .instagram-media iframe {
-        width: 100%;
-        /* Full width inside the container */
-        min-height: 250px;
-        /* Minimum height for consistency */
+        padding: 2px;
+        margin: 5px;
     }
 }
-
-/* ... Rest of your old responsive styles ... */
-
-/* Loader and Overlay Styles */
-#loader,
-#overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
-    /* Ensure it's on top */
-    justify-content: center;
-    align-items: center;
-    background: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background for overlay */
-}
-
-.blocks .block {
-    height: 8vmin;
-    width: 8vmin;
-    border-radius: 50%;
-    transform: translateX(0);
-    animation: move 700ms cubic-bezier(0.3, 0.5, 0.4, 0.9) infinite alternate-reverse;
-}
-
-/* Adjust color and margin */
-.orange {
-    background: linear-gradient(-50deg, #fbab7e 0%, #f7ce68 100%);
-}
-
-.blue {
-    background: linear-gradient(50deg, #00bfd5 0%, #c5f5ff 100%);
-}
-
-/* Keyframes for animations */
-@keyframes move {
-    /* Keyframes for blocks movement */
-}
-
-/* Footer Banner Styles */
-.footer-banner {
-    padding: 10px 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #000;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.footer-banner a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.footer-banner a:hover {
-    text-decoration: underline;
-}
-
-.footer-links {
-    display: flex;
-    margin-left: auto;
-}
-
-/* Page Number Styles */
-.current-page {
-    background-color: #ffefb3 !important;
-    color: #000 !important;
-}
-
-/* Placeholder Text Styles */
-#searchInput::placeholder {
-    color: #999;
-    font-family: 'Exo 2', cursive;
-    font-size: 18px;
-}
-
-/* Button Styles */
-.add-button img {
-    width: 25px;
-    height: auto;
-}
-
-/* Gallery Container Styles */
-.gallery-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-}
-
-.gallery-row img {
-    height: 150px;
-    /* Adjust as needed */
-}
-
-/* Media Queries and Styles for Larger Screens */
-@media (min-width: 481px) {
-    .matratt {
-        flex: 0 0 calc(20% - 20px);
-        /* Adjust as needed */
-    }
-}
-
-@media (min-width: 769px) {
-    /* Adjustments for larger screens */
-}
-
-/* Logo and Navigation Styles */
-.logo-main-container {
-    text-align: center;
-    margin-top: 12px;
-}
-
-.main-logo {
-    max-width: 40%;
-    height: auto;
-    margin: 0 auto;
-}
-
-/* Navigation Menu */
-.nav {
-    color: #000;
-    z-index: 9999;
-}
-
-.nav__trigger-finger {
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 3100;
-    display: flex;
-    align-items: center;
-    margin: 40px;
-}
-
-.nav__list {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #cbd7bd;
-    padding: 40px;
-    transform: translateX(100%);
-    z-index: 3100;
-    font-size: 3rem;
-    transition: transform 0.3s;
-}
-
-.nav__item {
-    list-style: none;
-    margin-top: 20px;
-}
-
-/* Switch and Checkbox Styles */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.switch .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 34px;
-}
-
-.switch .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-}
-
-input:checked+.slider {
-    background-color: #2196F3;
-}
-
-input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked+.slider:before {
-    transform: translateX(26px);
-}
-
-/* Additional Styles */
-.tag-container {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 5px;
-    border-radius: 0 0 25px 25px;
-}
-
-.tag {
-    background-color: #ddd;
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    margin-right: 5px;
-}
-
-.tag-close {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-left: 5px;
-    font-size: 1rem;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 480px) {
-    .logo-link img {
-        height: 50px;
-    }
-
-    .input-button-container input[type='text'],
-    .input-button-container button {
-        padding: 5px;
-        font-size: 10px;
-    }
-
-    .matratt {
-        flex: 0 0 48%;
-        max-width: 48%;
-        margin: 1%;
-    }
-
-    .instagram-media iframe {
-        min-height: 250px;
-    }
-}
-
-@media (min-width: 481px) {
-    /* Styles for larger screens */
-}
-
-/* Ensure styles from this point match your design needs */
