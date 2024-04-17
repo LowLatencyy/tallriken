@@ -450,7 +450,7 @@ body {
     display: block;
     margin: 0px 0px 12px;
     padding: 0px;
-    height: 300px;
+    height: 200px;
     /* Gör så att höjden anpassas automatiskt */
     position: absolute;
     top: 0;
@@ -543,7 +543,7 @@ body {
         height: 150px; /* Håll samma höjd som i desktop-vy. */
     }
     .matratt iframe {
-        height: 300px; /* Håll samma iframe-höjd. */
+        height: 200px; /* Håll samma iframe-höjd. */
     }
 }
 
