@@ -434,6 +434,8 @@ body {
     align-self: flex-start;
     position: relative;
     width: 100%;
+    overflow: hidden;
+    height: 150px; /* Denna höjd bestämmer hur mycket av iframe som visas. */
 }
 
 .matratt iframe {
@@ -448,10 +450,11 @@ body {
     display: block;
     margin: 0px 0px 12px;
     padding: 0px;
-    height: auto;
+    height: 300px;
     /* Gör så att höjden anpassas automatiskt */
-    min-height: 500px;
-    /* Minimum höjd för att säkerställa konsistens */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .matratt-title {
@@ -537,6 +540,10 @@ body {
     .matratt {
         flex-basis: calc(50% - 10px);
         max-width: calc(50% - 10px);
+        height: 150px; /* Håll samma höjd som i desktop-vy. */
+    }
+    .matratt iframe {
+        height: 300px; /* Håll samma iframe-höjd. */
     }
 }
 
