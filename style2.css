@@ -543,7 +543,7 @@ body {
 @media (min-width: 481px) {
     .instagram-media iframe {
         width: 100%;
-        min-height: 420px !important;
+        min-height: 120px !important;
     }
 
     .matratt {
