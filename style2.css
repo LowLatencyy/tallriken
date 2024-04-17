@@ -6,22 +6,29 @@
     box-sizing: border-box;
 }
 
-body, html {
+body {
     padding-top: 95px;
-    overflow-x: hidden;
+    /* Justera detta värde efter logotypens höjd plus önskat utrymme */
 }
+
+
 
 .welcome-text {
     text-align: center;
     max-width: 800px;
+    /* Anpassa efter din layout */
     margin: 0 auto;
+    /* Centrerar texten */
     padding: 20px;
     font-family: 'Exo', sans-serif;
+    /* Ersätt med rätt typsnittsnamn om det är annorlunda */
 }
 
 .welcome-text h1 {
     margin: 0;
+    padding: 0;
     font-size: 2em;
+    /* Anpassa storlek efter behov */
     font-weight: bold;
 }
 
@@ -35,11 +42,86 @@ body, html {
     margin-top: 10px;
     font-size: 1em;
     line-height: 1.6;
+    /* För att göra texten lättare att läsa */
 }
 
 .welcome-text strong {
     font-weight: bold;
 }
+
+/* Loader CSS */
+.blocks {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    /* Om du vill att loadern ska vara över allt annat innehåll */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    z-index: 9999;
+    /* High z-index to make sure it's on top */
+    background: transparent;
+    /* Loader background */
+}
+
+.block {
+    --sz: 8vmin;
+    --tX: 0;
+    --animation: 700ms cubic-bezier(0.3, 0.5, 0.4, 0.9) infinite alternate-reverse;
+    --hm: 4.5vmin;
+    height: var(--sz);
+    width: var(--sz);
+    border-radius: 50%;
+    transform: translateX(var(--tX));
+    mix-blend-mode: lighten;
+}
+
+.orange {
+    --bg: linear-gradient(-50deg, #fbab7e 0%, #f7ce68 100%);
+    margin-right: var(--hm);
+    background-image: var(--bg);
+    animation: attract-orange var(--animation);
+}
+
+.blue {
+    --bg: linear-gradient(50deg, #00bfd5 0%, #c5f5ff 100%);
+    margin-left: var(--hm);
+    background-image: var(--bg);
+    animation: attract-blue var(--animation);
+}
+
+@keyframes attract-orange {
+    to {
+        transform: translateX(calc(var(--sz) + calc(var(--hm) / 4)));
+    }
+}
+
+@keyframes attract-blue {
+    to {
+        transform: translateX(calc(var(--sz) * -1 - calc(var(--hm) / 4)));
+    }
+}
+
+/* CSS för att initialt dölja loadern */
+#loader {
+    display: none;
+}
+
+/* CSS för att mörkna och sudda ut bakgrunden */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 9998;
+    display: none;
+}
+
 
 .image-button {
     position: relative;
@@ -50,20 +132,79 @@ body, html {
     cursor: pointer;
     transition: transform 0.3s;
     -webkit-tap-highlight-color: transparent;
+    /* för Safari och Chrome på iOS */
     tap-highlight-color: transparent;
+    /* standard CSS egenskap, men stöds inte av alla webbläsare än */
 }
+
+/*
+.image-button::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    /* Startar osynlig 
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 0 8px 8px rgb(255, 255, 255);
+    /* Osynlig tills aktiverad 
+}
+*/
+/*
+
+.image-button:active::after,
+.image-button:focus::after,
+.image-button.selected::after {
+    opacity: 1;
+    /* Blir synlig vid aktivering 
+    box-shadow: 0 0 8px 8px rgb(255, 255, 255);
+    /* Den runda glow-effekten 
+}
+*/
+
+.image-button:focus,
+.image-button:active {
+    outline: none;
+    /* Tar bort webbläsarens fokusindikering */
+}
+
+/* Stil för en knapp när den är i aktivt eller valt tillstånd 
+.image-button.selected {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+*/
 
 .image-button.selected {
     background-image: url('images/circle2.svg');
+    /* Uppdatera med den rätta sökvägen till din SVG */
     background-repeat: no-repeat;
     background-position: center;
+    /* Centrerar bilden i knappen */
     background-size: contain;
+    /* Ser till att bilden passar inuti knappens storlek */
 }
 
+
+
+/* Effekt när man hovrar över bildknappen */
 .image-button:hover {
     transform: scale(1.05);
 }
 
+/* 
+
+.image-button:focus {
+    box-shadow: 0 0 10px 2px rgb(255, 247, 179);
+    /* Lägger till en lyseffekt 
+} 
+*/
+
+/* Bildinställningar inom bildknappen */
 .image-button img {
     width: 100%;
     height: auto;
@@ -73,12 +214,18 @@ body, html {
 .image-button:focus,
 .image-button:active {
     outline: none;
+    /* Bekräftar att den blåa fokusringen är borta */
+
 }
 
+
+
+
+/* Stilar för behållaren av bildknappar */
 .filter-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 0.5rem;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0.5px;
     margin-bottom: 20px;
 }
 
@@ -86,10 +233,14 @@ body, html {
     display: none;
 }
 
+
+/* Visa fler-knappens stil */
 .show-more-btn {
     display: block;
     width: auto;
+    /* Baserar bredden på innehållet och padding */
     padding: 5px 15px;
+    /* Justerad horisontell padding */
     background-color: rgb(203, 223, 189);
     color: rgb(0, 0, 0);
     text-align: center;
@@ -97,64 +248,179 @@ body, html {
     border: none;
     border-radius: 5px;
     margin: 10px auto;
+    /* Centrerar knappen */
     transition: background-color 0.3s;
+    /* Lägger till en mjuk övergång för hover-effekt */
 }
 
+/* Hover-effekt för "Visa fler"-knappen */
 .show-more-btn:hover {
     background-color: rgb(89, 96, 84);
+    display: block;
+    width: auto;
+    /* Baserar bredden på innehållet och padding */
+    padding: 5px 15px;
+    /* Justerad horisontell padding */
+    background-color: rgb(89, 96, 84);
     color: white;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    margin: 10px auto;
+    /* Centrerar knappen */
+    transition: background-color 0.3s;
+    /* Lägger till en mjuk övergång för hover-effekt */
 }
 
+/* Anpassning för mobilvy */
 @media (max-width: 600px) {
+    .show-more-btn {
+        padding: 5px 15px;
+        /* Minskar padding för mobilvy */
+        width: auto;
+        /* Baserar bredden på innehållet och padding */
+        margin: 5px auto;
+        /* Fortsätter att centrera knappen */
+    }
+
     .filter-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .matratt {
+        flex-basis: calc(50% - 10px);
+        /* Justerar bredden för att passa två resultat per rad */
+        max-width: calc(50% - 10px);
+        /* Sätter en maxbredd för att behålla layouten */
+        margin: 5px;
+        /* Justerar marginalen för att passa mindre skärmar */
     }
 }
+
+
+
+
+
+
+
+/* Effekt när man hovrar över bildknappar */
+.image-button:hover img {
+    transform: scale(1.05);
+}
+
+
 
 .category-title {
     font-size: 24px;
     color: #333;
+    /* Ändra färgen efter önskemål */
     margin-top: 30px;
+    /* Ger utrymme ovanför rubriken */
     margin-bottom: 10px;
+    /* Ger utrymme under rubriken */
     text-align: center;
 }
 
 .category-divider {
     border: 0;
     height: 1px;
+    /* Ändra tjockleken efter önskemål */
     background-image: linear-gradient(to right, #aaa, #333, #aaa);
+    /* En gradient effekt */
     margin-top: 20px;
+    /* Ger utrymme ovanför avdelaren */
     margin-bottom: 20px;
+    /* Ger utrymme under avdelaren */
 }
+
+
+
+
+
+
 
 
 /* Container för att hålla sökknappen längst ner */
 .footer-banner {
     text-align: center;
+    /* Centrerar innehållet */
     margin-top: 30px;
+    /* Ger utrymme ovanför knappen */
     margin-bottom: 30px;
+    /* Ger utrymme under knappen */
+    /* Ta bort position: absolute och bottom: 0; */
 }
 
 .category-header {
     text-align: center;
+    /* Centrerar bilden om det behövs */
     margin: 2px 0;
+    /* Lägger till lite utrymme ovanför och under bilden */
 }
 
 .category-image {
     max-width: 70%;
+    /* Gör så att bilden inte blir större än sin behållare */
     height: auto;
+    /* Bevarar bildens proportioner */
 }
 
-/* Stilar för bildknappar och sökresultat */
+#searchBtn {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.5em;
+    width: 80%;
+    max-width: 400px;
+    padding: 15px 30px;
+    margin: 0 auto 30px;
+    display: block;
+    background-color: rgb(203, 223, 189);
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 5px 15px rgb(8, 39, 69);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#searchBtn:hover {
+    background-color: rgb(241, 156, 121);
+    box-shadow: 0 8px 25px rgb(255, 255, 255);
+}
+
+#searchBtn:active {
+    background-color: #003366;
+    box-shadow: 0 2px 5px rgba(241, 156, 121);
+}
+
+/* Stilar för sökresultatens behållare 
 #results-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 10px;
+}
+
+/* Stilar för varje enskilt sökresultat 
+.matratt {
+    width: calc(50% - 20px);
+    /* Anpassa detta värde efter dina marginaler 
+    margin: 10px;
+    /* Justera detta för önskat utrymme mellan resultat */
+/* Ytterligare styling för sökresultatet 
+} */
+
+#data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
+    /* Justerar items till toppen av container */
     margin-top: 2%;
     padding-bottom: 20px;
     overflow: auto;
     z-index: 1500;
+    /* högre än sökfältets z-index */
 }
 
 .matratt {
@@ -166,11 +432,16 @@ body, html {
     text-align: center;
     box-sizing: border-box;
     align-self: flex-start;
+    position: relative;
     width: 100%;
 }
 
-.matratt img {
+.matratt iframe {
+    background: white;
     max-width: 100%;
+    /* Denna regel säkerställer att iframe tar upp till 100% av sin förälders bredd */
+    width: 100%;
+    /* Denna regel gör så att iframe faktiskt tar upp 100% av tillgänglig bredd */
     border-radius: 3px;
     border: 1px solid rgb(219, 219, 219);
     box-shadow: none;
@@ -178,7 +449,9 @@ body, html {
     margin: 0px 0px 12px;
     padding: 0px;
     height: auto;
-    min-height: 200px;
+    /* Gör så att höjden anpassas automatiskt */
+    min-height: 500px;
+    /* Minimum höjd för att säkerställa konsistens */
 }
 
 .matratt-title {
@@ -186,21 +459,108 @@ body, html {
     padding: 5px;
     margin: 5px 0;
     border-radius: 10px;
+    font-size: 8;
+
 }
 
+
 @media (max-width: 480px) {
-    #results-container {
-        margin-top: 20px;
+
+    .logo-link img {
+        height: 80px;
+        /* Justera storleken på logotypen om det behövs */
+    }
+
+    .matratt-title {
+        font-size: 10px;
+        /* Justera detta värde efter dina behov */
+    }
+
+
+
+    #data-container.initial {
+        margin-top: 40px;
+        /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
         padding: 0 5px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
+        /* Justera sidomarginaler */
+    }
+
+    #data-container {
+        margin-top: 40px;
+        /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
+        padding: 0 5px;
+        /* Justera sidomarginaler */
+    }
+
+
+    .input-button-container input[type='text'],
+    .input-button-container button {
+        padding: 5px;
+        /* Justera padding för att passa bättre på mindre skärmar */
+        font-size: 10px;
+        /* Justera textstorleken om det behövs */
+    }
+
+    .input-button-container button {
+        padding-right: 10px;
+        /* Minska padding till höger */
+        padding-left: 10px;
+        /* Minska padding till vänster */
     }
 
     .matratt {
         flex-basis: calc(50% - 20px);
+        /* Justerar bredden så två element får plats, minus marginal */
         max-width: calc(50% - 20px);
+        /* Samma här */
         padding: 2px;
+        /* Mindre padding inuti varje resultat */
         margin: 5px;
+        /* Behåller en liten marginal runt varje element */
     }
+
+
+
+    body,
+    html {
+        overflow-x: hidden;
+        /* Fortsätt förhindra horisontell scrollning */
+    }
+
+    /* Behåll andra befintliga stilar som du inte vill ändra */
+
+
+}
+
+/* Responsivitet */
+@media (max-width: 480px) {
+    .matratt {
+        flex-basis: calc(50% - 10px);
+        max-width: calc(50% - 10px);
+    }
+}
+
+@media (min-width: 481px) {
+    .instagram-media iframe {
+        width: 100%;
+        min-height: 420px !important;
+    }
+
+    .matratt {
+        flex: 0 0 calc(25% - 20px);
+        max-width: calc(25% - 20px);
+    }
+}
+
+.divider-container {
+    text-align: center;
+    margin: 2px 0;
+    /* Justera som du vill för att få rätt utrymme ovanför och under divider */
+}
+
+.divider-image {
+    max-width: 100%;
+    /* Anpassar bredden efter behållarens bredd */
+    height: auto;
+    /* Bevarar bildens proportioner */
 }
