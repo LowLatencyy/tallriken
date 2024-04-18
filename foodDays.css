@@ -11,3 +11,7 @@ img {
     object-fit: contain;
     /* Ser till att innehållet skalas korrekt inom givna dimensioner utan att beskära det */
 }
+
+h2 {
+    font-family: 'Lora', serif; /* Detta kommer endast att applicera Lora på <h2>-taggar */
+}
