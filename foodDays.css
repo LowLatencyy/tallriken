@@ -4,6 +4,10 @@
 }
 
 img {
-    width: 300px;
-    height: 200px;
+    max-width: 100%;
+    /* Sätter maximal bredd men behåller aspektratio */
+    max-height: 200px;
+    /* Sätter maximal höjd */
+    object-fit: contain;
+    /* Ser till att innehållet skalas korrekt inom givna dimensioner utan att beskära det */
 }
