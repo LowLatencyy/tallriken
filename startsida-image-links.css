@@ -26,3 +26,10 @@
     display: block;             /* Tar bort eventuella marginaler runt bilden */
     margin: 5px 0;             /* Lägger till lite utrymme ovanför och nedanför bilden */
 }
+
+.regular-image {
+    width: 100%;                /* Gör så att bilden sträcker sig över hela bredden av dess container */
+    height: auto;               /* Bevarar bildens ursprungliga proportioner */
+    display: block;             /* Tar bort eventuella marginaler runt bilden */
+    margin: 5px 0;             /* Lägger till utrymme ovanför och nedanför bilden */
+}
