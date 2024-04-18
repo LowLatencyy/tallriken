@@ -2,7 +2,7 @@ const foodDays = [
     { date: '2024-01-25', image: 'kanelbulle.jpg', title: 'Kanelbullens dag', description: 'Fira med en eller flera saftiga kanelbullar på Kanelbullens dag!' },
     { date: '2024-02-25', image: 'semla.jpg', title: 'Fettisdagen', description: 'Fettisdagen är här! Njut av en utsökt semla.' },
     { date: '2024-03-05', image: 'pannkakor.jpg', title: 'Pannkaksdagen', description: 'Idag är det Pannkaksdagen! Passa på att njuta av pannkakor med sylt och grädde.' },
-    { date: '2024-03-25', image: 'vaffel.jpg', title: 'Våffeldagen', description: 'Våffeldagen sammanfaller med Marie bebådelsedag. Fira med nygräddade våfflor!' },
+    { date: '2024-04-18', image: 'images/Food-Days/vaffla.jpg', title: 'Våffeldagen', description: 'Våffeldagen sammanfaller med Marie bebådelsedag. Fira med nygräddade våfflor!' },
     { date: '2024-04-12', image: 'surstromming.jpg', title: 'Surströmmingspremiären', description: 'Surströmmingspremiären äger rum på tredje torsdagen i augusti. Vågar du prova?' },
     { date: '2024-06-06', image: 'sill.jpg', title: 'Sillens dag', description: 'Sillens dag infaller på Sveriges nationaldag. Fira med sill och nubbe!' },
     { date: '2024-08-08', image: 'kräftor.jpg', title: 'Kräftpremiären', description: 'Kräftpremiären är starten på kräftfiskesäsongen i Sverige. Dags för kräftskiva!' },
