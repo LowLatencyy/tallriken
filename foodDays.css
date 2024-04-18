@@ -13,7 +13,7 @@ img {
 }
 
 h2 {
-    font-family: 'Lora', serif; /* Detta kommer endast att applicera Lora på <h2>-taggar */
+    font-family: 'Caveat', serif; /* Detta kommer endast att applicera Lora på <h2>-taggar */
     padding: 10px 20px; /* Lägg till padding för att öka läsbarheten av texten över din bakgrund */
     color: white; /* Justera färgen så att den syns väl mot bakgrunden */
 }
