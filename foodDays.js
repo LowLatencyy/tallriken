@@ -21,13 +21,15 @@ function displayFoodDay() {
     const today = new Date().toISOString().slice(0, 10);
     const todayFoodDay = foodDays.find(day => day.date === today);
     const container = document.getElementById('foodDayContainer');
+    const headlineBackground = container.querySelector('.headline-background h2'); // Hämtar h2 inom headline-background
+    const image = container.querySelector('img');
+    const description = container.querySelector('p');
 
     if (todayFoodDay) {
-        container.innerHTML = `
-            <h2>${todayFoodDay.title}</h2>
-            <img src="${todayFoodDay.image}" alt="${todayFoodDay.title}">
-            <p>${todayFoodDay.description}</p>
-        `;
+        headlineBackground.innerText = todayFoodDay.title;
+        image.src = todayFoodDay.image;
+        image.alt = todayFoodDay.title;
+        description.innerText = todayFoodDay.description;
     } else {
         container.innerHTML = '<p>Ingen speciell matdag idag.</p>';
     }

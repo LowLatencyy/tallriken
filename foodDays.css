@@ -14,4 +14,13 @@ img {
 
 h2 {
     font-family: 'Lora', serif; /* Detta kommer endast att applicera Lora på <h2>-taggar */
+    padding: 10px 20px; /* Lägg till padding för att öka läsbarheten av texten över din bakgrund */
+    color: white; /* Justera färgen så att den syns väl mot bakgrunden */
+}
+
+.headline-background {
+    background-image: url('images/penseldraggron.svg'); /* Sätt in sökvägen till din penseldragsbild */
+    background-size: cover; /* Justera storleken så att den passar ditt layoutbehov */
+    background-repeat: no-repeat; /* Säkerställ att bilden inte upprepas */
+    display: inline-block; /* Gör detta för att behålla bakgrundens storlek med rubrikens innehåll */
 }
