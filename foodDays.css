@@ -24,7 +24,8 @@ img {
     /* Behåll detta för att matcha bredden på innehållet */
     padding: 40px;
     /* Lägg till mer padding runt texten för att göra bakgrunden större */
-    width: auto; /* Om du vill att det ska anpassas efter innehållet */
+    width: auto;
+    /* Om du vill att det ska anpassas efter innehållet */
     text-align: center;
 }
 
@@ -32,6 +33,20 @@ h2 {
     font-family: 'Caveat', serif;
     font-size: 1.5em;
     color: black;
-    margin: 0; /* Tar bort default marginalerna */
-    display: inline; /* Ser till att paddingen i .headline-background tar effekt */
+    margin: 0;
+    /* Tar bort default marginalerna */
+    display: inline;
+    /* Ser till att paddingen i .headline-background tar effekt */
+}
+
+/* Lägger till stilar som endast påverkar skärmar bredare än en viss bredd, exempelvis 768px */
+@media (min-width: 768px) {
+    .headline-background {
+        display: block;
+        /* Ser till att .headline-background tar upp hela bredden */
+        width: 100%;
+        /* Använd denna istället för auto för att fylla bredden */
+        margin-bottom: 20px;
+        /* Lägger till utrymme under rubriken */
+    }
 }
