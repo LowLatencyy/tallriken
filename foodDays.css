@@ -12,28 +12,26 @@ img {
     /* Ser till att innehållet skalas korrekt inom givna dimensioner utan att beskära det */
 }
 
-h2 {
-    font-family: 'Caveat', serif;
-    /* Detta kommer endast att applicera Lora på <h2>-taggar */
-    padding: 10px 20px;
-    /* Lägg till padding för att öka läsbarheten av texten över din bakgrund */
-    color: black;
-    /* Justera färgen så att den syns väl mot bakgrunden */
-    font-size: 1.5em;
-    /* Justera textstorleken om nödvändigt */
-    margin: 0;
-    /* Ta bort marginal om den inte behövs */
-
-
-}
-
 .headline-background {
     background-image: url('images/penseldraggron2.png');
-    /* Sätt in sökvägen till din penseldragsbild */
-    background-size: cover;
-    /* Justera storleken så att den passar ditt layoutbehov */
+    /* Anpassa sökvägen till din bild */
     background-repeat: no-repeat;
-    /* Säkerställ att bilden inte upprepas */
+    background-position: center;
+    /* Centrera bilden bakom texten */
+    background-size: contain;
+    /* Gör så att hela bilden ryms i elementet */
     display: inline-block;
-    /* Gör detta för att behålla bakgrundens storlek med rubrikens innehåll */
+    /* Behåll detta för att matcha bredden på innehållet */
+    padding: 40px;
+    /* Lägg till mer padding runt texten för att göra bakgrunden större */
+    width: auto; /* Om du vill att det ska anpassas efter innehållet */
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Caveat', serif;
+    font-size: 1.5em;
+    color: black;
+    margin: 0; /* Tar bort default marginalerna */
+    display: inline; /* Ser till att paddingen i .headline-background tar effekt */
 }
