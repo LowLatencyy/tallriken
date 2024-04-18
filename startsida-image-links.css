@@ -1,0 +1,21 @@
+.image-links {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.image-links a {
+    flex: 1;
+    margin: 0 10px;
+    display: block;
+}
+
+.image-links img {
+    width: 100%;
+    height: auto; /* Håller bildens proportioner */
+    transition: transform 0.3s ease;
+}
+
+.image-links a:hover img {
+    transform: scale(1.05); /* Liten zoom-effekt vid hovring */
+}
