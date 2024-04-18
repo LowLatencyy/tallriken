@@ -1,5 +1,5 @@
 const foodDays = [
-    { date: '2024-04-18', image: 'kanelbulle.jpg', title: 'Kanelbullens dag', description: 'Fira med en eller flera saftiga kanelbullar på Kanelbullens dag!' },
+    { date: '2024-04-18', image: 'images/Food-Days/kanelbulle.jpg', title: 'Kanelbullens dag', description: 'Fira med en eller flera saftiga kanelbullar på Kanelbullens dag!' },
     { date: '2024-02-25', image: 'semla.jpg', title: 'Fettisdagen', description: 'Fettisdagen är här! Njut av en utsökt semla.' },
     { date: '2024-03-05', image: 'pannkakor.jpg', title: 'Pannkaksdagen', description: 'Idag är det Pannkaksdagen! Passa på att njuta av pannkakor med sylt och grädde.' },
     { date: '2024-04-18', image: 'images/Food-Days/vaffla.jpg', title: 'Våffeldagenvåfalledfagen', description: 'Våffeldagen sammanfaller med Marie bebådelsedag. Fira med nygräddade våfflor!' },

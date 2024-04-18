@@ -39,14 +39,33 @@ h2 {
     /* Ser till att paddingen i .headline-background tar effekt */
 }
 
-/* Lägger till stilar som endast påverkar skärmar bredare än en viss bredd, exempelvis 768px */
 @media (min-width: 768px) {
     .headline-background {
         display: block;
         /* Ser till att .headline-background tar upp hela bredden */
         width: 100%;
-        /* Använd denna istället för auto för att fylla bredden */
+        /* Gör så att elementet fyller sin container helt */
         margin-bottom: 20px;
         /* Lägger till utrymme under rubriken */
+        padding: 40px 0;
+        /* Ökar padding vertikalt */
+        text-align: center;
+        /* Centrerar texten inom elementet */
+    }
+
+    h2 {
+        font-size: 2.5em;
+        /* Ökar textstorleken på större skärmar */
+        display: block;
+        /* Gör att h2 tar upp hela bredden av sin container */
+    }
+
+    #foodDayContainer img {
+        max-width: 100%;
+        /* Om du vill att bilden ska ta upp maximal bredd */
+        height: auto;
+        /* Bevarar bildens proportioner */
+        margin: 0 auto;
+        /* Centrerar bilden och lägger till marginaler */
     }
 }
