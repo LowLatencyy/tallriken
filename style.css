@@ -724,7 +724,7 @@ input:not(:checked)+.slider.large {
 .veg-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     margin-left: 10px;
     /* Justera detta värde efter behov */
 }
