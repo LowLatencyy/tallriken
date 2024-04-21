@@ -1035,3 +1035,25 @@ input:not(:checked)+.slider.large {
     height: 150px;
     /* Justera efter behov för att passa din design */
 }
+
+.top-space {
+    height: 50px; /* Eller hur mycket utrymme du vill ha */
+  }
+  
+  .input-button-container input[type='text'] {
+    padding: 20px; /* Öka padding för att göra fältet tjockare */
+  }
+
+  .input-button-container input[type='text'] {
+    font-family: 'Exo 2', cursive; /* Ange ditt typsnitt här */
+    background-color: #d4edda; /* Ljusgrön bakgrund */
+    color: #000000; /* Svart text */
+  }
+  
+
+  .tag {
+    background-color: #d4edda; /* Ljusgrön bakgrund */
+    color: #000000; /* Svart text */
+    font-family: 'Exo 2', cursive;
+  }
+  
