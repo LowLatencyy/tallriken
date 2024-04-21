@@ -1046,8 +1046,8 @@ input:not(:checked)+.slider.large {
 
   .input-button-container input[type='text'] {
     font-family: 'Exo 2', cursive; /* Ange ditt typsnitt här */
-    background-color: #d4edda; /* Ljusgrön bakgrund */
-    color: #000000; /* Svart text */
+    background-color: #000000; /* svart bakgrund */
+    color: #ffffff; /* vit text */
   }
   
 
