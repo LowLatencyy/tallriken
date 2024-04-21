@@ -91,7 +91,7 @@ function displayFoodDay() {
         image.alt = todayFoodDay.title;
         description.innerText = todayFoodDay.description;
     } else {
-        container.innerHTML = '<p>Ingen speciell matdag idag.</p>';
+        container.innerHTML = '<p></p>';
     }
 }
 
