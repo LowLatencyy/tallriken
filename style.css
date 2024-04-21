@@ -1057,3 +1057,17 @@ input:not(:checked)+.slider.large {
     font-family: 'Exo 2', cursive;
   }
   
+  /* Stil för slider-kontrollen när den är avstängd */
+.veg-container .switch .slider {
+    background-color: #ccc; /* Grå färg när slidern är avstängd */
+}
+
+/* Stil för den runda knappen inuti slidern */
+.veg-container .switch .slider:before {
+    background-color: white; /* Vit knapp */
+}
+
+/* Stil för slider-kontrollen när den är påslagen */
+.veg-container .switch input:checked + .slider {
+    background-color: #81c784; /* Grön färg när slidern är påslagen */
+}
