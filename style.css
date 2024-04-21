@@ -1037,7 +1037,7 @@ input:not(:checked)+.slider.large {
 }
 
 .top-space {
-    height: 50px; /* Eller hur mycket utrymme du vill ha */
+    height: 100px; /* Eller hur mycket utrymme du vill ha */
   }
   
   .input-button-container input[type='text'] {
@@ -1051,11 +1051,16 @@ input:not(:checked)+.slider.large {
   }
   
 
-  .tag {
-    background-color: #d4edda; /* Ljusgrön bakgrund */
-    color: #000000; /* Svart text */
+ /* Stil för etiketten bredvid slidern */
+.veg-label {
     font-family: 'Exo 2', cursive;
-  }
+    color: #000000; /* Svart text */
+    background-color: #d4edda; /* Ljusgrön bakgrund */
+    padding: 5px 10px; /* Justera padding efter behov */
+    margin-bottom: 5px; /* Avståndet mellan etiketten och slidern */
+    border-radius: 5px; /* Runda hörnen på etiketten */
+}
+
   
   /* Stil för slider-kontrollen när den är avstängd */
 .veg-container .switch .slider {
@@ -1066,8 +1071,12 @@ input:not(:checked)+.slider.large {
 .veg-container .switch .slider:before {
     background-color: white; /* Vit knapp */
 }
+/* Stil för den runda knappen inuti slidern */
+.veg-container .switch .slider::after {
+    background-color: rgb(255, 238, 0); /* Vit knapp */
+}
 
 /* Stil för slider-kontrollen när den är påslagen */
 .veg-container .switch input:checked + .slider {
-    background-color: #81c784; /* Grön färg när slidern är påslagen */
+    background-color: #ffffff; /* Grön färg när slidern är påslagen */
 }
