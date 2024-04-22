@@ -554,6 +554,18 @@ html {
     /* Behåller bildens aspektförhållande */
 }
 
+.text-image {
+    position: fixed;
+    top: 70px; /* Justera detta värde beroende på höjden på din logotyp och önskat mellanrum */
+    left: 10px;
+    z-index: 2999; /* Lägre z-index om den ska vara under logotypen vid överlappning */
+}
+
+.text-image img {
+    width: auto; /* Eller specificera en fast bredd beroende på dina behov */
+    height: auto; /* Justera höjden om det behövs */
+}
+
 .matratt-title,
 .ingrediens-knapp,
 .ingrediens-lista {
