@@ -252,7 +252,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background-color: rgb(106, 4, 15); */ 
+    /* background-color: rgb(106, 4, 15); */
     background-color: rgb(250, 240, 202);
     z-index: -1;
 }
@@ -505,14 +505,20 @@ html {
 }
 
 .tag {
-    background-color: #000; /* Svart bakgrund */
-    color: #fff; /* Vit text */
-    padding: 5px 10px; /* Justera padding efter behov */
-    margin-right: 5px; /* Avstånd mellan taggarna */
-    border-radius: 3px; /* Runda hörnen på taggarna */
+    background-color: #000;
+    /* Svart bakgrund */
+    color: #fff;
+    /* Vit text */
+    padding: 5px 10px;
+    /* Justera padding efter behov */
+    margin-right: 5px;
+    /* Avstånd mellan taggarna */
+    border-radius: 3px;
+    /* Runda hörnen på taggarna */
     display: inline-flex;
     align-items: center;
-    cursor: pointer; /* Muspekaren blir en pekande hand när du svävar över en tagg */
+    cursor: pointer;
+    /* Muspekaren blir en pekande hand när du svävar över en tagg */
 }
 
 .tag-close {
@@ -554,15 +560,21 @@ html {
 }
 
 .text-image {
-    text-align: left; /* Alignar allt innehåll inuti till vänster */
-    margin-top: 10px; /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
+    text-align: left;
+    /* Alignar allt innehåll inuti till vänster */
+    margin-top: 10px;
+    /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
 
 .text-image img {
-    display: block;  /* Säkerställer att bilden tar upp sin egen rad och inte blandas med andra element */
-    max-width: 100%; /* Säkerställer att bilden inte blir bredare än dess container */
-    height: auto;    /* Bibehåller bildens proportioner när bredden ändras */
-    margin-top: 10px; /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
+    display: block;
+    /* Säkerställer att bilden tar upp sin egen rad och inte blandas med andra element */
+    max-width: 100%;
+    /* Säkerställer att bilden inte blir bredare än dess container */
+    height: auto;
+    /* Bibehåller bildens proportioner när bredden ändras */
+    margin-top: 10px;
+    /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
 
 
@@ -737,18 +749,24 @@ input:not(:checked)+.slider.large {
 .veg-container {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: flex-start;
+    /* Flyttar innehållet till vänster */
     margin-left: 10px;
-    /* Justera detta värde efter behov */
+    /* Justera marginalen om det behövs */
+    width: 100%;
+    /* Säkerställer att containern tar upp hela tillgängliga bredden */
 }
 
 .veg-label {
-    text-align: center; /* Om du vill centrera texten över slidern */
-    width: 100%; /* Säkerställer att etiketten tar upp hela bredden */
+    width: 100%;
+    /* Tar upp hela bredden av sin container */
+    text-align: left;
+    /* Texten börjar från vänster */
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 5px;
-    margin-bottom: 5px; /* Mellanrum mellan etiketten och slidern */
+    margin-bottom: 5px;
+    /* Mellanrum mellan etiketten och slidern */
     border-radius: 5px;
 }
 
@@ -952,9 +970,12 @@ input:not(:checked)+.slider.large {
 }
 
 #searchInput {
-    font-size: 24px; /* Justera detta värde för att öka teckenstorleken på den text användaren skriver */
-    font-family: 'Exo 2', cursive; /* Detta kommer att göra att texten användare skriver matchar stil med placeholder om du vill */
-    color: #000; /* Ändra om du vill ha en annan textfärg */
+    font-size: 24px;
+    /* Justera detta värde för att öka teckenstorleken på den text användaren skriver */
+    font-family: 'Exo 2', cursive;
+    /* Detta kommer att göra att texten användare skriver matchar stil med placeholder om du vill */
+    color: #000;
+    /* Ändra om du vill ha en annan textfärg */
 }
 
 
@@ -1056,46 +1077,61 @@ input:not(:checked)+.slider.large {
 }
 
 .top-space {
-    height: 100px; /* Eller hur mycket utrymme du vill ha */
-  }
-  
-  .input-button-container input[type='text'] {
-    padding: 20px; /* Öka padding för att göra fältet tjockare */
-  }
-
-  .input-button-container input[type='text'] {
-    font-family: 'Exo 2', cursive; /* Ange ditt typsnitt här */
-    background-color: #000000; /* svart bakgrund */
-    color: #ffffff; /* vit text */
-  }
-  
-
- /* Stil för etiketten bredvid slidern */
-.veg-label {
-    font-family: 'Exo 2', cursive;
-    color: #000000; /* Svart text */
-    background-color: #d4edda; /* Ljusgrön bakgrund */
-    padding: 5px 10px; /* Justera padding efter behov */
-    margin-bottom: 5px; /* Avståndet mellan etiketten och slidern */
-    border-radius: 5px; /* Runda hörnen på etiketten */
+    height: 100px;
+    /* Eller hur mycket utrymme du vill ha */
 }
 
-  
-  /* Stil för slider-kontrollen när den är avstängd */
+.input-button-container input[type='text'] {
+    padding: 20px;
+    /* Öka padding för att göra fältet tjockare */
+}
+
+.input-button-container input[type='text'] {
+    font-family: 'Exo 2', cursive;
+    /* Ange ditt typsnitt här */
+    background-color: #000000;
+    /* svart bakgrund */
+    color: #ffffff;
+    /* vit text */
+}
+
+
+/* Stil för etiketten bredvid slidern */
+.veg-label {
+    font-family: 'Exo 2', cursive;
+    color: #000000;
+    /* Svart text */
+    background-color: #d4edda;
+    /* Ljusgrön bakgrund */
+    padding: 5px 10px;
+    /* Justera padding efter behov */
+    margin-bottom: 5px;
+    /* Avståndet mellan etiketten och slidern */
+    border-radius: 5px;
+    /* Runda hörnen på etiketten */
+}
+
+
+/* Stil för slider-kontrollen när den är avstängd */
 .veg-container .switch .slider {
-    background-color: #ccc; /* Grå färg när slidern är avstängd */
+    background-color: #ccc;
+    /* Grå färg när slidern är avstängd */
 }
 
 /* Stil för den runda knappen inuti slidern */
 .veg-container .switch .slider:before {
-    background-color: white; /* Vit knapp */
+    background-color: white;
+    /* Vit knapp */
 }
+
 /* Stil för den runda knappen inuti slidern */
 .veg-container .switch .slider::after {
-    background-color: rgb(255, 238, 0); /* Vit knapp */
+    background-color: rgb(255, 238, 0);
+    /* Vit knapp */
 }
 
 /* Stil för slider-kontrollen när den är påslagen */
-.veg-container .switch input:checked + .slider {
-    background-color: #ffffff; /* Grön färg när slidern är påslagen */
+.veg-container .switch input:checked+.slider {
+    background-color: #ffffff;
+    /* Grön färg när slidern är påslagen */
 }
