@@ -388,6 +388,7 @@
             if (input && !selectedTags.includes(input)) {
                 selectedTags.push(input);
                 updateTagContainer();
+                performSearch();      // Perform the search with the new tag
             }
 
             inputField.value = ''; // Rensa inputfältet
