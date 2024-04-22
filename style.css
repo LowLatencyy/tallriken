@@ -772,7 +772,7 @@ input:not(:checked)+.slider.large {
     margin-bottom: 5px;
     /* Mellanrum mellan etiketten och slidern */
     border-radius: 5px;
-    display: inline-block; /* eller 'inline' beroende på dina behov */
+    display: block; /* eller 'inline' beroende på dina behov */
     align-self: flex-start;
 }
 
