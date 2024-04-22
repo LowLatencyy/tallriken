@@ -744,13 +744,12 @@ input:not(:checked)+.slider.large {
 }
 
 .veg-label {
+    text-align: center; /* Om du vill centrera texten över slidern */
+    width: 100%; /* Säkerställer att etiketten tar upp hela bredden */
     background-color: rgba(0, 0, 0, 0.7);
-    /* Svart med lite transparens */
     color: white;
     padding: 5px;
-    margin-bottom: 5px;
-    /* Uttrymme mellan etiketten och slidern */
-    text-align: center;
+    margin-bottom: 5px; /* Mellanrum mellan etiketten och slidern */
     border-radius: 5px;
 }
 
