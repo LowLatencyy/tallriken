@@ -610,7 +610,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #000000;
+    background-color: #ffffff00;
     /* Bakgrundsfärg för slider när den är av */
     -webkit-transition: .4s;
     transition: .4s;
@@ -1122,7 +1122,7 @@ input:not(:checked)+.slider.large {
 
 /* Stil för slider-kontrollen när den är avstängd */
 .veg-container .switch .slider {
-    background-color: #ccc;
+    background-color: #000000;
     /* Grå färg när slidern är avstängd */
 }
 
