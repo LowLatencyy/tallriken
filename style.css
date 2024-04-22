@@ -967,9 +967,9 @@ input:not(:checked)+.slider.large {
 #searchInput::placeholder {
     font-family: 'Exo 2', cursive;
     /* Eller det typsnitt du använder på resten av din sida */
-    font-size: 24px;
+    font-size: 21px;
     /* Eller den storlek du vill ha */
-    color: #999;
+    color: #a6a6a6;
     /* Färgen på din placeholder-text, ändra efter önskemål */
 }
 
