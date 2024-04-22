@@ -505,15 +505,14 @@ html {
 }
 
 .tag {
-    position: relative;
-    background-color: #ddd;
-    padding: 5px 10px;
-    margin-right: 5px;
-    border-radius: 3px;
-    cursor: pointer;
+    background-color: #000; /* Svart bakgrund */
+    color: #fff; /* Vit text */
+    padding: 5px 10px; /* Justera padding efter behov */
+    margin-right: 5px; /* Avstånd mellan taggarna */
+    border-radius: 3px; /* Runda hörnen på taggarna */
     display: inline-flex;
     align-items: center;
-
+    cursor: pointer; /* Muspekaren blir en pekande hand när du svävar över en tagg */
 }
 
 .tag-close {
