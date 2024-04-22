@@ -772,6 +772,7 @@ input:not(:checked)+.slider.large {
     margin-bottom: 5px;
     /* Mellanrum mellan etiketten och slidern */
     border-radius: 5px;
+    display: inline-block; /* eller 'inline' beroende på dina behov */
 }
 
 .lang-container {
@@ -967,7 +968,7 @@ input:not(:checked)+.slider.large {
 #searchInput::placeholder {
     font-family: 'Exo 2', cursive;
     /* Eller det typsnitt du använder på resten av din sida */
-    font-size: 21px;
+    font-size: 19px;
     /* Eller den storlek du vill ha */
     color: #a6a6a6;
     /* Färgen på din placeholder-text, ändra efter önskemål */
