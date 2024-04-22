@@ -555,16 +555,17 @@ html {
 }
 
 .text-image {
-    position: fixed;
-    top: 70px; /* Justera detta värde beroende på höjden på din logotyp och önskat mellanrum */
-    left: 10px;
-    z-index: 2999; /* Lägre z-index om den ska vara under logotypen vid överlappning */
+    text-align: left; /* Alignar allt innehåll inuti till vänster */
+    margin-top: 10px; /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
 
 .text-image img {
-    width: auto; /* Eller specificera en fast bredd beroende på dina behov */
-    height: auto; /* Justera höjden om det behövs */
+    display: inline-block; /* Använd 'inline-block' för att tillåta text-align att fungera */
+    width: auto; /* Behåller bildens proportioner */
+    height: auto; /* Justera detta om du behöver en specifik höjd */
+    max-width: 100%; /* Säkerställer att bilden inte sträcker sig utanför sin container */
 }
+
 
 .matratt-title,
 .ingrediens-knapp,
