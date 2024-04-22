@@ -560,11 +560,12 @@ html {
 }
 
 .text-image img {
-    display: inline-block; /* Använd 'inline-block' för att tillåta text-align att fungera */
-    width: auto; /* Behåller bildens proportioner */
-    height: auto; /* Justera detta om du behöver en specifik höjd */
-    max-width: 100%; /* Säkerställer att bilden inte sträcker sig utanför sin container */
+    display: block;  /* Säkerställer att bilden tar upp sin egen rad och inte blandas med andra element */
+    max-width: 100%; /* Säkerställer att bilden inte blir bredare än dess container */
+    height: auto;    /* Bibehåller bildens proportioner när bredden ändras */
+    margin-top: 10px; /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
+
 
 
 .matratt-title,
