@@ -945,11 +945,18 @@ input:not(:checked)+.slider.large {
 #searchInput::placeholder {
     font-family: 'Exo 2', cursive;
     /* Eller det typsnitt du använder på resten av din sida */
-    font-size: 18px;
+    font-size: 24px;
     /* Eller den storlek du vill ha */
     color: #999;
     /* Färgen på din placeholder-text, ändra efter önskemål */
 }
+
+#searchInput {
+    font-size: 24px; /* Justera detta värde för att öka teckenstorleken på den text användaren skriver */
+    font-family: 'Exo 2', cursive; /* Detta kommer att göra att texten användare skriver matchar stil med placeholder om du vill */
+    color: #000; /* Ändra om du vill ha en annan textfärg */
+}
+
 
 .add-button {
     background: none;
