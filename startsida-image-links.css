@@ -33,3 +33,15 @@
     display: block;             /* Tar bort eventuella marginaler runt bilden */
     margin: 0px 0;             /* Lägger till utrymme ovanför och nedanför bilden */
 }
+
+.video-container {
+    max-width: 800px; /* adjust this value as needed */
+    margin: 0 auto; /* this will center your video if it's smaller than the container */
+    overflow: hidden; /* in case your video is bigger than the container */
+}
+
+video {
+    width: 100%; /* make video responsive */
+    height: auto; /* maintain aspect ratio */
+    display: block; /* prevent default margin/padding */
+}
