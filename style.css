@@ -762,7 +762,7 @@ input:not(:checked)+.slider.large {
 }
 
 .veg-label {
-    width: 100%;
+    width: 20%;
     /* Tar upp hela bredden av sin container */
     text-align: left;
     /* Texten börjar från vänster */
