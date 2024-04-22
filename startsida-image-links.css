@@ -48,31 +48,24 @@ video {
 
 .welcome-text {
     text-align: left;
-    padding: 20px;
+    padding: 10px;
     max-width: 600px;
     margin: 0 auto;
 }
 
 .welcome-text h1 {
-    margin-bottom: 0.5em;
-    font-size: 1.5em;
+    margin-bottom: 0.2em;
+    font-size: 1.4em;
 }
 
 .welcome-text p {
-    margin-bottom: 1em;
-    font-size: 1em;
-    line-height: 1.4;
+    margin-bottom: 0.8em;
+    font-size: 0.9em;
+    line-height: 1.2;
 }
 
 .learn-more {
     font-size: 0.8em;
     color: rgb(203, 223, 189);
     text-decoration: underline;
-}
-
-/* Ny klass för upphovsrättsnotisen */
-.copyrigt-notice {
-    font-size: 0.8em;
-    color: #666; /* En diskret färg */
-    margin-top: 2em; /* Extra utrymme över upphovsrättsnotisen */
 }
