@@ -288,10 +288,10 @@ html {
 
 .slider-button-container {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start; /* Ändra från center till flex-start */
     align-items: center;
     margin-bottom: 10px;
-    /* Justera avståndet mellan sliders och sökfält */
+    width: 100%; /* Säkerställer att containern tar upp hela bredden om det behövs */
 }
 
 .input-button-container {
