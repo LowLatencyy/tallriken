@@ -1140,6 +1140,6 @@ input:not(:checked)+.slider.large {
 
 /* Stil för slider-kontrollen när den är påslagen */
 .veg-container .switch input:checked+.slider {
-    background-color: #ffffff;
+    background-color: rgb(203, 223, 189);
     /* Grön färg när slidern är påslagen */
 }
