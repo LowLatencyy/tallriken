@@ -288,10 +288,12 @@ html {
 
 .slider-button-container {
     display: flex;
-    justify-content: flex-start; /* Ändra från center till flex-start */
+    justify-content: flex-start;
+    /* Ändra från center till flex-start */
     align-items: center;
     margin-bottom: 10px;
-    width: 100%; /* Säkerställer att containern tar upp hela bredden om det behövs */
+    width: 100%;
+    /* Säkerställer att containern tar upp hela bredden om det behövs */
 }
 
 .input-button-container {
@@ -527,7 +529,8 @@ html {
     border: none;
     background: transparent;
     font-size: 1rem;
-    color: white; /* Detta kommer göra textbaserade eller unicode-baserade kryss vita */
+    color: white;
+    /* Detta kommer göra textbaserade eller unicode-baserade kryss vita */
 }
 
 .hidden-search {
@@ -975,7 +978,7 @@ input:not(:checked)+.slider.large {
     /* Justera detta värde för att öka teckenstorleken på den text användaren skriver */
     font-family: 'Exo 2', cursive;
     /* Detta kommer att göra att texten användare skriver matchar stil med placeholder om du vill */
-    color: #000;
+    color: #ffffff;
     /* Ändra om du vill ha en annan textfärg */
 }
 
@@ -1099,18 +1102,20 @@ input:not(:checked)+.slider.large {
 
 /* Stil för etiketten bredvid slidern */
 .veg-label {
-    font-family: 'Exo 2', cursive;
+    display: inline-block;
+    /* Gör så att bakgrunden endast omsluter texten */
+    background-color: #d4edda;
+    /* Den gröna färgen du har valt */
     color: #000000;
     /* Svart text */
-    background-color: #d4edda;
-    /* Ljusgrön bakgrund */
     padding: 5px 10px;
-    /* Justera padding efter behov */
+    /* Justera detta efter önskad storlek på padding */
     margin-bottom: 5px;
-    /* Avståndet mellan etiketten och slidern */
+    /* Avstånd mellan etiketten och slidern */
     border-radius: 5px;
-    /* Runda hörnen på etiketten */
+    /* Rundade hörn */
 }
+
 
 
 /* Stil för slider-kontrollen när den är avstängd */
