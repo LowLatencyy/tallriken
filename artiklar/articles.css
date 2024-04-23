@@ -1,0 +1,29 @@
+/* articles.css */
+body {
+    font-family: 'Din Favorit Typsnitt', sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+.category-main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.articles-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.article-preview {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.article-preview h2 {
+    margin-top: 0;
+}
+
+/* Lägg till fler stilar efter behov */
