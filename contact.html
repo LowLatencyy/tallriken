@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="sv">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kontakta Oss | Din Företags Namn</title>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/sidfliklogo.png">
+</head>
+
+<body>
+    <div class="nav-container">
+        <!-- Navigation Bar -->
+        <nav class="nav">
+            <!-- Your existing navigation setup -->
+        </nav>
+    </div>
+
+    <div class="contact-container">
+        <h1>Kontakta Oss</h1>
+        <p>Välkommen att kontakta oss med frågor, feedback eller förslag!</p>
+
+        <div class="contact-form">
+            <form action="/submit_contact_form" method="POST">
+                <label for="name">Namn:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">E-post:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Meddelande:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <button type="submit">Skicka Meddelande</button>
+            </form>
+        </div>
+
+        <div class="contact-info">
+            <p>Du kan också nå oss via:</p>
+            <ul>
+                <li>Telefon: 0123-456789</li>
+                <li>E-post: info@dittföretag.se</li>
+                <li>Adress: Gatuadress 123, 123 45 Stad</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Your existing footer setup -->
+    </footer>
+
+    <script src="contact.js"></script>
+</body>
+
+</html>

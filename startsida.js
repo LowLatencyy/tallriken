@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     var videos = [
-        "images/videos/videos startsida/dagsfornymat.mp4"
+        "images/videos/videos-startsida/dagsfornymat.mp4"
         // Lägg till alla videor upp till 25
 
     ];
