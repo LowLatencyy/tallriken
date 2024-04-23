@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "images/videos/videos-startsida/musslorkokar.mp4",
         "images/videos/videos-startsida/pastapincett.mp4",
         "images/videos/videos-startsida/pizza1.mp4",
-        "images/videos/videos-startsida/pizzamozzarella.mp4",
+        "images/videos/videos-startsida/pizzamozzarella.mp4"
         // Lägg till alla videor upp till 25
 
     ];
