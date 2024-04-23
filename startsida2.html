@@ -39,16 +39,42 @@
             <li class="nav__item">
                 <a href="generator.html" class="nav__link">
                     <span class="nav__text">
-                        Generatorn
+                        Mat-Generatorn
                     </span>
                 </a>
             </li>
             <li class="nav__item">
                 <a href="index.html" class="nav__link">
                     <span class="nav__text">
-                        Ingredienser
+                        Ingrediens-Assistenten
                     </span>
                 </a>
+            </li>
+
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Artiklar
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger-articles" /> <!-- Uppdaterat ID -->
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger-articles"></label> <!-- Uppdaterat för-attribut -->
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="artiklar/halsa/halsa.html" class="nav__link">
+                            <span class="nav__text">
+                                Hälsa
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Inredning
+                            </span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li class="nav__item">
                 <a href="#hoi" class="nav__link">
@@ -75,32 +101,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav__item">
-                <a href="#hoi" class="nav__link">
-                    <span class="nav__text">
-                        Artiklar
-                    </span>
-                </a>
-                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger-articles" /> <!-- Uppdaterat ID -->
-                <label class="nav__submenu-trigger-finger" for="submenu-trigger-articles"></label> <!-- Uppdaterat för-attribut -->
-                <ul class="nav__list-child">
-                    <li class="nav__item">
-                        <a href="artiklar/halsa/halsa.html" class="nav__link">
-                            <span class="nav__text">
-                                Hälsa
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Inredning
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-           <!-- <li class="nav__item">
+            <!-- <li class="nav__item">
                 <a href="#hoi2" class="nav__link">
                     <span class="nav__text">
                         Blogg
@@ -153,8 +154,8 @@
     <video id="randomVideo" autoplay loop muted playsinline preload="auto">
         Din webbläsare stöder inte videouppspelning.
     </video>
-    
-    
+
+
 
     <div class="welcome-text">
         <h1>Välkommen till Instarecept!</h1>
@@ -162,38 +163,38 @@
         <p>Upphovsrätt till recept och bilder innehas av originalskaparna. För fullständiga recept, besök deras Instagram-profiler genom att klicka på inläggen.</p>
         <a href="#" class="learn-more">Läs mer...</a>
     </div>
-    
-    
-    
 
-        <img src="images/gordittval.svg" alt="Gör ditt val" class="regular-image">
 
-        <div class="image-links">
-            <a href="generator.html">
-                <img src="images/matgeneratorntrext3.svg" alt="Beskrivning av bild 1">
-            </a>
-            <a href="index.html">
-                <img src="images/ingrediensassistenten-text3.svg" alt="Beskrivning av bild 2">
-            </a>
+
+
+    <img src="images/gordittval.svg" alt="Gör ditt val" class="regular-image">
+
+    <div class="image-links">
+        <a href="generator.html">
+            <img src="images/matgeneratorntrext3.svg" alt="Beskrivning av bild 1">
+        </a>
+        <a href="index.html">
+            <img src="images/ingrediensassistenten-text3.svg" alt="Beskrivning av bild 2">
+        </a>
+    </div>
+
+    <img src="images/divider/zigzag.svg" alt="Dekorativ divider" class="image-divider">
+
+    <!-- Plats för matdagarnas innehåll -->
+    <div id="foodDayContainer">
+        <div class="headline-background">
+            <h2></h2> <!-- Rubriken kommer att fyllas dynamiskt av JavaScript -->
         </div>
-
-        <img src="images/divider/zigzag.svg" alt="Dekorativ divider" class="image-divider">
-
-        <!-- Plats för matdagarnas innehåll -->
-        <div id="foodDayContainer">
-            <div class="headline-background">
-                <h2></h2> <!-- Rubriken kommer att fyllas dynamiskt av JavaScript -->
-            </div>
-            <img src="" alt=""> <!-- Bilden fylls också dynamiskt -->
-            <p></p> <!-- Beskrivningen fylls också dynamiskt -->
-        </div>
+        <img src="" alt=""> <!-- Bilden fylls också dynamiskt -->
+        <p></p> <!-- Beskrivningen fylls också dynamiskt -->
+    </div>
 
 
-        <script src="foodDays.js"></script> <!-- Länk till matdags-JavaScript -->
+    <script src="foodDays.js"></script> <!-- Länk till matdags-JavaScript -->
 
-       <!-- <img src="images/divider/scribble1.svg" alt="Dekorativ divider" class="image-divider"> -->
+    <!-- <img src="images/divider/scribble1.svg" alt="Dekorativ divider" class="image-divider"> -->
 
-       <script src="startsida.js"></script>
+    <script src="startsida.js"></script>
 
 
 
