@@ -6,17 +6,16 @@ document.addEventListener('DOMContentLoaded', function () {
         "images/videos/videos-startsida/pizza1.mp4",
         "images/videos/videos-startsida/runtmatbord1.mp4",
         "images/videos/videos-startsida/pizzamozzarella.mp4"
-        // Lägg till alla videor upp till 25
-
     ];
 
     var videoElement = document.getElementById('randomVideo');
-    var randomIndex = Math.floor(Math.random() * videos.length); // Slumpar ett index
+    var randomIndex = Math.floor(Math.random() * videos.length);
     var sourceElement = document.createElement('source');
+    var cacheBuster = "?v=" + new Date().getTime();
 
-    sourceElement.setAttribute('src', videos[randomIndex]);
+    sourceElement.setAttribute('src', videos[randomIndex] + cacheBuster);
     sourceElement.setAttribute('type', 'video/mp4');
     videoElement.appendChild(sourceElement);
 
-    videoElement.load(); // Ladda om videospelaren med den nya källan
+    videoElement.load();
 });
