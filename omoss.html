@@ -1,70 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 
 <head>
-
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#faf0ca">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Om Oss - Tallriken</title>
+
+    <title>Din Startsida Titel</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 
-    <style>
-        body,
-        html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Exo 2', cursive;
-            background-color: rgb(250, 240, 202);
-            /* Bakgrundsfärg */
-            color: black;
-            /* Textfärg */
-        }
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="foodDays.css"> <!-- Länk till matdags-CSS -->
+    <link rel="stylesheet" href="startsida-image-links.css">
+    <link rel="stylesheet" href="contact.css">
 
-
-
-        .logo-link {
-            position: fixed;
-            top: 10px;
-            left: 10px;
-            z-index: 3000;
-        }
-
-        .logo-link img {
-            height: 50px;
-            width: auto;
-        }
-
-       
-
-
-
-        .footer-banner {
-            background-color: #000;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: relative;
-            /* Kan ändras till fixed om du vill att den ska vara fast längst ner */
-            bottom: 0;
-            width: 100%;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-
-
-        .footer-banner a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="icon" type="image/png" href="images/sidfliklogo.png">
 </head>
 
 <body>
-    <a href="index.html" class="logo-link">
-        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga">
+
+    <div id="overlay" hidden></div>
+
+    <nav class="nav">
+        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
+        <label class="nav__trigger-finger" for="trigger">
+            <span></span>
+        </label>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="startsida2.html" class="nav__link">
+                    <span class="nav__text">
+                        Startsida
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="generator.html" class="nav__link">
+                    <span class="nav__text">
+                        Generatorn
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="index.html" class="nav__link">
+                    <span class="nav__text">
+                        Ingredienser
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Om
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Om oss
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Tipsa Oss
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li class="nav__item">
+                <a href="#hoi2" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Knivar & Kastruller
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Inredning
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+             <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+            </li> -->
+            <li class="nav__item">
+                <a href="contact.html" class="nav__link">
+                    <span class="nav__text">
+                        Kontakt
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <a href="startsida2.html" class="logo-link">
+        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
     </a>
 
-    
+    <!-- Bild för text under logotypen -->
+    <div class="text-image">
+        <img src="images/kontaktaossrubrik.svg" alt="Text Image">
+    </div>
 
     <div class="content">
         <div style="text-align: left; padding: 20px;">
@@ -77,17 +138,31 @@
         </div>
     </div>
 
+    <script src="foodDays.js"></script> <!-- Länk till matdags-JavaScript -->
 
-    <!-- <img src="images/plate1.jpg" alt="Om Oss Bild" class="about-image">
+    <!-- <img src="images/divider/scribble1.svg" alt="Dekorativ divider" class="image-divider"> -->
+
+    <script src="startsida.js"></script>
+
+    <script src="contact.js"></script>
+</body>
+
+</html>
+
+
+
+
+
+<!-- <img src="images/plate1.jpg" alt="Om Oss Bild" class="about-image">
     </div> -->
 
-    <div class="footer-banner">
-        <p class="copyright">&copy; 2024. All rights reserved.</p>
-        <div class="footer-links">
-            <a href="omoss.html">Om</a>
-            <a href="tipsaoss.html">Tipsa</a>
-        </div>
+<div class="footer-banner">
+    <p class="copyright">&copy; 2024. All rights reserved.</p>
+    <div class="footer-links">
+        <a href="omoss.html">Om</a>
+        <a href="tipsaoss.html">Tipsa</a>
     </div>
+</div>
 </body>
 
 </html>
