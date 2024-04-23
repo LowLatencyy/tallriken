@@ -21,7 +21,7 @@ const foodDays = [
     { date: '2024-04-07', image: 'beer.jpg', title: 'Beer Day', description: 'Internationell öldag.' },
     { date: '2024-04-12', image: 'liquorice.jpg', title: 'Lakritsdagen', description: 'Internationell dag för lakritsälskare.' },
     { date: '2024-04-13', image: 'thai_new_year.jpg', title: 'Thailands nyår', description: 'Songkran, Thailands vattenfestival och nyår.' },
-    { date: '2024-05-03', image: 'images/Food-Days/grilla.jpg', title: 'Grillens dag', description: 'Grillen är framme, gallret är rengjort - nu är det äntligen grillens dag!' },
+    { date: '2024-04-23', image: 'images/Food-Days/grilla.jpg', title: 'Grillens dag', description: 'Grillen är framme, gallret är rengjort - nu är det äntligen grillens dag!' },
     { date: '2024-05-05', image: 'images/Food-Days/kebabspett.jpg', title: 'Internationella kebabdagen', description: '' },
     { date: '2024-05-05', image: 'images/Food-Days/nasselte.jpg', title: 'Nässlans dag', description: 'Brännässlan är mest känd som ogräs och sommarplåga.' },
     { date: '2024-05-06', image: 'images/Food-Days/hembakat1.jpg', title: 'Hembakatdagen', description: 'Äppelkakor, schackrutor, hallongrottor och fluffiga muffins.' },
