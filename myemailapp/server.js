@@ -10,10 +10,11 @@ app.use(express.json());
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: process.env.EMAIL,  // Använder miljövariabel för e-postadress
-        pass: process.env.PASSWORD // Använder miljövariabel för lösenord
+        user: EMAIL,
+        pass: process.env.GMAIL_PASSWORD
     }
 });
+
 
 app.post('/sendmail', (req, res) => {
     const mailOptions = {
