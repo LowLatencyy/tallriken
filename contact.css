@@ -1,46 +1,50 @@
 .contact-container {
-    max-width: 800px;
-    margin: 20px auto;
+    background-color: #faf0ca;
+    /* Ersätt med din önskade bakgrundsfärg */
     padding: 20px;
-    background-color: #fff;
+    max-width: 800px;
+    margin: 40px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Lätt skugga för djup */
+    border-radius: 10px;
+    /* Rundade hörn */
 }
 
-.contact-form form {
+.contact-container h1 {
+    text-align: center;
+    color: #333;
+}
+
+#contactForm {
     display: flex;
     flex-direction: column;
+    gap: 10px;
+    /* Utrymme mellan fälten */
 }
 
-.contact-form label {
-    margin-bottom: 5px;
+#contactForm label {
+    font-weight: bold;
 }
 
-.contact-form input,
-.contact-form textarea {
-    margin-bottom: 10px;
-    padding: 8px;
+#contactForm input[type="text"],
+#contactForm input[type="email"],
+#contactForm textarea {
+    padding: 10px;
+    margin: 5px 0;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
-.contact-form button {
-    padding: 10px 15px;
-    background-color: #4CAF50;
+#contactForm button {
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #89a;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
 }
 
-.contact-form button:hover {
-    background-color: #45a049;
-}
-
-.contact-info ul {
-    list-style: none;
-    padding: 0;
-}
-
-.contact-info li {
-    padding: 5px 0;
+#contactForm button:hover {
+    background-color: #678;
 }

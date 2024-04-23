@@ -4,52 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kontakta Oss | Din Företags Namn</title>
+    <meta name="theme-color" content="#faf0ca">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <title>Din Startsida Titel</title>
     <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="foodDays.css"> <!-- Länk till matdags-CSS -->
+    <link rel="stylesheet" href="startsida-image-links.css">
+
     <link rel="icon" type="image/png" href="images/sidfliklogo.png">
 </head>
 
 <body>
-    <div class="nav-container">
-        <!-- Navigation Bar -->
-        <nav class="nav">
-            <!-- Your existing navigation setup -->
-        </nav>
-    </div>
+
+    <div id="overlay" hidden></div>
+
+    <nav class="nav">
+        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
+        <label class="nav__trigger-finger" for="trigger">
+            <span></span>
+        </label>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="startsida2.html" class="nav__link">
+                    <span class="nav__text">
+                        Startsida
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="generator.html" class="nav__link">
+                    <span class="nav__text">
+                        Generatorn
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="index.html" class="nav__link">
+                    <span class="nav__text">
+                        Ingredienser
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Om
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Om oss
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Tipsa Oss
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+           <!-- <li class="nav__item">
+                <a href="#hoi2" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Knivar & Kastruller
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Inredning
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+             <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Blogg
+                    </span>
+                </a>
+            </li> -->
+            <li class="nav__item">
+                <a href="contact.html" class="nav__link">
+                    <span class="nav__text">
+                        Kontakt
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <a href="startsida2.html" class="logo-link">
+        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
+    </a>
 
     <div class="contact-container">
         <h1>Kontakta Oss</h1>
-        <p>Välkommen att kontakta oss med frågor, feedback eller förslag!</p>
+        <form id="contactForm">
+            <label for="name">Namn:</label>
+            <input type="text" id="name" name="name" required>
 
-        <div class="contact-form">
-            <form action="/submit_contact_form" method="POST">
-                <label for="name">Namn:</label>
-                <input type="text" id="name" name="name" required>
+            <label for="email">E-post:</label>
+            <input type="email" id="email" name="email" required>
 
-                <label for="email">E-post:</label>
-                <input type="email" id="email" name="email" required>
+            <label for="message">Meddelande:</label>
+            <textarea id="message" name="message" required></textarea>
 
-                <label for="message">Meddelande:</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <button type="submit">Skicka Meddelande</button>
-            </form>
-        </div>
-
-        <div class="contact-info">
-            <p>Du kan också nå oss via:</p>
-            <ul>
-                <li>Telefon: 0123-456789</li>
-                <li>E-post: info@dittföretag.se</li>
-                <li>Adress: Gatuadress 123, 123 45 Stad</li>
-            </ul>
-        </div>
+            <button type="submit">Skicka</button>
+        </form>
     </div>
 
-    <footer>
-        <!-- Your existing footer setup -->
-    </footer>
+    <script src="foodDays.js"></script> <!-- Länk till matdags-JavaScript -->
+
+    <!-- <img src="images/divider/scribble1.svg" alt="Dekorativ divider" class="image-divider"> -->
+
+    <script src="startsida.js"></script>
 
     <script src="contact.js"></script>
 </body>
