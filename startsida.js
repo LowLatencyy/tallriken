@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     var videos = [
-        "images/videos/videos-startsida/dagsfornymat.mp4",
         "images/videos/videos-startsida/musslorkokar.mp4",
         "images/videos/videos-startsida/pastapincett.mp4",
         "images/videos/videos-startsida/pizza1.mp4",
