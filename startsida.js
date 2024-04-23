@@ -9,15 +9,14 @@ document.addEventListener('DOMContentLoaded', function () {
     ];
 
     var videoElement = document.getElementById('randomVideo');
-    var randomIndex = Math.floor(Math.random() * videos.length);
-    var cacheBuster = "?v=" + new Date().getTime(); // Skapar en unik query string för att förhindra cache
-
-    // Skapar ett nytt source-element och tillämpar den nya source med cacheBuster
     videoElement.innerHTML = ''; // Tömmer tidigare satta sources
-    var sourceElement = document.createElement('source');
-    sourceElement.setAttribute('src', videos[randomIndex] + cacheBuster);
-    sourceElement.setAttribute('type', 'video/mp4');
-    videoElement.appendChild(sourceElement);
 
+    var randomIndex = Math.floor(Math.random() * videos.length);
+    var sourceElement = document.createElement('source');
+
+    sourceElement.src = videos[randomIndex] + '?_=' + new Date().getTime(); // Lägg till en unik tidstämpel för varje request
+    sourceElement.type = 'video/mp4';
+
+    videoElement.appendChild(sourceElement);
     videoElement.load(); // Ladda om videospelaren med den nya källan
 });
