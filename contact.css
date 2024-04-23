@@ -43,7 +43,7 @@ body {
     padding: 10px;
     margin-top: 10px;
     background-color: rgb(203, 223, 189);
-    color: white;
+    color: rgb(0, 0, 0);
     border: none;
     border-radius: 5px;
     cursor: pointer;
