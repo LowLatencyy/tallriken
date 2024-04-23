@@ -1,4 +1,4 @@
-/* articles.css */
+/* articles.css 
 body {
     font-family: 'Din Favorit Typsnitt', sans-serif;
     line-height: 1.6;
@@ -24,6 +24,15 @@ body {
 
 .article-preview h2 {
     margin-top: 0;
+} */
+/* Lägg till fler stilar efter behov */
+.video-container {
+    width: 100%; /* eller den bredd du önskar */
+    height: auto; /* kan anpassas beroende på videons aspektförhållande */
+    position: relative; /* om du vill positionera något över videon */
 }
 
-/* Lägg till fler stilar efter behov */
+video#myVideo {
+    width: 100%;
+    height: auto;
+}
