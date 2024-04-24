@@ -20,7 +20,7 @@ body {
     margin: 0 auto;
     /* Centrerar texten */
     padding: 20px;
-    font-family: 'Exo', sans-serif;
+    font-family: 'League Spartan', sans-serif;
     /* Ersätt med rätt typsnittsnamn om det är annorlunda */
 }
 
@@ -367,7 +367,7 @@ body {
 }
 
 #searchBtn {
-    font-family: 'Exo 2', sans-serif;
+    font-family: 'League Spartan', sans-serif;
     font-size: 1.5em;
     width: 80%;
     max-width: 400px;
