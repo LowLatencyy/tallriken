@@ -1,3 +1,15 @@
+body {
+    background-color: #faf0ca;
+    /* Din önskade gul-sandfärg */
+    margin: 0;
+    /* Tar bort standardmarginalen runt `body` */
+    font-family: "League Spartan", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    ;
+    font-style: normal;
+    line-height: 1.5; /* Ökar radavståndet */
+}
 .image-links {
     display: flex;
     justify-content: space-around;
