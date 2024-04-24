@@ -1149,11 +1149,23 @@ input:not(:checked)+.slider.large {
     background-color: #000; /* Svart bakgrund */
     color: white; /* Vit text */
     padding: 8px 12px; /* Lite padding */
-    height: 60px; /* Fast höjd */
+    height: auto; /* Justeras för att passa innehåll */
+    max-height: 60px; /* Maximal höjd som tillåter 2 rader */
     overflow: hidden;
-    white-space: nowrap;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Begränsar till 2 rader */
     text-overflow: ellipsis;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.title-background h2 {
+    margin: 0; /* Ta bort alla marginaler */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2; /* Begränsar till 2 rader */
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
