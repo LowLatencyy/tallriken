@@ -8,7 +8,7 @@ body {
     font-weight: 600;
     ;
     font-style: normal;
-    line-height: 1.5; /* Ökar radavståndet */
+    line-height: 1; /* Ökar radavståndet */
 }
 .image-links {
     display: flex;
