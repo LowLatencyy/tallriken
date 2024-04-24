@@ -1145,3 +1145,15 @@ input:not(:checked)+.slider.large {
 }
 
 
+.title-background {
+    background-color: #000; /* Svart bakgrund */
+    color: white; /* Vit text */
+    padding: 8px 12px; /* Lite padding */
+    height: 60px; /* Fast höjd */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
