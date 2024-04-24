@@ -1151,10 +1151,10 @@ input:not(:checked)+.slider.large {
     /* Svart bakgrund */
     color: white;
     /* Vit text */
-    padding: 8px 12px;
+    padding: 4px 6px;
     /* Lite padding */
-    height: 60px;
-    /* Fast höjd för att rymma upp till 2 rader */
+    height: 80px;
+    /* Fast höjd för att rymma upp till 3 rader */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1167,12 +1167,12 @@ input:not(:checked)+.slider.large {
     /* Ta bort alla marginaler */
     line-height: 1.2;
     /* Anpassa radavståndet för att passa ditt typsnitt och storlek */
-    max-height: 2.4em;
-    /* Maximal höjd för två rader (baserat på line-height) */
+    max-height: 3.6em;
+    /* Maximal höjd för tre rader (baserat på line-height) */
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    /* Begränsar till 2 rader */
+    -webkit-line-clamp: 3;
+    /* Begränsar till 3 rader */
     text-overflow: ellipsis;
 }
