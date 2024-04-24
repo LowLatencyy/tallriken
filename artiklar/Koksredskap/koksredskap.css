@@ -8,7 +8,8 @@ body {
     font-weight: 600;
     ;
     font-style: normal;
-    line-height: 1.5; /* Ökar radavståndet */
+    line-height: 1.5;
+    /* Ökar radavståndet */
 }
 
 /* köksredskap.css */
@@ -26,28 +27,33 @@ body {
 }
 
 .article-preview {
+    display: flex;
+    /* Aktiverar flexbox layout */
+    flex-direction: column;
+    /* Elementen staplas vertikalt */
+    justify-content: space-between;
+    /* Maximerar utrymmet mellan items */
     background-color: #faf0ca;
     /* Samma färg som din tema-färg */
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    /* Se till att alla förhandsvisningskort har samma höjd */
 }
 
 .article-preview img {
     width: 100%;
-    height: 200px;
-    /* Anpassa höjden efter dina behov */
+    height: auto;
+    /* Anpassar sig efter bildens ursprungliga proportioner */
     object-fit: cover;
-    /* Se till att bilden täcker elementet */
 }
 
-.article-preview h2 {
-    margin: 0.5em;
-}
-
+.article-preview h2,
 .article-preview p {
-    margin: 0 0.5em 1em;
+    padding: 0.5em;
+    /* Lite utrymme runt texten */
 }
 
 .article-preview a {
@@ -57,6 +63,8 @@ body {
     text-align: center;
     padding: 10px;
     text-decoration: none;
+    margin-top: auto;
+    /* Skjuter ner länken till botten av flex-container */
 }
 
 .article-preview a:hover {
