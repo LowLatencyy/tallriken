@@ -1,0 +1,48 @@
+/* köksredskap.css */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.article-preview {
+    background-color: #faf0ca; /* Samma färg som din tema-färg */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.article-preview img {
+    width: 100%;
+    height: 200px; /* Anpassa höjden efter dina behov */
+    object-fit: cover; /* Se till att bilden täcker elementet */
+}
+
+.article-preview h2 {
+    margin: 0.5em;
+}
+
+.article-preview p {
+    margin: 0 0.5em 1em;
+}
+
+.article-preview a {
+    display: block;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.article-preview a:hover {
+    background-color: #555;
+}

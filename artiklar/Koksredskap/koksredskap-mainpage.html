@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#faf0ca">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Köksredskap | Din Webbplats</title>
+
+    <!-- Dina befintliga stilar -->
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../style2.css">
+    <link rel="stylesheet" href="../../foodDays.css">
+    <link rel="stylesheet" href="../../startsida-image-links.css">
+    <link rel="stylesheet" href="koksredskap.css"> <!-- Ny CSS-fil för köksredskapssidan -->
+
+    <!-- Fler länkar till stilar och skript kan läggas till här -->
+
+    <link rel="icon" type="image/png" href="../../images/sidfliklogo.png">
+</head>
+<body>
+
+    <div id="overlay" hidden></div>
+
+    <nav class="nav">
+        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
+        <label class="nav__trigger-finger" for="trigger">
+            <span></span>
+        </label>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="../../startsida2.html" class="nav__link">
+                    <span class="nav__text">
+                        Startsida
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="../../generator.html" class="nav__link">
+                    <span class="nav__text">
+                        Mat-Generatorn
+                    </span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="../../index.html" class="nav__link">
+                    <span class="nav__text">
+                        Ingrediens-Assistenten
+                    </span>
+                </a>
+            </li>
+
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Artiklar
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger-articles" /> <!-- Uppdaterat ID -->
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger-articles"></label> <!-- Uppdaterat för-attribut -->
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="artiklar/halsa/halsa.html" class="nav__link">
+                            <span class="nav__text">
+                                Hälsa
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Inredning
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">
+                        Om
+                    </span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Om oss
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">
+                                Tipsa Oss
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav__item">
+                <a href="../../contact.html" class="nav__link">
+                    <span class="nav__text">
+                        Kontakt
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <a href="../../startsida2.html" class="logo-link">
+        <img src="../../images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
+    </a>
+
+
+
+
+    <main class="content-container">
+        <h1>Köksredskap</h1>
+        <p>Upptäck våra guider och artiklar om de bästa köksredskapen som varje hemmakock bör ha.</p>
+        <div class="article-grid">
+            <!-- Artikelförhandsvisningar -->
+            <div class="article-preview">
+                <img src="../../images/articles/stekpannor.jpg" alt="Stekpannor">
+                <h2>Bästa Stekpannorna 2024</h2>
+                <p>En guide till de mest hållbara och effektiva stekpannorna på marknaden.</p>
+                <a href="stekpannor-artikel.html">Läs mer</a>
+            </div>
+            <div class="article-preview">
+                <img src="../../images/articles/knivar.jpg" alt="Knivar">
+                <h2>Vassa val: Knivar för köket</h2>
+                <p>Recensioner och rekommendationer för att välja rätt knivar för ditt kök.</p>
+                <a href="knivar-artikel.html">Läs mer</a>
+            </div>
+            <div class="article-preview">
+                <img src="../../images/articles/köksinredning.jpg" alt="Köksinredning">
+                <h2>Köksinredning som inspirerar</h2>
+                <p>Trender och tips för en praktisk och stilfull köksinredning.</p>
+                <a href="köksinredning-artikel.html">Läs mer</a>
+            </div>
+            <!-- Fler artiklar kan läggas till här -->
+        </div>
+    </main>
+
+    <!-- Din befintliga footer här -->
+    <!-- ... -->
+
+    <!-- Dina befintliga skript här -->
+    <!-- ... -->
+
+</body>
+</html>

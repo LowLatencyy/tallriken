@@ -151,34 +151,7 @@
 
     <script src="contact.js"></script>
 
-    <!-- Inkludera detta script i din HTML-sida där ditt formulär finns -->
-    <script>
-        document.getElementById('contactForm').addEventListener('submit', function (event) {
-            event.preventDefault(); // Förhindra standardformulärskickande
-
-            const formData = {
-                to: document.getElementById('email').value,
-                subject: 'Ny kontaktformulärmeddelande',
-                message: document.getElementById('message').value
-            };
-
-            fetch('/sendmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formData)
-            })
-                .then(response => response.text())
-                .then(data => {
-                    alert('Meddelande skickat!');
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-    </script>
+    
 
 </body>
 
