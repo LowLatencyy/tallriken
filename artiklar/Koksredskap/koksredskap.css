@@ -8,9 +8,17 @@ body {
     font-weight: 600;
     ;
     font-style: normal;
-    line-height: 1;
-    /* Ökar radavståndet */
+    
 }
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1; /* Lite tätare för rubriker */
+}
+
+p {
+    line-height: 1.3; /* Luftigare för brödtext */
+}
+
 
 /* köksredskap.css */
 .content-container {
