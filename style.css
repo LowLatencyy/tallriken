@@ -1153,26 +1153,26 @@ input:not(:checked)+.slider.large {
     /* Vit text */
     padding: 8px 12px;
     /* Lite padding */
-    min-height: 60px;
-    /* Minsta höjd som tillåter upp till 2 rader */
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    /* Begränsar till 2 rader */
-    overflow: hidden;
-    text-overflow: ellipsis;
+    height: 60px;
+    /* Fast höjd för att rymma upp till 2 rader */
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
+    /* Centrerar texten vertikalt */
+    overflow: hidden;
 }
 
 .title-background h2 {
     margin: 0;
     /* Ta bort alla marginaler */
+    line-height: 1.2;
+    /* Anpassa radavståndet för att passa ditt typsnitt och storlek */
+    max-height: 2.4em;
+    /* Maximal höjd för två rader (baserat på line-height) */
+    overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     /* Begränsar till 2 rader */
-    overflow: hidden;
     text-overflow: ellipsis;
 }
