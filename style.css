@@ -237,7 +237,7 @@ html {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    font-family: 'Exo 2', cursive;
+    font-family: 'League Spartan', cursive;
     padding-bottom: 100px;
     /* Eller höjden på din footer */
 }
@@ -720,7 +720,7 @@ input:checked+.switch.large .slider:before {
 /* Stiljusteringar för textetiketterna för slidern */
 .search-mode-label {
     display: block;
-    font-family: 'Exo 2', cursive;
+    font-family: 'League Spartan', cursive;
     color: white;
     background-color: rgba(0, 0, 0, 0.7);
     text-align: center;
@@ -811,7 +811,7 @@ input:not(:checked)+.slider.large {
     /* Storlek på texten */
     transition: background-color 0.3s;
     /* Smidig övergång för bakgrundsfärg */
-    font-family: 'Exo 2', cursive;
+    font-family: 'League Spartan', cursive;
     /* Din huvudfont */
 }
 
@@ -967,7 +967,7 @@ input:not(:checked)+.slider.large {
 
 /* Stil för placeholder-texten */
 #searchInput::placeholder {
-    font-family: 'Exo 2', cursive;
+    font-family: 'League Spartan', cursive;
     /* Eller det typsnitt du använder på resten av din sida */
     font-size: 19px;
     /* Eller den storlek du vill ha */
@@ -978,7 +978,7 @@ input:not(:checked)+.slider.large {
 #searchInput {
     font-size: 24px;
     /* Justera detta värde för att öka teckenstorleken på den text användaren skriver */
-    font-family: 'Exo 2', cursive;
+    font-family: 'League Spartan', cursive;
     /* Detta kommer att göra att texten användare skriver matchar stil med placeholder om du vill */
     color: #ffffff;
     /* Ändra om du vill ha en annan textfärg */
@@ -1093,7 +1093,7 @@ input:not(:checked)+.slider.large {
 }
 
 .input-button-container input[type='text'] {
-    font-family: 'Exo 2', cursive;
+    font-family: 'League Spartan', cursive;
     /* Ange ditt typsnitt här */
     background-color: #000000;
     /* svart bakgrund */
