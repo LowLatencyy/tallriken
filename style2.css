@@ -576,32 +576,50 @@ html {
     /* Behåll andra befintliga stilar som du inte vill ändra */
 
 
-
-
-.title-background {
-    background-color: #000; /* Svart bakgrund för kontrast */
-    color: white; /* Vit text för läsbarhet */
-    padding: 4px 6px; /* Justering av padding för utrymme runt texten */
-    height: 80px; /* Fast höjd för att rymma upp till 3 rader */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centrerar texten vertikalt */
-    overflow: hidden; /* Gömmer överskjutande text */
 }
 
-.title-background h2 {
-    margin: 0; /* Tar bort marginaler för stramare layout */
-    line-height: 1.2; /* Anpassa radavståndet för tydlighet */
-    max-height: 3.6em; /* Maximal höjd baserat på radavstånd och fontstorlek */
-    overflow: hidden; /* Döljer text som överskrider maxhöjden */
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Begränsar till 3 rader */
-    text-overflow: ellipsis; /* Lägger till ellipsis om texten är för lång */
+
+
+
+
+.current-page {
+    background-color: rgb(255, 247, 179) !important;
+    color: black !important;
 }
 
-/* Säkerställ att detta appliceras på rätt element i HTML */
 
+
+/* Stil för placeholder-texten */
+#searchInput::placeholder {
+    font-family: 'League Spartan', cursive;
+    /* Eller det typsnitt du använder på resten av din sida */
+    font-size: 19px;
+    /* Eller den storlek du vill ha */
+    color: #a6a6a6;
+    /* Färgen på din placeholder-text, ändra efter önskemål */
+}
+
+#searchInput {
+    font-size: 24px;
+    /* Justera detta värde för att öka teckenstorleken på den text användaren skriver */
+    font-family: 'League Spartan', cursive;
+    /* Detta kommer att göra att texten användare skriver matchar stil med placeholder om du vill */
+    color: #ffffff;
+    /* Ändra om du vill ha en annan textfärg */
+}
+
+
+.add-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.add-button img {
+    width: 25px;
+    /* or any size that fits your design */
+    height: auto;
+}
 
 .logo-main-container {
     text-align: center;
@@ -664,6 +682,74 @@ html {
         /* Behåller bildens proportioner */
     }
 }
+
+/* Lägg till ytterligare media queries och stilar efter behov */
+
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.gallery-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.gallery-row img {
+    margin: 5px;
+    width: auto;
+    height: 150px;
+    /* Justera efter behov för att passa din design */
+}
+
+.top-space {
+    height: 100px;
+    /* Eller hur mycket utrymme du vill ha */
+}
+
+.input-button-container input[type='text'] {
+    padding: 20px;
+    /* Öka padding för att göra fältet tjockare */
+}
+
+.input-button-container input[type='text'] {
+    font-family: 'League Spartan', cursive;
+    /* Ange ditt typsnitt här */
+    background-color: #000000;
+    /* svart bakgrund */
+    color: #ffffff;
+    /* vit text */
+}
+
+
+.title-background {
+    background-color: #000; /* Svart bakgrund för kontrast */
+    color: white; /* Vit text för läsbarhet */
+    padding: 4px 6px; /* Justering av padding för utrymme runt texten */
+    height: 80px; /* Fast höjd för att rymma upp till 3 rader */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrerar texten vertikalt */
+    overflow: hidden; /* Gömmer överskjutande text */
+}
+
+.title-background h2 {
+    margin: 0; /* Tar bort marginaler för stramare layout */
+    line-height: 1.2; /* Anpassa radavståndet för tydlighet */
+    max-height: 3.6em; /* Maximal höjd baserat på radavstånd och fontstorlek */
+    overflow: hidden; /* Döljer text som överskrider maxhöjden */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Begränsar till 3 rader */
+    text-overflow: ellipsis; /* Lägger till ellipsis om texten är för lång */
+}
+
+/* Säkerställ att detta appliceras på rätt element i HTML */
+
 
 .welcome-text {
     text-align: center;
@@ -835,14 +921,7 @@ html {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .matratt {
-        flex-basis: calc(50% - 10px);
-        /* Justerar bredden för att passa två resultat per rad */
-        max-width: calc(50% - 10px);
-        /* Sätter en maxbredd för att behålla layouten */
-        margin: 5px;
-        /* Justerar marginalen för att passa mindre skärmar */
-    }
+  
 }
 
 
@@ -955,21 +1034,7 @@ html {
 
 
 
-@media (max-width: 480px) {
 
-    .logo-link img {
-        height: 80px;
-        /* Justera storleken på logotypen om det behövs */
-    }
-
-    .matratt-title {
-        font-size: 10px;
-        /* Justera detta värde efter dina behov */
-    }
-
-
-
-}
 
 
 
@@ -987,23 +1052,3 @@ html {
 }
 
 
-
-/* Stilar för varje enskilt sökresultat */
-.matratt-container {
-    width: calc(50% - 10px); /* Anpassar så att två maträtter får plats per rad */
-    margin: 5px; /* Margin mellan maträtterna */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Lägg till en lätt skugga för djup */
-    display: flex; /* Använd flexbox för att ordna titel och bild */
-    flex-direction: column; /* Stapla dem vertikalt */
-    align-items: center; /* Centrera innehåll horisontellt */
-    background: #fff; /* Vit bakgrundsfärg */
-    border-radius: 5px; /* Runda hörn på containern */
-}
-
-/* Anpassning för mobilvy */
-@media (max-width: 768px) {
-    .matratt-container {
-        width: calc(50% - 10px); /* Fortsätter att visa två maträtter per rad */
-        margin: 5px; /* Mindre marginaler för att anpassa sig till mindre skärmar */
-    }
-}
