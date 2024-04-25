@@ -424,18 +424,17 @@ body {
 }
 
 .matratt {
-    flex: 0 0 calc(20% - 20px);
-    max-width: calc(20% - 20px);
-    margin: auto;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    align-self: flex-start;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    height: 150px; /* Denna höjd bestämmer hur mycket av iframe som visas. */
+    width: 100%; /* Maträttens bredd tar hela bredden av sin container */
+    overflow: hidden; /* Göm innehåll som överskrider maträttens storlek */
+    position: relative; /* Sätt positionering för absolut positionerade barn */
+    border-top-left-radius: 5px; /* Runda övre vänstra hörnet */
+    border-top-right-radius: 5px; /* Runda övre högra hörnet */
+}
+
+.matratt-info {
+    padding: 10px; /* Lägg till lite utrymme inuti informationsdelen */
+    width: 100%; /* Full bredd för att matcha maträttens bredd */
+    text-align: center; /* Centrera texten */
 }
 
 .matratt iframe {
@@ -458,12 +457,10 @@ body {
 }
 
 .matratt-title {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px;
-    margin: 5px 0;
-    border-radius: 10px;
-    font-size: 8;
-
+    margin: 0; /* Ta bort default marginaler */
+    overflow: hidden; /* Göm överflödig text */
+    white-space: nowrap; /* Förhindra radbrytningar */
+    text-overflow: ellipsis; /* Lägg till ... för överflödig text */
 }
 
 
@@ -570,4 +567,30 @@ body {
     /* Anpassar bredden efter behållarens bredd */
     height: auto;
     /* Bevarar bildens proportioner */
+}
+
+#results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Centrerar och ger utrymme mellan maträtterna */
+}
+
+/* Stilar för varje enskilt sökresultat */
+.matratt-container {
+    width: calc(50% - 10px); /* Anpassar så att två maträtter får plats per rad */
+    margin: 5px; /* Margin mellan maträtterna */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Lägg till en lätt skugga för djup */
+    display: flex; /* Använd flexbox för att ordna titel och bild */
+    flex-direction: column; /* Stapla dem vertikalt */
+    align-items: center; /* Centrera innehåll horisontellt */
+    background: #fff; /* Vit bakgrundsfärg */
+    border-radius: 5px; /* Runda hörn på containern */
+}
+
+/* Anpassning för mobilvy */
+@media (max-width: 768px) {
+    .matratt-container {
+        width: calc(50% - 10px); /* Fortsätter att visa två maträtter per rad */
+        margin: 5px; /* Mindre marginaler för att anpassa sig till mindre skärmar */
+    }
 }

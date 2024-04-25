@@ -117,6 +117,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
     function displayResults(results) {
+        // Uppdaterad för att använda den nya maträtt-container strukturen
         totalPages = Math.ceil(results.length / resultsPerPage);
         const startIndex = (currentPage - 1) * resultsPerPage;
         const endIndex = startIndex + resultsPerPage;
@@ -125,10 +126,18 @@ document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById('results-container');
         container.innerHTML = resultsToDisplay.length > 0
             ? resultsToDisplay.map(row => {
-                // Anta att Instagram-koden är i en specifik kolumn, exempelvis index 5
-                const instagramEmbedCode = row[5]; // Eller hur du nu extraherar koden från din datastruktur
-                // Skapa ett 'div' element för varje resultat som innehåller den inbäddade Instagram-koden
-                return `<div class="matratt">${instagramEmbedCode}</div>`;
+                // Anta att Instagram-koden är i en specifik kolumn, t.ex. index 5, och titeln i index 0
+                const instagramEmbedCode = row[5];
+                const title = row[0];
+                // Skapa ett 'div' element för varje maträtt som innehåller den inbäddade Instagram-koden och titel
+                return `
+                    <div class="matratt-container">
+                        <div class="matratt">${instagramEmbedCode}</div>
+                        <div class="matratt-info">
+                            <h2 class="matratt-title">${title}</h2>
+                        </div>
+                    </div>
+                `;
             }).join('')
             : '<div>Inga resultat hittades.</div>';
 
