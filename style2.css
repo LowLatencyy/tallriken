@@ -261,6 +261,67 @@ body {
 /* Säkerställ att detta appliceras på rätt element i HTML */
 
 
+.logo-main-container {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.main-logo {
+    max-width: 40%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.image-links-container {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    /* Justera detta värde efter behov */
+    padding-top: 100px;
+    /* Lägg till önskat tomt utrymme */
+}
+
+.image-link {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-link img {
+    width: 60%;
+    height: auto;
+    object-fit: cover;
+    /* Se till att bilden täcker elementet */
+}
+
+@media (min-width: 769px) {
+    .image-links-container {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        /* Centrerar barn vertikalt */
+        padding-top: 0;
+    }
+
+    .image-link {
+        width: 40%;
+        /* Minskar bredden för att göra bilderna mindre */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Centrerar innehållet vertikalt */
+        padding: 0 10px;
+        /* Behåller lite utrymme mellan bilderna */
+    }
+
+    .image-link img {
+        max-width: 100%;
+        /* Säkerställer att bilden inte överskrider länkens bredd */
+        height: auto;
+        /* Behåller bildens proportioner */
+    }
+}
 
 .welcome-text {
     text-align: center;
