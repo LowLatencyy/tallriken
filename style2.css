@@ -208,6 +208,10 @@
     color: inherit;
 }
 
+.top-space {
+    height: 100px;
+    /* Eller hur mycket utrymme du vill ha */
+}
 
 body {
     padding-top: 95px;
