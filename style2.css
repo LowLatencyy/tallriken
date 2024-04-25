@@ -228,7 +228,159 @@ html {
     height: 100px;
     /* Eller hur mycket utrymme du vill ha */
 }
+#data-container.initial {
+    margin-top: 20px;
+    /* Anpassa detta värde så att det passar layouten av din sökcontainer */
+}
 
+#data-container.search-active {
+    margin-top: 0;
+    /* Anpassa detta värde som behövs */
+}
+
+#data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    /* Justerar items till toppen av container */
+    margin-top: 2%;
+    padding-bottom: 20px;
+    overflow: auto;
+    z-index: 1500;
+    /* högre än sökfältets z-index */
+}
+
+.matratt {
+    width: 100%; /* Maträttens bredd tar hela bredden av sin container */
+    overflow: hidden; /* Göm innehåll som överskrider maträttens storlek */
+    position: relative; /* Sätt positionering för absolut positionerade barn */
+    border-top-left-radius: 5px; /* Runda övre vänstra hörnet */
+    border-top-right-radius: 5px; /* Runda övre högra hörnet */
+}
+
+.matratt-info {
+    padding: 10px; /* Lägg till lite utrymme inuti informationsdelen */
+    width: 100%; /* Full bredd för att matcha maträttens bredd */
+    text-align: center; /* Centrera texten */
+}
+
+.matratt iframe {
+    background: white;
+    max-width: 100%;
+    /* Denna regel säkerställer att iframe tar upp till 100% av sin förälders bredd */
+    width: 100%;
+    /* Denna regel gör så att iframe faktiskt tar upp 100% av tillgänglig bredd */
+    border-radius: 3px;
+    border: 1px solid rgb(219, 219, 219);
+    box-shadow: none;
+    display: block;
+    margin: 0px 0px 12px;
+    padding: 0px;
+    height: 200px;
+    /* Gör så att höjden anpassas automatiskt */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.matratt-title {
+    margin: 0; /* Ta bort default marginaler */
+    overflow: hidden; /* Göm överflödig text */
+    white-space: nowrap; /* Förhindra radbrytningar */
+    text-overflow: ellipsis; /* Lägg till ... för överflödig text */
+}
+
+@keyframes ticker {
+    0% {
+        left: 100%;
+    }
+
+    100% {
+        left: -100%;
+    }
+}
+
+.instagram-media iframe {
+    width: 50%;
+
+    min-height: 420px !important;
+    display: block;
+
+}
+
+.matratt h2,
+.matratt p,
+.matratt a {
+    margin: 5px 0;
+}
+
+/* Lägg till den nya CSS-koden för footer-banner här */
+.footer-banner {
+    background-color: #000;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* Ta bort justify-content: space-between om du inte vill att innehållet ska fördelas på varje sida */
+}
+
+.footer-banner a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-banner a:hover {
+    text-decoration: underline;
+}
+
+.footer-links {
+    display: flex;
+    margin-left: auto;
+    /* Lägger till detta för att skjuta elementet till högerkanten */
+
+}
+
+/* Stil för copyright-texten */
+.footer-banner p {
+    margin: 0;
+    color: white;
+    /* Om du tar bort justify-content från .footer-banner, kan du också behöva ta bort flex-grow */
+}
+
+.hidden-search {
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: visibility 0s 0.3s, opacity 0.3s ease;
+}
+
+
+
+.blur-background {
+    filter: blur(5px);
+}
+
+.logo-link {
+    position: fixed;
+    top: 10px;
+    /* Justera avståndet från toppen */
+    left: 10px;
+    /* Justera avståndet från vänsterkanten */
+    z-index: 3000;
+    /* Se till att loggan alltid är överst */
+}
+
+.logo-link img {
+    height: 50px;
+    /* Justera storleken på loggan */
+    width: auto;
+    /* Behåller bildens aspektförhållande */
+}
 .text-image {
     text-align: left;
     /* Alignar allt innehåll inuti till vänster */
@@ -247,40 +399,184 @@ html {
     /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
 
+.matratt-title,
+.ingrediens-knapp,
+.ingrediens-lista {
+    color: white;
+    /* Vit text */
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Svart bakgrund */
+}
 
+.lang-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10px;
+}
 
+.lang-label {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#pagination-controls button {
+    background-color: white;
+    /* Vit bakgrund */
+    color: black;
+    /* Svart text */
+    border: 1px solid #ddd;
+    /* Lätt grå kantlinje */
+    padding: 10px 15px;
+    /* Padding för att göra knappen större */
+    margin: 5px;
+    /* Avstånd mellan knapparna */
+    border-radius: 5px;
+    /* Lätt rundade hörn */
+    cursor: pointer;
+    /* Ändra muspekaren till en hand när den svävar över knappen */
+    font-size: 1em;
+    /* Storlek på texten */
+    transition: background-color 0.3s;
+    /* Smidig övergång för bakgrundsfärg */
+    font-family: 'League Spartan', cursive;
+    /* Din huvudfont */
+}
+
+#pagination-controls button:hover {
+    background-color: rgb(255, 247, 179);
+    /* Ljusgul bakgrund när muspekaren svävar över */
+}
+
+/* Uppdateringar för #pagination-controls */
 #pagination-controls {
     position: fixed;
-    bottom: 25px;  /* Höjden på din footer */
+    /* Istället för absolute */
+    bottom: 25px;
+    /* Höjden på din footer */
     left: 0;
     right: 0;
     z-index: 2;
     text-align: center;
-    margin-bottom: 20px;  /* Detta kan behöva justeras beroende på exakt placering */
+    margin-bottom: 20px;
+    /* Detta kan behöva justeras beroende på exakt placering */
     padding: 10px 0;
 }
 
-#pagination-controls button {
-    background-color: white;  /* Vit bakgrund */
-    color: black;  /* Svart text */
-    border: 1px solid #ddd;  /* Lätt grå kantlinje */
-    padding: 10px 15px;  /* Padding för att göra knappen större */
-    margin: 5px;  /* Avstånd mellan knapparna */
-    border-radius: 5px;  /* Lätt rundade hörn */
-    cursor: pointer;  /* Ändra muspekaren till en hand när den svävar över knappen */
-    font-size: 1em;  /* Storlek på texten */
-    transition: background-color 0.3s;  /* Smidig övergång för bakgrundsfärg */
-    font-family: 'League Spartan', cursive;  /* Din huvudfont */
+#pagination-controls.hidden {
+    display: none;
+    /* Dölj pagineringskontrollerna */
 }
 
-#pagination-controls button:hover {
-    background-color: rgb(255, 247, 179);  /* Ljusgul bakgrund när muspekaren svävar över */
+
+/* Media query för desktop */
+@media (min-width: 481px) {
+
+    .instagram-media iframe {
+        width: 100%;
+
+        min-height: 420px !important;
+        display: block;
+    }
+
+    .matratt {
+        flex: 0 0 calc(20% - 20px);
+        max-width: calc(20% - 20px);
+        /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
+        margin: 10px;
+        /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
+
+    }
+
+    .matratt-title {
+        font-size: 10px;
+        /* Justera detta värde efter dina behov */
+        max-width: 50%;
+        /* eller vilken bredd du föredrar */
+    }
+
+    .matratt iframe {
+        width: 100%;
+        /* Säkerställer att iframe tar upp hela bredden av sin container */
+        height: 500px;
+        /* Exempel på fast höjd, justera enligt behov */
+        /* Lägg till andra stylingegenskaper här efter behov */
+        min-height: 500px;
+    }
 }
 
-#pagination-controls button.current-page {
-    background-color: rgb(255, 247, 179) !important;
-    color: black !important;
-}
+@media (max-width: 480px) {
+
+    .logo-link img {
+        height: 80px;
+        /* Justera storleken på logotypen om det behövs */
+    }
+
+    .matratt-title {
+        font-size: 10px;
+        /* Justera detta värde efter dina behov */
+    }
+
+    
+
+
+    #data-container.initial {
+        margin-top: 40px;
+        /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
+        padding: 0 5px;
+        /* Justera sidomarginaler */
+    }
+
+    #data-container {
+        margin-top: 40px;
+        /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
+        padding: 0 5px;
+        /* Justera sidomarginaler */
+    }
+
+
+    .input-button-container input[type='text'],
+    .input-button-container button {
+        padding: 5px;
+        /* Justera padding för att passa bättre på mindre skärmar */
+        font-size: 10px;
+        /* Justera textstorleken om det behövs */
+    }
+
+    .input-button-container button {
+        padding-right: 10px;
+        /* Minska padding till höger */
+        padding-left: 10px;
+        /* Minska padding till vänster */
+    }
+
+    .matratt {
+        flex-basis: calc(50% - 20px);
+        /* Justerar bredden så två element får plats, minus marginal */
+        max-width: calc(50% - 20px);
+        /* Samma här */
+        padding: 2px;
+        /* Mindre padding inuti varje resultat */
+        margin: 5px;
+        /* Behåller en liten marginal runt varje element */
+    }
+
+
+
+    body,
+    html {
+        overflow-x: hidden;
+        /* Fortsätt förhindra horisontell scrollning */
+    }
+
+    /* Behåll andra befintliga stilar som du inte vill ändra */
+
+
+
 
 .title-background {
     background-color: #000; /* Svart bakgrund för kontrast */
@@ -656,58 +952,7 @@ html {
 /* Ytterligare styling för sökresultatet 
 } */
 
-#data-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    /* Justerar items till toppen av container */
-    margin-top: 2%;
-    padding-bottom: 20px;
-    overflow: auto;
-    z-index: 1500;
-    /* högre än sökfältets z-index */
-}
 
-.matratt {
-    width: 100%; /* Maträttens bredd tar hela bredden av sin container */
-    overflow: hidden; /* Göm innehåll som överskrider maträttens storlek */
-    position: relative; /* Sätt positionering för absolut positionerade barn */
-    border-top-left-radius: 5px; /* Runda övre vänstra hörnet */
-    border-top-right-radius: 5px; /* Runda övre högra hörnet */
-}
-
-.matratt-info {
-    padding: 10px; /* Lägg till lite utrymme inuti informationsdelen */
-    width: 100%; /* Full bredd för att matcha maträttens bredd */
-    text-align: center; /* Centrera texten */
-}
-
-.matratt iframe {
-    background: white;
-    max-width: 100%;
-    /* Denna regel säkerställer att iframe tar upp till 100% av sin förälders bredd */
-    width: 100%;
-    /* Denna regel gör så att iframe faktiskt tar upp 100% av tillgänglig bredd */
-    border-radius: 3px;
-    border: 1px solid rgb(219, 219, 219);
-    box-shadow: none;
-    display: block;
-    margin: 0px 0px 12px;
-    padding: 0px;
-    height: 200px;
-    /* Gör så att höjden anpassas automatiskt */
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.matratt-title {
-    margin: 0; /* Ta bort default marginaler */
-    overflow: hidden; /* Göm överflödig text */
-    white-space: nowrap; /* Förhindra radbrytningar */
-    text-overflow: ellipsis; /* Lägg till ... för överflödig text */
-}
 
 
 @media (max-width: 480px) {
@@ -724,109 +969,9 @@ html {
 
 
 
-    #data-container.initial {
-        margin-top: 40px;
-        /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
-        padding: 0 5px;
-        /* Justera sidomarginaler */
-    }
-
-    #data-container {
-        margin-top: 40px;
-        /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
-        padding: 0 5px;
-        /* Justera sidomarginaler */
-    }
-
-
-    .input-button-container input[type='text'],
-    .input-button-container button {
-        padding: 5px;
-        /* Justera padding för att passa bättre på mindre skärmar */
-        font-size: 10px;
-        /* Justera textstorleken om det behövs */
-    }
-
-    .input-button-container button {
-        padding-right: 10px;
-        /* Minska padding till höger */
-        padding-left: 10px;
-        /* Minska padding till vänster */
-    }
-
-    .matratt {
-        flex-basis: calc(50% - 20px);
-        /* Justerar bredden så två element får plats, minus marginal */
-        max-width: calc(50% - 20px);
-        /* Samma här */
-        padding: 2px;
-        /* Mindre padding inuti varje resultat */
-        margin: 5px;
-        /* Behåller en liten marginal runt varje element */
-    }
-
-
-
-    body,
-    html {
-        overflow-x: hidden;
-        /* Fortsätt förhindra horisontell scrollning */
-    }
-
-    /* Behåll andra befintliga stilar som du inte vill ändra */
-
-
-}
-
-/* Responsivitet */
-@media (max-width: 480px) {
-    .matratt {
-        flex-basis: calc(50% - 10px);
-        max-width: calc(50% - 10px);
-        height: 150px; /* Håll samma höjd som i desktop-vy. */
-    }
-    .matratt iframe {
-        height: 200px; /* Håll samma iframe-höjd. */
-    }
 }
 
 
-    /* Media query för desktop */
-@media (min-width: 481px) {
-
-    .instagram-media iframe {
-        width: 100%;
-
-        min-height: 420px !important;
-        display: block;
-    }
-
-    .matratt {
-        flex: 0 0 calc(20% - 20px);
-        max-width: calc(20% - 20px);
-        /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
-        margin: 10px;
-        /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
-
-    }
-
-    .matratt-title {
-        font-size: 10px;
-        /* Justera detta värde efter dina behov */
-        max-width: 50%;
-        /* eller vilken bredd du föredrar */
-    }
-
-    .matratt iframe {
-        width: 100%;
-        /* Säkerställer att iframe tar upp hela bredden av sin container */
-        height: 500px;
-        /* Exempel på fast höjd, justera enligt behov */
-        /* Lägg till andra stylingegenskaper här efter behov */
-        min-height: 500px;
-    }
-
-}
 
 .divider-container {
     text-align: center;
