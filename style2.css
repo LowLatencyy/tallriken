@@ -6,64 +6,18 @@
     box-sizing: border-box;
 }
 
-body {
-    padding-top: 95px;
-    /* Justera detta värde efter logotypens höjd plus önskat utrymme */
-}
-
-
-
-.welcome-text {
-    text-align: center;
-    max-width: 800px;
-    /* Anpassa efter din layout */
-    margin: 0 auto;
-    /* Centrerar texten */
-    padding: 20px;
-    font-family: 'League Spartan', sans-serif;
-    /* Ersätt med rätt typsnittsnamn om det är annorlunda */
-}
-
-.welcome-text h1 {
-    margin: 0;
-    padding: 0;
-    font-size: 2em;
-    /* Anpassa storlek efter behov */
-    font-weight: bold;
-}
-
-.welcome-text h2 {
-    margin-top: 20px;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.welcome-text p {
-    margin-top: 10px;
-    font-size: 1em;
-    line-height: 1.6;
-    /* För att göra texten lättare att läsa */
-}
-
-.welcome-text strong {
-    font-weight: bold;
-}
-
 /* Loader CSS */
 .blocks {
     display: flex;
     align-items: center;
     position: fixed;
-    /* Om du vill att loadern ska vara över allt annat innehåll */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     justify-content: center;
     z-index: 9999;
-    /* High z-index to make sure it's on top */
     background: transparent;
-    /* Loader background */
 }
 
 .block {
@@ -122,6 +76,228 @@ body {
     display: none;
 }
 
+.nav {
+    color: rgb(0, 0, 0);
+    z-index: 9999;
+}
+
+.nav__trigger-finger {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 3100;
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 15px;
+    margin: 40px;
+    color: rgb(0, 0, 0);
+}
+
+.nav__trigger-finger::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    bottom: -5px;
+    right: -5px;
+    background: rgb(0, 0, 0);
+    opacity: 0;
+    z-index: 3101;
+    transition: opacity 0.3s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__trigger-finger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
+    background: currentColor;
+}
+
+.nav__trigger-finger span::before,
+.nav__trigger-finger span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.4s cubic-bezier(0.75, 0, 0.25, 1), top 0.4s 0.4s cubic-bezier(0.75, 0, 0.25, 1), background 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__trigger-finger span::before {
+    top: 0;
+}
+
+.nav__trigger-finger span::after {
+    top: calc(100% - 2px);
+}
+
+.nav__trigger-input,
+.nav__submenu-trigger-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    appearance: none;
+    position: fixed;
+}
+
+.nav__trigger-input:focus+label,
+.nav__submenu-trigger-input:focus+label {
+    color: rgb(0, 0, 0);
+}
+
+.nav__trigger-input:checked+label span {
+    transform: rotate(45deg);
+}
+
+.nav__trigger-input:checked+label span::before,
+.nav__trigger-input:checked+label span::after {
+    top: calc(50% - 1px);
+    transform: rotate(90deg);
+}
+
+.nav__trigger-input:checked+label span::after {
+    transform: rotate(90deg);
+}
+
+.nav__trigger-input:checked~ul,
+.nav__submenu-trigger-input:checked~ul {
+    transform: none;
+    z-index: 9;
+}
+
+.nav__list {
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 3100;
+    background: rgb(203, 223, 189);
+    font-size: 3rem;
+    padding: 40px;
+    transform: translateX(100%);
+    transition: 0.3s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__item {
+    list-style: none;
+}
+
+.nav__item+.nav__item {
+    margin-top: 20px;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+body {
+    padding-top: 95px;
+    /* Justera detta värde efter logotypens höjd plus önskat utrymme */
+}
+
+#pagination-controls {
+    position: fixed;
+    bottom: 25px;  /* Höjden på din footer */
+    left: 0;
+    right: 0;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 20px;  /* Detta kan behöva justeras beroende på exakt placering */
+    padding: 10px 0;
+}
+
+#pagination-controls button {
+    background-color: white;  /* Vit bakgrund */
+    color: black;  /* Svart text */
+    border: 1px solid #ddd;  /* Lätt grå kantlinje */
+    padding: 10px 15px;  /* Padding för att göra knappen större */
+    margin: 5px;  /* Avstånd mellan knapparna */
+    border-radius: 5px;  /* Lätt rundade hörn */
+    cursor: pointer;  /* Ändra muspekaren till en hand när den svävar över knappen */
+    font-size: 1em;  /* Storlek på texten */
+    transition: background-color 0.3s;  /* Smidig övergång för bakgrundsfärg */
+    font-family: 'League Spartan', cursive;  /* Din huvudfont */
+}
+
+#pagination-controls button:hover {
+    background-color: rgb(255, 247, 179);  /* Ljusgul bakgrund när muspekaren svävar över */
+}
+
+#pagination-controls button.current-page {
+    background-color: rgb(255, 247, 179) !important;
+    color: black !important;
+}
+
+.title-background {
+    background-color: #000; /* Svart bakgrund för kontrast */
+    color: white; /* Vit text för läsbarhet */
+    padding: 4px 6px; /* Justering av padding för utrymme runt texten */
+    height: 80px; /* Fast höjd för att rymma upp till 3 rader */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrerar texten vertikalt */
+    overflow: hidden; /* Gömmer överskjutande text */
+}
+
+.title-background h2 {
+    margin: 0; /* Tar bort marginaler för stramare layout */
+    line-height: 1.2; /* Anpassa radavståndet för tydlighet */
+    max-height: 3.6em; /* Maximal höjd baserat på radavstånd och fontstorlek */
+    overflow: hidden; /* Döljer text som överskrider maxhöjden */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3; /* Begränsar till 3 rader */
+    text-overflow: ellipsis; /* Lägger till ellipsis om texten är för lång */
+}
+
+/* Säkerställ att detta appliceras på rätt element i HTML */
+
+
+
+.welcome-text {
+    text-align: center;
+    max-width: 800px;
+    /* Anpassa efter din layout */
+    margin: 0 auto;
+    /* Centrerar texten */
+    padding: 20px;
+    font-family: 'League Spartan', sans-serif;
+    /* Ersätt med rätt typsnittsnamn om det är annorlunda */
+}
+
+.welcome-text h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 2em;
+    /* Anpassa storlek efter behov */
+    font-weight: bold;
+}
+
+.welcome-text h2 {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.welcome-text p {
+    margin-top: 10px;
+    font-size: 1em;
+    line-height: 1.6;
+    /* För att göra texten lättare att läsa */
+}
+
+.welcome-text strong {
+    font-weight: bold;
+}
+
 
 .image-button {
     position: relative;
@@ -137,34 +313,7 @@ body {
     /* standard CSS egenskap, men stöds inte av alla webbläsare än */
 }
 
-/*
-.image-button::after {
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: opacity 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0;
-    /* Startar osynlig 
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 0 8px 8px rgb(255, 255, 255);
-    /* Osynlig tills aktiverad 
-}
-*/
-/*
 
-.image-button:active::after,
-.image-button:focus::after,
-.image-button.selected::after {
-    opacity: 1;
-    /* Blir synlig vid aktivering 
-    box-shadow: 0 0 8px 8px rgb(255, 255, 255);
-    /* Den runda glow-effekten 
-}
-*/
 
 .image-button:focus,
 .image-button:active {
@@ -172,12 +321,7 @@ body {
     /* Tar bort webbläsarens fokusindikering */
 }
 
-/* Stil för en knapp när den är i aktivt eller valt tillstånd 
-.image-button.selected {
-    transform: scale(1.05);
-    transition: transform 0.3s ease;
-}
-*/
+
 
 .image-button.selected {
     background-image: url('images/circle2.svg');
