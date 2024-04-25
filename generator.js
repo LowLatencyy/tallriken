@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     function performSearch() {
         // Hämta behållaren där resultat ska visas
-        const container = document.getElementById('results-container');
+        const container = document.getElementById('data-container');
         container.innerHTML = ''; // Rensa tidigare resultat
 
         console.log('Selected filters:', selectedFilters);
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         const endIndex = startIndex + resultsPerPage;
         const resultsToDisplay = results.slice(startIndex, endIndex);
 
-        const container = document.getElementById('results-container');
+        const container = document.getElementById('data-container');
         container.innerHTML = resultsToDisplay.length > 0
             ? resultsToDisplay.map(row => {
                 // Anta att Instagram-koden är i en specifik kolumn, t.ex. index 5, och titeln i index 0
