@@ -610,12 +610,7 @@ body {
 }
 
 /* Stilar för sökresultatens behållare 
-#results-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 10px;
-}
+
 
 /* Stilar för varje enskilt sökresultat 
 .matratt {
@@ -811,11 +806,7 @@ body {
     /* Bevarar bildens proportioner */
 }
 
-#results-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around; /* Centrerar och ger utrymme mellan maträtterna */
-}
+
 
 /* Stilar för varje enskilt sökresultat */
 .matratt-container {
