@@ -213,10 +213,25 @@
     /* Eller hur mycket utrymme du vill ha */
 }
 
-body {
-    padding-top: 95px;
-    /* Justera detta värde efter logotypens höjd plus önskat utrymme */
+.text-image {
+    text-align: left;
+    /* Alignar allt innehåll inuti till vänster */
+    margin-top: 7px;
+    /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
+
+.text-image img {
+    display: block;
+    /* Säkerställer att bilden tar upp sin egen rad och inte blandas med andra element */
+    max-width: 100%;
+    /* Säkerställer att bilden inte blir bredare än dess container */
+    height: auto;
+    /* Bibehåller bildens proportioner när bredden ändras */
+    margin-top: 5px;
+    /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
+}
+
+
 
 #pagination-controls {
     position: fixed;
