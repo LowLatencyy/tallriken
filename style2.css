@@ -760,16 +760,42 @@ body {
     }
 }
 
+
+    /* Media query för desktop */
 @media (min-width: 481px) {
+
     .instagram-media iframe {
         width: 100%;
-        min-height: 120px !important;
+
+        min-height: 420px !important;
+        display: block;
     }
 
     .matratt {
-        flex: 0 0 calc(25% - 20px);
-        max-width: calc(25% - 20px);
+        flex: 0 0 calc(20% - 20px);
+        max-width: calc(20% - 20px);
+        /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
+        margin: 10px;
+        /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
+
     }
+
+    .matratt-title {
+        font-size: 10px;
+        /* Justera detta värde efter dina behov */
+        max-width: 50%;
+        /* eller vilken bredd du föredrar */
+    }
+
+    .matratt iframe {
+        width: 100%;
+        /* Säkerställer att iframe tar upp hela bredden av sin container */
+        height: 500px;
+        /* Exempel på fast höjd, justera enligt behov */
+        /* Lägg till andra stylingegenskaper här efter behov */
+        min-height: 500px;
+    }
+
 }
 
 .divider-container {
