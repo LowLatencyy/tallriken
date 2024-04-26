@@ -1,11 +1,17 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const apiKey = 'AIzaSyBFecFz9KFsPnw6bjAKv0N0CSbs3Iszlag';
     const spreadsheetId = '1RN9SQRzletJnH8BAgJEQCI0BtbpsHQU6Pv2L4FDGXEM';
+    const dataRange = 'Blad1!A2:K';
+    const synonymRange = 'Ingredienser!A2:B';
+    const dataUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${dataRange}?key=${apiKey}`;
+    const synonymUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${synonymRange}?key=${apiKey}`;
+
     let allData = [];
-    const selectedFilters = { country: [], protein: [], mealtype: [] };
     let currentPage = 1;
-    const resultsPerPage = 14; // eller vilket antal per sida du vill ha
+    const resultsPerPage = 14;
     let totalPages = 0;
+    const selectedFilters = { country: [], protein: [], mealtype: [] };
+
 
     function filterData() {
         const filteredResults = allData.filter(row => {
