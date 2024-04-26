@@ -252,7 +252,7 @@ html {
 }
 
 .matratt {
-    width: 100%; /* Maträttens bredd tar hela bredden av sin container */
+    width: 25%; /* Maträttens bredd tar hela bredden av sin container */
     overflow: hidden; /* Göm innehåll som överskrider maträttens storlek */
     position: relative; /* Sätt positionering för absolut positionerade barn */
     border-top-left-radius: 5px; /* Runda övre vänstra hörnet */
