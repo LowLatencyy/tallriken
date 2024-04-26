@@ -1052,3 +1052,11 @@ html {
 }
 
 
+
+@media (max-width: 480px) {
+    .matratt {
+        flex: 1 0 50%; /* Ta upp 50% av bredden, vilket tillåter två element per rad */
+        padding: 2px; /* Justera padding efter behov */
+        margin: 5px; /* Justera margin för att ge utrymme mellan elementen */
+    }
+}
