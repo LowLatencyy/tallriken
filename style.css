@@ -280,7 +280,7 @@ html {
     /* Anpassa bredden efter designen */
     margin: 20px auto;
     /* Centrerar kontainern med marginal upp- och nertill */
-    padding-top: 20px;
+    padding-top: 5px;
     /* Lägg till lite utrymme ovanför sökfältet */
 }
 
