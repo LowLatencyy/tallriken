@@ -92,7 +92,7 @@ video {
     height: 10px; /* Justera detta värde baserat på din design */
     background-color: #faf0ca; /* Gula bakgrundsfärgen */
     z-index: 1000; /* Håller headern över andra element */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Lägg till en skugga för definition */
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Lägg till en skugga för definition */
 }
 
 body {
