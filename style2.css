@@ -228,6 +228,7 @@ html {
     height: 100px;
     /* Eller hur mycket utrymme du vill ha */
 }
+
 #data-container.initial {
     margin-top: 20px;
     /* Anpassa detta värde så att det passar layouten av din sökcontainer */
@@ -252,17 +253,25 @@ html {
 }
 
 .matratt {
-    width: 25%; /* Maträttens bredd tar hela bredden av sin container */
-    overflow: hidden; /* Göm innehåll som överskrider maträttens storlek */
-    position: relative; /* Sätt positionering för absolut positionerade barn */
-    border-top-left-radius: 5px; /* Runda övre vänstra hörnet */
-    border-top-right-radius: 5px; /* Runda övre högra hörnet */
+    width: 25%;
+    /* Maträttens bredd tar hela bredden av sin container */
+    overflow: hidden;
+    /* Göm innehåll som överskrider maträttens storlek */
+    position: relative;
+    /* Sätt positionering för absolut positionerade barn */
+    border-top-left-radius: 5px;
+    /* Runda övre vänstra hörnet */
+    border-top-right-radius: 5px;
+    /* Runda övre högra hörnet */
 }
 
 .matratt-info {
-    padding: 10px; /* Lägg till lite utrymme inuti informationsdelen */
-    width: 100%; /* Full bredd för att matcha maträttens bredd */
-    text-align: center; /* Centrera texten */
+    padding: 10px;
+    /* Lägg till lite utrymme inuti informationsdelen */
+    width: 100%;
+    /* Full bredd för att matcha maträttens bredd */
+    text-align: center;
+    /* Centrera texten */
 }
 
 .matratt iframe {
@@ -285,10 +294,14 @@ html {
 }
 
 .matratt-title {
-    margin: 0; /* Ta bort default marginaler */
-    overflow: hidden; /* Göm överflödig text */
-    white-space: nowrap; /* Förhindra radbrytningar */
-    text-overflow: ellipsis; /* Lägg till ... för överflödig text */
+    margin: 0;
+    /* Ta bort default marginaler */
+    overflow: hidden;
+    /* Göm överflödig text */
+    white-space: nowrap;
+    /* Förhindra radbrytningar */
+    text-overflow: ellipsis;
+    /* Lägg till ... för överflödig text */
 }
 
 @keyframes ticker {
@@ -381,6 +394,7 @@ html {
     width: auto;
     /* Behåller bildens aspektförhållande */
 }
+
 .text-image {
     text-align: left;
     /* Alignar allt innehåll inuti till vänster */
@@ -521,7 +535,7 @@ html {
         /* Justera detta värde efter dina behov */
     }
 
-    
+
 
 
     #data-container.initial {
@@ -727,25 +741,37 @@ html {
 
 
 .title-background {
-    background-color: #000; /* Svart bakgrund för kontrast */
-    color: white; /* Vit text för läsbarhet */
-    padding: 4px 6px; /* Justering av padding för utrymme runt texten */
-    height: 80px; /* Fast höjd för att rymma upp till 3 rader */
+    background-color: #000;
+    /* Svart bakgrund för kontrast */
+    color: white;
+    /* Vit text för läsbarhet */
+    padding: 4px 6px;
+    /* Justering av padding för utrymme runt texten */
+    height: 80px;
+    /* Fast höjd för att rymma upp till 3 rader */
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centrerar texten vertikalt */
-    overflow: hidden; /* Gömmer överskjutande text */
+    justify-content: center;
+    /* Centrerar texten vertikalt */
+    overflow: hidden;
+    /* Gömmer överskjutande text */
 }
 
 .title-background h2 {
-    margin: 0; /* Tar bort marginaler för stramare layout */
-    line-height: 1.2; /* Anpassa radavståndet för tydlighet */
-    max-height: 3.6em; /* Maximal höjd baserat på radavstånd och fontstorlek */
-    overflow: hidden; /* Döljer text som överskrider maxhöjden */
+    margin: 0;
+    /* Tar bort marginaler för stramare layout */
+    line-height: 1.2;
+    /* Anpassa radavståndet för tydlighet */
+    max-height: 3.6em;
+    /* Maximal höjd baserat på radavstånd och fontstorlek */
+    overflow: hidden;
+    /* Döljer text som överskrider maxhöjden */
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3; /* Begränsar till 3 rader */
-    text-overflow: ellipsis; /* Lägger till ellipsis om texten är för lång */
+    -webkit-line-clamp: 3;
+    /* Begränsar till 3 rader */
+    text-overflow: ellipsis;
+    /* Lägger till ellipsis om texten är för lång */
 }
 
 /* Säkerställ att detta appliceras på rätt element i HTML */
@@ -889,27 +915,16 @@ html {
 /* Hover-effekt för "Visa fler"-knappen */
 .show-more-btn:hover {
     background-color: rgb(89, 96, 84);
-    display: block;
-    width: auto;
-    /* Baserar bredden på innehållet och padding */
-    padding: 5px 15px;
-    /* Justerad horisontell padding */
-    background-color: rgb(89, 96, 84);
     color: white;
-    text-align: center;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    margin: 10px auto;
-    /* Centrerar knappen */
-    transition: background-color 0.3s;
-    /* Lägger till en mjuk övergång för hover-effekt */
 }
 
 .show-more-btn img {
-    cursor: pointer; /* Gör bilden klickbar */
-    width: 30px; /* Exempel på storlek, justera efter behov */
-    height: 30px; /* Exempel på storlek, justera efter behov */
+    cursor: pointer;
+    /* Gör bilden klickbar */
+    width: 30px;
+    /* Exempel på storlek, justera efter behov */
+    height: 30px;
+    /* Exempel på storlek, justera efter behov */
 }
 
 /* Anpassning för mobilvy */
@@ -927,7 +942,7 @@ html {
         grid-template-columns: repeat(4, 1fr);
     }
 
-  
+
 }
 
 
@@ -1061,8 +1076,11 @@ html {
 
 @media (max-width: 480px) {
     .matratt {
-        flex: 1 0 50%; /* Ta upp 50% av bredden, vilket tillåter två element per rad */
-        padding: 2px; /* Justera padding efter behov */
-        margin: 5px; /* Justera margin för att ge utrymme mellan elementen */
+        flex: 1 0 50%;
+        /* Ta upp 50% av bredden, vilket tillåter två element per rad */
+        padding: 2px;
+        /* Justera padding efter behov */
+        margin: 5px;
+        /* Justera margin för att ge utrymme mellan elementen */
     }
 }
