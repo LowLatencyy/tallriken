@@ -50,6 +50,9 @@ body {
     max-width: 800px; /* adjust this value as needed */
     margin: 0 auto; /* this will center your video if it's smaller than the container */
     overflow: hidden; /* in case your video is bigger than the container */
+    position: relative;
+    z-index: 1; /* Se till att videon har lägre z-index än headern */
+    /* Resten av din styling */
 }
 
 video {
