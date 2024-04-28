@@ -895,21 +895,16 @@ html {
 
 /* Visa fler-knappens stil */
 .show-more-btn {
-    display: block;
-    width: auto;
-    /* Baserar bredden på innehållet och padding */
-    padding: 5px 15px;
-    /* Justerad horisontell padding */
-    background-color: rgb(203, 223, 189);
-    color: rgb(0, 0, 0);
-    text-align: center;
-    cursor: pointer;
+    display: flex; /* Använder flexbox för att centrera innehåll */
+    justify-content: center; /* Centrerar innehåll horisontellt */
+    align-items: center; /* Centrerar innehåll vertikalt */
+    width: 50px; /* Begränsar knappens bredd */
+    height: 50px; /* Begränsar knappens höjd */
+    margin: 10px auto; /* Ger lite utrymme runt knappen och centrerar den horisontellt */
+    background-color: transparent; /* Gör bakgrunden transparent */
     border: none;
-    border-radius: 5px;
-    margin: 10px auto;
-    /* Centrerar knappen */
-    transition: background-color 0.3s;
-    /* Lägger till en mjuk övergång för hover-effekt */
+    border-radius: 25px; /* Ger en cirkelrund form */
+    padding: 0; /* Tar bort padding för att undvika extra storlek */
 }
 
 /* Hover-effekt för "Visa fler"-knappen */
@@ -919,13 +914,29 @@ html {
 }
 
 .show-more-btn img {
-    cursor: pointer;
-    /* Gör bilden klickbar */
-    width: 30px;
-    /* Exempel på storlek, justera efter behov */
+    width: 30px; /* Ställer in en specifik storlek för ikonerna */
     height: 30px;
-    /* Exempel på storlek, justera efter behov */
+    display: block; /* Ser till att bilden inte tar extra utrymme vertikalt */
 }
+
+@media (min-width: 768px) {
+    /* Stilar för tablet */
+    .show-more-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 30px;
+    }
+}
+
+@media (min-width: 1024px) {
+    /* Stilar för desktop */
+    .show-more-btn {
+        width: 70px;
+        height: 70px;
+        border-radius: 35px;
+    }
+}
+
 
 /* Anpassning för mobilvy */
 @media (max-width: 600px) {
@@ -934,7 +945,7 @@ html {
         /* Minskar padding för mobilvy */
         width: auto;
         /* Baserar bredden på innehållet och padding */
-        margin: 5px auto;
+        margin: auto;
         /* Fortsätter att centrera knappen */
     }
 
