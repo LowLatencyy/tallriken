@@ -898,9 +898,9 @@ html {
     display: flex; /* Använder flexbox för att centrera innehåll */
     justify-content: center; /* Centrerar innehåll horisontellt */
     align-items: center; /* Centrerar innehåll vertikalt */
-    width: 50px; /* Begränsar knappens bredd */
-    height: 50px; /* Begränsar knappens höjd */
-    margin: 10px auto; /* Ger lite utrymme runt knappen och centrerar den horisontellt */
+    width: 100px; /* Begränsar knappens bredd */
+    height: 100px; /* Begränsar knappens höjd */
+    margin: 5px auto; /* Ger lite utrymme runt knappen och centrerar den horisontellt */
     background-color: transparent; /* Gör bakgrunden transparent */
     border: none;
     border-radius: 25px; /* Ger en cirkelrund form */
@@ -914,8 +914,8 @@ html {
 }
 
 .show-more-btn img {
-    width: 30px; /* Ställer in en specifik storlek för ikonerna */
-    height: 30px;
+    width: 70%; /* Ställer in en specifik storlek för ikonerna */
+    height: auto;
     display: block; /* Ser till att bilden inte tar extra utrymme vertikalt */
 }
 
