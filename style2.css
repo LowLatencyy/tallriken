@@ -906,6 +906,12 @@ html {
     /* Lägger till en mjuk övergång för hover-effekt */
 }
 
+.show-more-btn img {
+    cursor: pointer; /* Gör bilden klickbar */
+    width: 30px; /* Exempel på storlek, justera efter behov */
+    height: 30px; /* Exempel på storlek, justera efter behov */
+}
+
 /* Anpassning för mobilvy */
 @media (max-width: 600px) {
     .show-more-btn {

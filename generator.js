@@ -192,16 +192,21 @@ document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById(containerId);
         const hiddenButtons = container.querySelectorAll('.hidden');
         const isExpanded = showMoreBtn.dataset.expanded === 'true';
+        const image = showMoreBtn.querySelector('img'); // Hämta bilden i knappen
 
         if (isExpanded) {
             // Om den är expanderad, dölj knapparna och uppdatera texten
             hiddenButtons.forEach(btn => btn.style.display = 'none');
-            showMoreBtn.textContent = 'Visa fler';
+            // showMoreBtn.textContent = 'Visa fler';
+            image.src = 'images/plustecken-svart.svg'; // Sätt till plus-ikonen
+            image.alt = 'Visa fler';
             showMoreBtn.dataset.expanded = 'false';
         } else {
             // Om den inte är expanderad, visa knapparna och uppdatera texten
             hiddenButtons.forEach(btn => btn.style.display = 'inline-block');
-            showMoreBtn.textContent = 'Dölj';
+            // showMoreBtn.textContent = 'Dölj';
+            image.src = 'images/minustecken-svart.svg'; // Sätt till minus-ikonen
+            image.alt = 'Dölj';
             showMoreBtn.dataset.expanded = 'true';
         }
     }
