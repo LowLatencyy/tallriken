@@ -19,6 +19,7 @@
 
 <body>
 
+
     <!--gamla loadern 3 punkter -->
     <!-- Loader HTML -->
     <div class="blocks" id="loader" hidden>
@@ -31,60 +32,96 @@
 
 
 
+    <header class="site-header">
+        <a href="startsida2.html" class="logo-link">
+            <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
+        </a>
 
-    <nav class="nav">
-        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
-        <label class="nav__trigger-finger" for="trigger">
-            <span></span>
-        </label>
-        <ul class="nav__list">
-            <li class="nav__item">
-                <a href="startsida2.html" class="nav__link">
-                    <span class="nav__text">
-                        Startsida
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="generator.html" class="nav__link">
-                    <span class="nav__text">
-                        Generatorn
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="index.html" class="nav__link">
-                    <span class="nav__text">
-                        Ingredienser
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="#hoi" class="nav__link">
-                    <span class="nav__text">
-                        Om
-                    </span>
-                </a>
-                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
-                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
-                <ul class="nav__list-child">
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Om oss
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Tipsa Oss
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav__item">
+
+
+
+
+
+
+        <nav class="nav">
+            <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
+            <label class="nav__trigger-finger" for="trigger">
+                <span></span>
+            </label>
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="startsida2.html" class="nav__link">
+                        <span class="nav__text">
+                            Startsida
+                        </span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="generator.html" class="nav__link">
+                        <span class="nav__text">
+                            Mat-Generatorn
+                        </span>
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="index.html" class="nav__link">
+                        <span class="nav__text">
+                            Ingrediens-Assistenten
+                        </span>
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="#hoi" class="nav__link">
+                        <span class="nav__text">
+                            Artiklar
+                        </span>
+                    </a>
+                    <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger-articles" /> <!-- Uppdaterat ID -->
+                    <label class="nav__submenu-trigger-finger" for="submenu-trigger-articles"></label> <!-- Uppdaterat för-attribut -->
+                    <ul class="nav__list-child">
+                        <li class="nav__item">
+                            <a href="artiklar/halsa/halsa.html" class="nav__link">
+                                <span class="nav__text">
+                                    Hälsa
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="artiklar/Koksredskap/koksredskap-mainpage.html" class="nav__link">
+                                <span class="nav__text">
+                                    Köksredskap
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav__item">
+                    <a href="#hoi" class="nav__link">
+                        <span class="nav__text">
+                            Om
+                        </span>
+                    </a>
+                    <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                    <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                    <ul class="nav__list-child">
+                        <li class="nav__item">
+                            <a href="#hoi" class="nav__link">
+                                <span class="nav__text">
+                                    Om oss
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav__item">
+                            <a href="#hoi" class="nav__link">
+                                <span class="nav__text">
+                                    Tipsa Oss
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- <li class="nav__item">
                 <a href="#hoi2" class="nav__link">
                     <span class="nav__text">
                         Blogg
@@ -109,22 +146,24 @@
                     </li>
                 </ul>
             </li>
-            <!-- <li class="nav__item">
+             <li class="nav__item">
                 <a href="#hoi" class="nav__link">
                     <span class="nav__text">
                         Blogg
                     </span>
                 </a>
             </li> -->
-            <li class="nav__item">
-                <a href="#hoi" class="nav__link">
-                    <span class="nav__text">
-                        Kontakt
-                    </span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+                <li class="nav__item">
+                    <a href="contact.html" class="nav__link">
+                        <span class="nav__text">
+                            Kontakt
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
 
     <a href="startsida2.html" class="logo-link">
         <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
@@ -223,12 +262,12 @@
         const resultsPerPage = 14;
         let totalPages = 0;
 
-        function shuffleArray(array) {
+        /* function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]]; // Swap
             }
-        }
+        } */
 
 
 
@@ -372,8 +411,8 @@
             }
 
 
-            shuffleArray(filteredData); // Blanda resultaten slumpmässigt direkt efter filtrering och innan data sparas
-            
+            /* shuffleArray(filteredData); */ // Blanda resultaten slumpmässigt direkt efter filtrering och innan data sparas
+
             // Efter filtrering, spara den filtrerade listan i currentFilteredData
             currentFilteredData = filteredData;
 

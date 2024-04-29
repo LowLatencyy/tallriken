@@ -1176,3 +1176,18 @@ input:not(:checked)+.slider.large {
     /* Begränsar till 3 rader */
     text-overflow: ellipsis;
 }
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px; /* Justera detta värde baserat på din design */
+    background-color: #faf0ca; /* Gula bakgrundsfärgen */
+    z-index: 1000; /* Håller headern över andra element */
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Lägg till en skugga för definition */
+}
+
+body {
+    padding-top: 11px; /* Ge plats för headern så innehåll inte överlappar */
+}
