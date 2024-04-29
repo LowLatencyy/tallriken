@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
     var videos = [
-        "images/videos/videos-startsida/runtmatbord2.mp4.mp4",
-        "images/videos/videos-startsida/runtmatbord2.mp4.mp4"
+        "images/videos/videos-startsida/runtmatbord2.mp4",
+        "images/videos/videos-startsida/runtmatbord2.mp4"
        // "images/videos/videos-startsida/pastapincett.mp4",
         //"images/videos/videos-startsida/pizza1.mp4",
         //"images/videos/videos-startsida/pizzamozzarella.mp4"
