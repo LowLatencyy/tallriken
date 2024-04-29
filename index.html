@@ -130,7 +130,7 @@
         <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
     </a>
 
-  
+
 
     <div class="background-container"></div>
 
@@ -141,8 +141,8 @@
     </div> -->
     <div class="top-space"></div>
 
-      <!-- Ny bild för text under logotypen -->
-      <div class="text-image">
+    <!-- Ny bild för text under logotypen -->
+    <div class="text-image">
         <img src="images/Ingrediens-assistenten-text.svg" alt="Text Image">
     </div>
 
@@ -223,6 +223,12 @@
         const resultsPerPage = 14;
         let totalPages = 0;
 
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap
+            }
+        }
 
 
 
@@ -336,6 +342,7 @@
                 }
 
                 console.log('Filtered data:', filteredData);
+
             } else {
                 // For each selected tag, find matching individual ingredients or grouped ingredients
                 let searchIngredients = selectedTags.flatMap(tag => {
@@ -363,6 +370,10 @@
                     filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
                 }
             }
+
+
+            shuffleArray(filteredData); // Blanda resultaten slumpmässigt direkt efter filtrering och innan data sparas
+            
             // Efter filtrering, spara den filtrerade listan i currentFilteredData
             currentFilteredData = filteredData;
 
@@ -581,29 +592,29 @@
             let lastScrollTop = 0;
 
 
-         // Ta bort eller kommentera bort denna del av koden för att förhindra att sökfältet göms vid scrollning
-    /*
-            window.addEventListener('scroll', function () {
-                var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-                if (currentScroll > lastScrollTop) {
-                    // Användaren scrollar neråt
-                    console.log('Scrolling down');
-                    searchContainer.style.opacity = '0';
-                    searchContainer.style.visibility = 'hidden';
-                    tagContainer.style.opacity = '0';
-                    tagContainer.style.visibility = 'hidden';
-                } else {
-                    // Användaren scrollar uppåt
-                    console.log('Scrolling up');
-                    searchContainer.style.opacity = '1';
-                    searchContainer.style.visibility = 'visible';
-                    tagContainer.style.opacity = '1';
-                    tagContainer.style.visibility = 'visible';
-                }
-                lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
-            }, false);
-            */
+            // Ta bort eller kommentera bort denna del av koden för att förhindra att sökfältet göms vid scrollning
+            /*
+                    window.addEventListener('scroll', function () {
+                        var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+        
+                        if (currentScroll > lastScrollTop) {
+                            // Användaren scrollar neråt
+                            console.log('Scrolling down');
+                            searchContainer.style.opacity = '0';
+                            searchContainer.style.visibility = 'hidden';
+                            tagContainer.style.opacity = '0';
+                            tagContainer.style.visibility = 'hidden';
+                        } else {
+                            // Användaren scrollar uppåt
+                            console.log('Scrolling up');
+                            searchContainer.style.opacity = '1';
+                            searchContainer.style.visibility = 'visible';
+                            tagContainer.style.opacity = '1';
+                            tagContainer.style.visibility = 'visible';
+                        }
+                        lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+                    }, false);
+                    */
         });
 
 
