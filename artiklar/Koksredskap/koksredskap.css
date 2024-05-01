@@ -78,3 +78,30 @@ p {
 .article-preview a:hover {
     background-color: #555;
 }
+
+img {
+    max-width: 100%;
+    /* Sätter maximal bredd men behåller aspektratio */
+    max-height: 200px;
+    /* Sätter maximal höjd */
+    object-fit: contain;
+    /* Ser till att innehållet skalas korrekt inom givna dimensioner utan att beskära det */
+}
+
+.headline-background {
+    background-image: url('images/penseldraggron2.png');
+    /* Anpassa sökvägen till din bild */
+    background-repeat: no-repeat;
+    background-position: center;
+    /* Centrera bilden bakom texten */
+    background-size: contain;
+    /* Gör så att hela bilden ryms i elementet */
+    display: inline-block;
+    /* Behåll detta för att matcha bredden på innehållet */
+    padding: 40px;
+    /* Lägg till mer padding runt texten för att göra bakgrunden större */
+    width: auto;
+    /* Om du vill att det ska anpassas efter innehållet */
+    text-align: center;
+}
+

@@ -1,169 +1,35 @@
 <!DOCTYPE html>
 <html lang="sv">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#faf0ca">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-    <title>Din Startsida Titel</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="foodDays.css"> <!-- Länk till matdags-CSS -->
-    <link rel="stylesheet" href="startsida-image-links.css">
-    <link rel="stylesheet" href="contact.css">
-
-    <link rel="icon" type="image/png" href="images/sidfliklogo.png">
+    <link rel="icon" href="images/sidfliklogo.png" type="image/png">
+    <title>Om Mig</title>
 </head>
-
 <body>
+    <header class="site-header">
+        <a href="startsida2.html" class="logo-link">
+            <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
+        </a>
+        <div id="navbar-container"></div>
+    </header>
 
-    <div id="overlay" hidden></div>
+    <main>
+        <section class="about-me">
+            <h1>Om Oss</h1>
+            <p>Välkommen! Mitt namn är [Ditt Namn], och jag är en passionerad [din profession eller hobby]. På den här sidan delar jag med mig av mina erfarenheter, projekt och de äventyr jag stöter på i min yrkesmässiga och personliga utveckling.</p>
+            <p>Utforska sidan för att veta mer om mig och vad jag gör!</p>
+        </section>
+    </main>
 
-    <nav class="nav">
-        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
-        <label class="nav__trigger-finger" for="trigger">
-            <span></span>
-        </label>
-        <ul class="nav__list">
-            <li class="nav__item">
-                <a href="startsida2.html" class="nav__link">
-                    <span class="nav__text">
-                        Startsida
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="generator.html" class="nav__link">
-                    <span class="nav__text">
-                        Generatorn
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="index.html" class="nav__link">
-                    <span class="nav__text">
-                        Ingredienser
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="#hoi" class="nav__link">
-                    <span class="nav__text">
-                        Om
-                    </span>
-                </a>
-                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
-                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
-                <ul class="nav__list-child">
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Om oss
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Tipsa Oss
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- <li class="nav__item">
-                <a href="#hoi2" class="nav__link">
-                    <span class="nav__text">
-                        Blogg
-                    </span>
-                </a>
-                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
-                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
-                <ul class="nav__list-child">
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Knivar & Kastruller
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Inredning
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-             <li class="nav__item">
-                <a href="#hoi" class="nav__link">
-                    <span class="nav__text">
-                        Blogg
-                    </span>
-                </a>
-            </li> -->
-            <li class="nav__item">
-                <a href="contact.html" class="nav__link">
-                    <span class="nav__text">
-                        Kontakt
-                    </span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <footer id="footer-container"></footer>
 
-    <a href="startsida2.html" class="logo-link">
-        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
-    </a>
+    <script src="/footer.js"></script>
 
-    <!-- Bild för text under logotypen -->
-    <div class="text-image">
-        <img src="images/kontaktaossrubrik.svg" alt="Text Image">
-    </div>
-
-    <div class="content">
-        <div style="text-align: left; padding: 20px;">
-            <h1 style="margin-bottom: 0.5em;">Välkommen till InstaRecept, en plats där mat och kreativitet möts.</h1>
-            <p style="margin-top: 0; margin-bottom: 1em;">Vår hemsida är tillägnad åt att framhäva och fira de otroligt talangfulla matentusiaster och kreatörer som delar med sig av sina recept på Instagram. Vi tror på att dela med oss av kulinarisk inspiration och gör det enkelt för dig att utforska och upptäcka nya recept.</p>
-            <p style="margin-top: 0; margin-bottom: 1em;">Genom vår sökfunktion kan du hitta rätter baserade på dina favoritingredienser eller specifika måltidstyper. Varje recept på vår sida är en direkt inbäddning från skaparens Instagram-konto, och för att hitta fullständiga recept och detaljerade instruktioner är det bara att klicka vidare in till deras instagram. <strong>Vi uppmuntrar dig att följa dessa kreatörer på Instagram för att få ännu mer inspiration!</strong> </p>
-            <p style="margin-top: 0; margin-bottom: 1em;">Vi är djupt engagerade i att respektera upphovsrätten och uppskattar varje kreatörs bidrag till matvärlden. Om du är en skapare vars arbete visas på vår webbplats och har frågor eller önskemål, tveka inte att kontakta oss.</p>
-            <p style="margin-top: 0;">Vår webbplats är byggd på en grund av respekt och beundran för de människor vars kreativitet vi delar. Vi ser fram emot att vara din guide i denna spännande värld av kulinarisk kreativitet och upptäckt. Följ med oss på denna resa och låt oss inspirera dig med varje klick! 🍽️ <strong> Allt innehåll tillhör originalskaparna. Genom att klicka på varje inlägg dirigeras du direkt till skaparens Instagram-profil, där du kan utforska fullständiga recept och mer inspiration.</p>
-
-        </div>
-    </div>
-
-    <script src="foodDays.js"></script> <!-- Länk till matdags-JavaScript -->
-
-    <!-- <img src="images/divider/scribble1.svg" alt="Dekorativ divider" class="image-divider"> -->
-
-    <script src="startsida.js"></script>
-
-    <script src="contact.js"></script>
+    <script src="loadNavbar.js"></script>
 </body>
-
-</html>
-
-
-
-
-
-<!-- <img src="images/plate1.jpg" alt="Om Oss Bild" class="about-image">
-    </div> -->
-
-<div class="footer-banner">
-    <p class="copyright">&copy; 2024. All rights reserved.</p>
-    <div class="footer-links">
-        <a href="omoss.html">Om</a>
-        <a href="tipsaoss.html">Tipsa</a>
-    </div>
-</div>
-</body>
-
 </html>

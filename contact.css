@@ -2,6 +2,7 @@ body {
     background-color: #faf0ca; /* Din önskade gul-sandfärg */
     margin: 0; /* Tar bort standardmarginalen runt `body` */
     font-family: 'Exo 2', sans-serif;
+    
 }
 
 .contact-container {

@@ -1,0 +1,7 @@
+body {
+    background-color: #faf0ca; /* Din önskade gul-sandfärg */
+    margin: 0; /* Tar bort standardmarginalen runt `body` */
+    font-family: 'Leauge Spartan', sans-serif;
+    font-weight: 200;
+    
+}

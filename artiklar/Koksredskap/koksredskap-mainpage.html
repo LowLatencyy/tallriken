@@ -9,11 +9,12 @@
     <title>Köksredskap | Din Webbplats</title>
 
     <!-- Dina befintliga stilar -->
-    <link rel="stylesheet" href="../../style.css">
+  
     <link rel="stylesheet" href="../../style2.css">
-    <link rel="stylesheet" href="../../foodDays.css">
-    <link rel="stylesheet" href="../../startsida-image-links.css">
-    <link rel="stylesheet" href="koksredskap.css"> <!-- Ny CSS-fil för köksredskapssidan -->
+    <link rel="stylesheet" href="koksredskap.css">
+    <link rel="stylesheet" href="../../main.css">
+     <!-- Ny CSS-fil för 
+        köksredskapssidan -->
 
     <!-- Fler länkar till stilar och skript kan läggas till här -->
 
@@ -26,100 +27,16 @@
 </head>
 
 <body>
+    <header class="site-header">
+        <a href="/startsida2.html" class="logo-link">
+            <img src="/images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
+        </a>
 
-    <div id="overlay" hidden></div>
 
-    <nav class="nav">
-        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
-        <label class="nav__trigger-finger" for="trigger">
-            <span></span>
-        </label>
-        <ul class="nav__list">
-            <li class="nav__item">
-                <a href="../../startsida2.html" class="nav__link">
-                    <span class="nav__text">
-                        Startsida
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="../../generator.html" class="nav__link">
-                    <span class="nav__text">
-                        Mat-Generatorn
-                    </span>
-                </a>
-            </li>
-            <li class="nav__item">
-                <a href="../../index.html" class="nav__link">
-                    <span class="nav__text">
-                        Ingrediens-Assistenten
-                    </span>
-                </a>
-            </li>
+        <div id="navbar-container"></div>
 
-            <li class="nav__item">
-                <a href="#hoi" class="nav__link">
-                    <span class="nav__text">
-                        Artiklar
-                    </span>
-                </a>
-                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger-articles" /> <!-- Uppdaterat ID -->
-                <label class="nav__submenu-trigger-finger" for="submenu-trigger-articles"></label> <!-- Uppdaterat för-attribut -->
-                <ul class="nav__list-child">
-                    <li class="nav__item">
-                        <a href="artiklar/halsa/halsa.html" class="nav__link">
-                            <span class="nav__text">
-                                Hälsa
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Inredning
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav__item">
-                <a href="#hoi" class="nav__link">
-                    <span class="nav__text">
-                        Om
-                    </span>
-                </a>
-                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
-                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
-                <ul class="nav__list-child">
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Om oss
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav__item">
-                        <a href="#hoi" class="nav__link">
-                            <span class="nav__text">
-                                Tipsa Oss
-                            </span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
 
-            <li class="nav__item">
-                <a href="../../contact.html" class="nav__link">
-                    <span class="nav__text">
-                        Kontakt
-                    </span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
-    <a href="../../startsida2.html" class="logo-link">
-        <img src="../../images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
+    </header>
     </a>
 
     <div class="top-space"></div>
@@ -150,6 +67,7 @@
             </div>
             <!-- Fler artiklar kan läggas till här -->
         </div>
+       
     </main>
 
     <!-- Din befintliga footer här -->
@@ -157,7 +75,11 @@
 
     <!-- Dina befintliga skript här -->
     <!-- ... -->
+    <footer id="footer-container"></footer>
 
+    <script src="/footer.js"></script>
+
+    <script src="/loadNavbar.js"></script>
 </body>
 
 </html>

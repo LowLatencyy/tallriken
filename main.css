@@ -1,0 +1,247 @@
+html {
+    height: 100%;  /* Detta garanterar att html-taggens höjd är hela fönstrets höjd.*/
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'League Spartan', sans-serif;
+    min-height: 100vh;  /* Detta gör att kroppen är minst lika hög som hela viewport-höjden.*/
+    display: flex;
+    flex-direction: column;  /* Gör att body använder flexbox med vertikal orientering.*/
+    justify-content: space-between;  /* Distribuerar utrymmet så att footern kan sitta längst ner.*/
+}
+
+
+.nav {
+    color: rgb(0, 0, 0);
+    z-index: 9999;
+    /* Sätt ett högt värde här */
+}
+
+.nav__trigger-finger {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 3100;
+    display: flex;
+    align-items: center;
+    width: 20px;
+    height: 15px;
+    margin: 40px;
+    color: rgb(0, 0, 0);
+}
+
+.nav__trigger-finger::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    bottom: -5px;
+    right: -5px;
+    background: transparent;
+    opacity: 0;
+    z-index: 3101;
+    transition: opacity 0.3s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__trigger-finger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    transition: transform 1s cubic-bezier(0.75, 0, 0.25, 1);
+    background: currentColor;
+}
+
+.nav__trigger-finger span::before,
+.nav__trigger-finger span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.4s cubic-bezier(0.75, 0, 0.25, 1), top 0.4s 0.4s cubic-bezier(0.75, 0, 0.25, 1), background 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__trigger-finger span::before {
+    top: 0;
+}
+
+.nav__trigger-finger span::after {
+    top: calc(100% - 2px);
+}
+
+.nav__trigger-input,
+.nav__submenu-trigger-input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    appearance: none;
+    position: fixed;
+}
+
+.nav__trigger-input:focus+label {
+    color: rgb(0, 0, 0);
+}
+
+.nav__trigger-input:focus+label::before {
+    opacity: 1;
+}
+
+.nav__trigger-input:checked+label {
+    height: 10px;
+    color: rgb(0, 0, 0);
+}
+
+.nav__trigger-input:checked+label span {
+    transform: rotate(45deg);
+}
+
+.nav__trigger-input:checked+label span::before,
+.nav__trigger-input:checked+label span::after {
+    top: calc(50% - 1px);
+    transition: transform 0.4s 0.4s cubic-bezier(0.75, 0, 0.25, 1), top 0.4s cubic-bezier(0.75, 0, 0.25, 1), background 0.2s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__trigger-input:checked+label span::after {
+    transform: rotate(90deg);
+}
+
+.nav__trigger-input:checked~ul {
+    z-index: 9;
+    transform: none;
+    transition: 0.5s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__list {
+    position: fixed;
+    overflow-y: scroll;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 3100;
+    background: rgb(203, 223, 189);
+    font-size: 3rem;
+    padding: 40px;
+    transform: translateX(100%);
+    /*translate(100vw) rotate (45deg); */
+    transition: 0.3s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+.nav__item {
+    list-style: none;
+    text-align: left;
+    /* Säkerställer att listpunkterna är vänsterjusterade */
+}
+
+.nav__item+.nav__item {
+    margin-top: 20px;
+}
+
+.nav__submenu-trigger-input:checked+label::after {
+    transform: translateY(10px);
+}
+
+.nav__submenu-trigger-input:checked~ul {
+    display: block;
+}
+
+.nav__submenu-trigger-input:focus+label::after {
+    transform: translateY(5px);
+}
+
+.nav__submenu-trigger-finger::after {
+    content: "";
+    display: inline-block;
+    border: 10px solid transparent;
+    border-top-color: rgb(0, 0, 0);
+    transition: 0.4s cubic-bezier(0.75, 0, 0.25, 1);
+}
+
+
+.nav__list-child {
+    display: none;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    z-index: 3100;
+    padding-left: 2rem;
+}
+
+.nav__link, .nav__item, .nav__list-child a {
+    text-decoration: none; /* Tar bort understrykningar */
+    color: black; /* Ställer in textfärgen till svart */
+    font-weight: bold; /* Behåller fetstil för text */
+}
+
+main {
+    flex: 1;  /* Gör att main-tagg tar upp allt tillgängligt utrymme, trycker ner footern. */
+    padding: 20px;
+}
+
+
+
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    /* Justera detta värde baserat på din design */
+    background-color: #faf0ca;
+    z-index: 5000;
+
+}
+
+footer {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    width: 100%;
+}
+
+
+.footer-banner {
+    background-color: #000;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.footer-banner a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-banner a:hover {
+    text-decoration: underline;
+}
+
+
+.logo-link {
+    position: fixed;
+    top: 10px;
+    /* Justera avståndet från toppen */
+    left: 10px;
+    /* Justera avståndet från vänsterkanten */
+    z-index: 3000;
+    /* Se till att loggan alltid är överst */
+}
+
+.logo-link img {
+    height: 50px;
+    /* Justera storleken på loggan */
+    width: auto;
+    /* Behåller bildens aspektförhållande */
+}
