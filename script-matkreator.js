@@ -121,14 +121,14 @@ async function performSearch() {
         document.getElementById('overlay').style.display = 'none';
     }, 1200);
 
-    // Hämta användarens sökterm
+    // Hämta användarens sökterm och gör det till gemener
     let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
     console.log('Search term:', searchTerm);
 
-    // Filtrera data baserat på "matkreatör" (kolumn J = index 9)
+    // Filtrera data baserat på matkreatör (kolumn J = index 9)
     let filteredData = allData.filter(row => {
-        const matkreator = row[9]?.toLowerCase();
-        return matkreator.includes(searchTerm);
+        const matkreator = row[9]?.toLowerCase().trim();
+        return matkreator.includes(searchTerm); // Kontrollera om matkreatören innehåller söktermen
     });
 
     console.log('Filtered data:', filteredData);
@@ -234,13 +234,8 @@ function displayData(data, page) {
         htmlContent += `<div class="matratt">`;
         htmlContent += `<div class="matratt-title title-background"><h2>${row[0]}</h2></div>`; // Maträttens namn
 
-        /* // Knapp för att visa ingredienser
-        htmlContent += `<button class="ingrediens-knapp" onclick="toggleIngredienser(this)">Visa Ingredienser</button>`;
-
-        // Rullista för ingredienser med mouseleave-händelse
-        htmlContent += `<div class="ingrediens-lista" onmouseleave="hideIngredienser(this)">${row[1].split(', ').join('<br>')}</div>`; */
-
-        htmlContent += row[5]; // Instagram-inlägg
+        // Lägg till Instagram-inlägget från kolumn F (index 5)
+        htmlContent += row[5];
         htmlContent += '</div>';
     });
 
@@ -253,10 +248,6 @@ function displayData(data, page) {
 
     // Visa pagineringskontroller
     displayPaginationControls();
-
-    // Once search is done, hide the loader
-    // Consider using a timeout if the search is too fast to show animation
-    setTimeout(hideLoader);
 }
 
 function displayPaginationControls() {
