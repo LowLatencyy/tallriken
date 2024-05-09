@@ -187,10 +187,9 @@ html {
 #data-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    /* Justerar items till toppen av container */
-    margin-top: 2%;
+    justify-content: space-around; /* Alternativt använd 'center', 'space-between', etc. */
+    align-items: flex-start;
+    margin-top: 20px;
     padding-bottom: 20px;
     overflow: auto;
     z-index: 1500;
@@ -198,8 +197,8 @@ html {
 }
 
 .matratt {
-    flex: 0 0 calc(20% - 20px);
-    max-width: calc(20% - 20px);
+    flex: 0 0 250px; /* Fast bredd, justera detta värde efter behov */
+    
     margin: auto;
     padding: 10px;
     border-radius: 10px;
