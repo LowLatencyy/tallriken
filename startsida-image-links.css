@@ -61,6 +61,13 @@ video {
     display: block; /* prevent default margin/padding */
 }
 
+.top-space {
+    height: 50px; /* Minska detta värde för att minska utrymmet */
+    margin: 0; /* Tar bort eventuella marginaler om de finns */
+    padding: 0; /* Tar bort eventuell padding om den finns */
+}
+
+
 .welcome-text {
     text-align: left;
     padding: 10px;
