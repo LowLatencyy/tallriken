@@ -698,8 +698,8 @@ input:not(:checked)+.slider.large {
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
         margin: 10px;
         /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
-        min-height: 700px;
-        height: 700px; /* Öka höjden här efter behov, exempelvis 700px */
+        min-height: 750px;
+        height: 750px; /* Öka höjden här efter behov, exempelvis 700px */
 
     }
 
