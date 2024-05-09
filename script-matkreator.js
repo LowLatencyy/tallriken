@@ -144,9 +144,6 @@ async function performSearch() {
 }
 
 
-// Fortsätt med resten av din JavaScript-kod här...
-
-
 
 
 function addTagFromButton() {
