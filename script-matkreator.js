@@ -27,6 +27,14 @@ let totalPages = 0;
     }
 } */
 
+// Fisher-Yates Shuffle Algorithm
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]]; // Swap
+    }
+    return array;
+}
 
 
 async function loadData() {
@@ -137,6 +145,9 @@ async function performSearch() {
 
     console.log('Filtered data:', filteredData);
 
+    // Blanda om resultaten med Fisher-Yates
+    filteredData = shuffleArray(filteredData);
+
     // Spara filtrerad data för paginering
     currentFilteredData = filteredData;
 
@@ -146,6 +157,7 @@ async function performSearch() {
     // Visa första sidan av resultaten
     displayData(currentFilteredData, currentPage);
 }
+
 
 
 
