@@ -698,6 +698,7 @@ input:not(:checked)+.slider.large {
         /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
         margin: 10px;
         /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
+        height: 700px; /* Öka höjden här efter behov, exempelvis 700px */
 
     }
 
@@ -711,10 +712,10 @@ input:not(:checked)+.slider.large {
     .matratt iframe {
         width: 100%;
         /* Säkerställer att iframe tar upp hela bredden av sin container */
-        height: 700px;
+        height: 500px;
         /* Exempel på fast höjd, justera enligt behov */
         /* Lägg till andra stylingegenskaper här efter behov */
-        min-height: 700px;
+        min-height: 500px;
     }
 }
 
