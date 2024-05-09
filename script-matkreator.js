@@ -226,11 +226,10 @@ function displayData(data, page) {
 
     var htmlContent = '';
     pageData.forEach((row, index) => {
+        console.log('Displaying row:', row); // Logga varje rad för kontroll
         htmlContent += `<div class="matratt">`;
         htmlContent += `<div class="matratt-title title-background"><h2>${row[0]}</h2></div>`; // Maträttens namn
-
-        // Lägg till Instagram-inlägget från kolumn F (index 5)
-        htmlContent += row[5];
+        htmlContent += row[5]; // Instagram-inlägg
         htmlContent += '</div>';
     });
 
@@ -241,7 +240,6 @@ function displayData(data, page) {
         window.instgrm.Embeds.process();
     }
 
-    // Visa pagineringskontroller
     displayPaginationControls();
 }
 
