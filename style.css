@@ -711,10 +711,10 @@ input:not(:checked)+.slider.large {
     .matratt iframe {
         width: 100%;
         /* Säkerställer att iframe tar upp hela bredden av sin container */
-        height: 500px;
+        height: 700px;
         /* Exempel på fast höjd, justera enligt behov */
         /* Lägg till andra stylingegenskaper här efter behov */
-        min-height: 500px;
+        min-height: 700px;
     }
 }
 
