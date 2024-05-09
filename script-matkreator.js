@@ -112,7 +112,7 @@ async function loadSynonyms() {
 
 
 async function performSearch() {
-    // Visa loadern
+    // Visa loadern och överlägget
     document.getElementById('loader').style.display = 'flex';
     document.getElementById('overlay').style.display = 'block';
 
@@ -121,21 +121,29 @@ async function performSearch() {
         document.getElementById('overlay').style.display = 'none';
     }, 1200);
 
-    // Logga sökterm
+    // Hämta användarens sökterm och gör det till gemener
     let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
     console.log('Search term:', searchTerm);
 
-    // Filtrera matkreatörer
+    // Filtrera data baserat på matkreatör (kolumn J = index 9)
     let filteredData = allData.filter(row => {
-        const matkreator = row[9]?.toLowerCase().trim();
-        return matkreator.includes(searchTerm); // Kontrollera om matkreatören innehåller söktermen
+        // Kontrollera att kolumn 9 finns och inte är undefined
+        if (row.length > 9 && row[9]) {
+            const matkreator = row[9]?.toLowerCase().trim();
+            return matkreator.includes(searchTerm); // Kontrollera om matkreatören innehåller söktermen
+        }
+        return false;
     });
 
-    // Logga filtrerade data
     console.log('Filtered data:', filteredData);
 
+    // Spara filtrerad data för paginering
     currentFilteredData = filteredData;
+
+    // Beräkna antal sidor
     totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
+
+    // Visa första sidan av resultaten
     displayData(currentFilteredData, currentPage);
 }
 
