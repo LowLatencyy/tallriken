@@ -399,7 +399,7 @@ html {
 }
 
 .logo-link img {
-    height: 50px;
+    height: 40px;
     /* Justera storleken på loggan */
     width: auto;
     /* Behåller bildens aspektförhållande */
@@ -722,7 +722,7 @@ input:not(:checked)+.slider.large {
 @media (max-width: 480px) {
 
     .logo-link img {
-        height: 80px;
+        height: 40px;
         /* Justera storleken på logotypen om det behövs */
     }
 
