@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Lägg till denna länk i din head-tagg 
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+
+    <meta name="theme-color" content="#faf0ca">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
+    <link rel="icon" type="image/png" href="images/sidfliklogo.png">
+</head>
+
+<body>
+
+
+    <!--gamla loadern 3 punkter -->
+    <!-- Loader HTML -->
+    <div class="blocks" id="loader" hidden>
+        <div class="block orange"></div>
+        <div class="block blue"></div>
+    </div>
+
+    <!-- Överlägg för att mörkna och sudda ut bakgrunden när loadern visas -->
+    <div id="overlay" hidden></div>
+
+
+
+    <header class="site-header">
+        <a href="startsida2.html" class="logo-link">
+            <img src="images/logos/cleanlogowithframe.svg" alt="Logga" />
+        </a>
+
+        <div id="navbar-container"></div>
+
+
+    </header>
+
+   <!-- <a href="startsida2.html" class="logo-link">
+        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
+    </a> -->
+
+
+
+    <div class="background-container"></div>
+
+    <!-- Logotyp Container -->
+    <!-- <div class="logo-container" style="text-align: center; margin-top: 20px;">
+        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logotyp" class="logo-image">
+
+    </div> -->
+    
+
+    <!-- Ny bild för text under logotypen -->
+    <div class="text-image">
+        <img src="images/Ingrediens-assistenten-text.svg" alt="Text Image">
+    </div>
+
+    <div class="search-container">
+        <!-- Ny slider här 
+        <div class="search-mode-container">
+            <div class="search-mode-label">←Sök på ingredienser</div>
+            <label class="switch large">
+                <input type="checkbox" id="searchModeSwitch" onchange="toggleSearchMode()">
+                <span class="slider round large"></span>
+            </label>
+            <div class="search-mode-label">Sök på maträtt→</div>
+        </div> -->
+        <!-- Slider-knappar ovanför sökfältet -->
+        <div class="slider-button-container">
+            <div class="veg-container">
+                <div class="veg-label">Bara Veg</div>
+                <label class="switch">
+                    <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+            <!--
+            <div class="lang-container">
+                <div class="lang-label">På svenska</div>
+                <label class="switch">
+                    <input type="checkbox" id="langSwitch" onchange="toggleLangFilter()">
+                    <span class="slider round"></span>
+                </label>
+            </div> -->
+        </div>
+
+        <!-- Sökfält och knappar -->
+        <div class="input-button-container">
+            <input type="text" id="searchInput" placeholder="Skriv 1 ingrediens och tryck Enter/Gå...">
+            <button onclick="addTagFromButton()" class="add-button">
+                <img src="images/knifeforksign.jpg
+                " alt="Add" />
+            </button> <!-- Ny knapp för att lägga till taggar -->
+            <!-- <button onclick="performSearch()">Sök</button> -->
+        </div>
+
+        <!-- Taggarna här -->
+        <div class="tag-container"></div>
+    </div>
+
+
+    <div id="data-container" class="initial"></div>
+
+    <div id="pagination-controls"></div>
+
+
+  
+
+    <script src="script-matkreator.js"></script>
+
+    <script src="loadNavbar.js"></script>
+
+
+    <script async src="//www.instagram.com/embed.js"></script>
+
+
+  
+
+    
+
+    
+</body>
+
+</html>

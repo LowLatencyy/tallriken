@@ -25,7 +25,7 @@ const foodDays = [
     { date: '2024-05-05', image: 'images/Food-Days/kebabspett.jpg', title: 'Internationella kebabdagen', description: '' },
     { date: '2024-05-05', image: 'images/Food-Days/nasselte.jpg', title: 'Nässlans dag', description: 'Brännässlan är mest känd som ogräs och sommarplåga.' },
     { date: '2024-05-06', image: 'images/Food-Days/hembakat1.jpg', title: 'Hembakatdagen', description: 'Äppelkakor, schackrutor, hallongrottor och fluffiga muffins.' },
-    { date: '2024-05-11', image: 'images/Food-Days/chokladboll.jpg', title: 'Chokladbollens dag', description: 'Dags att njuta av en chokladboll eller 5.' },
+    { date: '2024-05-09', image: 'images/Food-Days/chokladboll.jpg', title: 'Chokladbollens dag', description: 'Dags att njuta av en chokladboll eller 5.' },
     { date: '2024-05-13', image: 'images/Food-Days/appelpaj.jpg', title: 'Apple Pie Day', description: 'Internationell dag för att fira med äppelpaj.' },
     { date: '2024-05-15', image: '', title: 'Kardemummabullens dag', description: 'Finns det något godare än en nybakad kardemummabulle?' },
     { date: '2024-05-17', image: 'images/Food-Days/norgesflagga.jpg', title: 'Norges nationaldag', description: 'Norge firar sin konstitution.' },
