@@ -13,6 +13,16 @@ document.addEventListener('DOMContentLoaded', async function () {
     const selectedFilters = { country: [], protein: [], mealtype: [] };
 
 
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]]; // Swap
+        }
+        return array;
+    }
+
+
+
     function filterData() {
         const filteredResults = allData.filter(row => {
             // Split och trimma varje kategori för att hantera flera värden
@@ -92,30 +102,37 @@ document.addEventListener('DOMContentLoaded', async function () {
             return countryMatch && proteinMatch && mealtypeMatch;
         });
 
+        // Anropa Fisher-Yates shuffle på de filtrerade resultaten för att slumpmässigt ordna dem
+        shuffleArray(filteredResults);
 
-        filteredResults.forEach(row => {
-            const instagramCode = row[5];
-            const instagramPost = document.createElement('div');
-            instagramPost.innerHTML = instagramCode;
-            container.appendChild(instagramPost);
-        });
-
-        if (window.instgrm) {
-            window.instgrm.Embeds.process();
-        } else {
-            const script = document.createElement('script');
-            script.async = true;
-            script.src = "//www.instagram.com/embed.js";
-            document.body.appendChild(script);
-            script.onload = function () {
-                window.instgrm.Embeds.process();
-            };
-        }
-
+        // Visa resultat eller meddela om inga resultat finns
         if (filteredResults.length === 0) {
             container.innerHTML = '<div>Inga matchande recept hittades.</div>';
+        } else {
+            filteredResults.forEach(row => {
+                const instagramCode = row[5];
+                const instagramPost = document.createElement('div');
+                instagramPost.innerHTML = instagramCode;
+                container.appendChild(instagramPost);
+            });
+
+            if (window.instgrm) {
+                window.instgrm.Embeds.process();
+            } else {
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = "//www.instagram.com/embed.js";
+                document.body.appendChild(script);
+                script.onload = function () {
+                    window.instgrm.Embeds.process();
+                };
+            }
         }
+
+        // Visa pagineringskontroller om nödvändigt
+        displayPaginationControls();
     }
+
 
 
 
