@@ -20,12 +20,7 @@ let currentPage = 1;
 const resultsPerPage = 14;
 let totalPages = 0;
 
-/* function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]]; // Swap
-    }
-} */
+
 
 // Fisher-Yates Shuffle Algorithm
 function shuffleArray(array) {
@@ -35,6 +30,7 @@ function shuffleArray(array) {
     }
     return array;
 }
+
 
 
 async function loadData() {
@@ -118,7 +114,6 @@ async function loadSynonyms() {
 }
 
 
-
 async function performSearch() {
     // Visa loadern och överlägget
     document.getElementById('loader').style.display = 'flex';
@@ -157,6 +152,7 @@ async function performSearch() {
     // Visa första sidan av resultaten
     displayData(currentFilteredData, currentPage);
 }
+
 
 
 

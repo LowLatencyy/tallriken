@@ -20,13 +20,16 @@ let currentPage = 1;
 const resultsPerPage = 14;
 let totalPages = 0;
 
-/* function shuffleArray(array) {
+
+
+// Fisher-Yates Shuffle Algorithm
+function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]]; // Swap
     }
-} */
-
+    return array;
+}
 
 
 async function loadData() {
@@ -169,7 +172,7 @@ async function performSearch() {
     }
 
 
-    /* shuffleArray(filteredData); */ // Blanda resultaten slumpmässigt direkt efter filtrering och innan data sparas
+    shuffleArray(filteredData);  // Blanda resultaten slumpmässigt direkt efter filtrering och innan data sparas
 
     // Efter filtrering, spara den filtrerade listan i currentFilteredData
     currentFilteredData = filteredData;
