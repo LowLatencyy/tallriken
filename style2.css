@@ -89,7 +89,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgb(250, 240, 202);
+    background-color: rgb(242 242 240);
     z-index: -1;
 }
 
@@ -122,18 +122,20 @@ html {
 
 .matratt {
     flex: 0 0 250px;
+    /* Justera om du vill ändra storlek på resultatkorten */
     margin: auto;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
     background: white;
-    border: 1px solid rgb(219, 219, 219);
+    border: 1px solid rgb(242, 242, 240);
     box-shadow: none;
-    display: block;
     margin: 0px 0px 12px;
     height: auto;
     min-height: 500px;
+    /* Justera beroende på hur stor du vill att korten ska vara */
 }
+
 
 .matratt-info {
     padding: 10px;
@@ -142,31 +144,40 @@ html {
 }
 
 .matratt iframe {
-    background: white;
-    max-width: 100%;
     width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-height: 400px;
+    /* eller en höjd du önskar */
+    max-height: 500px;
+    /* Bevara en maxhöjd */
+    border: 1px solid rgb(242, 242, 240);
     border-radius: 3px;
-    border: 1px solid rgb(219, 219, 219);
-    box-shadow: none;
+    margin: 0 auto 12px;
     display: block;
-    margin: 0px 0px 12px;
-    padding: 0px;
-    height: 200px;
-    /* Gör så att höjden anpassas automatiskt */
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
+
+
+
 .matratt-title {
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 5px;
-    margin: 5px 0;
-    border-radius: 10px;
-    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.9);
+    /* Mörkare bakgrund */
+    padding: 10px;
+    /* Ökad padding */
+    margin: 10px 0;
+    /* Mer utrymme */
+    border-radius: 8px;
+    /* Liten rundning */
+    font-size: 18px;
+    /* Större text */
     color: white;
     text-align: center;
+    line-height: 1.4;
+    /* Radavstånd */
 }
+
+
 
 .instagram-media iframe {
     width: 50%;
@@ -282,7 +293,7 @@ html {
 }
 
 #pagination-controls button:hover {
-    background-color: rgb(255, 247, 179);
+    background-color: rgb(242, 242, 240);
 }
 
 #pagination-controls {
@@ -314,9 +325,22 @@ html {
     }
 
     .matratt-title {
-        font-size: 10px;
-        max-width: 50%;
+        background-color: rgba(0, 0, 0, 0.9);
+        /* Mörkare bakgrund */
+        padding: 10px;
+        /* Ökad padding */
+        margin: 10px 0;
+        /* Mer utrymme */
+        border-radius: 8px;
+        /* Liten rundning */
+        font-size: 18px;
+        /* Större text */
+        color: white;
+        text-align: center;
+        line-height: 1.4;
+        /* Radavstånd */
     }
+
 
     .matratt iframe {
         width: 100%;
@@ -331,8 +355,22 @@ html {
     }
 
     .matratt-title {
-        font-size: 10px;
+        background-color: rgba(0, 0, 0, 0.9);
+        /* Mörkare bakgrund */
+        padding: 10px;
+        /* Ökad padding */
+        margin: 10px 0;
+        /* Mer utrymme */
+        border-radius: 8px;
+        /* Liten rundning */
+        font-size: 18px;
+        /* Större text */
+        color: white;
+        text-align: center;
+        line-height: 1.4;
+        /* Radavstånd */
     }
+
 
     #data-container.initial {
         margin-top: 40px;
@@ -369,7 +407,7 @@ html {
 }
 
 .current-page {
-    background-color: rgb(255, 247, 179) !important;
+    background-color: rgb(242, 242, 240) !important;
     color: black !important;
 }
 
@@ -720,7 +758,7 @@ html {
     left: 0;
     width: 100%;
     height: 70px;
-    background-color: #faf0ca;
+    background-color: rgb(242, 242, 240);
     z-index: 1000;
 }
 
@@ -898,7 +936,9 @@ body {
     padding-left: 2rem;
 }
 
-.nav__link, .nav__item, .nav__list-child a {
+.nav__link,
+.nav__item,
+.nav__list-child a {
     text-decoration: none;
     color: black;
     font-weight: bold;
@@ -915,7 +955,7 @@ main {
     left: 0;
     width: 100%;
     height: 70px;
-    background-color: #faf0ca;
+    background-color: rgb(242, 242, 240);
     z-index: 5000;
 }
 
@@ -959,4 +999,10 @@ footer {
 .logo-link img {
     height: 60px;
     width: auto;
+}
+
+.matratt {
+    background-color: yellow; /* Lägg till tillfällig stil för att testa */
+    height: 100px; /* Begränsa höjden till något enkelt för test */
+    width: 100px; /* Samma här */
 }

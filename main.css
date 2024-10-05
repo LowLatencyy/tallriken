@@ -193,7 +193,7 @@ main {
     width: 100%;
     height: 70px;
     /* Justera detta värde baserat på din design */
-    background-color: #faf0ca;
+    background-color: rgb(255, 255, 255);
     z-index: 5000;
 
 }

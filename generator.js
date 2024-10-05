@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             if (!row[3] || !row[4] || !row[8]) {
                 return false;
             }
+            
 
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].split(',').map(s => s.trim()).includes(f));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].split(',').map(s => s.trim()).includes(f));
@@ -113,6 +114,9 @@ document.addEventListener('DOMContentLoaded', async function () {
                 const instagramCode = row[5];
                 const instagramPost = document.createElement('div');
                 instagramPost.innerHTML = instagramCode;
+
+                console.log('Instagram Embed Code:', row[5]);
+
                 container.appendChild(instagramPost);
             });
 
@@ -131,6 +135,9 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         // Visa pagineringskontroller om nödvändigt
         displayPaginationControls();
+
+        console.log('Instagram Embed Code:', row[5]);
+
     }
 
 
@@ -140,7 +147,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
     function displayResults(results) {
-        // Uppdaterad för att använda den nya maträtt-container strukturen
         totalPages = Math.ceil(results.length / resultsPerPage);
         const startIndex = (currentPage - 1) * resultsPerPage;
         const endIndex = startIndex + resultsPerPage;
@@ -149,23 +155,23 @@ document.addEventListener('DOMContentLoaded', async function () {
         const container = document.getElementById('data-container');
         container.innerHTML = resultsToDisplay.length > 0
             ? resultsToDisplay.map(row => {
-                // Anta att Instagram-koden är i en specifik kolumn, t.ex. index 5, och titeln i index 0
-                const instagramEmbedCode = row[5];
-                const title = row[0];
-                // Skapa ett 'div' element för varje maträtt som innehåller den inbäddade Instagram-koden och titel
+                const instagramEmbedCode = row[5];  // Instagram-kod från kolumn
+                const title = row[0];  // Titeln från kolumn 0
+                const ingredients = row[6];  // Ingredienser, anta att de är i kolumn 6
+
                 return `
-                    <div class="matratt-container">
-                        <div class="matratt">${instagramEmbedCode}</div>
-                        <div class="matratt-info">
-                            <h2 class="matratt-title">${title}</h2>
-                        </div>
+                    <div class="matratt">
+                    <div class="matratt">${instagramEmbedCode}</div>
+                    <div class="matratt-title title-background"><h2>${title}</h2></div>
+                    <div class="matratt-ingredienser">${ingredients}</div>
                     </div>
                 `;
             }).join('')
             : '<div>Inga resultat hittades.</div>';
 
-        displayPaginationControls();
+        displayPaginationControls(); // Visa pagineringskontrollerna
     }
+
 
 
 
