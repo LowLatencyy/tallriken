@@ -1041,3 +1041,12 @@ body {
     padding-top: 11px;
     /* Ge plats för headern så innehåll inte överlappar */
 }
+
+#no-results-message {
+    display: flex;
+    flex-direction: column; /* Så att bild och text är i kolumn-layout */
+    justify-content: center; /* Vertikal centrering */
+    align-items: center; /* Horisontell centrering */
+    height: 100vh; /* Gör så att det täcker hela fönstret i höjdled */
+    text-align: center;
+}
