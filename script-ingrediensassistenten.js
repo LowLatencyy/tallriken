@@ -115,25 +115,22 @@ async function loadSynonyms() {
 
 
 async function performSearch() {
-    // Visa loadern och överlägget
     document.getElementById('loader').style.display = 'flex';
-    document.getElementById('overlay').style.display = 'block'; // Visa överlägget
+    document.getElementById('overlay').style.display = 'block';
 
-    // Sätt en timer för att dölja både loadern och överlägget efter 3 sekunder
     setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
-        document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-    }, 1200); // 3000 ms = 3 sekunder
-    currentPage = 1; // Återställer till första sidan vid varje ny sökning
+        document.getElementById('overlay').style.display = 'none';
+    }, 1200);
+
+    currentPage = 1;
     let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
     console.log('Search term:', searchTerm);
-    let filteredData = allData; // Använd allData som utgångspunkt
+    let filteredData = allData;
 
     if (searchForDishes) {
-        // Search based on dish name
         filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
 
-        // Filter for Vegetarian and Swedish recipes if activated
         if (isVegFilterActive) {
             filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
         }
@@ -144,7 +141,6 @@ async function performSearch() {
         console.log('Filtered data:', filteredData);
 
     } else {
-        // For each selected tag, find matching individual ingredients or grouped ingredients
         let searchIngredients = selectedTags.flatMap(tag => {
             if (groupedIngredients[tag]) {
                 return groupedIngredients[tag];
@@ -171,19 +167,20 @@ async function performSearch() {
         }
     }
 
+    shuffleArray(filteredData);
 
-    shuffleArray(filteredData);  // Blanda resultaten slumpmässigt direkt efter filtrering och innan data sparas
-
-    // Efter filtrering, spara den filtrerade listan i currentFilteredData
     currentFilteredData = filteredData;
-
-    // Använd currentFilteredData för att visa den första sidan av sökresultaten
     totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
-    displayData(currentFilteredData, currentPage);
 
-
-
+    if (filteredData.length === 0) {
+        document.getElementById('data-container').innerHTML = '';  // Rensar resultatlistan
+        document.getElementById('no-results-message').style.display = 'block';  // Visa meddelande
+    } else {
+        document.getElementById('no-results-message').style.display = 'none';  // Dölj meddelande
+        displayData(currentFilteredData, currentPage);
+    }
 }
+
 
 
 // Fortsätt med resten av din JavaScript-kod här...

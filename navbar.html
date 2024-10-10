@@ -1,135 +1,100 @@
-<nav class="nav">
-    <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
-    <label class="nav__trigger-finger" for="trigger">
-        <span></span>
-    </label>
-    <ul class="nav__list">
-        <li class="nav__item">
-            <a href="startsida2.html" class="nav__link">
-                <span class="nav__text">
-                    Startsida
-                </span>
-            </a>
-        </li>
-        <li class="nav__item">
-            <a href="generator.html" class="nav__link">
-                <span class="nav__text">
-                    Mat-Generatorn
-                </span>
-            </a>
-        </li>
-        <li class="nav__item">
-            <a href="index.html" class="nav__link">
-                <span class="nav__text">
-                    Ingrediens-Assistenten
-                </span>
-            </a>
-        </li>
-        <li class="nav__item">
-            <a href="matkreator.html" class="nav__link">
-                <span class="nav__text">
-                    Matkreatörer
-                </span>
-            </a>
-        </li>
-
-        <li class="nav__item">
-            <a href="#hoi" class="nav__link">
-                <span class="nav__text">
-                    Artiklar
-                </span>
-            </a>
-            <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger-articles" /> <!-- Uppdaterat ID -->
-            <label class="nav__submenu-trigger-finger" for="submenu-trigger-articles"></label> <!-- Uppdaterat för-attribut -->
-            <ul class="nav__list-child">
-                <li class="nav__item">
-                    <a href="artiklar/halsa.html" class="nav__link">
-                        <span class="nav__text">
-                            Hälsa
-                        </span>
-                    </a>
-                </li>
-                <li class="nav__item">
-                    <a href="artiklar/koksredskap-mainpage.html" class="nav__link">
-                        <span class="nav__text">
-                            Köksredskap
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <li class="nav__item">
-            <a href="#hoi" class="nav__link">
-                <span class="nav__text">
-                    Om
-                </span>
-            </a>
-            <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
-            <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
-            <ul class="nav__list-child">
-                <li class="nav__item">
-                    <a href="#hoi" class="nav__link">
-                        <span class="nav__text">
-                            Om oss
-                        </span>
-                    </a>
-                </li>
-                <li class="nav__item">
-                    <a href="#hoi" class="nav__link">
-                        <span class="nav__text">
-                            Tipsa Oss
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-        <!-- <li class="nav__item">
-            <a href="#hoi2" class="nav__link">
-                <span class="nav__text">
-                    Blogg
-                </span>
-            </a>
-            <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
-            <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
-            <ul class="nav__list-child">
-                <li class="nav__item">
-                    <a href="#hoi" class="nav__link">
-                        <span class="nav__text">
-                            Knivar & Kastruller
-                        </span>
-                    </a>
-                </li>
-                <li class="nav__item">
-                    <a href="#hoi" class="nav__link">
-                        <span class="nav__text">
-                            Inredning
-                        </span>
-                    </a>
-                </li>
-            </ul>
-        </li>
-         <li class="nav__item">
-            <a href="#hoi" class="nav__link">
-                <span class="nav__text">
-                    Blogg
-                </span>
-            </a>
-        </li> -->
-        <li class="nav__item">
-            <a href="contact.html" class="nav__link">
-                <span class="nav__text">
-                    Kontakt
-                </span>
-            </a>
-        </li>
-    </ul>
-</nav>
-
+<!DOCTYPE html>
+<html lang="sv">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Hemsida</title>
+
     <style>
-        .nav__text {
-            font-size: 25px;
-            /* Ändra textstorlek på alla menyval */
+        /* Justera textstorlek och radavstånd inom menyval */
+        .nav__link .nav__text {
+            font-size: 25px; /* Justera textstorleken här */
+            line-height: 1; /* Minska radavståndet inom varje menyval */
+        }
+
+        /* Justera avståndet mellan menyval */
+        .nav__item {
+            margin-bottom: 0px; /* Ta bort avståndet mellan menyvalen */
+        }
+
+        /* Minska inneravståndet inuti länkarna (vertikalt) */
+        .nav__link {
+            padding: 5px 0; /* Justera avståndet inuti länkarna */
         }
     </style>
 </head>
+
+<body>
+    <nav class="nav">
+        <input class="nav__trigger-input" type="checkbox" id="trigger" aria-label="open the navigation" />
+        <label class="nav__trigger-finger" for="trigger">
+            <span></span>
+        </label>
+        <ul class="nav__list">
+            <li class="nav__item">
+                <a href="startsida2.html" class="nav__link">
+                    <span class="nav__text">Startsida</span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="generator.html" class="nav__link">
+                    <span class="nav__text">Mat-Generatorn</span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="index.html" class="nav__link">
+                    <span class="nav__text">Ingrediens-Assistenten</span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="matkreator.html" class="nav__link">
+                    <span class="nav__text">Matkreatörer</span>
+                </a>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">Artiklar</span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger-articles" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger-articles"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="artiklar/halsa.html" class="nav__link">
+                            <span class="nav__text">Hälsa</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="artiklar/koksredskap-mainpage.html" class="nav__link">
+                            <span class="nav__text">Köksredskap</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a href="#hoi" class="nav__link">
+                    <span class="nav__text">Om</span>
+                </a>
+                <input class="nav__submenu-trigger-input" type="checkbox" id="submenu-trigger" />
+                <label class="nav__submenu-trigger-finger" for="submenu-trigger"></label>
+                <ul class="nav__list-child">
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">Om oss</span>
+                        </a>
+                    </li>
+                    <li class="nav__item">
+                        <a href="#hoi" class="nav__link">
+                            <span class="nav__text">Tipsa Oss</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav__item">
+                <a href="contact.html" class="nav__link">
+                    <span class="nav__text">Kontakt</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
