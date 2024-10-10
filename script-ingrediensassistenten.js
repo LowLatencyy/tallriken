@@ -172,14 +172,16 @@ async function performSearch() {
     currentFilteredData = filteredData;
     totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
 
+    // Kontrollera om inga resultat hittades
     if (filteredData.length === 0) {
         document.getElementById('data-container').innerHTML = '';  // Rensar resultatlistan
-        document.getElementById('no-results-message').style.display = 'block';  // Visa meddelande
+        document.getElementById('no-results-message').style.display = 'block';  // Visa meddelande och GIF
     } else {
-        document.getElementById('no-results-message').style.display = 'none';  // Dölj meddelande
+        document.getElementById('no-results-message').style.display = 'none';  // Dölj meddelande och GIF
         displayData(currentFilteredData, currentPage);
     }
 }
+
 
 
 
