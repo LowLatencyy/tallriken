@@ -715,18 +715,18 @@ html {
     padding: 15px 30px;
     margin: 0 auto 30px;
     display: block;
-    background-color: rgb(203, 223, 189);
+    background-color: rgb(207, 255, 0);
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 50px;
-    box-shadow: 0 5px 15px rgb(8, 39, 69);
+    box-shadow: 0 5px 15px rgb(0, 0, 0);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 #searchBtn:hover {
-    background-color: rgb(241, 156, 121);
-    box-shadow: 0 8px 25px rgb(255, 255, 255);
+    background-color: rgb(146, 211, 253);
+    box-shadow: 0 8px 25px rgb(207, 255, 0);
 }
 
 #searchBtn:active {
