@@ -172,77 +172,12 @@ html {
     /* Avrundade hörn till höger (både upp och ner) */
 }
 
-#data-container.initial {
-    margin-top: 20px;
-    /* Anpassa detta värde så att det passar layouten av din sökcontainer */
-}
-
-#data-container.search-active {
-    margin-top: 0;
-    /* Anpassa detta värde som behövs */
-}
 
 
 
-#data-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    /* Alternativt använd 'center', 'space-between', etc. */
-    align-items: flex-start;
-    margin-top: 20px;
-    padding-bottom: 20px;
-    overflow: auto;
-    z-index: 1500;
-    /* högre än sökfältets z-index */
-}
 
-.matratt {
-    flex: 0 0 250px;
-    /* Fast bredd, justera detta värde efter behov */
 
-    margin: auto;
-    padding: 10px;
-    border-radius: 10px;
-    text-align: center;
-    box-sizing: border-box;
-    align-self: flex-start;
-    position: relative;
-    width: 100%;
-}
 
-.matratt iframe {
-    background: white;
-    max-width: 100%;
-    /* Denna regel säkerställer att iframe tar upp till 100% av sin förälders bredd */
-    width: 100%;
-    /* Denna regel gör så att iframe faktiskt tar upp 100% av tillgänglig bredd */
-    border-radius: 3px;
-    border: 1px solid rgb(219, 219, 219);
-    box-shadow: none;
-    display: block;
-    margin: 0px 0px 12px;
-    padding: 0px;
-    height: auto;
-    /* Gör så att höjden anpassas automatiskt */
-    min-height: 500px;
-    /* Minimum höjd för att säkerställa konsistens */
-}
-
-.matratt-title {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 5px;
-    margin: 5px 0;
-    border-radius: 10px;
-    font-size: 10;
-
-}
-
-.matratt-ingredienser div {
-    position: absolute;
-    left: 0;
-    animation: ticker 20s linear infinite;
-}
 
 .ingrediens-knapp {
     background-color: #f2f2f2;
@@ -288,11 +223,7 @@ html {
 
 }
 
-.matratt h2,
-.matratt p,
-.matratt a {
-    margin: 5px 0;
-}
+
 
 
 
@@ -425,15 +356,6 @@ html {
 }
 
 
-
-.matratt-title,
-.ingrediens-knapp,
-.ingrediens-lista {
-    color: white;
-    /* Vit text */
-    background-color: rgba(0, 0, 0, 0.8);
-    /* Svart bakgrund */
-}
 
 /* Stilen för omkopplaren */
 .switch {
@@ -694,33 +616,8 @@ input:not(:checked)+.slider.large {
         display: block;
     }
 
-    .matratt {
-        flex: 0 0 calc(25% - 25px);
-        max-width: calc(25% - 25px);
-        /* Lägg till eventuella ytterligare stilar som behövs för desktop här */
-        margin: 10px;
-        /* Halva marginalvärdet, eftersom det tillämpas på båda sidor */
-        min-height: 750px;
-        height: 750px;
-        /* Öka höjden här efter behov, exempelvis 700px */
+  
 
-    }
-
-    .matratt-title {
-        font-size: 10px;
-        /* Justera detta värde efter dina behov */
-        max-width: 50%;
-        /* eller vilken bredd du föredrar */
-    }
-
-    .matratt iframe {
-        width: 100%;
-        /* Säkerställer att iframe tar upp hela bredden av sin container */
-        height: 500px;
-        /* Exempel på fast höjd, justera enligt behov */
-        /* Lägg till andra stylingegenskaper här efter behov */
-        min-height: 500px;
-    }
 }
 
 @media (max-width: 480px) {
@@ -745,19 +642,6 @@ input:not(:checked)+.slider.large {
     }
 
 
-    #data-container.initial {
-        margin-top: 40px;
-        /* Minska detta värde för att minska utrymmet mellan sökfält och resultat */
-        padding: 0 5px;
-        /* Justera sidomarginaler */
-    }
-
-    #data-container {
-        margin-top: 40px;
-        /* Öka detta värde för att skapa utrymme mellan sökfältet och sökresultaten */
-        padding: 0 5px;
-        /* Justera sidomarginaler */
-    }
 
 
     .input-button-container input[type='text'],
@@ -775,16 +659,6 @@ input:not(:checked)+.slider.large {
         /* Minska padding till vänster */
     }
 
-    .matratt {
-        flex-basis: calc(50% - 20px);
-        /* Justerar bredden så två element får plats, minus marginal */
-        max-width: calc(50% - 20px);
-        /* Samma här */
-        padding: 2px;
-        /* Mindre padding inuti varje resultat */
-        margin: 5px;
-        /* Behåller en liten marginal runt varje element */
-    }
 
     .search-container * {
         pointer-events: auto;
