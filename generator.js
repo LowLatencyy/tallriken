@@ -147,32 +147,29 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 
     function displayResults(results) {
-        totalPages = Math.ceil(results.length / resultsPerPage);
-        const startIndex = (currentPage - 1) * resultsPerPage;
-        const endIndex = startIndex + resultsPerPage;
-        const resultsToDisplay = results.slice(startIndex, endIndex);
-
         const container = document.getElementById('data-container');
-        container.innerHTML = resultsToDisplay.length > 0
-            ? resultsToDisplay.map(row => {
-                const instagramEmbedCode = row[5];  // Instagram-kod från kolumn
-                const title = row[0];  // Titeln från kolumn 0
-                const ingredients = row[6];  // Ingredienser, anta att de är i kolumn 6
-
-                return `
-                    <div class="matratt">
-                    <div class="matratt">${instagramEmbedCode}</div>
+        container.innerHTML = ''; // Rensa tidigare resultat
+    
+        results.forEach(row => {
+            const instagramEmbedCode = row[5];  // Instagram-kod från kolumn
+            const title = row[0];  // Titeln från kolumn 0
+    
+            // HTML-strukturen för att visa resultat
+            const resultHTML = `
+                <div class="matratt">
                     <div class="matratt-title title-background"><h2>${title}</h2></div>
-                    <div class="matratt-ingredienser">${ingredients}</div>
-                    </div>
-                `;
-            }).join('')
-            : '<div>Inga resultat hittades.</div>';
-
-        displayPaginationControls(); // Visa pagineringskontrollerna
+                    <div>${instagramEmbedCode}</div>
+                </div>
+            `;
+            container.innerHTML += resultHTML; // Lägg till resultatet i container
+        });
+    
+        // Använd Instagram Embed API för att rendera inlägg
+        if (window.instgrm) {
+            window.instgrm.Embeds.process();
+        }
     }
-
-
+    
 
 
 
