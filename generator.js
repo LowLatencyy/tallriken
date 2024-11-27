@@ -85,120 +85,101 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Hämta behållaren där resultat ska visas
         const container = document.getElementById('data-container');
         container.innerHTML = ''; // Rensa tidigare resultat
-
+    
         console.log('Selected filters:', selectedFilters);
-        console.log('Sample data rows:', allData.slice(0, 5));
-
+    
         const filteredResults = allData.filter(row => {
             // Kontrollera att alla relevanta kolumner finns
             if (!row[3] || !row[4] || !row[8]) {
                 return false;
             }
-            
-
+    
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].split(',').map(s => s.trim()).includes(f));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].split(',').map(s => s.trim()).includes(f));
             const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => row[8].split(',').map(s => s.trim()).includes(f));
-
+    
             return countryMatch && proteinMatch && mealtypeMatch;
         });
-
-        // Anropa Fisher-Yates shuffle på de filtrerade resultaten för att slumpmässigt ordna dem
+    
+        // Shuffle för att slumpa resultaten
         shuffleArray(filteredResults);
-
-        // Visa resultat eller meddela om inga resultat finns
-        if (filteredResults.length === 0) {
-            container.innerHTML = '<div>Inga matchande recept hittades.</div>';
-        } else {
-            filteredResults.forEach(row => {
-                const instagramCode = row[5];
-                const instagramPost = document.createElement('div');
-                instagramPost.innerHTML = instagramCode;
-
-                console.log('Instagram Embed Code:', row[5]);
-
-                container.appendChild(instagramPost);
-            });
-
-            if (window.instgrm) {
-                window.instgrm.Embeds.process();
-            } else {
-                const script = document.createElement('script');
-                script.async = true;
-                script.src = "//www.instagram.com/embed.js";
-                document.body.appendChild(script);
-                script.onload = function () {
-                    window.instgrm.Embeds.process();
-                };
-            }
-        }
-
-        // Visa pagineringskontroller om nödvändigt
-        displayPaginationControls();
-
-        console.log('Instagram Embed Code:', row[5]);
-
+    
+        // Spara filtrerade resultat för paginering
+        currentFilteredData = filteredResults;
+    
+        // Uppdatera totalPages
+        totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
+    
+        // Visa första sidan
+        currentPage = 1;
+        displayResults(currentFilteredData.slice(0, resultsPerPage));
     }
-
-
-
-
+    
 
 
 
     function displayResults(results) {
-        totalPages = Math.ceil(results.length / resultsPerPage);
-        const startIndex = (currentPage - 1) * resultsPerPage;
-        const endIndex = startIndex + resultsPerPage;
-        const resultsToDisplay = results.slice(startIndex, endIndex);
-
         const container = document.getElementById('data-container');
-        container.innerHTML = resultsToDisplay.length > 0
-            ? resultsToDisplay.map(row => {
-                const instagramEmbedCode = row[5];  // Instagram-kod från kolumn
-                const title = row[0];  // Titeln från kolumn 0
-                const ingredients = row[6];  // Ingredienser, anta att de är i kolumn 6
-
-                return `
-                    <div class="matratt">
-                    <div class="matratt">${instagramEmbedCode}</div>
+        container.innerHTML = ''; // Rensa tidigare resultat
+    
+        results.forEach(row => {
+            if (!row || !row[0] || !row[5]) return; // Hoppa över rader utan data
+    
+            const instagramEmbedCode = row[5];  // Instagram-kod från kolumn
+            const title = row[0];  // Titeln från kolumn 0
+    
+            // HTML-strukturen för att visa resultat
+            const resultHTML = `
+                <div class="matratt">
                     <div class="matratt-title title-background"><h2>${title}</h2></div>
-                    <div class="matratt-ingredienser">${ingredients}</div>
-                    </div>
-                `;
-            }).join('')
-            : '<div>Inga resultat hittades.</div>';
-
-        displayPaginationControls(); // Visa pagineringskontrollerna
+                    <div>${instagramEmbedCode}</div>
+                </div>
+            `;
+            container.innerHTML += resultHTML; // Lägg till resultatet i container
+        });
+    
+        // Använd Instagram Embed API för att rendera inlägg
+        if (window.instgrm) {
+            window.instgrm.Embeds.process();
+        }
+    
+        // Visa pagineringskontroller
+        displayPaginationControls();
     }
-
+    
 
 
 
 
     function displayPaginationControls() {
         const paginationContainer = document.getElementById('pagination-controls');
-        paginationContainer.innerHTML = ''; // Rensa befintliga pagineringsknappar
-
+        paginationContainer.innerHTML = ''; // Rensa befintliga knappar
+    
         for (let i = 1; i <= totalPages; i++) {
             const button = document.createElement('button');
             button.textContent = i;
             button.addEventListener('click', function () {
                 goToPage(i);
             });
-
+    
             if (currentPage === i) {
-                button.classList.add('current-page'); // Lägg till klass för att markera nuvarande sida
+                button.classList.add('current-page'); // Markera aktuell sida
             }
-
+    
             paginationContainer.appendChild(button);
         }
     }
-    // Funktion för att gå till en sida
+    
     function goToPage(pageNumber) {
         currentPage = pageNumber;
-        performSearch(); // Antaget att performSearch nu anropar displayResults
+    
+        const startIndex = (pageNumber - 1) * resultsPerPage;
+        const endIndex = startIndex + resultsPerPage;
+        const resultsToDisplay = currentFilteredData.slice(startIndex, endIndex);
+    
+        displayResults(resultsToDisplay); // Visa resultaten för den aktuella sidan
     }
+    
 
 
     // Funktion för att visa fler knappar
