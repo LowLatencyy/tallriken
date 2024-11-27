@@ -151,6 +151,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         container.innerHTML = ''; // Rensa tidigare resultat
     
         results.forEach(row => {
+            console.log('Row data:', row); // Logga varje rad
             const instagramEmbedCode = row[5];  // Instagram-kod från kolumn
             const title = row[0];  // Titeln från kolumn 0
     
