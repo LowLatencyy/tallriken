@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             [array[i], array[j]] = [array[j], array[i]]; // Swap
         }
         return array;
+
+        
     }
 
 

@@ -118,7 +118,6 @@ html {
 
 
 
-
 .matratt h2,
 .matratt p,
 .matratt a {
@@ -849,8 +848,3 @@ footer {
     width: auto;
 }
 
-.matratt {
-    background-color: yellow; /* Lägg till tillfällig stil för att testa */
-    height: 100px; /* Begränsa höjden till något enkelt för test */
-    width: 100px; /* Samma här */
-}
