@@ -486,3 +486,4 @@ window.onload = async function () {
     await loadSynonyms();
     observeIframes(); // Starta observer för att justera iframes dynamiskt
 };
+
