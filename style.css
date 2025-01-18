@@ -120,9 +120,9 @@ html {
     z-index: 1000;
     width: 40%;
     /* Anpassa bredden efter designen */
-    margin: 20px auto;
+    margin: 0px auto;
     /* Centrerar kontainern med marginal upp- och nertill */
-    padding-top: 5px;
+    padding-top: 0px;
     /* Lägg till lite utrymme ovanför sökfältet */
 }
 
@@ -340,7 +340,7 @@ html {
 .text-image {
     text-align: left;
     /* Alignar allt innehåll inuti till vänster */
-    margin-top: 7px;
+    margin-top: 0px;
     /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
 
@@ -351,7 +351,7 @@ html {
     /* Säkerställer att bilden inte blir bredare än dess container */
     height: auto;
     /* Bibehåller bildens proportioner när bredden ändras */
-    margin-top: 5px;
+    margin-top: 0px;
     /* Ger extra utrymme mellan logotypen och textbilden om det behövs */
 }
 
@@ -637,7 +637,7 @@ input:not(:checked)+.slider.large {
         /* Använd hela bredden för att maximera utrymmet */
         margin: 20px auto;
         /* Centrerar kontainern med marginal upp- och nertill */
-        padding-top: 10px;
+        padding-top: 0px;
         /* Justera utrymmet ovanför sökfältet efter behov */
     }
 
@@ -804,7 +804,7 @@ input:not(:checked)+.slider.large {
 }
 
 .top-space {
-    height: 100px;
+    height: 0px;
     /* Eller hur mycket utrymme du vill ha */
 }
 
