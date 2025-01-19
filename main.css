@@ -16,7 +16,7 @@ body {
 
 
 .nav {
-    color: rgb(0, 0, 0);
+    color: rgb(54, 34, 17);
     z-index: 9999;
     /* Sätt ett högt värde här */
 }
@@ -125,7 +125,7 @@ body {
     bottom: 0;
     right: 0;
     z-index: 3100;
-    background: rgb(203, 223, 189);
+    background: rgb(54, 34, 17);
     font-size: 3rem;
     padding: 40px;
     margin-top: 20px; /* Lägg till denna rad */
@@ -160,7 +160,7 @@ body {
     content: "";
     display: inline-block;
     border: 10px solid transparent;
-    border-top-color: rgb(0, 0, 0);
+    border-top-color: rgb(207, 255, 0);
     transition: 0.4s cubic-bezier(0.75, 0, 0.25, 1);
 }
 
@@ -175,7 +175,7 @@ body {
 
 .nav__link, .nav__item, .nav__list-child a {
     text-decoration: none; /* Tar bort understrykningar */
-    color: black; /* Ställer in textfärgen till svart */
+    color: white; /* Ställer in textfärgen till svart */
     font-weight: bold; /* Behåller fetstil för text */
 }
 
