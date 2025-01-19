@@ -491,7 +491,7 @@ html {
 }
 
 .show-more-btn img {
-    width: 90%;
+    width: 60%;
     height: auto;
     display: block;
     
@@ -499,8 +499,8 @@ html {
 
 @media (min-width: 768px) {
     .show-more-btn {
-        width: 45px;
-        height: 45px;
+        width: 75px;
+        height: 75px;
         border-radius: 10px;
         
     }
@@ -508,8 +508,8 @@ html {
 
 @media (min-width: 1024px) {
     .show-more-btn {
-        width: 45px;
-        height: 45px;
+        width: 85px;
+        height: 85px;
         border-radius: 5px;
     }
 }
