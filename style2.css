@@ -486,7 +486,7 @@ html {
 }
 
 .show-more-btn:hover {
-    background-color: rgb(89, 96, 84);
+    background-color: white;
     color: white;
 }
 
@@ -494,13 +494,15 @@ html {
     width: 70%;
     height: auto;
     display: block;
+    
 }
 
 @media (min-width: 768px) {
     .show-more-btn {
         width: 60px;
         height: 60px;
-        border-radius: 30px;
+        border-radius: 10px;
+        
     }
 }
 
@@ -508,13 +510,13 @@ html {
     .show-more-btn {
         width: 70px;
         height: 70px;
-        border-radius: 35px;
+        border-radius: 5px;
     }
 }
 
 @media (max-width: 600px) {
     .show-more-btn {
-        padding: 5px 15px;
+        padding: 5px 1px;
         width: auto;
         margin: auto;
     }
@@ -572,13 +574,13 @@ html {
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 50px;
-    box-shadow: 0 5px 15px rgb(0, 0, 0);
+    box-shadow: 0 1px 2px rgb(0, 0, 0);
     cursor: pointer;
     transition: all 0.3s ease;
 }
 
 #searchBtn:hover {
-    background-color: rgb(146, 211, 253);
+    background-color: rgb(207, 255, 0);
     box-shadow: 0 8px 25px rgb(207, 255, 0);
 }
 
