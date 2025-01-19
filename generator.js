@@ -204,14 +204,14 @@ document.addEventListener('DOMContentLoaded', async function () {
             // Om den är expanderad, dölj knapparna och uppdatera texten
             hiddenButtons.forEach(btn => btn.style.display = 'none');
             // showMoreBtn.textContent = 'Visa fler';
-            image.src = 'images/plustecken-svart.svg'; // Sätt till plus-ikonen
+            image.src = 'images/visa fler knappar/merknapp.svg'; // Sätt till plus-ikonen
             image.alt = 'Visa fler';
             showMoreBtn.dataset.expanded = 'false';
         } else {
             // Om den inte är expanderad, visa knapparna och uppdatera texten
             hiddenButtons.forEach(btn => btn.style.display = 'inline-block');
             // showMoreBtn.textContent = 'Dölj';
-            image.src = 'images/minustecken-svart.svg'; // Sätt till minus-ikonen
+            image.src = 'images/visa fler knappar/mindreknapp.svg'; // Sätt till minus-ikonen
             image.alt = 'Dölj';
             showMoreBtn.dataset.expanded = 'true';
         }
