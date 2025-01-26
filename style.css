@@ -28,7 +28,7 @@
 }
 
 .orange {
-    --bg: linear-gradient(-50deg, #caf514 0%, #caf514 100%);
+    --bg: linear-gradient(-50deg, #caf514 0%, #cfff00 100%);
     margin-right: var(--hm);
     background-image: var(--bg);
     animation: attract-orange var(--animation);
