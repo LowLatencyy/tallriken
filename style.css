@@ -375,7 +375,7 @@ html {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ffffff00;
+    background-color: #00000000;
     /* Bakgrundsfärg för slider när den är av */
     -webkit-transition: .4s;
     transition: .4s;
@@ -416,7 +416,7 @@ input:checked+.slider:before {
 
 /* Rundade kanter på omkopplaren */
 .slider.round {
-    border-radius: 34px;
+    border-radius: 12px;
 }
 
 .slider.round:before {
@@ -524,23 +524,34 @@ input:not(:checked)+.slider.large {
     /* Justera marginalen om det behövs */
     width: 100%;
     /* Säkerställer att containern tar upp hela tillgängliga bredden */
+    font-family: 'League Spartan', cursive;
+    /* Din huvudfont */
 }
 
 .veg-label {
     width: 15%;
     /* Tar upp hela bredden av sin container */
-    text-align: left;
+    text-align: center;
     /* Texten börjar från vänster */
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 5px;
-    margin-bottom: 5px;
+    padding: 0px;
+    margin-bottom: 0px;
     /* Mellanrum mellan etiketten och slidern */
-    border-radius: 5px;
+    border-radius: 0px;
     display: block;
     /* eller 'inline' beroende på dina behov */
     align-self: flex-start;
+    font-family: 'League Spartan', cursive;
+    /* Din huvudfont */
 }
+
+.veg-image {
+    width: 35px; /* Gör bilden mindre eller större */
+    height: 35px;
+    margin-right: 8px; /* Avstånd mellan bild och knapp */
+}
+
 
 .lang-container {
     display: flex;
@@ -835,7 +846,7 @@ input:not(:checked)+.slider.large {
     /* Justera detta efter önskad storlek på padding */
     margin-bottom: 5px;
     /* Avstånd mellan etiketten och slidern */
-    border-radius: 5px;
+    border-radius: 8px;
     /* Rundade hörn */
 }
 
