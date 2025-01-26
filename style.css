@@ -827,7 +827,7 @@ input:not(:checked)+.slider.large {
 .veg-label {
     display: inline-block;
     /* Gör så att bakgrunden endast omsluter texten */
-    background-color: #d4edda;
+    background-color: rgb(207, 255, 0);
     /* Den gröna färgen du har valt */
     color: #000000;
     /* Svart text */
@@ -861,7 +861,7 @@ input:not(:checked)+.slider.large {
 
 /* Stil för slider-kontrollen när den är påslagen */
 .veg-container .switch input:checked+.slider {
-    background-color: rgb(203, 223, 189);
+    background-color: rgb(207, 255, 0);
     /* Grön färg när slidern är påslagen */
 }
 
