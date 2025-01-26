@@ -28,14 +28,14 @@
 }
 
 .orange {
-    --bg: linear-gradient(-50deg, #fbab7e 0%, #f7ce68 100%);
+    --bg: linear-gradient(-50deg, #caf514 0%, #caf514 100%);
     margin-right: var(--hm);
     background-image: var(--bg);
     animation: attract-orange var(--animation);
 }
 
 .blue {
-    --bg: linear-gradient(50deg, #00bfd5 0%, #c5f5ff 100%);
+    --bg: linear-gradient(50deg, #9b9b9b 0%, #000000 100%);
     margin-left: var(--hm);
     background-image: var(--bg);
     animation: attract-blue var(--animation);
