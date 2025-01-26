@@ -89,8 +89,12 @@ video {
 
 .learn-more {
     font-size: 0.8em;
-    color: rgb(203, 223, 189);
+    color: #cfff00;
     text-decoration: underline;
+    background-color: black; /* Svart bakgrund */
+    padding: 2px 6px; /* Skapa luft runt texten */
+    border-radius: 4px; /* Mjuka hörn om du vill ha det */
+    display: inline; /* Behåller inline-läge för texten */
 }
 
 
