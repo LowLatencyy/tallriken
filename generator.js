@@ -105,6 +105,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     
         // Shuffle för att slumpa resultaten
         shuffleArray(filteredResults);
+
+        
     
         // Spara filtrerade resultat för paginering
         currentFilteredData = filteredResults;
