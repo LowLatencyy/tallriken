@@ -1,14 +1,14 @@
 #foodDayContainer img {
-    width: 100vw; /* Fyller hela skärmens bredd */
-    max-width: 100%; /* Säkerställer att den inte går utanför */
-    height: 40vh; /* Gör höjden dynamisk baserat på skärmhöjden */
-    min-height: 300px; /* Säkerställer att bilden inte blir för liten */
-    max-height: 600px; /* Hindrar att den blir för stor på extremt stora skärmar */
-    object-fit: cover; /* Beskär bilden så den fyller ytan utan att förvrängas */
+    width: 100vw; /* Fyller hela bredden */
+    height: 50vh; /* Gör att höjden blir 50% av skärmen */
+    min-height: 400px; /* Säkerställer att den är tillräckligt hög */
+    max-height: 800px; /* Förhindrar att den blir för stor på jätteskärmar */
+    object-fit: cover; /* Ser till att bilden fyller ut rutan */
     display: block;
     margin: 0 auto;
     border-radius: 20px; /* Rundade hörn */
 }
+
 
 
 
@@ -30,44 +30,31 @@ img {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    /* Säkerställer att hela bilden syns */
     display: flex;
-    /* Använd flexbox för att centrera innehållet */
     align-items: center;
-    /* Centrerar texten vertikalt */
     justify-content: center;
-    /* Centrerar texten horisontellt */
-    width: 100%;
-    /* Se till att elementet fyller sin container */
-    max-width: 320px;
-    /* Anpassa efter bildens bredd */
-    height: auto;
-    /* Automatiskt justerad höjd */
-    aspect-ratio: 1.5;
-    /* Säkerställer rätt proportioner */
-    padding: 5vw;
-    /* Dynamisk padding */
+    width: fit-content; /* Anpassar sig efter innehållet */
+    max-width: 60vw; /* Hindrar den från att bli för bred */
+    height: auto; /* Anpassar sig efter textens storlek */
+    padding: 5vw; /* Skapar luft runt texten */
     text-align: center;
-    /* Centrerar texten i elementet */
     margin: 0 auto;
-    /* Centrerar hela blocket */
 }
+
+
 
 
 
 h2 {
     font-family: 'League Spartan', cursive;
-    font-size: clamp(1.2em, 5vw, 2.2em);
-    /* Skalar ner textstorleken om den blir för stor */
-    max-width: 90%;
-    /* Förhindrar att texten går utanför */
-    word-wrap: break-word;
-    /* Ser till att långa ord bryts korrekt */
-    overflow-wrap: break-word;
+    font-size: clamp(1.2em, 5vw, 2.5em); /* Anpassar textstorleken responsivt */
+    max-width: 65%; /* Begränsar textens bredd så den håller sig inom bakgrundsbilden */
     text-align: center;
-    line-height: 1.1;
-    /* Justerar radavstånd för att rymmas bättre */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2; /* Justerar radavstånd */
 }
+
 
 
 @media (min-width: 768px) {
@@ -87,8 +74,19 @@ h2 {
 
 
 @media (min-width: 1200px) {
-    #foodDayContainer img {
-        height: 50vh; /* Ökar höjden på stora skärmar */
+    .headline-background {
+        max-width: 50vw; /* Gör den smalare på stora skärmar */
+        padding: 3vw; /* Minskar padding för en mer kompakt design */
+    }
+
+    h2 {
+        max-width: 70%; /* Ser till att texten alltid hålls smalare än bakgrunden */
     }
 }
 
+
+@media (min-width: 1200px) {
+    #foodDayContainer img {
+        aspect-ratio: 16 / 12; /* Gör bilden ännu högre på stora skärmar */
+    }
+}
