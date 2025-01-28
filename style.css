@@ -593,7 +593,7 @@ input:not(:checked)+.slider.large {
 }
 
 #pagination-controls button:hover {
-    background-color: rgb(255, 247, 179);
+    background-color: rgb(207, 255, 0);
     /* Ljusgul bakgrund när muspekaren svävar över */
 }
 
@@ -691,7 +691,7 @@ input:not(:checked)+.slider.large {
 
 
 .current-page {
-    background-color: rgb(255, 247, 179) !important;
+    background-color: rgb(242, 242, 240) !important;
     color: black !important;
 }
 

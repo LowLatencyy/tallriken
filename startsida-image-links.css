@@ -1,5 +1,5 @@
 body {
-    background-color: #faf0ca;
+    background-color: rgb(207, 255, 0);
     /* Din önskade gul-sandfärg */
     margin: 0;
     /* Tar bort standardmarginalen runt `body` */
@@ -104,7 +104,7 @@ video {
     left: 0;
     width: 100%;
     height: 70px; /* Justera detta värde baserat på din design */
-    background-color: rgb(242, 242, 240); /* Gula bakgrundsfärgen */
+    background-color: rgb(242, 242, 240); /* Gråa bakgrundsfärgen */
     z-index: 1000; /* Håller headern över andra element */
     /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Lägg till en skugga för definition */
 }
