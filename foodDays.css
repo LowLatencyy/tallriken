@@ -38,7 +38,7 @@ img {
     width: fit-content; /* Anpassar sig efter innehållet */
     max-width: 60vw; /* Hindrar den från att bli för bred */
     height: auto; /* Anpassar sig efter textens storlek */
-    padding: 5vw; /* Skapar luft runt texten */
+    padding: 7vw; /* Skapar luft runt texten */
     text-align: center;
     margin: 0 auto;
 }
@@ -61,7 +61,7 @@ h2 {
 
 @media (min-width: 768px) {
     .headline-background {
-        max-width: 400px;
+        max-width: 500px;
         /* Anpassar storleken på större skärmar */
         aspect-ratio: 1.5;
         padding: 3vw;
