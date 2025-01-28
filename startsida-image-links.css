@@ -121,12 +121,15 @@ body {
 }
 
 .full-width-image {
-    width: 100vw; /* Sträcker sig över hela skärmbredden */
+    width: 100vw; /* Sträcker sig över hela bredden */
     height: auto; /* Bevarar proportionerna */
-    object-fit: cover; /* Ser till att bilden fyller bredden även om den beskärs */
+    object-fit: cover; /* Ser till att bilden fyller bredden */
     display: block; /* Tar bort eventuella marginaler från inline-element */
     margin: 0; /* Ingen marginal runt bilden */
     padding: 0; /* Ingen padding */
+    z-index: 0; /* Placera bilden bakom element med högre z-index */
+    position: relative; /* Håller bilden i dokumentflödet */
     pointer-events: none; /* Inaktiverar klick */
     user-select: none; /* Förhindrar att bilden markeras */
 }
+
