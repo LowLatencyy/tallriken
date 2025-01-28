@@ -1,5 +1,5 @@
 body, h2 {
-    background-color: #faf0ca;
+    background-color: #dfdfdf;
     /* Din önskade gul-sandfärg */
     margin: 0;
     /* Tar bort standardmarginalen runt `body` */
@@ -41,10 +41,10 @@ p {
     /* Elementen staplas vertikalt */
     justify-content: space-between;
     /* Maximerar utrymmet mellan items */
-    background-color: #faf0ca;
+    background-color: #cfff00;
     /* Samma färg som din tema-färg */
-    border: 1px solid #ddd;
-    border-radius: 10px;
+    border: 1px solid #9dff69;
+    border-radius: 100px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     height: 100%;
