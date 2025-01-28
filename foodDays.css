@@ -1,13 +1,15 @@
 #foodDayContainer img {
-    width: 100vw; /* Fyller hela bredden */
-    height: 50vh; /* Gör att höjden blir 50% av skärmen */
-    min-height: 400px; /* Säkerställer att den är tillräckligt hög */
-    max-height: 800px; /* Förhindrar att den blir för stor på jätteskärmar */
-    object-fit: cover; /* Ser till att bilden fyller ut rutan */
+    width: 100vw; /* Fyller hela skärmens bredd */
+    height: 50vh; /* Gör höjden 50% av skärmens höjd */
+    min-height: 350px; /* Ser till att bilden aldrig blir för liten */
+    max-height: 600px; /* Förhindrar att den blir för hög */
+    object-fit: cover; /* Ser till att bilden fyller ut ytan snyggt */
     display: block;
     margin: 0 auto;
     border-radius: 20px; /* Rundade hörn */
 }
+
+
 
 
 
@@ -87,6 +89,8 @@ h2 {
 
 @media (min-width: 1200px) {
     #foodDayContainer img {
-        aspect-ratio: 16 / 12; /* Gör bilden ännu högre på stora skärmar */
+        height: 55vh; /* Gör bilden lite större på stora skärmar */
+        min-height: 400px;
+        max-height: 650px;
     }
 }
