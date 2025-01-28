@@ -1,7 +1,20 @@
-#foodDayContainer {
-    text-align: center;
-    margin-top: 10px;
+#foodDayContainer img {
+    width: 100vw; /* Fyller hela skärmens bredd */
+    max-width: 100%; /* Säkerställer att den inte går utanför */
+    height: 40vh; /* Gör höjden dynamisk baserat på skärmhöjden */
+    min-height: 300px; /* Säkerställer att bilden inte blir för liten */
+    max-height: 600px; /* Hindrar att den blir för stor på extremt stora skärmar */
+    object-fit: cover; /* Beskär bilden så den fyller ytan utan att förvrängas */
+    display: block;
+    margin: 0 auto;
+    border-radius: 20px; /* Rundade hörn */
 }
+
+
+
+
+
+
 
 img {
     max-width: 100%;
@@ -13,59 +26,69 @@ img {
 }
 
 .headline-background {
-    background-image: url('images/penseldraggron2.png');
-    /* Anpassa sökvägen till din bild */
+    background-image: url('images/fooddaysram1.svg');
     background-repeat: no-repeat;
     background-position: center;
-    /* Centrera bilden bakom texten */
     background-size: contain;
-    /* Gör så att hela bilden ryms i elementet */
-    display: inline-block;
-    /* Behåll detta för att matcha bredden på innehållet */
-    padding: 40px;
-    /* Lägg till mer padding runt texten för att göra bakgrunden större */
-    width: auto;
-    /* Om du vill att det ska anpassas efter innehållet */
+    /* Säkerställer att hela bilden syns */
+    display: flex;
+    /* Använd flexbox för att centrera innehållet */
+    align-items: center;
+    /* Centrerar texten vertikalt */
+    justify-content: center;
+    /* Centrerar texten horisontellt */
+    width: 100%;
+    /* Se till att elementet fyller sin container */
+    max-width: 320px;
+    /* Anpassa efter bildens bredd */
+    height: auto;
+    /* Automatiskt justerad höjd */
+    aspect-ratio: 1.5;
+    /* Säkerställer rätt proportioner */
+    padding: 5vw;
+    /* Dynamisk padding */
     text-align: center;
+    /* Centrerar texten i elementet */
+    margin: 0 auto;
+    /* Centrerar hela blocket */
 }
 
+
+
 h2 {
-    font-family: 'Caveat', serif;
-    font-size: 1.5em;
-    color: black;
-    margin: 0;
-    /* Tar bort default marginalerna */
-    display: inline;
-    /* Ser till att paddingen i .headline-background tar effekt */
+    font-family: 'League Spartan', cursive;
+    font-size: clamp(1.2em, 5vw, 2.2em);
+    /* Skalar ner textstorleken om den blir för stor */
+    max-width: 90%;
+    /* Förhindrar att texten går utanför */
+    word-wrap: break-word;
+    /* Ser till att långa ord bryts korrekt */
+    overflow-wrap: break-word;
+    text-align: center;
+    line-height: 1.1;
+    /* Justerar radavstånd för att rymmas bättre */
 }
+
 
 @media (min-width: 768px) {
     .headline-background {
-        display: block;
-        /* Ser till att .headline-background tar upp hela bredden */
-        width: 100%;
-        /* Gör så att elementet fyller sin container helt */
-        margin-bottom: 20px;
-        /* Lägger till utrymme under rubriken */
-        padding: 40px 0;
-        /* Ökar padding vertikalt */
-        text-align: center;
-        /* Centrerar texten inom elementet */
+        max-width: 400px;
+        /* Anpassar storleken på större skärmar */
+        aspect-ratio: 1.5;
+        padding: 3vw;
     }
 
     h2 {
-        font-size: 2.5em;
-        /* Ökar textstorleken på större skärmar */
-        display: block;
-        /* Gör att h2 tar upp hela bredden av sin container */
-    }
-
-    #foodDayContainer img {
-        max-width: 100%;
-        /* Om du vill att bilden ska ta upp maximal bredd */
-        height: auto;
-        /* Bevarar bildens proportioner */
-        margin: 0 auto;
-        /* Centrerar bilden och lägger till marginaler */
+        font-size: clamp(1.5em, 4vw, 2.8em);
+        /* Anpassar textstorleken bättre */
     }
 }
+
+
+
+@media (min-width: 1200px) {
+    #foodDayContainer img {
+        height: 50vh; /* Ökar höjden på stora skärmar */
+    }
+}
+
