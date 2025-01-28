@@ -310,3 +310,6 @@ footer {
     }
 }
 
+.space-above {
+    margin-top: 70px; /* Justera mängden utrymme */
+}
