@@ -5,7 +5,7 @@ body {
     /* Tar bort standardmarginalen runt `body` */
     font-family: "League Spartan", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 600;
+    font-weight: 300;
     ;
     font-style: normal;
     line-height: 1; /* Ökar radavståndet */
@@ -13,7 +13,8 @@ body {
 .image-links {
     display: flex;
     justify-content: space-around;
-    padding: 10px 0;
+    padding: 0px 0;
+    gap: 2px; /* Minskar utrymmet mellan raderna */
 }
 
 .image-links a {
@@ -111,4 +112,8 @@ video {
 
 body {
     padding-top: 11px; /* Ge plats för headern så innehåll inte överlappar */
+}
+
+.space {
+    margin: 4px 0; /* 20px tomt space ovanför och under */
 }
