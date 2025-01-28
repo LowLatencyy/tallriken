@@ -15,6 +15,7 @@ body {
     justify-content: space-around;
     padding: 0px 0;
     gap: 2px; /* Minskar utrymmet mellan raderna */
+    z-index: 0; /* Lägre än full-width-image */
 }
 
 .image-links a {
@@ -27,6 +28,7 @@ body {
     width: 100%;
     height: auto; /* Håller bildens proportioner */
     transition: transform 0.3s ease;
+    z-index: 0; /* Lägre än full-width-image */
 }
 
 .image-links a:hover img {
