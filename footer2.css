@@ -1,0 +1,57 @@
+/* Isolerad styling för footer2 */
+#footer2 {
+    background-color: #000; /* Svart bakgrund */
+    color: white;
+    font-family: "League Spartan", sans-serif;
+    text-align: center;
+    padding: 30px 0;
+}
+
+#footer2 .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#footer2 .footer-links {
+    margin: 10px 0;
+}
+
+#footer2 .footer-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+}
+
+#footer2 .footer-links a:hover {
+    text-decoration: underline;
+}
+
+#footer2 .footer-socials {
+    margin: 15px 0;
+}
+
+#footer2 .footer-socials img {
+    width: 30px;
+    margin: 0 8px;
+    filter: invert(1); /* Gör ikoner vita om de är svarta */
+}
+
+#footer2 .footer-copy {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+#footer2 .footer-logo img:hover {
+    transform: scale(1.1); /* Ökar storleken något vid hovring */
+    transition: transform 0.3s ease;
+}
+#footer2 .footer-logo img {
+    width: 20%; /* Logotypen tar upp 20% av sin container */
+    max-width: 120px; /* Förhindrar att den blir för stor */
+    height: auto; /* Bevarar proportionerna */
+}

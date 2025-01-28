@@ -117,3 +117,14 @@ body {
 .space {
     margin: 4px 0; /* 20px tomt space ovanför och under */
 }
+
+.full-width-image {
+    width: 100vw; /* Sträcker sig över hela skärmbredden */
+    height: auto; /* Bevarar proportionerna */
+    object-fit: cover; /* Ser till att bilden fyller bredden även om den beskärs */
+    display: block; /* Tar bort eventuella marginaler från inline-element */
+    margin: 0; /* Ingen marginal runt bilden */
+    padding: 0; /* Ingen padding */
+    pointer-events: none; /* Inaktiverar klick */
+    user-select: none; /* Förhindrar att bilden markeras */
+}
