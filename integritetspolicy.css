@@ -1,0 +1,23 @@
+.privacy-policy {
+    padding-top: 100px; /* Skjuter ner texten så den inte döljs av headern */
+}
+.privacy-image {
+    width: 50%;            /* Standardbredd - fyller 80% av skärmen */
+    max-width: 200px;      /* Begränsar maxstorleken */
+    height: auto;          /* Bevarar proportionerna */
+    display: block;        /* Centrerar bilden */
+    margin: 20px auto;     /* Skapar avstånd runt bilden */
+    margin-top: 50px;
+    user-select: none;     /* Förhindrar att bilden markeras */
+    pointer-events: none;  /* Gör bilden oklickbar */
+    opacity: 0.9;          /* Lätt genomskinlig effekt */
+}
+
+/* Anpassning för mindre skärmar (mobil) */
+@media (max-width: 200px) {
+    .privacy-image {
+        width: 60%;        /* Gör bilden mindre på mobiler */
+        max-width: 250px;  /* Förhindrar att den blir för stor */
+        margin: 10px auto; /* Mindre avstånd runt bilden */
+    }
+}
