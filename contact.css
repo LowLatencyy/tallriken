@@ -1,96 +1,13 @@
-body {
-    background-color: #f2f2f0; /* Din önskade gul-sandfärg */
-    margin: 0; /* Tar bort standardmarginalen runt `body` */
-    font-family: 'Exo 2', sans-serif;
-    
+.contact-image {
+    width: 90%;        /* Bilden fyller max 90% av skärmen */
+    max-width: 300px;  /* Begränsar storleken på större skärmar */
+    height: auto;      /* Bevarar proportionerna */
+    display: block;    /* Tar bort onödigt mellanrum */
+    margin: 20px auto; /* Centrerar bilden */
+    cursor: pointer;   /* Gör att det syns att bilden är klickbar */
+    transition: transform 0.2s ease-in-out;
 }
 
-.contact-container {
-    background-color: #f2f2f0;
-    /* Ersätt med din önskade bakgrundsfärg */
-    padding: 5px;
-    max-width: 800px;
-    margin: 40px auto;
-    border-radius: 10px;
-    /* Rundade hörn */
-}
-
-.contact-container h1 {
-    text-align: center;
-    color: #333;
-}
-
-#contactForm {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    /* Utrymme mellan fälten */
-}
-
-#contactForm label {
-    font-weight: bold;
-}
-
-#contactForm input[type="text"],
-#contactForm input[type="email"],
-#contactForm textarea {
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-#contactForm button {
-    padding: 10px;
-    margin-top: 10px;
-    background-color: rgb(203, 223, 189);
-    color: rgb(0, 0, 0);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#contactForm button:hover {
-    background-color: rgb(203, 223, 189);
-}
-
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px; /* Justera detta värde baserat på din design */
-    background-color: #ffffff; /* Gula bakgrundsfärgen */
-    z-index: 1000; /* Håller headern över andra element */
-    /* box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Lägg till en skugga för definition */
-}
-
-body {
-    padding-top: 11px; /* Ge plats för headern så innehåll inte överlappar */
-}
-
-.text-image img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin-top: 110px;
-}
-
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.contact-container {
-    flex-grow: 1; /* Gör att innehållet trycker ner footern */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-#footer-container {
-    margin-top: auto; /* Ser till att footern alltid trycks längst ner */
+.contact-image:hover {
+    transform: scale(1.05); /* Liten zoom-effekt när man hovrar på dator */
 }
