@@ -94,3 +94,11 @@ h2 {
         max-height: 650px;
     }
 }
+
+#foodDayContainer p {
+    text-align: center; /* Centrerar texten horisontellt */
+    max-width: 80%; /* Gör att texten inte blir för bred */
+    margin: 10px auto; /* Centrerar blocket och skapar lite luft */
+    font-size: 1.2em; /* Anpassar textstorleken */
+    line-height: 1.4; /* Justerar radavståndet för bättre läsbarhet */
+}
