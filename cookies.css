@@ -1,0 +1,30 @@
+.cookies-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0; /* Endast vertikal padding, följer main.css i bredd */
+}
+
+.cookies-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+.cookies-image {
+    width: 80%;            /* Standardbredd - fyller 80% av skärmen */
+    max-width: 400px;      /* Begränsar maxstorleken */
+    height: auto;          /* Bevarar proportionerna */
+    display: block;        /* Centrerar bilden */
+    margin: 20px auto;     /* Skapar avstånd runt bilden */
+    user-select: none;     /* Förhindrar att bilden markeras */
+    pointer-events: none;  /* Gör bilden oklickbar */
+    opacity: 0.9;          /* Lätt genomskinlig effekt */
+}
+
+/* Anpassning för mindre skärmar (mobil) */
+@media (max-width: 300px) {
+    .cookies-image {
+        width: 60%;        /* Gör bilden mindre på mobiler */
+        max-width: 250px;  /* Förhindrar att den blir för stor */
+        margin: 10px auto; /* Mindre avstånd runt bilden */
+    }
+}
