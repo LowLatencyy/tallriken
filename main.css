@@ -199,36 +199,6 @@ main {
 
 }
 
-footer {
-    background-color: #000;
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
-    width: 100%;
-}
-
-
-.footer-banner {
-    background-color: #000;
-    color: white;
-    text-align: center;
-    padding: 10px 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-}
-
-.footer-banner a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-banner a:hover {
-    text-decoration: underline;
-}
 
 
 .logo-link {
@@ -313,3 +283,5 @@ footer {
 .space-above {
     margin-top: 70px; /* Justera mängden utrymme */
 }
+
+

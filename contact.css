@@ -75,3 +75,22 @@ body {
     height: auto;
     margin-top: 110px;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-container {
+    flex-grow: 1; /* Gör att innehållet trycker ner footern */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#footer-container {
+    margin-top: auto; /* Ser till att footern alltid trycks längst ner */
+}

@@ -81,7 +81,7 @@ html {
     overflow-x: hidden;
 
     padding-bottom: 100px;
-    /* Eller höjden på din footer */
+   
 }
 
 * {
@@ -223,49 +223,6 @@ html {
 
 }
 
-
-
-
-
-
-
-
-/* Lägg till den nya CSS-koden för footer-banner här */
-.footer-banner {
-    background-color: #000;
-    color: white;
-    padding: 10px 20px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    /* Ta bort justify-content: space-between om du inte vill att innehållet ska fördelas på varje sida */
-}
-
-.footer-banner a {
-    color: white;
-    text-decoration: none;
-    margin: 0 10px;
-}
-
-.footer-banner a:hover {
-    text-decoration: underline;
-}
-
-.footer-links {
-    display: flex;
-    margin-left: auto;
-    /* Lägger till detta för att skjuta elementet till högerkanten */
-
-}
-
-/* Stil för copyright-texten */
-.footer-banner p {
-    margin: 0;
-    color: white;
-    /* Om du tar bort justify-content från .footer-banner, kan du också behöva ta bort flex-grow */
-}
 
 .tag-container {
     display: flex;
@@ -547,9 +504,11 @@ input:not(:checked)+.slider.large {
 }
 
 .veg-image {
-    width: 35px; /* Gör bilden mindre eller större */
+    width: 35px;
+    /* Gör bilden mindre eller större */
     height: 35px;
-    margin-right: 8px; /* Avstånd mellan bild och knapp */
+    margin-right: 8px;
+    /* Avstånd mellan bild och knapp */
 }
 
 
@@ -627,7 +586,7 @@ input:not(:checked)+.slider.large {
         display: block;
     }
 
-  
+
 
 }
 
@@ -929,18 +888,45 @@ body {
 
 #no-results-message {
     display: flex;
-    flex-direction: column; /* Så att bild och text är i kolumn-layout */
-    justify-content: center; /* Vertikal centrering */
-    align-items: center; /* Horisontell centrering */
-    height: 100vh; /* Gör så att det täcker hela fönstret i höjdled */
+    flex-direction: column;
+    /* Så att bild och text är i kolumn-layout */
+    justify-content: center;
+    /* Vertikal centrering */
+    align-items: center;
+    /* Horisontell centrering */
+    height: 100vh;
+    /* Gör så att det täcker hela fönstret i höjdled */
     text-align: center;
 }
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'League Spartan', sans-serif;
-    min-height: 100vh;  /* Detta gör att kroppen är minst lika hög som hela viewport-höjden.*/
+    min-height: 100vh;
+    /* Detta gör att kroppen är minst lika hög som hela viewport-höjden.*/
     display: flex;
-    flex-direction: column;  /* Gör att body använder flexbox med vertikal orientering.*/
-    justify-content: center;  /* Distribuerar utrymmet så att footern kan sitta längst ner.*/
+    flex-direction: column;
+    /* Gör att body använder flexbox med vertikal orientering.*/
+    justify-content: center;
+    /* Distribuerar utrymmet så att footern kan sitta längst ner.*/
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-container {
+    flex-grow: 1; /* Gör att innehållet trycker ner footern */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#footer-container {
+    margin-top: auto; /* Ser till att footern alltid trycks längst ner */
 }
