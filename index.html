@@ -1,144 +1,167 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#cfff00">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- Lägg till denna länk i din head-tagg 
-    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet"> -->
+    <title>Din Startsida Titel</title>
+    <link rel="icon" type="image/png" href="/images/logos/instareceptbaragaffellogo.svg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
 
-    <meta name="theme-color" content="#cfff00">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="foodDays.css">
+    <link rel="stylesheet" href="startsida-image-links.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="footer2.css">
-  
+
+
+
     <link rel="icon" type="image/png" href="images/logos/instareceptbaragaffellogo.svg">
 </head>
 
 <body>
 
 
-    <!--gamla loadern 3 punkter -->
-    <!-- Loader HTML -->
-    <div class="blocks" id="loader" hidden>
-        <div class="block orange"></div>
-        <div class="block blue"></div>
-    </div>
-
-    <!-- Överlägg för att mörkna och sudda ut bakgrunden när loadern visas -->
-    <div id="overlay" hidden></div>
-
-
 
     <header class="site-header">
-        <a href="startsida2.html" class="logo-link">
+        <a href="index.html" class="logo-link">
             <img src="images/logos/instareceptlogga7.svg" alt="Logga" />
         </a>
+
 
         <div id="navbar-container"></div>
 
 
+
+
+
+
     </header>
 
-     <a href="startsida2.html" class="logo-link">
-        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
-    </a> 
+
 
 
 
     <div class="background-container"></div>
 
-    <!-- Logotyp Container -->
-    <!-- <div class="logo-container" style="text-align: center; margin-top: 20px;">
-        <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logotyp" class="logo-image">
+    <div class="top-space"></div>
 
+    <video id="randomVideo" autoplay loop muted playsinline preload="auto">
+        Din webbläsare stöder inte videouppspelning.
+    </video>
+
+    <!-- <img src="images/gordittval.svg" alt="Gör ditt val" class="regular-image"> -->
+
+
+    <div class="space"></div>
+
+    <div class="image-links">
+        <a href="generator.html">
+            <img src="images/startsideknappar/matgeneratornknapp2.svg" alt="Beskrivning av bild 1">
+        </a>
+        <a href="ingrediensassistenten.html">
+            <img src="images/startsideknappar/ingrediensassistentenknapp2.svg" alt="Beskrivning av bild 2">
+        </a>
+        <a href="matkreator.html">
+            <img src="images/startsideknappar/matkreatorernaknapp2.svg" alt="Beskrivning av bild 2">
+        </a>
+    </div>
+
+    <img class="full-width-image" src="images/valjenav3valovan.svg" alt="Beskrivande text">
+
+
+    <img src="images/divider/raklinje.svg" alt="Dekorativ divider" class="image-divider"> 
+
+    <!--  <div class="welcome-text">
+        <h1>Välkommen till Instarecept!</h1>
+        <p>Upptäck och inspireras av Instagrams bästa recept. Använd <strong>Mat-Generatorn</strong> för kategoriindelad sökning eller <strong>Ingrediens-Assistenten</strong> för att utforska baserat på ingredienser.</p>
+        <p>Upphovsrätt till recept och bilder innehas av originalskaparna. För fullständiga recept, besök deras Instagram-profiler genom att klicka på inläggen.</p>
+        <a href="omoss.html" class="learn-more">Läs mer...</a>
     </div> -->
-    <!-- <div class="top-space"></div> -->
 
-    <!-- Ny bild för text under logotypen -->
-    <div class="text-image">
-        <img src="images/Ingrediens-assistenten-text.svg" alt="Text Image">
+
+    <div class="welcome-text">
+        <h1>Välkommen till Instarecept.se</h1>
+        <p> – din smarta genväg till de bästa recepten från Instagram! 🍽️✨ Vi samlar och organiserar populära maträtter från instagram så att du enkelt kan hitta och inspireras av nya smaker. Använd vår <strong>Mat-Generator</strong> för att filtrera recept efter kategori eller låt <strong>Ingrediens-Assistenten</strong> hjälpa dig att skapa magi med det du har hemma.</p>
+        <p>Upphovsrätt till recept och bilder innehas av originalskaparna. För fullständiga recept, besök deras Instagram-profiler genom att klicka på inläggen.</p>
+        <p> 📲 Upptäck. Inspireras. Laga mat. Välkommen till framtidens receptsida! 🚀👨‍🍳 </p>
+        <a href="omoss.html" class="learn-more">Läs mer...</a>
     </div>
 
-    <div class="search-container">
-        <!-- Ny slider här 
-        <div class="search-mode-container">
-            <div class="search-mode-label">←Sök på ingredienser</div>
-            <label class="switch large">
-                <input type="checkbox" id="searchModeSwitch" onchange="toggleSearchMode()">
-                <span class="slider round large"></span>
-            </label>
-            <div class="search-mode-label">Sök på maträtt→</div>
-        </div> -->
-        <!-- Slider-knappar ovanför sökfältet -->
-        <div class="slider-button-container">
-            <div class="veg-container">
-                <img src="images/baravegknapp.svg" alt="Veg Icon" class="veg-image">
-                <label class="switch">
-                    <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
-                    <span class="slider round"></span>
-                </label>
-            </div>
-            <!--
-            <div class="lang-container">
-                <div class="lang-label">På svenska</div>
-                <label class="switch">
-                    <input type="checkbox" id="langSwitch" onchange="toggleLangFilter()">
-                    <span class="slider round"></span>
-                </label>
-            </div> -->
+
+
+    <!-- Plats för matdagarnas innehåll -->
+    <div id="foodDayContainer">
+        <div class="headline-background">
+            <h2></h2> <!-- Rubriken kommer att fyllas dynamiskt av JavaScript -->
         </div>
-
-        <!-- Sökfält och knappar -->
-        <div class="input-button-container">
-            <input type="text" id="searchInput" placeholder="Skriv 1 ingrediens och tryck Enter/Gå...">
-            <button onclick="addTagFromButton()" class="add-button">
-                <img src="images/plusknapp3.svg
-                " alt="Add" />
-            </button> <!-- Ny knapp för att lägga till taggar -->
-            <!-- <button onclick="performSearch()">Sök</button> -->
-        </div>
-
-        <!-- Taggarna här -->
-        <div class="tag-container"></div>
+        <img src="" alt=""> <!-- Bilden fylls också dynamiskt -->
+        <p></p> <!-- Beskrivningen fylls också dynamiskt -->
+    </div>
+    <!--
+    <div class="image-links">
+        <a href="generator.html">
+            <img src="images/startsideknappar/matgeneratornknapp.svg" alt="Beskrivning av bild 1">
+        </a>
+        <a href="ingrediensassistenten.html">
+            <img src="images/startsideknappar/ingrediensassistentenknapp.svg" alt="Beskrivning av bild 2">
+        </a>
+  
     </div>
 
-
-    <div id="data-container" class="initial"></div>
-
-    <div id="pagination-controls"></div>
-
-
-    <div id="no-results-message" style="display: none; text-align: center;">
-        <img src="images/gif/aggtimer.gif" alt="Inga resultat hittades" style="max-width: 300px; height: auto;">
-        <p>Det du sökte på fanns inte, testa igen.</p>
+    <div class="image-links">
+        <a href="generator.html">
+            <img src="images/startsideknappar/matgeneratornknapp.svg" alt="Beskrivning av bild 1">
+        </a>
+        <a href="ingrediensassistenten.html">
+            <img src="images/startsideknappar/ingrediensassistentenknapp.svg" alt="Beskrivning av bild 2">
+        </a>
+  
     </div>
+    <div class="image-links">
+        <a href="generator.html">
+            <img src="images/startsideknappar/matgeneratornknapp.svg" alt="Beskrivning av bild 1">
+        </a>
+        <a href="ingrediensassistenten.html">
+            <img src="images/startsideknappar/ingrediensassistentenknapp.svg" alt="Beskrivning av bild 2">
+        </a>
+  
+    </div>
+    <div class="image-links">
+        <a href="generator.html">
+            <img src="images/startsideknappar/matgeneratornknapp.svg" alt="Beskrivning av bild 1">
+        </a>
+        <a href="ingrediensassistenten.html">
+            <img src="images/startsideknappar/ingrediensassistentenknapp.svg" alt="Beskrivning av bild 2">
+        </a>
+  
+    </div>
+-->
+    <!--  <footer id="footer-container"></footer>
 
-    
+    <script src="footer.js"></script> -->
 
     <div id="footer-container"></div> <!-- Här laddas footern in -->
 
     <script src="footer2.js"></script>
 
-    <script async src="//www.instagram.com/embed.js"></script>
-
-    <script src="script-ingrediensassistenten.js"></script>
 
     <script src="loadNavbar.js"></script>
 
+    <script src="foodDays.js"></script> <!-- Länk till matdags-JavaScript -->
 
-   
+    <!-- <img src="images/divider/scribble1.svg" alt="Dekorativ divider" class="image-divider"> -->
 
-   
-
-
+    <script src="startsida.js"></script>
 
 
 

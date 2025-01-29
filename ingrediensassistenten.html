@@ -14,10 +14,11 @@
     <meta name="theme-color" content="#cfff00">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="footer2.css">
+  
     <link rel="icon" type="image/png" href="images/logos/instareceptbaragaffellogo.svg">
 </head>
 
@@ -46,9 +47,9 @@
 
     </header>
 
-   <!-- <a href="index.html" class="logo-link">
+     <a href="index.html" class="logo-link">
         <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logga" />
-    </a> -->
+    </a> 
 
 
 
@@ -59,11 +60,11 @@
         <img src="images/visplogo/Logo Files/For Web/svg/Black logo - no background.svg" alt="Logotyp" class="logo-image">
 
     </div> -->
-    
+    <!-- <div class="top-space"></div> -->
 
     <!-- Ny bild för text under logotypen -->
     <div class="text-image">
-        <img src="images/matkreatorerrubrik.svg" alt="Text Image">
+        <img src="images/Ingrediens-assistenten-text.svg" alt="Text Image">
     </div>
 
     <div class="search-container">
@@ -77,8 +78,14 @@
             <div class="search-mode-label">Sök på maträtt→</div>
         </div> -->
         <!-- Slider-knappar ovanför sökfältet -->
-        
-            
+        <div class="slider-button-container">
+            <div class="veg-container">
+                <img src="images/baravegknapp.svg" alt="Veg Icon" class="veg-image">
+                <label class="switch">
+                    <input type="checkbox" id="vegSwitch" onchange="toggleVegFilter()">
+                    <span class="slider round"></span>
+                </label>
+            </div>
             <!--
             <div class="lang-container">
                 <div class="lang-label">På svenska</div>
@@ -91,7 +98,7 @@
 
         <!-- Sökfält och knappar -->
         <div class="input-button-container">
-            <input type="text" id="searchInput" placeholder="Skriv matkreatörens namn och tryck enter...">
+            <input type="text" id="searchInput" placeholder="Skriv 1 ingrediens och tryck Enter/Gå...">
             <button onclick="addTagFromButton()" class="add-button">
                 <img src="images/plusknapp3.svg
                 " alt="Add" />
@@ -109,25 +116,32 @@
     <div id="pagination-controls"></div>
 
 
+    <div id="no-results-message" style="display: none; text-align: center;">
+        <img src="images/gif/aggtimer.gif" alt="Inga resultat hittades" style="max-width: 300px; height: auto;">
+        <p>Det du sökte på fanns inte, testa igen.</p>
+    </div>
+
     
-
-    <script src="script-matkreator.js"></script>
-
-    <script src="loadNavbar.js"></script>
-
-    
-
-
-    <script async src="//www.instagram.com/embed.js"></script>
-
 
     <div id="footer-container"></div> <!-- Här laddas footern in -->
 
     <script src="footer2.js"></script>
 
-    
+    <script async src="//www.instagram.com/embed.js"></script>
 
-    
+    <script src="script-ingrediensassistenten.js"></script>
+
+    <script src="loadNavbar.js"></script>
+
+
+   
+
+   
+
+
+
+
+
 </body>
 
 </html>
