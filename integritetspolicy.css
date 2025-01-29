@@ -7,7 +7,7 @@
     height: auto;          /* Bevarar proportionerna */
     display: block;        /* Centrerar bilden */
     margin: 20px auto;     /* Skapar avstånd runt bilden */
-    margin-top: 50px;
+    margin-top: 10px;
     user-select: none;     /* Förhindrar att bilden markeras */
     pointer-events: none;  /* Gör bilden oklickbar */
     opacity: 0.9;          /* Lätt genomskinlig effekt */
