@@ -12,6 +12,7 @@ body {
     display: flex;
     flex-direction: column;  /* Gör att body använder flexbox med vertikal orientering.*/
     justify-content: center;  /* Distribuerar utrymmet så att footern kan sitta längst ner.*/
+    font-weight: 300;
 }
 
 
@@ -177,7 +178,7 @@ body {
 .nav__link, .nav__item, .nav__list-child a {
     text-decoration: none; /* Tar bort understrykningar */
     color: white; /* Ställer in textfärgen till svart */
-    font-weight: bold; /* Behåller fetstil för text */
+    font-weight: 300; /* Behåller fetstil för text */
 }
 
 main {
