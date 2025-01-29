@@ -1,7 +1,11 @@
-body {
-    background-color: #faf0ca; /* Din önskade gul-sandfärg */
-    margin: 0; /* Tar bort standardmarginalen runt `body` */
-    font-family: 'Leauge Spartan', sans-serif;
-    font-weight: 200;
-    
+.about-me {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0; /* Endast vertikal padding, följer main.css i bredd */
 }
+
+.about-me ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+

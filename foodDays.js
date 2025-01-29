@@ -1,7 +1,7 @@
 const foodDays = [
 
 
-    { date: '2025-01-28', image: '/images/Food-Days/pizza.svg', title: '28/1 Pizza-dagen', description: 'Internationella pizzadagen firas över hela världen.' },
+    { date: '2025-01-29', image: '/images/Food-Days/pizza.svg', title: '28/1 Pizza-dagen', description: 'Internationella pizzadagen firas över hela världen.' },
     { date: '2025-01-27', image: '/images/Food-Days/mjolk.jpg', title: 'Irish Coffee Day', description: 'Internationell dag för Irish Coffee.' },
     { date: '2025-01-26', image: 'indian_flag.jpg', title: 'Indiens nationaldag', description: 'Indiens republikdag.' },
     { date: '2025-02-02', image: '/images/Food-Days/appelpaj.jpg', title: '2/" Crêpes-dagen', description: 'Internationellt firande med crêpes.' },

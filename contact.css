@@ -1,3 +1,14 @@
+.contact {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0; /* Endast vertikal padding, följer main.css i bredd */
+}
+
+.contact ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
 .contact-image {
     width: 90%;        /* Bilden fyller max 90% av skärmen */
     max-width: 300px;  /* Begränsar storleken på större skärmar */

@@ -1,6 +1,17 @@
 .privacy-policy {
     padding-top: 100px; /* Skjuter ner texten så den inte döljs av headern */
 }
+
+.privacy-policy {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0; /* Endast vertikal padding, följer main.css i bredd */
+}
+
+.privacy-policy ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
 .privacy-image {
     width: 50%;            /* Standardbredd - fyller 80% av skärmen */
     max-width: 200px;      /* Begränsar maxstorleken */
