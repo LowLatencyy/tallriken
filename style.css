@@ -927,11 +927,12 @@ body {
     /* Justerar bredden så två element får plats, minus marginal */
     max-width: calc(50% - 20px);
     /* Samma här */
-    padding: 2px;
+    padding: 20px;
     /* Mindre padding inuti varje resultat */
     margin: 5px;
     /* Behåller en liten marginal runt varje element */
 }
+
 
 
 
@@ -977,4 +978,20 @@ body {
     max-width: 100% !important;
     width: 100% !important;
     min-width: unset !important;
+}
+
+/* 5 kolumner på stora skärmar */
+@media (min-width: 1200px) {
+    .matratt {
+        flex: 0 0 calc(20% - 10px);
+        max-width: calc(20% - 10px);
+    }
+}
+
+/* Behåll flex-wrap så att de bryts korrekt */
+#data-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
 }
