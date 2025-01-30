@@ -13,6 +13,7 @@ body {
     flex-direction: column;  /* Gör att body använder flexbox med vertikal orientering.*/
     justify-content: center;  /* Distribuerar utrymmet så att footern kan sitta längst ner.*/
     font-weight: 300;
+    background-color: #f9f9f9; /* Ljusgrå bakgrund - byt ut mot valfri färg */
 }
 
 

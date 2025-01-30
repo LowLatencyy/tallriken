@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             <img src="${article.image}" alt="${article.title}">
             <h2><a href="artikel.html?slug=${article.slug}">${article.title}</a></h2>
             <p>${article.excerpt}</p>
-            <span class="category">${article.category}</span>
+            <a class="category-badge" href="artiklar.html?category=${encodeURIComponent(article.category)}">${article.category}</a>
             <span class="date">📅 ${article.date}</span>
             <span class="read-time">⏳ ${readTime} min lästid</span>
             <a class="read-more-button" href="artikel.html?slug=${article.slug}">Läs vidare →</a>
