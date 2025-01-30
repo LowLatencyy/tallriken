@@ -964,3 +964,17 @@ body {
         margin: 5px;
     }
 }
+
+.instagram-media {
+    max-width: 100% !important; /* Se till att inlägg fyller sin container */
+    min-width: 250px !important; /* Säkerställ att de inte blir för smala */
+    width: 100% !important;
+    height: auto !important;
+    margin: 10px 0 !important; /* Ger lite avstånd mellan inlägg */
+}
+
+.instagram-media {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: unset !important;
+}
