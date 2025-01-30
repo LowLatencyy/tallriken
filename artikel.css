@@ -3,3 +3,102 @@
     max-height: 400px;
     object-fit: cover;
 }
+
+.related-articles {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+}
+.related-articles h3 {
+    margin-top: 0;
+}
+.related-articles a {
+    display: block;
+    color: #0075fe;
+    text-decoration: none;
+    margin: 5px 0;
+}
+.related-articles {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+}
+.related-articles h3 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+.related-articles div {
+    margin: 5px 0;
+}
+.related-articles a {
+    display: block;
+    color: #000000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.related-articles a:hover {
+    text-decoration: underline;
+}
+
+.share-buttons {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    text-align: center;
+}
+.share-buttons a {
+    display: inline-block;
+    margin: 5px;
+    padding: 8px 15px;
+    background-color: #cfff00;
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    border-radius: 5px;
+}
+.share-buttons a:hover {
+    background-color: #0056b3;
+}
+
+.social-share {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.social-share a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-share a:hover {
+    background-color: #cfff00;
+    color: black;
+    transform: scale(1.1);
+}
+
+/* Anpassade ikoner för varje plattform */
+.social-share a.facebook { background-color: #1877F2; }
+.social-share a.twitter { background-color: #1DA1F2; }
+.social-share a.whatsapp { background-color: #25D366; }
+
+/* Hover-effekt */
+.social-share a.facebook:hover { background-color: #cfff00; }
+.social-share a.twitter:hover { background-color: #cfff00; }
+.social-share a.whatsapp:hover { background-color: #cfff00; }

@@ -3,39 +3,33 @@
         "title": "Så väljer du rätt stekpanna",
         "slug": "kopavstekpanna",
         "category": "Köksredskap",
-        "tags": [
-            "stekpanna",
-            "köksredskap",
-            "matlagning"
-        ],
+        "tags": ["stekpanna", "köksredskap", "matlagning"],
         "image": "images/stekpanna.jpg",
         "excerpt": "En guide till att välja rätt stekpanna...",
-        "date": "2025-01-30"
+        "date": "2025-01-30",
+        "wordCount": 800,
+        "content": "<p>Att välja rätt stekpanna kan vara svårt...</p>"
     },
     {
         "title": "Frukost och hälsa",
         "slug": "frukost-halsa",
         "category": "Hälsa",
-        "tags": [
-            "frukost",
-            "hälsa",
-            "näring"
-        ],
+        "tags": ["frukost", "hälsa", "näring"],
         "image": "images/frukost.jpg",
         "excerpt": "Frukost är dagens viktigaste mål. Men vad ska man äta?",
-        "date": "2025-01-29"
+        "date": "2025-01-29",
+        "wordCount": 500,
+        "content": "<p>Frukost är dagens viktigaste måltid och ger energi för hela dagen...</p>"
     },
     {
         "title": "Den Ultimata Guiden till Stekpannor",
         "slug": "ultimata-guiden-stekpannor",
         "category": "Köksredskap",
-        "tags": [
-            "stekpanna",
-            "köksredskap",
-            "matlagning"
-        ],
-        "image": "images/artikel-bilder/koksredskap-bilder/stekpanna/stekpanna1.jpeg",
+        "tags": ["stekpanna", "köksredskap", "matlagning"],
+        "image": "images/stekpanna-guide.jpg",
         "excerpt": "Lär dig allt om olika typer av stekpannor och hur du väljer rätt för ditt kök.",
-        "date": "2025-02-01"
+        "date": "2025-02-01",
+        "wordCount": 1200,
+        "content": "<p>Det finns många typer av stekpannor att välja mellan...</p>"
     }
 ]

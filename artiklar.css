@@ -9,3 +9,18 @@
     width: 100%;
     height: auto;
 }
+
+.read-more-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 32px;
+    background-color: #cfff00;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.read-more-button:hover {
+    background-color: #b5e600;
+}
