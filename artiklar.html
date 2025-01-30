@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="artiklar.css">
+    <link rel="stylesheet" href="footer2.css">
+    
+    <link rel="icon" href="images/logos/instareceptbaragaffellogo.svg" type="image/png">
+    <title>Artiklar</title>
+</head>
+<body>
+    <header class="site-header">
+        <a href="index.html" class="logo-link">
+            <img src="images/logos/instareceptlogga7.svg" alt="Logga" />
+        </a>
+        <div id="navbar-container"></div>
+    </header>
+
+    <main>
+        <h1 class="space-above">Artiklar</h1>
+        <nav>
+            <ul id="categories"></ul> <!-- Här skapas kategorier dynamiskt -->
+        </nav>
+        <section id="articles-list"></section>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <script src="footer2.js"></script>
+    <script src="loadNavbar.js"></script>
+    <script src="theme.js"></script>
+    <script src="articles.js"></script> <!-- Skript som laddar artiklar -->
+</body>
+</html>

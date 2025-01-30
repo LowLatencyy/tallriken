@@ -1,6 +1,6 @@
 const foodDays = [
 
-    { date: '2025-01-01', image: 'images/Food-Days/pizza.jpg', title: 'Nyårsdagen & Internationella Pizzadagen', description: 'Många startar året med en pizza, antingen från pizzerian eller hemmagjord.' },
+    { date: '2025-01-30', image: 'images/Food-Days/pizza.svg', title: 'Nyårsdagen & Internationella Pizzadagen', description: 'Många startar året med en pizza, antingen från pizzerian eller hemmagjord.' },
     { date: '2025-01-05', image: 'images/Food-Days/trettondagsafton.jpg', title: 'Trettondagsafton', description: 'Kvällen innan Trettondagen, ofta med lite extra god mat och samvaro.' },
     { date: '2025-01-06', image: 'images/Food-Days/trettondagen.jpg', title: 'Trettondagen', description: 'En av årets helgdagar, en bra anledning att laga något extra gott.' },
     { date: '2025-01-12', image: 'images/Food-Days/marsipan.jpg', title: 'Marsipanens dag', description: 'Perfekt dag för att njuta av marsipan, kanske i en bakelse eller som godis.' },
