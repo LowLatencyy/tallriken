@@ -912,3 +912,55 @@ body {
     /* Distribuerar utrymmet så att footern kan sitta längst ner.*/
 }
 
+
+
+.matratt {
+    flex: 0 0 calc(50% - 10px); /* Två kolumner */
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 500px; /* Anpassa höjden om det behövs */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-basis: calc(50% - 20px);
+    /* Justerar bredden så två element får plats, minus marginal */
+    max-width: calc(50% - 20px);
+    /* Samma här */
+    padding: 2px;
+    /* Mindre padding inuti varje resultat */
+    margin: 5px;
+    /* Behåller en liten marginal runt varje element */
+}
+
+
+
+.matratt iframe {
+    width: 100%;
+    height: auto;
+    min-height: 400px; /* Anpassa efter behov */
+    max-height: 500px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 3px;
+}
+
+.matratt-title {
+    background-color: rgba(0, 0, 0, 0.8); /* Svart bakgrund */
+    color: rgb(255, 255, 255);
+    font-size: 10px;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+    line-height: 1.4;
+    overflow: hidden;
+
+}
+
+/* ---- MEDIA QUERIES ---- */
+@media (max-width: 480px) {
+    .matratt {
+        flex: 1 0 50%; /* Två i bredd på små skärmar */
+        padding: 0px;
+        margin: 5px;
+    }
+}
