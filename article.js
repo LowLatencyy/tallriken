@@ -60,7 +60,28 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else {
         document.body.innerHTML = "<h1>Artikel hittades inte</h1>";
     }
+
+
+
+    const pageUrl = encodeURIComponent(window.location.href);
+    const pageTitle = encodeURIComponent(document.title);
+
+    // Instagram - Kan inte direkt dela länkar på webben, så vi öppnar Instagram-appen istället
+    document.getElementById("share-instagram").href = "instagram://app";
+
+    // Messenger
+    document.getElementById("share-messenger").href = `fb-messenger://share/?link=${pageUrl}`;
+
+    // Snapchat - Kräver att användaren är inloggad
+    document.getElementById("share-snapchat").href = `https://www.snapchat.com/share?url=${pageUrl}`;
+
+    // WhatsApp
+    document.getElementById("share-whatsapp").href = `https://api.whatsapp.com/send?text=${pageTitle} ${pageUrl}`;
+
+    // SMS (för mobiler)
+    document.getElementById("share-sms").href = `sms:?body=${pageTitle} ${pageUrl}`;
 });
+
 
 // Delningsknappar
 document.getElementById("share-facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${window.location.href}`;
