@@ -592,24 +592,8 @@ html {
 
 .divider-container {
     text-align: center;
-    margin: 10px 0; /* Minskar avstånd ovan och under */
-    padding: 0;
+    margin: 2px 0;
 }
-
-@media (max-width: 600px) {
-    .divider-container {
-        margin: 5px 0; /* Ännu tajtare i mobil */
-    }
-
-    .divider-image {
-        max-width: 100%;
-        height: auto;
-        margin: 0 auto; /* Säkerställer att bilden är centrerad */
-        padding: 0;
-    }
-}
-
-
 
 .divider-image {
     max-width: 100%;
