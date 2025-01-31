@@ -688,7 +688,8 @@ footer {
 
 /* Standard: Två kolumner på mobil */
 .matratt {
-    flex: 0 0 calc(50% - 10px); /* Två kolumner */
+    flex: 0 0 calc(50% - 10px);
+    /* Två kolumner */
     max-width: calc(50% - 10px);
     border-radius: 10px;
     background-color: white;
@@ -786,26 +787,36 @@ footer {
 #toggle-button:hover {
     text-decoration: none;
 }
+
 #read-more {
     display: block;
+    white-space: nowrap; /* Förhindrar radbrytning */
     text-align: center;
-    margin: 20px auto; /* Auto centrerar knappen horisontellt */
+    margin: 20px auto;
+    /* Auto centrerar knappen horisontellt */
     font-size: 1.1em;
-    font-family: 'League Spartan', sans-serif; /* Se till att det matchar sidans typsnitt */
+    font-family: 'League Spartan', sans-serif;
+    /* Se till att det matchar sidans typsnitt */
     font-weight: bold;
     text-decoration: none;
     color: #000;
-    background-color: #f5f5f5; /* Ljusgrå bakgrund */
+    background-color: #f5f5f5;
+    /* Ljusgrå bakgrund */
     border-radius: 5px;
     padding: 10px 20px;
-    width: fit-content; /* Anpassar bredden efter texten */
+    width: fit-content;
+    /* Anpassar bredden efter texten */
     transition: all 0.3s ease-in-out;
 }
 
 
+
+
 #read-more:hover {
-    background-color: rgb(45, 45, 45); /* Endast bakom texten */
-    color: white; /* Vit text på hover */
+    background-color: rgb(45, 45, 45);
+    /* Endast bakom texten */
+    color: white;
+    /* Vit text på hover */
 }
 
 
