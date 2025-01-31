@@ -230,21 +230,20 @@ document.addEventListener('DOMContentLoaded', async function () {
 
 });
 
-// Funktion för att hantera "Läs mer"
 document.addEventListener("DOMContentLoaded", function () {
     const readMoreLink = document.getElementById("read-more");
     const moreText = document.getElementById("more-text");
 
-    if (readMoreLink && moreText) { // Säkerställ att elementen finns innan eventet läggs till
+    if (readMoreLink && moreText) { // Säkerställer att elementen finns
         readMoreLink.addEventListener("click", function (event) {
-            event.preventDefault(); // Förhindra att sidan hoppar upp vid klick på länken
-            
-            if (moreText.classList.contains("hidden")) {
-                moreText.classList.remove("hidden"); // Visa den dolda texten
-                readMoreLink.textContent = "Visa mindre"; // Ändra länken till "Visa mindre"
+            event.preventDefault(); // Förhindrar att sidan hoppar upp
+
+            if (moreText.classList.contains("show-text")) {
+                moreText.classList.remove("show-text"); // Dölj texten
+                readMoreLink.textContent = "Läs mer"; // Ändra tillbaka texten
             } else {
-                moreText.classList.add("hidden"); // Dölj texten igen
-                readMoreLink.textContent = "Läs mer"; // Ändra tillbaka till "Läs mer"
+                moreText.classList.add("show-text"); // Visa texten
+                readMoreLink.textContent = "Visa mindre"; // Ändra texten
             }
         });
     }

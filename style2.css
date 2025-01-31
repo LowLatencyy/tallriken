@@ -832,3 +832,16 @@ footer {
 .hidden {
     display: none;
 }
+
+#more-text {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    padding: 0;
+}
+
+.show-text {
+    max-height: 500px; /* Justera höjden efter behov */
+    padding: 10px 0;
+}
