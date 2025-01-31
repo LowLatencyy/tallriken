@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
         return array;
 
-        
+
     }
 
 
@@ -87,51 +87,51 @@ document.addEventListener('DOMContentLoaded', async function () {
         // Hämta behållaren där resultat ska visas
         const container = document.getElementById('data-container');
         container.innerHTML = ''; // Rensa tidigare resultat
-    
+
         console.log('Selected filters:', selectedFilters);
-    
+
         const filteredResults = allData.filter(row => {
             // Kontrollera att alla relevanta kolumner finns
             if (!row[3] || !row[4] || !row[8]) {
                 return false;
             }
-    
+
             const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(f => row[3].split(',').map(s => s.trim()).includes(f));
             const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(f => row[4].split(',').map(s => s.trim()).includes(f));
             const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(f => row[8].split(',').map(s => s.trim()).includes(f));
-    
+
             return countryMatch && proteinMatch && mealtypeMatch;
         });
-    
+
         // Shuffle för att slumpa resultaten
         shuffleArray(filteredResults);
 
-        
-    
+
+
         // Spara filtrerade resultat för paginering
         currentFilteredData = filteredResults;
-    
+
         // Uppdatera totalPages
         totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
-    
+
         // Visa första sidan
         currentPage = 1;
         displayResults(currentFilteredData.slice(0, resultsPerPage));
     }
-    
+
 
 
 
     function displayResults(results) {
         const container = document.getElementById('data-container');
         container.innerHTML = ''; // Rensa tidigare resultat
-    
+
         results.forEach(row => {
             if (!row || !row[0] || !row[5]) return; // Hoppa över rader utan data
-    
+
             const instagramEmbedCode = row[5];  // Instagram-kod från kolumn
             const title = row[0];  // Titeln från kolumn 0
-    
+
             // HTML-strukturen för att visa resultat
             const resultHTML = `
                 <div class="matratt">
@@ -141,16 +141,16 @@ document.addEventListener('DOMContentLoaded', async function () {
             `;
             container.innerHTML += resultHTML; // Lägg till resultatet i container
         });
-    
+
         // Använd Instagram Embed API för att rendera inlägg
         if (window.instgrm) {
             window.instgrm.Embeds.process();
         }
-    
+
         // Visa pagineringskontroller
         displayPaginationControls();
     }
-    
+
 
 
 
@@ -158,32 +158,32 @@ document.addEventListener('DOMContentLoaded', async function () {
     function displayPaginationControls() {
         const paginationContainer = document.getElementById('pagination-controls');
         paginationContainer.innerHTML = ''; // Rensa befintliga knappar
-    
+
         for (let i = 1; i <= totalPages; i++) {
             const button = document.createElement('button');
             button.textContent = i;
             button.addEventListener('click', function () {
                 goToPage(i);
             });
-    
+
             if (currentPage === i) {
                 button.classList.add('current-page'); // Markera aktuell sida
             }
-    
+
             paginationContainer.appendChild(button);
         }
     }
-    
+
     function goToPage(pageNumber) {
         currentPage = pageNumber;
-    
+
         const startIndex = (pageNumber - 1) * resultsPerPage;
         const endIndex = startIndex + resultsPerPage;
         const resultsToDisplay = currentFilteredData.slice(startIndex, endIndex);
-    
+
         displayResults(resultsToDisplay); // Visa resultaten för den aktuella sidan
     }
-    
+
 
 
     // Funktion för att visa fler knappar
@@ -234,16 +234,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const readMoreLink = document.getElementById("read-more");
     const moreText = document.getElementById("more-text");
 
-    if (readMoreLink && moreText) { // Säkerställer att elementen finns
+    if (readMoreLink && moreText) {
         readMoreLink.addEventListener("click", function (event) {
-            event.preventDefault(); // Förhindrar att sidan hoppar upp
+            event.preventDefault();
 
             if (moreText.classList.contains("show-text")) {
-                moreText.classList.remove("show-text"); // Dölj texten
-                readMoreLink.textContent = "Läs mer"; // Ändra tillbaka texten
+                moreText.style.maxHeight = "0px"; // Stänger texten
+                moreText.style.opacity = "0";
+                readMoreLink.textContent = "Läs mer";
+                setTimeout(() => moreText.classList.remove("show-text"), 400); // Väntar tills animationen är klar
             } else {
-                moreText.classList.add("show-text"); // Visa texten
-                readMoreLink.textContent = "Visa mindre"; // Ändra texten
+                moreText.classList.add("show-text");
+                moreText.style.maxHeight = moreText.scrollHeight + "px"; // Expandera till hela höjden
+                moreText.style.opacity = "1";
+                readMoreLink.textContent = "Visa mindre";
             }
         });
     }

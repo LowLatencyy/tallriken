@@ -837,11 +837,14 @@ footer {
     display: block;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    transition: max-height 1.0s ease-in-out, padding 0.6s ease-in-out;
     padding: 0;
+    opacity: 0; /* Gör den osynlig vid start */
 }
 
 .show-text {
-    max-height: 500px; /* Justera höjden efter behov */
+    max-height: 500px; /* Justera efter behov */
     padding: 10px 0;
+    opacity: 1; /* Gör den synlig när den fälls ut */
+    transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
