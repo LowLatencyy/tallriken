@@ -477,33 +477,36 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100px;
-    height: 100px;
+    width: 50px; /* Mindre knapp */
+    height: 50px; /* Samma höjd och bredd för att vara rund */
     margin: 5px auto;
     background-color: transparent;
-    border: none;
-    border-radius: 25px;
+    border: 0px solid black; /* Behåller rund kant */
+    border-radius: 50%; /* Gör den cirkulär */
     padding: 0;
+    transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .show-more-btn:hover {
-    background-color: white;
-    color: white;
+    background-color: rgba(0, 0, 0, 0.1); /* Liten bakgrundsfärg vid hover */
+    transform: scale(1.05); /* Lätt förstoring för en mjuk effekt */
 }
 
 .show-more-btn img {
-    width: 60%;
+    width: 60%; /* Anpassa storleken på ikonen */
     height: auto;
     display: block;
-
 }
+
+
+
+
 
 @media (min-width: 768px) {
     .show-more-btn {
         width: 75px;
         height: 75px;
-        border-radius: 10px;
-
+        border-radius: 50%; /* Gör den rund igen */
     }
 }
 
@@ -511,14 +514,16 @@ html {
     .show-more-btn {
         width: 85px;
         height: 85px;
-        border-radius: 5px;
+        border-radius: 50%; /* Gör den rund igen */
     }
 }
 
 @media (max-width: 600px) {
     .show-more-btn {
-        padding: 5px 1px;
-        width: auto;
+        padding: 0; /* Ta bort extra padding som kan orsaka oval form */
+        width: 90px; /* Håll den kompakt på små skärmar */
+        height: 90px;
+        border-radius: 50%; /* Gör den rund */
         margin: auto;
     }
 
@@ -526,6 +531,7 @@ html {
         grid-template-columns: repeat(4, 1fr);
     }
 }
+
 
 .image-button:hover img {
     transform: scale(1.05);
