@@ -11,7 +11,7 @@
 
 .contact-image {
     width: 90%;        /* Bilden fyller max 90% av skärmen */
-    max-width: 300px;  /* Begränsar storleken på större skärmar */
+    max-width: 200px;  /* Begränsar storleken på större skärmar */
     height: auto;      /* Bevarar proportionerna */
     display: block;    /* Tar bort onödigt mellanrum */
     margin: 20px auto; /* Centrerar bilden */

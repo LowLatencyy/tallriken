@@ -188,6 +188,7 @@ html {
     max-width: 100%;
     height: auto;
     margin-top: 5px;
+    margin-bottom: 25px;
 }
 
 .matratt-title,
@@ -601,15 +602,7 @@ html {
 
 
 
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background-color: rgb(242, 242, 240);
-    z-index: 1000;
-}
+
 
 body {
     padding-top: 11px;
@@ -638,15 +631,7 @@ main {
     padding: 20px;
 }
 
-.site-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    background-color: rgb(242, 242, 240);
-    z-index: 5000;
-}
+
 
 footer {
     background-color: #000;
@@ -781,4 +766,58 @@ footer {
     max-width: 100% !important;
     width: 100% !important;
     min-width: unset !important;
+}
+
+.hidden {
+    display: none;
+}
+
+#toggle-button {
+    background-color: transparent;
+    border: none;
+    color: #000;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    margin-top: 5px;
+}
+
+#toggle-button:hover {
+    text-decoration: none;
+}
+#read-more {
+    display: block;
+    text-align: center;
+    margin: 20px auto; /* Auto centrerar knappen horisontellt */
+    font-size: 1.1em;
+    font-family: 'League Spartan', sans-serif; /* Se till att det matchar sidans typsnitt */
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+    background-color: #f5f5f5; /* Ljusgrå bakgrund */
+    border-radius: 5px;
+    padding: 10px 20px;
+    width: fit-content; /* Anpassar bredden efter texten */
+    transition: all 0.3s ease-in-out;
+}
+
+
+#read-more:hover {
+    background-color: rgb(45, 45, 45); /* Endast bakom texten */
+    color: white; /* Vit text på hover */
+}
+
+
+#intro-text {
+    text-align: center;
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: 'League Spartan', sans-serif;
+}
+
+/* Döljer extra text initialt */
+.hidden {
+    display: none;
 }
