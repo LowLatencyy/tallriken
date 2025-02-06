@@ -115,6 +115,7 @@ async function loadSynonyms() {
 
 
 async function performSearch() {
+    // Visa loader och overlay
     document.getElementById('loader').style.display = 'flex';
     document.getElementById('overlay').style.display = 'block';
 
@@ -123,13 +124,17 @@ async function performSearch() {
         document.getElementById('overlay').style.display = 'none';
     }, 1200);
 
+    // Återställ till första sidan vid ny sökning
     currentPage = 1;
+
+    // Hämta sökterm och gör den till gemener
     let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
     console.log('Search term:', searchTerm);
     let filteredData = allData;
 
     if (searchForDishes) {
-        filteredData = allData.filter(row => row[0].toLowerCase().includes(searchTerm));
+        // Filtrera efter maträtter (kolumn 0 = Namn på rätten)
+        filteredData = allData.filter(row => row[0]?.toLowerCase().includes(searchTerm));
 
         if (isVegFilterActive) {
             filteredData = filteredData.filter(row => row[6]?.toLowerCase() === 'ja');
@@ -137,16 +142,13 @@ async function performSearch() {
         if (isLangFilterActive) {
             filteredData = filteredData.filter(row => row[7]?.toLowerCase() === 'ja');
         }
-
-        console.log('Filtered data:', filteredData);
-
     } else {
+        // Filtrera efter ingredienser
         let searchIngredients = selectedTags.flatMap(tag => {
             if (groupedIngredients[tag]) {
                 return groupedIngredients[tag];
             } else if (ingredientSynonyms[tag]) {
-                let ingredientsArray = ingredientSynonyms[tag].split(', ').map(ing => ing.trim());
-                return ingredientsArray;
+                return ingredientSynonyms[tag].split(',').map(ing => ing.trim());
             } else {
                 return [tag];
             }
@@ -155,7 +157,7 @@ async function performSearch() {
         console.log('Ingredients to search for:', searchIngredients);
 
         filteredData = allData.filter(row => {
-            const ingredients = row[1]?.toLowerCase().split(', ').map(ing => ing.trim());
+            const ingredients = row[1]?.toLowerCase().split(',').map(ing => ing.trim());
             return searchIngredients.every(ingredient => ingredients.includes(ingredient));
         });
 
@@ -167,20 +169,33 @@ async function performSearch() {
         }
     }
 
-    shuffleArray(filteredData);
+    // Blanda resultaten för variation
+    filteredData = shuffleArray(filteredData);
 
+    // Spara filtrerad data för paginering
     currentFilteredData = filteredData;
     totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
 
-    // Kontrollera om inga resultat hittades
+    // 🆕 Uppdatera räknaren för antal sökresultat
+    let resultCountDiv = document.getElementById('result-count');
+    if (filteredData.length > 0) {
+        resultCountDiv.style.display = 'block';
+        resultCountDiv.innerHTML = `Hittade <strong>${filteredData.length}</strong> resultat`;
+    } else {
+        resultCountDiv.style.display = 'none'; // Dölj om inga resultat hittades
+    }
+
+    // Kontrollera om det finns några resultat
     if (filteredData.length === 0) {
         document.getElementById('data-container').innerHTML = '';  // Rensar resultatlistan
+        document.getElementById('pagination-controls').innerHTML = ''; // Tar bort sidindelning
         document.getElementById('no-results-message').style.display = 'block';  // Visa meddelande och GIF
     } else {
-        document.getElementById('no-results-message').style.display = 'none';  // Dölj meddelande och GIF
+        document.getElementById('no-results-message').style.display = 'none';  // Dölj meddelande
         displayData(currentFilteredData, currentPage);
     }
 }
+
 
 
 

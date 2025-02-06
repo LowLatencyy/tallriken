@@ -144,6 +144,9 @@ async function performSearch() {
     currentFilteredData = filteredData;
     totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
 
+    // Uppdatera räknaren
+    updateResultCount(filteredData.length);
+
     // Kontrollera om det finns några resultat
     if (filteredData.length === 0) {
         document.getElementById('data-container').innerHTML = ''; // Rensa resultat
@@ -154,6 +157,16 @@ async function performSearch() {
     }
 }
 
+// Uppdatera resultaträknaren
+function updateResultCount(count) {
+    const resultCountDiv = document.getElementById('result-count');
+    if (count > 0) {
+        resultCountDiv.innerHTML = `Hittade <strong>${count}</strong> resultat.`; // Gör siffran fetstil
+        resultCountDiv.style.display = 'block';
+    } else {
+        resultCountDiv.style.display = 'none';
+    }
+}
 
 
 

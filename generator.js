@@ -103,20 +103,33 @@ document.addEventListener('DOMContentLoaded', async function () {
             return countryMatch && proteinMatch && mealtypeMatch;
         });
 
-        // Shuffle för att slumpa resultaten
+        // Blanda om resultaten
         shuffleArray(filteredResults);
-
-
 
         // Spara filtrerade resultat för paginering
         currentFilteredData = filteredResults;
-
-        // Uppdatera totalPages
         totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
+
+        // Uppdatera resultat-räknaren
+        updateResultCount(filteredResults.length);
 
         // Visa första sidan
         currentPage = 1;
-        displayResults(currentFilteredData.slice(0, resultsPerPage));
+
+        if (filteredResults.length === 0) {
+            document.getElementById('data-container').innerHTML = '<p style="text-align:center; font-size:18px;">Inga resultat hittades.</p>';
+        } else {
+            displayResults(currentFilteredData.slice(0, resultsPerPage));
+        }
+    }
+
+    // Lägg till denna funktion om den saknas i din kod
+    function updateResultCount(count) {
+        const resultCountElement = document.getElementById('result-count');
+        if (resultCountElement) {
+            resultCountElement.innerHTML = `Hittade <strong>${count}</strong> resultat`;
+            resultCountElement.style.display = 'block';
+        }
     }
 
 
