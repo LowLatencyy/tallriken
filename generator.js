@@ -171,40 +171,70 @@ document.addEventListener('DOMContentLoaded', async function () {
     function displayPaginationControls() {
         const paginationContainer = document.getElementById('pagination-controls');
         paginationContainer.innerHTML = ''; // Rensa befintliga knappar
-
-        const pageWindow = 2; // Antal sidor att visa runt den aktuella sidan
-        let startPage = Math.max(1, currentPage - pageWindow);
-        let endPage = Math.min(totalPages, currentPage + pageWindow);
-
-        // Visa alltid första sidorna
-        if (startPage > 2) {
-            addPageButton(1);
-            addPageButton(2);
-            paginationContainer.innerHTML += `<span>...</span>`; // Lägg till "..."
-        }
-
-        // Lägg till sidorna runt den aktuella sidan
-        for (let i = startPage; i <= endPage; i++) {
-            addPageButton(i);
-        }
-
-        // Visa alltid de sista sidorna
-        if (endPage < totalPages - 1) {
-            paginationContainer.innerHTML += `<span>...</span>`; // Lägg till "..."
-            addPageButton(totalPages - 1);
-            addPageButton(totalPages);
-        }
-
-        function addPageButton(page) {
+    
+        if (totalPages <= 1) return;
+    
+        const pagination = document.createElement('div');
+        pagination.classList.add('pagination-wrapper');
+    
+        function createPageButton(pageNumber) {
             const button = document.createElement('button');
-            button.textContent = page;
-            button.classList.toggle('current-page', currentPage === page);
-            button.addEventListener('click', () => goToPage(page));
-            paginationContainer.appendChild(button);
+            button.textContent = pageNumber;
+            button.addEventListener('click', function () {
+                goToPage(pageNumber);
+            });
+            if (currentPage === pageNumber) {
+                button.classList.add('current-page');
+            }
+            return button;
         }
+    
+        if (totalPages <= 6) {
+            // Om det är få sidor, visa alla
+            for (let i = 1; i <= totalPages; i++) {
+                pagination.appendChild(createPageButton(i));
+            }
+        } else {
+            // Visa alltid första sidan
+            pagination.appendChild(createPageButton(1));
+    
+            if (currentPage > 3) {
+                // Lägg till "..." om vi är långt från början
+                const dots = document.createElement('span');
+                dots.textContent = '...';
+                pagination.appendChild(dots);
+            }
+    
+            // Visa föregående, aktuell och nästa sida
+            for (let i = Math.max(2, currentPage - 1); i <= Math.min(totalPages - 1, currentPage + 1); i++) {
+                pagination.appendChild(createPageButton(i));
+            }
+    
+            if (currentPage < totalPages - 2) {
+                // Lägg till "..." om vi är långt från slutet
+                const dots = document.createElement('span');
+                dots.textContent = '...';
+                pagination.appendChild(dots);
+            }
+    
+            // Visa alltid sista sidan
+            pagination.appendChild(createPageButton(totalPages));
+        }
+    
+        paginationContainer.appendChild(pagination);
     }
+    
+    
 
+    function goToPage(pageNumber) {
+        currentPage = pageNumber;
 
+        const startIndex = (pageNumber - 1) * resultsPerPage;
+        const endIndex = startIndex + resultsPerPage;
+        const resultsToDisplay = currentFilteredData.slice(startIndex, endIndex);
+
+        displayResults(resultsToDisplay); // Visa resultaten för den aktuella sidan
+    }
 
 
 
