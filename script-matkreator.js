@@ -113,9 +113,8 @@ async function loadSynonyms() {
     }
 }
 
-
 async function performSearch() {
-    // Visa loadern och överlägget
+    // Visa loader och overlay
     document.getElementById('loader').style.display = 'flex';
     document.getElementById('overlay').style.display = 'block';
 
@@ -124,33 +123,35 @@ async function performSearch() {
         document.getElementById('overlay').style.display = 'none';
     }, 1200);
 
-    // Hämta användarens sökterm och gör det till gemener
+    // Återställ till första sidan vid ny sökning
+    currentPage = 1;
+
+    // Hämta sökterm och gör den till gemener
     let searchTerm = document.getElementById('searchInput').value.toLowerCase().trim();
     console.log('Search term:', searchTerm);
 
     // Filtrera data baserat på matkreatör (kolumn J = index 9)
     let filteredData = allData.filter(row => {
-        // Kontrollera att kolumn 9 finns och inte är undefined
-        if (row.length > 9 && row[9]) {
-            const matkreator = row[9]?.toLowerCase().trim();
-            return matkreator.includes(searchTerm); // Kontrollera om matkreatören innehåller söktermen
-        }
-        return false;
+        return row.length > 9 && row[9] && row[9].toLowerCase().includes(searchTerm);
     });
 
     console.log('Filtered data:', filteredData);
 
-    // Blanda om resultaten med Fisher-Yates
+    // Blanda om resultaten
     filteredData = shuffleArray(filteredData);
 
     // Spara filtrerad data för paginering
     currentFilteredData = filteredData;
-
-    // Beräkna antal sidor
     totalPages = Math.ceil(currentFilteredData.length / resultsPerPage);
 
-    // Visa första sidan av resultaten
-    displayData(currentFilteredData, currentPage);
+    // Kontrollera om det finns några resultat
+    if (filteredData.length === 0) {
+        document.getElementById('data-container').innerHTML = ''; // Rensa resultat
+        document.getElementById('no-results-message').style.display = 'block'; // Visa meddelande
+    } else {
+        document.getElementById('no-results-message').style.display = 'none'; // Dölj meddelande
+        displayData(currentFilteredData, currentPage);
+    }
 }
 
 

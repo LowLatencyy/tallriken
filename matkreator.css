@@ -1,1 +1,19 @@
+#no-results-message {
+    display: none;
+    text-align: center;
+    margin-top: 10px; /* Minska avståndet ovanför */
+    margin-bottom: 10px; /* Minska avståndet under */
+    padding: 10px; /* Justera eventuell inre padding om det behövs */
+}
 
+#no-results-message img {
+    max-width: 250px; /* Minska storleken om den känns för stor */
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centrerar bilden snyggt */
+}
+
+#no-results-message p {
+    font-size: 16px; /* Justera textstorleken om det behövs */
+    margin: 5px 0; /* Minska avståndet mellan text och bild */
+}
