@@ -127,7 +127,7 @@ document.addEventListener('DOMContentLoaded', async function () {
     function updateResultCount(count) {
         const resultCountElement = document.getElementById('result-count');
         if (resultCountElement) {
-            resultCountElement.innerHTML = `Hittade <strong>${count}</strong> resultat`;
+            resultCountElement.innerHTML = `Hittade <strong>${count}</strong> resultat.`;
             resultCountElement.style.display = 'block';
         }
     }
