@@ -1,19 +1,23 @@
 #no-results-message {
-    display: none;
+    display: flex; /* Gör det till en flexibel box för bättre layout */
+    flex-direction: column;
+    align-items: center; /* Centrerar innehållet */
+    justify-content: center; /* Förhindrar extra utrymme under */
     text-align: center;
-    margin-top: 10px; /* Minska avståndet ovanför */
-    margin-bottom: 10px; /* Minska avståndet under */
-    padding: 10px; /* Justera eventuell inre padding om det behövs */
+    margin: 10px auto; /* Minska avstånd över och under */
+    padding: 10px 0; /* Se till att paddingen är minimal */
+    max-width: 300px; /* Begränsar bredden för bättre visning */
 }
 
 #no-results-message img {
-    max-width: 250px; /* Minska storleken om den känns för stor */
+    max-width: 200px; /* Minska storleken på GIF:en */
     height: auto;
+    margin: 0 auto 5px auto; /* Tar bort extra utrymme under bilden */
     display: block;
-    margin: 0 auto; /* Centrerar bilden snyggt */
 }
 
 #no-results-message p {
-    font-size: 16px; /* Justera textstorleken om det behövs */
-    margin: 5px 0; /* Minska avståndet mellan text och bild */
+    font-size: 16px; /* Standardstorlek för texten */
+    margin: 0; /* Tar bort extra utrymme under texten */
+    padding: 0;
 }
