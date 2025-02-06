@@ -528,53 +528,6 @@ input:not(:checked)+.slider.large {
     border-radius: 5px;
 }
 
-#pagination-controls button {
-    background-color: white;
-    /* Vit bakgrund */
-    color: black;
-    /* Svart text */
-    border: 1px solid #ddd;
-    /* Lätt grå kantlinje */
-    padding: 10px 15px;
-    /* Padding för att göra knappen större */
-    margin: 5px;
-    /* Avstånd mellan knapparna */
-    border-radius: 5px;
-    /* Lätt rundade hörn */
-    cursor: pointer;
-    /* Ändra muspekaren till en hand när den svävar över knappen */
-    font-size: 1em;
-    /* Storlek på texten */
-    transition: background-color 0.3s;
-    /* Smidig övergång för bakgrundsfärg */
-    font-family: 'League Spartan', cursive;
-    /* Din huvudfont */
-}
-
-#pagination-controls button:hover {
-    background-color: rgb(207, 255, 0);
-    /* Ljusgul bakgrund när muspekaren svävar över */
-}
-
-/* Uppdateringar för #pagination-controls */
-#pagination-controls {
-    position: fixed;
-    /* Istället för absolute */
-    bottom: 15px;
-    /* Höjden på din footer */
-    left: 0;
-    right: 0;
-    z-index: 2000;
-    text-align: center;
-    margin-bottom: 8px;
-    /* Detta kan behöva justeras beroende på exakt placering */
-    padding: 8px 0;
-}
-
-#pagination-controls.hidden {
-    display: none;
-    /* Dölj pagineringskontrollerna */
-}
 
 /* Media query för desktop */
 @media (min-width: 481px) {

@@ -180,7 +180,7 @@ async function performSearch() {
     let resultCountDiv = document.getElementById('result-count');
     if (filteredData.length > 0) {
         resultCountDiv.style.display = 'block';
-        resultCountDiv.innerHTML = `Hittade <strong>${filteredData.length}</strong> resultat`;
+        resultCountDiv.innerHTML = `Hittade <strong>${filteredData.length}</strong> resultat.`;
     } else {
         resultCountDiv.style.display = 'none'; // Dölj om inga resultat hittades
     }

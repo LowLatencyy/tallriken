@@ -172,30 +172,39 @@ document.addEventListener('DOMContentLoaded', async function () {
         const paginationContainer = document.getElementById('pagination-controls');
         paginationContainer.innerHTML = ''; // Rensa befintliga knappar
 
-        for (let i = 1; i <= totalPages; i++) {
+        const pageWindow = 2; // Antal sidor att visa runt den aktuella sidan
+        let startPage = Math.max(1, currentPage - pageWindow);
+        let endPage = Math.min(totalPages, currentPage + pageWindow);
+
+        // Visa alltid första sidorna
+        if (startPage > 2) {
+            addPageButton(1);
+            addPageButton(2);
+            paginationContainer.innerHTML += `<span>...</span>`; // Lägg till "..."
+        }
+
+        // Lägg till sidorna runt den aktuella sidan
+        for (let i = startPage; i <= endPage; i++) {
+            addPageButton(i);
+        }
+
+        // Visa alltid de sista sidorna
+        if (endPage < totalPages - 1) {
+            paginationContainer.innerHTML += `<span>...</span>`; // Lägg till "..."
+            addPageButton(totalPages - 1);
+            addPageButton(totalPages);
+        }
+
+        function addPageButton(page) {
             const button = document.createElement('button');
-            button.textContent = i;
-            button.addEventListener('click', function () {
-                goToPage(i);
-            });
-
-            if (currentPage === i) {
-                button.classList.add('current-page'); // Markera aktuell sida
-            }
-
+            button.textContent = page;
+            button.classList.toggle('current-page', currentPage === page);
+            button.addEventListener('click', () => goToPage(page));
             paginationContainer.appendChild(button);
         }
     }
 
-    function goToPage(pageNumber) {
-        currentPage = pageNumber;
 
-        const startIndex = (pageNumber - 1) * resultsPerPage;
-        const endIndex = startIndex + resultsPerPage;
-        const resultsToDisplay = currentFilteredData.slice(startIndex, endIndex);
-
-        displayResults(resultsToDisplay); // Visa resultaten för den aktuella sidan
-    }
 
 
 

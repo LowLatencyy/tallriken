@@ -237,3 +237,48 @@ main {
 }
 
 
+
+#pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    gap: 8px;
+}
+
+#pagination-controls button {
+    background-color: #f7f7f7;
+    color: #000000;
+    border: 2px solid #ddd;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Gör knapparna runda */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#pagination-controls button:hover {
+    background-color: #c5ff00; /* Ljusgrön hover */
+    border-color: #a5e600;
+    color: black;
+}
+
+#pagination-controls .current-page {
+    background-color: #c5ff00; /* Ljusgrön */
+    color: black;
+    border: 2px solid #a5e600;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+#pagination-controls span {
+    font-size: 20px;
+    font-weight: bold;
+    color: #666;
+    padding: 0 10px;
+}
