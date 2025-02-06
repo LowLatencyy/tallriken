@@ -343,38 +343,40 @@ function displayPaginationControls() {
 
     document.getElementById('pagination-controls').innerHTML = paginationHtml;
 }
-
 function goToPage(pageNumber) {
     // Visa loadern och överlägget
     document.getElementById('loader').style.display = 'flex';
     document.getElementById('overlay').style.display = 'block';
 
-    // Sätt en timer för att dölja både loadern och överlägget efter 3 sekunder
+    // Sätt en timer för att dölja både loadern och överlägget efter 1.2 sekunder
     setTimeout(() => {
         document.getElementById('loader').style.display = 'none';
-        document.getElementById('overlay').style.display = 'none'; // Dölj överlägget
-    }, 1200); // 3000 ms = 3 sekunder
+        document.getElementById('overlay').style.display = 'none';
+    }, 1200);
 
     // Uppdatera currentPage till det nya sidnumret
     currentPage = pageNumber;
 
-    // Utför den asynkrona uppdateringen och dölj loadern och överlägget efteråt
+    // Utför den asynkrona uppdateringen och scrolla upp efteråt
     displayData(currentFilteredData, currentPage)
         .then(() => {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
 
-            // Scrolla till toppen av datakontainern eller sidan efter sidbyte
-            const dataContainer = document.getElementById('data-container');
-            if (dataContainer) {
-                dataContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
+            // Fördröj scrollning en aning för att säkerställa att resultaten laddats in
+            setTimeout(() => {
+                const searchButton = document.getElementById('searchBtn'); // Hämta sökknappen
+                if (searchButton) {
+                    const offsetTop = searchButton.getBoundingClientRect().top + window.scrollY - 20;
+                    window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                }
+            }, 100); // Vänta 100ms innan scrollning för att säkerställa att sidan uppdateras
         })
         .catch(error => {
             console.error('Ett fel uppstod vid uppdatering av sidan: ', error);
-            // Hantera eventuella fel här
         });
 }
+
 
 
 

@@ -228,13 +228,21 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     function goToPage(pageNumber) {
         currentPage = pageNumber;
-
+    
         const startIndex = (pageNumber - 1) * resultsPerPage;
         const endIndex = startIndex + resultsPerPage;
         const resultsToDisplay = currentFilteredData.slice(startIndex, endIndex);
-
+    
         displayResults(resultsToDisplay); // Visa resultaten för den aktuella sidan
+    
+        // Hämta elementet du vill scrolla till (exempelvis sökknappen eller resultat-räknaren)
+        const searchButton = document.getElementById('searchBtn'); // Justera om du har en annan referens
+    
+        if (searchButton) {
+            searchButton.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
     }
+    
 
 
 
