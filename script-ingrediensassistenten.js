@@ -343,7 +343,6 @@ function displayPaginationControls() {
 
     document.getElementById('pagination-controls').innerHTML = paginationHtml;
 }
-
 function goToPage(pageNumber) {
     // Visa loadern och överlägget
     document.getElementById('loader').style.display = 'flex';
@@ -364,15 +363,14 @@ function goToPage(pageNumber) {
             document.getElementById('loader').style.display = 'none';
             document.getElementById('overlay').style.display = 'none';
 
+            // Fördröj scrollning en aning för att säkerställa att resultaten laddats in
             setTimeout(() => {
-                const searchContainer = document.querySelector('.search-container'); // Hämta sökfältscontainern
-                if (searchContainer) {
-                    const offsetTop = searchContainer.getBoundingClientRect().top + window.scrollY - 50;
+                const searchButton = document.getElementById('searchBtn'); // Hämta sökknappen
+                if (searchButton) {
+                    const offsetTop = searchButton.getBoundingClientRect().top + window.scrollY - 20; 
                     window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-                } else {
-                    console.warn("Kunde inte hitta '.search-container' för scrollning.");
                 }
-            }, 300); // Vänta 300ms innan scrollning för att säkerställa att sidan uppdateras
+            }, 100); // Vänta 100ms innan scrollning för att säkerställa att sidan uppdateras
         })
         .catch(error => {
             console.error('Ett fel uppstod vid uppdatering av sidan: ', error);
