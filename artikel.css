@@ -113,3 +113,9 @@ body {
     /* Flytta ner rubriken så den inte hamnar bakom headern */
     text-align: center;
 }
+
+.back-link {
+    display: block;
+    margin-top: 40px; /* Lägg till extra utrymme ovanför länken */
+    font-size: 1.1em; /* Gör texten något större om det behövs */
+}

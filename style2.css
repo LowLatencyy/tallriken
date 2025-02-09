@@ -669,8 +669,8 @@ footer {
     /* Två kolumner */
     max-width: calc(50% - 10px);
     border-radius: 10px;
-    background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #f2f2f0;
+    
     min-height: 500px;
     display: flex;
     flex-direction: column;

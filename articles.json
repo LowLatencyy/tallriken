@@ -1,20 +1,15 @@
 [
-    {
-        "title": "Så väljer du rätt stekpanna",
-        "slug": "kopavstekpanna",
-        "category": "Köksredskap",
-        "tags": ["stekpanna", "köksredskap", "matlagning"],
-        "image": "images/stekpanna.jpg",
-        "excerpt": "En guide till att välja rätt stekpanna...",
-        "date": "2025-01-30",
-        "wordCount": 800,
-        "content": "<p>Att välja rätt stekpanna kan vara svårt...</p>"
-    },
+    {"title":"Så väljer du rätt stekpanna","slug":"kopavstekpanna","category":"Köksredskap","tags":["stekpanna","köksredskap","matlagning"],"image":"images/stekpanna.jpg","excerpt":"En guide till att välja rätt stekpanna...","date":"2025-01-30","wordCount":800,"content":"<p>Att hitta en bra stekpanna handlar om mer än bara pris – det handlar om hur du lagar mat och vilka egenskaper du värdesätter. Nedan går vi igenom olika material och deras för- och nackdelar samt vad de passar bäst till.</p><h2>Material – vad passar dig bäst?</h2><ul><li><strong>Gjutjärn</strong> – Perfekt för kött och rätter som kräver jämn värme. <br>✅ Håller värmen länge, ger bra stekyta, tål ugn. <br>❌ Tung, kräver inbränning och noggrann skötsel.</li><li><strong>Rostfritt stål</strong> – Bäst för såser, hög värme och bryning. <br>✅ Slitstarkt, klarar höga temperaturer, fungerar på alla spisar. <br>❌ Kräver mer fett för att undvika att maten fastnar.</li><li><strong>Non-stick (Teflon eller keramisk beläggning)</strong> – Bra för ägg, pannkakor och lättare matlagning. <br>✅ Kräver lite fett, lätt att rengöra. <br>❌ Känslig beläggning, tål ej hög värme.</li><li><strong>Kolstål</strong> – Flexibel, kan ersätta både gjutjärn och rostfritt. <br>✅ Lättare än gjutjärn, blir bättre med tiden, tål hög värme. <br>❌ Kräver inbränning och regelbunden skötsel.</li></ul><h2>Storlek och form</h2><p>En standardstorlek på 26–28 cm passar de flesta hushåll. Mindre stekpannor (ca 20 cm) är praktiska för omeletter och mindre rätter. En hög kant är bra för rätter med sås, medan en låg kant gör det lättare att vända mat.</p><h2>Kompatibilitet med din spis</h2><p>Induktionshällar kräver magnetiska bottnar, vilket gjutjärn och vissa rostfria stekpannor har. Kontrollera att din panna fungerar med din spistyp innan köp.</p><h2>Handtag och vikt</h2><p>Ett bekvämt handtag gör stor skillnad, särskilt om du lagar mat ofta. Trähandtag blir inte varma men tål inte ugn. Metallhandtag klarar hög värme men kan bli heta. Gjutjärnspannor är tyngre än andra, vilket kan påverka hanteringen.</p><h2>Pris och hållbarhet</h2><p>En billig non-stick-panna kan behöva bytas ut efter några år, medan en välskött gjutjärns- eller kolstålpanna kan hålla hela livet.</p><h2>Olika alternativ beroende på budget</h2><p>Här är några rekommenderade alternativ i olika prisklasser:</p><h3>High-end – Premiumval</h3><ul><li><a href='https://affiliate-link.com/highend-gjutjarn' target='_blank'><img src='images/highend-gjutjarn.jpg' alt='High-end gjutjärnspanna' /> Högkvalitativ gjutjärnspanna</a></li><li><a href='https://affiliate-link.com/highend-rostfritt' target='_blank'><img src='images/highend-rostfritt.jpg' alt='High-end rostfri stekpanna' /> Rostfri stekpanna i premiumklass</a></li><li><a href='https://affiliate-link.com/highend-nonstick' target='_blank'><img src='images/highend-nonstick.jpg' alt='High-end non-stick stekpanna' /> Hållbar non-stick stekpanna</a></li></ul><h3>Mellan – Bästa pris/prestanda</h3><ul><li><a href='https://affiliate-link.com/mellan-gjutjarn' target='_blank'><img src='images/mellan-gjutjarn.jpg' alt='Mellanpris gjutjärnspanna' /> Bra gjutjärnspanna för vardagen</a></li><li><a href='https://affiliate-link.com/mellan-rostfritt' target='_blank'><img src='images/mellan-rostfritt.jpg' alt='Mellanpris rostfri stekpanna' /> Prisvärd rostfri stekpanna</a></li><li><a href='https://affiliate-link.com/mellan-nonstick' target='_blank'><img src='images/mellan-nonstick.jpg' alt='Mellanpris non-stick stekpanna' /> Smidig non-stick panna</a></li></ul><h3>Budget – Prisvärt alternativ</h3><ul><li><a href='https://affiliate-link.com/budget-gjutjarn' target='_blank'><img src='images/budget-gjutjarn.jpg' alt='Budget gjutjärnspanna' /> Enkel gjutjärnspanna</a></li><li><a href='https://affiliate-link.com/budget-rostfritt' target='_blank'><img src='images/budget-rostfritt.jpg' alt='Budget rostfri stekpanna' /> Prisvärd rostfri stekpanna</a></li><li><a href='https://affiliate-link.com/budget-nonstick' target='_blank'><img src='images/budget-nonstick.jpg' alt='Budget non-stick stekpanna' /> Billig non-stick panna</a></li></ul><h2>Slutsats</h2><p>Välj en stekpanna som passar din budget och dina matlagningsvanor. En billig panna kan vara ett bra val för enklare matlagning, medan en hållbar panna i rostfritt stål eller gjutjärn kan vara en långsiktig investering.</p>"}
+,
     {
         "title": "Frukost och hälsa",
         "slug": "frukost-halsa",
         "category": "Hälsa",
-        "tags": ["frukost", "hälsa", "näring"],
+        "tags": [
+            "frukost",
+            "hälsa",
+            "näring"
+        ],
         "image": "images/frukost.jpg",
         "excerpt": "Frukost är dagens viktigaste mål. Men vad ska man äta?",
         "date": "2025-01-29",
@@ -25,7 +20,11 @@
         "title": "Den Ultimata Guiden till Stekpannor",
         "slug": "ultimata-guiden-stekpannor",
         "category": "Köksredskap",
-        "tags": ["stekpanna", "köksredskap", "matlagning"],
+        "tags": [
+            "stekpanna",
+            "köksredskap",
+            "matlagning"
+        ],
         "image": "images/stekpanna-guide.jpg",
         "excerpt": "Lär dig allt om olika typer av stekpannor och hur du väljer rätt för ditt kök.",
         "date": "2025-02-01",

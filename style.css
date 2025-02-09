@@ -106,12 +106,7 @@ html {
     filter: blur(5px);
 }
 
-.logo-image {
-    width: 200px;
-    /* eller en procentandel, beroende på dina behov */
-    height: auto;
-    /* Bibehåller bildens proportioner */
-}
+
 
 
 
@@ -279,22 +274,6 @@ html {
     filter: blur(5px);
 }
 
-.logo-link {
-    position: fixed;
-    top: 10px;
-    /* Justera avståndet från toppen */
-    left: 10px;
-    /* Justera avståndet från vänsterkanten */
-    z-index: 3000;
-    /* Se till att loggan alltid är överst */
-}
-
-.logo-link img {
-    height: 40px;
-    /* Justera storleken på loggan */
-    width: auto;
-    /* Behåller bildens aspektförhållande */
-}
 
 .text-image {
     text-align: left;
@@ -547,10 +526,7 @@ input:not(:checked)+.slider.large {
 
 @media (max-width: 480px) {
 
-    .logo-link img {
-        height: 40px;
-        /* Justera storleken på logotypen om det behövs */
-    }
+    
 
     .matratt-title {
         font-size: 10px;
@@ -643,16 +619,7 @@ input:not(:checked)+.slider.large {
     height: auto;
 }
 
-.logo-main-container {
-    text-align: center;
-    margin-top: 12px;
-}
 
-.main-logo {
-    max-width: 40%;
-    height: auto;
-    margin: 0 auto;
-}
 
 .image-links-container {
     display: flex;
