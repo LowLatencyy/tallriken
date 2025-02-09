@@ -349,8 +349,8 @@ html {
 .title-background {
     background-color: #000;
     color: white;
-    padding: 4px 6px;
-    height: 80px;
+    padding: 2px 6px; /* Minska padding */
+    height: 60px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -359,6 +359,7 @@ html {
 
 .title-background h2 {
     margin: 0;
+    margin-bottom: 2px !important;
     line-height: 1.2;
     max-height: 3.6em;
     overflow: hidden;
@@ -711,12 +712,14 @@ footer {
     background-color: #f2f2f0;
     /* Svart bakgrund */
     color: rgb(0, 0, 0);
-    font-size: 12px;
-    padding: 5px;
+    font-size: 10px;
+    padding: 0px;
     border-radius: 8px;
     text-align: center;
     line-height: 1.4;
     overflow: hidden;
+    margin-bottom: 0px !important;
+    padding-bottom: 0px !important;
 }
 
 /* Anpassning för mobil */
@@ -879,3 +882,4 @@ footer {
     align-items: center;
     justify-content: center;
 }
+
