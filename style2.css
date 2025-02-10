@@ -365,7 +365,6 @@ html {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
     text-overflow: ellipsis;
 }
 
@@ -409,7 +408,6 @@ html {
     cursor: pointer;
     transition: transform 0.3s;
     -webkit-tap-highlight-color: transparent;
-    tap-highlight-color: transparent;
 }
 
 .image-button:focus,

@@ -319,8 +319,7 @@ html {
     transition: .4s;
     -webkit-tap-highlight-color: transparent;
     /* för Safari och Chrome på iOS */
-    tap-highlight-color: transparent;
-    /* standard CSS egenskap, men stöds inte av alla webbläsare än */
+ 
 }
 
 .switch .slider:before {
@@ -784,7 +783,7 @@ input:not(:checked)+.slider.large {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
+  
     /* Begränsar till 3 rader */
     text-overflow: ellipsis;
 }
