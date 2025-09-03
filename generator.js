@@ -52,6 +52,9 @@ document.addEventListener('DOMContentLoaded', async function () {
             const data = await response.json();
             allData = data.values;
             console.log('Data loaded', allData);
+    
+            // Uppdatera badges när data har laddats
+            updateBadges();
         } catch (error) {
             console.error('Error loading data', error);
         }
@@ -63,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         button.addEventListener('click', function () {
             const filter = this.dataset.filter;
             const category = this.dataset.category;
-
+    
             if (selectedFilters[category].includes(filter)) {
                 selectedFilters[category] = selectedFilters[category].filter(f => f !== filter);
                 this.classList.remove('selected');
@@ -71,8 +74,11 @@ document.addEventListener('DOMContentLoaded', async function () {
                 selectedFilters[category].push(filter);
                 this.classList.add('selected');
             }
-
-            console.log(selectedFilters); // Lägg till denna för att se filterstatus
+    
+            console.log(selectedFilters); // För att se filterstatus i konsolen
+    
+            // Uppdatera badges och inaktiva knappar
+            updateBadges();
         });
     });
 
@@ -311,4 +317,39 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
+
+    // Funktion för att uppdatera badges och inaktiva knappar
+function updateBadges() {
+    // Filtrera recepten baserat på användarens val
+    const filteredResults = allData.filter(row => {
+        const mealtypes = row[8]?.toLowerCase().split(',').map(s => s.trim()) || [];
+        const proteins = row[4]?.toLowerCase().split(',').map(s => s.trim()) || [];
+        const countries = row[3]?.toLowerCase().split(',').map(s => s.trim()) || [];
+
+        const mealtypeMatch = !selectedFilters.mealtype.length || selectedFilters.mealtype.some(filter => mealtypes.includes(filter.toLowerCase()));
+        const proteinMatch = !selectedFilters.protein.length || selectedFilters.protein.some(filter => proteins.includes(filter.toLowerCase()));
+        const countryMatch = !selectedFilters.country.length || selectedFilters.country.some(filter => countries.includes(filter.toLowerCase()));
+
+        return mealtypeMatch && proteinMatch && countryMatch;
+    });
+
+    // Uppdatera badges och inaktiva knappar för varje kategori
+    ["mealtype", "protein", "country"].forEach(category => {
+        document.querySelectorAll(`.image-button[data-category="${category}"]`).forEach(button => {
+            const filter = button.getAttribute("data-filter");
+            const count = filteredResults.filter(row => {
+                const values = row[category === "mealtype" ? 8 : category === "protein" ? 4 : 3]?.toLowerCase().split(',').map(s => s.trim()) || [];
+                return values.includes(filter.toLowerCase());
+            }).length;
+
+            const badge = button.querySelector(".badge");
+            if (badge) {
+                badge.textContent = count;
+                badge.classList.toggle("hidden", count === 0);
+            }
+
+            button.classList.toggle("inactive", count === 0);
+        });
+    });
+}
 });
